@@ -1,2 +1,27 @@
+# Dependencias
 node_modules/
+
+# Variables de entorno (MUY IMPORTANTE)
 .env
+
+# Logs
+*.log
+
+# Build (por si luego compilas TS)
+dist/
+build/
+
+# Archivos temporales
+tmp/
+temp/
+.cache/
+
+# Coverage
+coverage/
+
+# IDE
+.vscode/
+
+# Sistema
+.DS_Store
+Thumbs.db
