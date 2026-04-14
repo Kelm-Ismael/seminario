@@ -1,25 +1,54 @@
 {
   "compilerOptions": {
+    // Carpeta donde está tu código fuente
     "rootDir": "./src",
+
+    // Carpeta donde se genera el JS compilado
     "outDir": "./dist",
 
-    "module": "nodenext",
+    // Sistema de módulos (compatible con Node.js)
+    "module": "commonjs",
+
+    // Versión de JavaScript que se genera
     "target": "esnext",
+
+    // Tipos disponibles (Node.js en este caso)
     "types": ["node"],
 
+    // Genera mapas para debug (ver TS en vez de JS)
     "sourceMap": true,
+
+    // Genera archivos .d.ts (tipos)
     "declaration": true,
+
+    // Mapas de los archivos de declaración
     "declarationMap": true,
 
+    // Hace más estricto el acceso a arrays/objetos
     "noUncheckedIndexedAccess": true,
+
+    // Hace más estrictos los opcionales
     "exactOptionalPropertyTypes": true,
 
+    // Activa modo estricto (muy recomendado)
     "strict": true,
+
+    // Soporte para JSX (no afecta tu backend)
     "jsx": "react-jsx",
-    "verbatimModuleSyntax": true,
+
+    // Permite usar imports sin conflictos
+    "verbatimModuleSyntax": false,
+
+    // Asegura que cada archivo se pueda compilar solo
     "isolatedModules": true,
+
+    // Detecta imports con efectos secundarios
     "noUncheckedSideEffectImports": true,
+
+    // Fuerza detección de módulos
     "moduleDetection": "force",
+
+    // Ignora errores en librerías externas
     "skipLibCheck": true
   }
 }
