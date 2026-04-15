@@ -1,54 +1,54 @@
 {
   "compilerOptions": {
-    // Carpeta donde está tu código fuente
+    // 📁 Carpeta donde está tu código fuente (TypeScript)
     "rootDir": "./src",
 
-    // Carpeta donde se genera el JS compilado
+    // 📦 Carpeta donde se genera el código compilado (JavaScript)
     "outDir": "./dist",
 
-    // Sistema de módulos (compatible con Node.js)
+    // 📦 Sistema de módulos (Node.js usa CommonJS por defecto)
     "module": "commonjs",
 
-    // Versión de JavaScript que se genera
-    "target": "esnext",
+    // 🔍 Cómo TypeScript resuelve imports (versión moderna de Node)
+    "moduleResolution": "node16",
 
-    // Tipos disponibles (Node.js en este caso)
+    // ⚙️ Versión de JavaScript de salida (equilibrio entre moderno y compatible)
+    "target": "ES2020",
+
+    // 🧠 Tipos disponibles (en este caso Node.js)
     "types": ["node"],
 
-    // Genera mapas para debug (ver TS en vez de JS)
+    // 🐛 Permite debuggear TS directamente (mapa TS → JS)
     "sourceMap": true,
 
-    // Genera archivos .d.ts (tipos)
+    // 📄 Genera archivos de tipos (.d.ts)
     "declaration": true,
 
-    // Mapas de los archivos de declaración
+    // 🗺️ Mapas de los archivos de declaración
     "declarationMap": true,
 
-    // Hace más estricto el acceso a arrays/objetos
+    // ⚠️ Hace más estricto el acceso a arrays y objetos
     "noUncheckedIndexedAccess": true,
 
-    // Hace más estrictos los opcionales
+    // ⚠️ Hace más estrictos los valores opcionales
     "exactOptionalPropertyTypes": true,
 
-    // Activa modo estricto (muy recomendado)
+    // 🔒 Modo estricto (MUY importante)
     "strict": true,
 
-    // Soporte para JSX (no afecta tu backend)
-    "jsx": "react-jsx",
-
-    // Permite usar imports sin conflictos
+    // 🔄 Controla cómo se mantienen los imports/export (evita problemas raros)
     "verbatimModuleSyntax": false,
 
-    // Asegura que cada archivo se pueda compilar solo
+    // 📦 Asegura que cada archivo se pueda compilar de forma independiente
     "isolatedModules": true,
 
-    // Detecta imports con efectos secundarios
+    // ⚠️ Detecta imports que solo ejecutan código (side effects)
     "noUncheckedSideEffectImports": true,
 
-    // Fuerza detección de módulos
+    // 🔍 Fuerza a TS a tratar todos los archivos como módulos
     "moduleDetection": "force",
 
-    // Ignora errores en librerías externas
+    // 🚀 Ignora errores en librerías externas (mejora performance)
     "skipLibCheck": true
   }
 }
