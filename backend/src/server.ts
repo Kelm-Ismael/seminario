@@ -3,11 +3,20 @@ import { PORT } from './config/env'
 
 
 app.listen(PORT, () => {
-  console.log(`Servidor en puerto ${PORT}`)
+  console.log(`\x1b[32m🟢 Servidor corriendo en puerto ${PORT}\x1b[0m`)
 })
 
+// Captura Ctrl + C (SIGINT)
+process.on('SIGINT', () => {
+  console.log('\n🛑 Servidor detenido')
+  process.exit(0)
+})
 
-
+// Captura cierre del sistema o proceso
+process.on('SIGTERM', () => {
+  console.log('🛑 Servidor terminado (SIGTERM)')
+  process.exit(0)
+})
 
 
 
