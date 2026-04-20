@@ -7,7 +7,7 @@
     "outDir": "./dist",
 
     // 📦 Sistema de módulos (Node.js usa CommonJS por defecto)
-    "module": "commonjs",
+    "module": "node16",
 
     // 🔍 Cómo TypeScript resuelve imports (versión moderna de Node)
     "moduleResolution": "node16",
