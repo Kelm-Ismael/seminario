@@ -1,0 +1,4 @@
+postgres 
+/* 1. Instalar dependencias */
+/// npm install pg
+/// npm install -D @types/pg

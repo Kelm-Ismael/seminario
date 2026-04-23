@@ -1,8 +1,10 @@
 import app from './app'
 import { PORT } from './config/env'
+import {conexion_db} from './config/db' 
 
 
-app.listen(PORT, () => {
+app.listen(PORT, async() => {
+  await conexion_db();
   console.log(`\x1b[32m🟢 Servidor corriendo en puerto ${PORT}\x1b[0m`)
 })
 
