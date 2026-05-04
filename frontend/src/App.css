@@ -1,38 +1,48 @@
+/* Quita borde blanco global */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #2c2c2c; /* opcional */
+}
+
+/* Contenedor principal */
 .App {
-  text-align: underline;
+  text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 50ms linear;
-  }
-}
-
+/* Header */
 .App-header {
-  background-color: #000000;
+  background: linear-gradient(135deg, #2c2c2c, #4a4a4a);
   min-height: 100vh;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: rgb(10, 10, 10);
+  justify-content: flex-start; /* contenido arriba */
+
+  padding-top: 30px; /* separación del borde superior */
+  color: #ffffff;
+  gap: 20px;
 }
 
-.App-link {
-  color: #a4ec0b;
+/* Título */
+h1 {
+  margin: 0; /* evita espacio extra arriba */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Botón */
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #a4ec0b;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #8ed009;
+  transform: scale(1.05);
 }
