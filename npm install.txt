@@ -1,4 +1,13 @@
+NPM EN BACKEND
 postgres 
 /* 1. Instalar dependencias */
 /// npm install pg
 /// npm install -D @types/pg
+npm install -D @types/cors
+npm install cors
+
+npm install express cors dotenv
+npm install -D typescript ts-node-dev @types/node @types/express
+
+frontend-web
+npm install react-router-dom 

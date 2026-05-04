@@ -3,9 +3,10 @@
 import {Pool} from "pg";
 import { contraseña_db, host_db, nombre_db, puerto_db, usuario_db } from "./env";
 
+
+
 //Instancia env.ts
-export { host_db } from "./env";
- const pool = new Pool ({
+export const pool = new Pool ({
   host : host_db, //servidor db
   user: usuario_db, //usuario
   password: contraseña_db, //contraseña
