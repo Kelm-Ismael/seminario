@@ -21,6 +21,28 @@
    ↑ (render UI)
 [Usuario]
 
+BACKEND — CRUD CLIENTES
+cliente.repository.ts
+crearCliente
+obtenerClientes
+obtenerClientePorId
+actualizarCliente
+eliminarCliente
+crearCliente.ts
+lógica para crear cliente
+cliente.controller.ts
+funciones HTTP (req, res)
+cliente.routes.ts
+endpoints Express
+conectar rutas en app.ts
+🎨 FRONTEND
+api/clientes.ts
+llamadas HTTP
+useClientes.ts
+hook personalizado
+ClientesPage.tsx
+formulario + lista
+agregar ruta en AppRoutes.tsx
 
 
 Flujo ejemplo (CREATE cliente)
