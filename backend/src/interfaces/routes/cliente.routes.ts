@@ -1,6 +1,8 @@
 import { Router } from "express"; // importa Router de Express
 
-import { crearClienteController } from "../controllers/cliente.controller"; // importamos el controller
+import { crearClienteController,obtenerClientesController } from "../controllers/cliente.controller"; // importamos el controller
+
+
 
 const router = Router(); //creamos instancia del router
 
@@ -9,6 +11,12 @@ const router = Router(); //creamos instancia del router
 //Se ejecuta crearClienteController
 
 router.post("/clientes", crearClienteController);
+
+// Endpoint GET para obtener clientes
+router.get(
+  "/clientes",
+  obtenerClientesController
+);
 
 //exportamos router
 

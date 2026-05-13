@@ -1,6 +1,6 @@
 // Importamos useState desde React
 import { useState } from "react";
-
+import { Navigate, useNavigate } from "react-router-dom";
 // Importamos hook personalizado
 import { useClientes } from "../hooks/useClientes";
 
@@ -14,7 +14,7 @@ const ClientesPage = () => {
 
   // Hook personalizado
   const { clientes, agregarCliente } = useClientes();
-
+  const navigate = useNavigate();
   // Función submit
   const handleSubmit = async (
     e: React.FormEvent
@@ -88,6 +88,13 @@ const ClientesPage = () => {
 
         <button type="submit">
           Crear Cliente
+        </button>
+
+        <button
+          type="button"
+          onClick={() => navigate("/")}
+        >
+          Volver a Home
         </button>
 
       </form>

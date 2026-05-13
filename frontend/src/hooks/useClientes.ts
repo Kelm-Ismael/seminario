@@ -41,7 +41,7 @@ export const useClientes = () => {
 
             // Obtenemos clientes desde backend
             const data = await obtenerClientes();
-
+            console.log(data);
             // Guardamos en estado
             setClientes(data);
         };

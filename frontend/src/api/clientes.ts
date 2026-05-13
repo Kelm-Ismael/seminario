@@ -27,6 +27,7 @@ export const crearCliente = async (cliente: {
     //retornamos datos
 
     return data;
+    
 };
 
 

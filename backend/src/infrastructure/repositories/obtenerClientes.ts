@@ -10,7 +10,7 @@ export const obtenerClientes = async () => {
     // Query para obtener todos los clientes
     `
     SELECT * FROM clientes
-    ORDER BY id ASC
+    ORDER BY id_clientes ASC
     `
   );
 

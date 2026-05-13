@@ -2,7 +2,8 @@ import { Request, Response } from "express"; // importar tipos de express
 
 import { crearCliente } from "../../aplication/use-cases/crearCliente"; //impoortar caso de uso
 // Importamos función repository
-import { obtenerClientes } from "../../infrastructure/repositories/cliente.repository";
+// import { obtenerClientes } from "../../infrastructure/repositories/cliente.repository";
+import { obtenerClientes } from "../../infrastructure/repositories/obtenerClientes";
 
 
 
