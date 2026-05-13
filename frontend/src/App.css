@@ -1,48 +1,876 @@
-/* Quita borde blanco global */
-body {
+/* =========================================
+   GENERAL
+========================================= */
+
+* {
+
   margin: 0;
+
   padding: 0;
-  background-color: #2c2c2c; /* opcional */
+
+  box-sizing: border-box;
 }
 
-/* Contenedor principal */
-.App {
-  text-align: center;
+
+body {
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  background-color: #0f0f0f;
+
+  color: white;
 }
 
-/* Header */
-.App-header {
-  background: linear-gradient(135deg, #2c2c2c, #4a4a4a);
+
+/* =========================================
+   HOME CONTAINER
+========================================= */
+
+.home-container {
+
+  width: 100%;
+
   min-height: 100vh;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start; /* contenido arriba */
+  background: linear-gradient(
+    180deg,
+    #0a0a0a,
+    #141414
+  );
+}
 
-  padding-top: 30px; /* separación del borde superior */
-  color: #ffffff;
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.navbar {
+
+  width: 100%;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 20px 50px;
+
+  background-color: rgba(0,0,0,0.95);
+
+  border-bottom: 1px solid #2f2f2f;
+
+  position: sticky;
+
+  top: 0;
+
+  z-index: 1000;
+}
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+.logo-container {
+
+  display: flex;
+
+  align-items: center;
+
   gap: 20px;
 }
 
-/* Título */
-h1 {
-  margin: 0; /* evita espacio extra arriba */
+
+.logo-img {
+
+  width: 90px;
+
+  height: 90px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+
+  border: 2px solid #d4a017;
 }
 
-/* Botón */
-button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  background-color: #a4ec0b;
-  color: black;
+
+.logo-title {
+
+  font-size: 34px;
+
+  color: #ffffff;
+
   font-weight: bold;
+}
+
+
+.logo-subtitle {
+
+  color: #d4a017;
+
+  font-size: 18px;
+
+  margin-top: 5px;
+}
+
+
+/* =========================================
+   NAV LINKS
+========================================= */
+
+.nav-links {
+
+  display: flex;
+
+  gap: 15px;
+
+  align-items: center;
+}
+
+
+.nav-links button {
+
+  background: transparent;
+
+  color: white;
+
+  border: none;
+
+  padding: 10px 18px;
+
+  border-radius: 8px;
+
+  font-size: 15px;
+
   cursor: pointer;
+
   transition: 0.3s;
 }
 
-button:hover {
-  background-color: #8ed009;
+
+.nav-links button:hover {
+
+  background-color: #d4a017;
+
+  color: black;
+}
+
+
+/* =========================================
+   BOTON TURNO
+========================================= */
+
+.turno-btn {
+
+  background-color: #d4a017;
+
+  color: black;
+
+  border: none;
+
+  padding: 14px 24px;
+
+  border-radius: 10px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+
+.turno-btn:hover {
+
+  background-color: #f0bc2b;
+
   transform: scale(1.05);
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+
+  width: 100%;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 40px;
+
+  padding: 60px;
+
+  flex-wrap: wrap;
+}
+
+
+/* =========================================
+   HERO CONTENT
+========================================= */
+
+.hero-content {
+
+  flex: 1;
+
+  min-width: 300px;
+}
+
+
+.hero-mini {
+
+  color: #d4a017;
+
+  font-size: 18px;
+
+  margin-bottom: 15px;
+
+  letter-spacing: 2px;
+}
+
+
+.hero-content h2 {
+
+  font-size: 70px;
+
+  font-weight: bold;
+
+  line-height: 1.1;
+}
+
+
+.hero-content h3 {
+
+  font-size: 35px;
+
+  color: #d4a017;
+
+  margin-top: 10px;
+
+  margin-bottom: 25px;
+
+  letter-spacing: 4px;
+}
+
+
+.hero-description {
+
+  color: #c9c9c9;
+
+  font-size: 18px;
+
+  line-height: 1.8;
+
+  max-width: 500px;
+
+  margin-bottom: 30px;
+}
+
+
+/* =========================================
+   HERO BUTTONS
+========================================= */
+
+.hero-buttons {
+
+  display: flex;
+
+  gap: 20px;
+
+  flex-wrap: wrap;
+}
+
+
+.hero-buttons button {
+
+  padding: 14px 28px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background-color: #d4a017;
+
+  color: black;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+
+.hero-buttons button:hover {
+
+  transform: scale(1.05);
+}
+
+
+.secondary-btn {
+
+  background: transparent !important;
+
+  border: 1px solid #d4a017 !important;
+
+  color: #d4a017 !important;
+}
+
+
+/* =========================================
+   CARRUSEL
+========================================= */
+
+.carousel {
+
+  flex: 1;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  min-width: 300px;
+}
+
+
+.carousel img {
+
+  width: 100%;
+
+  max-width: 700px;
+
+  height: 500px;
+
+  object-fit: cover;
+
+  border-radius: 25px;
+
+  transition: 1s;
+
+  box-shadow: 0px 5px 25px rgba(0,0,0,0.6);
+}
+
+
+/* =========================================
+   FEATURES
+========================================= */
+
+.features {
+
+  width: 100%;
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 20px;
+
+  flex-wrap: wrap;
+
+  padding: 50px 20px;
+
+  background-color: #111111;
+}
+
+
+.feature-card {
+
+  width: 250px;
+
+  background-color: #181818;
+
+  padding: 30px;
+
+  border-radius: 15px;
+
+  text-align: center;
+
+  border: 1px solid #2a2a2a;
+
+  transition: 0.3s;
+}
+
+
+.feature-card:hover {
+
+  transform: translateY(-5px);
+
+  border-color: #d4a017;
+}
+
+
+.feature-card h3 {
+
+  color: #d4a017;
+
+  margin-bottom: 15px;
+}
+
+
+.feature-card p {
+
+  color: #cccccc;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================
+   SERVICIOS
+========================================= */
+
+.services-section {
+
+  padding: 80px 40px;
+
+  text-align: center;
+}
+
+
+.services-section h2 {
+
+  font-size: 42px;
+
+  margin-bottom: 50px;
+
+  color: #ffffff;
+}
+
+
+.services-grid {
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 25px;
+
+  flex-wrap: wrap;
+}
+
+
+.service-card {
+
+  width: 280px;
+
+  background-color: #171717;
+
+  border-radius: 20px;
+
+  overflow: hidden;
+
+  border: 1px solid #2c2c2c;
+
+  transition: 0.3s;
+}
+
+
+.service-card:hover {
+
+  transform: translateY(-8px);
+
+  border-color: #d4a017;
+}
+
+
+.service-card img {
+
+  width: 100%;
+
+  height: 220px;
+
+  object-fit: cover;
+}
+
+
+.service-card h3 {
+
+  margin-top: 20px;
+
+  color: #d4a017;
+}
+
+
+.service-card p {
+
+  padding: 15px;
+
+  color: #d0d0d0;
+}
+
+
+.service-card span {
+
+  display: block;
+
+  margin-bottom: 20px;
+
+  font-size: 28px;
+
+  font-weight: bold;
+
+  color: #d4a017;
+}
+
+
+/* =========================================
+   ABOUT
+========================================= */
+
+.about-section {
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 50px;
+
+  flex-wrap: wrap;
+
+  padding: 80px 40px;
+}
+
+
+.about-text {
+
+  flex: 1;
+
+  min-width: 300px;
+
+  max-width: 500px;
+}
+
+
+.about-text h2 {
+
+  font-size: 45px;
+
+  margin-bottom: 25px;
+}
+
+
+.about-text p {
+
+  color: #cccccc;
+
+  line-height: 1.8;
+
+  margin-bottom: 25px;
+}
+
+
+.about-text ul {
+
+  margin-bottom: 25px;
+
+  padding-left: 20px;
+}
+
+
+.about-text li {
+
+  margin-bottom: 10px;
+
+  color: #d4d4d4;
+}
+
+
+.about-text button {
+
+  padding: 14px 25px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background-color: #d4a017;
+
+  color: black;
+
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+
+.about-images {
+
+  display: flex;
+
+  gap: 20px;
+
+  flex-wrap: wrap;
+}
+
+
+.about-images img {
+
+  width: 280px;
+
+  height: 350px;
+
+  object-fit: cover;
+
+  border-radius: 20px;
+}
+
+
+/* =========================================
+   TESTIMONIOS
+========================================= */
+
+.testimonials {
+
+  padding: 80px 40px;
+
+  text-align: center;
+}
+
+
+.testimonials h2 {
+
+  font-size: 42px;
+
+  margin-bottom: 50px;
+}
+
+
+.testimonial-grid {
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 25px;
+
+  flex-wrap: wrap;
+}
+
+
+.testimonial-card {
+
+  width: 320px;
+
+  background-color: #171717;
+
+  padding: 30px;
+
+  border-radius: 20px;
+
+  border: 1px solid #2a2a2a;
+}
+
+
+.testimonial-card h3 {
+
+  color: #d4a017;
+
+  margin-bottom: 15px;
+}
+
+
+.testimonial-card p {
+
+  color: #cccccc;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================
+   BOOKING
+========================================= */
+
+.booking-section {
+
+  margin: 60px auto;
+
+  width: 90%;
+
+  background: linear-gradient(
+    90deg,
+    #d4a017,
+    #f0bc2b
+  );
+
+  border-radius: 20px;
+
+  padding: 40px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 20px;
+}
+
+
+.booking-section h2 {
+
+  font-size: 40px;
+
+  color: black;
+}
+
+
+.booking-section p {
+
+  color: #1f1f1f;
+
+  margin-top: 10px;
+}
+
+
+.booking-section button {
+
+  padding: 15px 30px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background-color: black;
+
+  color: #d4a017;
+
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+
+  background-color: #0a0a0a;
+
+  padding: 60px 40px 20px 40px;
+
+  margin-top: 80px;
+
+  border-top: 1px solid #2a2a2a;
+}
+
+
+.footer-content {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 40px;
+
+  flex-wrap: wrap;
+
+  margin-bottom: 40px;
+}
+
+
+.footer-content h3,
+.footer-content h4 {
+
+  color: #d4a017;
+
+  margin-bottom: 15px;
+}
+
+
+.footer-content p {
+
+  color: #bdbdbd;
+
+  margin-bottom: 10px;
+}
+
+
+.footer-input {
+
+  padding: 12px;
+
+  width: 250px;
+
+  border-radius: 10px;
+
+  border: none;
+
+  outline: none;
+
+  background-color: #1f1f1f;
+
+  color: white;
+}
+
+
+.copyright {
+
+  text-align: center;
+
+  color: #777777;
+
+  border-top: 1px solid #222222;
+
+  padding-top: 20px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1000px) {
+
+  .navbar {
+
+    flex-direction: column;
+
+    gap: 20px;
+  }
+
+  .hero {
+
+    flex-direction: column;
+
+    text-align: center;
+  }
+
+  .hero-content h2 {
+
+    font-size: 50px;
+  }
+
+  .hero-content h3 {
+
+    font-size: 28px;
+  }
+
+  .hero-buttons {
+
+    justify-content: center;
+  }
+
+  .booking-section {
+
+    text-align: center;
+
+    justify-content: center;
+  }
+
 }
