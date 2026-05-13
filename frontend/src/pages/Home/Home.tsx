@@ -11,6 +11,9 @@ export default function Home() {
       <button onClick={() => navigate("/turnos")}>
         Ir a Turnos
       </button>
+      <button onClick={() => navigate("/clientes")}>
+        Ir a Clientes
+      </button>
     </div>
   );
 }
