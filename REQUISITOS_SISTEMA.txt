@@ -1,0 +1,149 @@
+Requisitos generales del sistema
+
+Sistema web/móvil para barberías y peluquerías con:
+
+gestión de turnos
+clientes
+empleados
+inventario
+pagos
+métricas
+múltiples roles
+integración WhatsApp
+panel administrativo
+Roles del sistema
+Cliente
+
+Puede:
+
+reservar turnos
+ver servicios
+cancelar turnos
+recibir notificaciones
+Peluquero / Barbero
+
+Puede:
+
+ver agenda
+gestionar turnos
+cambiar estados
+ver métricas personales
+ver historial clientes
+marcar turnos completados
+
+NO puede:
+
+ver recaudación general
+administrar empleados
+Administrativo
+
+Puede:
+
+gestionar clientes
+gestionar turnos
+gestionar servicios
+gestionar inventario
+registrar pagos
+cargar gastos
+gestionar empleados básicos
+
+NO puede:
+
+ver recaudación del día
+acceder a reportes financieros completos
+administrar permisos globales
+Administrador
+
+Puede:
+
+acceso total
+métricas globales
+recaudación
+reportes financieros
+gestión usuarios
+roles/permisos
+configuración sistema
+inventario total
+auditoría
+Módulos principales
+Turnos
+calendario
+horarios
+estados
+cancelaciones
+recordatorios
+Clientes
+historial
+contacto
+preferencias
+frecuencia
+Inventario
+stock
+productos
+alertas stock mínimo
+proveedores
+movimientos stock
+Pagos
+efectivo
+transferencia
+débito/crédito
+QR
+Mercado Pago
+Stripe
+
+Registro:
+
+monto
+método
+fecha
+usuario responsable
+Métricas
+turnos por día
+servicios más vendidos
+empleados más solicitados
+ingresos
+clientes nuevos
+cancelaciones
+Integración WhatsApp
+
+Funciones:
+
+confirmar turnos
+recordar turnos
+cancelaciones
+promociones
+contacto rápido
+
+Opciones:
+
+WhatsApp API
+Twilio
+Meta API
+Seguridad
+login
+JWT
+roles/permisos
+rutas protegidas
+hash contraseñas
+auditoría acciones
+Arquitectura recomendada
+Frontend
+- React
+- TypeScript
+- React Router
+
+Backend
+- Node.js
+- Express
+- TypeScript
+
+Database
+- PostgreSQL
+
+Deploy
+- Vercel
+- Render
+- Neon
+Escalabilidad futura
+
+Preparado para:

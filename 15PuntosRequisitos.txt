@@ -1,0 +1,102 @@
+1- Auth + Roles
+- login seguro
+- JWT
+- permisos por rol
+- rutas protegidas
+
+2- WhatsApp Automático
+- confirmaciones
+- recordatorios
+- cancelaciones
+- promociones
+- integración Meta API/Twilio
+
+3- Recordatorios Automáticos
+- mensajes automáticos
+- 24 hs antes
+- 2 hs antes
+- email + WhatsApp
+
+4- Dashboard Profesional
+- métricas
+- gráficos
+- ingresos
+- turnos diarios
+- servicios más vendidos
+
+5- Inventario
+- stock
+- proveedores
+- alertas stock bajo
+- movimientos stock
+
+6- Caja / Pagos
+- efectivo
+- QR
+- Mercado Pago
+- Stripe
+- cierre de caja
+- arqueo diario
+
+7- Auditoría
+- historial acciones
+- cambios usuarios
+- modificaciones pagos
+- control administrativo
+
+8- Multi-sucursal
+- varias peluquerías/barberías
+- sedes separadas
+- empleados separados
+- datos independientes
+
+9- Reportes
+- PDF
+- Excel
+- ingresos
+- métricas
+- clientes
+- inventario
+
+10- Deploy Profesional
+Frontend:
+- Vercel
+
+Backend:
+- Render
+
+Database:
+- Neon PostgreSQL
+
+11- Agenda Inteligente
+- evitar doble reserva
+- horarios automáticos
+- duración servicios
+- disponibilidad dinámica
+
+12- Sistema de Comisiones
+- porcentaje empleados
+- comisión servicios
+- bonos
+- métricas personales
+
+13- App Móvil
+- React Native
+- Expo
+- Android/iOS
+- sincronización con API
+
+14- Seguridad Avanzada
+- hash contraseñas
+- permisos granulares
+- sesiones
+- logs
+- backups
+
+15- SaaS Multiempresa
+- múltiples peluquerías/barberías
+- clientes separados
+- datos aislados
+- suscripciones
+- planes mensuales
+- plataforma comercial escalable

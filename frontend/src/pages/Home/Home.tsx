@@ -1,5 +1,92 @@
 // import { useNavigate } from "react-router-dom";
+// import { useEffect, useState } from "react";
 // import "../../App.css";
+
+// import Navbar from "../../components/layout/Navbar";
+// import Hero from "../../components/home/Hero";
+// import Features from "../../components/home/Features";
+// import ServicesSection from "../../components/home/ServicesSection";
+// import AboutSection from "../../components/home/AboutSection";
+// import Testimonials from "../../components/home/Testimonials";
+// import BookingSection from "../../components/home/BookingSection";
+// import Footer from "../../components/layout/Footer";
+
+// export default function Home() {
+
+//   return (
+//     <div className="home-container">
+
+//       <Navbar />
+
+//       <Hero />
+
+//       <Features />
+
+//       <ServicesSection />
+
+//       <AboutSection />
+
+//       <Testimonials />
+
+//       <BookingSection />
+
+//       <Footer />
+
+//     </div>
+//   );
+// }
+
+import "../../App.css";
+
+import Navbar from "../../components/layout/Navbar";
+import Hero from "../../components/home/Hero";
+import SearchSection from "../../components/home/SearchSection";
+import Features from "../../components/home/Features";
+import ServicesSection from "../../components/home/ServicesSection";
+import StatsSection from "../../components/home/StatsSection";
+import PromoSection from "../../components/home/PromoSection";
+import AboutSection from "../../components/home/AboutSection";
+import LocationSection from "../../components/home/LocationSection";
+import PaymentsSection from "../../components/home/PaymentsSection";
+import BookingSection from "../../components/home/BookingSection";
+import Footer from "../../components/layout/Footer";
+import WhatsappButton from "../../components/common/WhatsappButton";
+
+export default function Home() {
+
+  return (
+    <div className="home-container">
+
+      <Navbar />
+
+      <Hero />
+
+      <SearchSection />
+
+      <Features />
+
+      <ServicesSection />
+
+      <StatsSection />
+
+      <PromoSection />
+
+      <AboutSection />
+
+      <LocationSection />
+
+      <PaymentsSection />
+
+      <BookingSection />
+
+      <Footer />
+
+      <WhatsappButton />
+
+    </div>
+  );
+}
+
 
 
 // export default function Home() {
@@ -18,579 +105,569 @@
 //   );
 // }
 
-// =========================================
-// IMPORTS
-// =========================================
 
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "../../App.css";
+// export default function Home() {
 
+//   const navigate = useNavigate();
 
-// =========================================
-// COMPONENTE HOME
-// =========================================
 
-export default function Home() {
+//   // =========================================
+//   // CARRUSEL
+//   // =========================================
 
-  const navigate = useNavigate();
+//   const imagenes = [
 
+//     "https://images.unsplash.com/photo-1622286342621-4bd786c2447c",
 
-  // =========================================
-  // CARRUSEL
-  // =========================================
+//     "https://images.unsplash.com/photo-1517832606299-7ae9b720a186",
 
-  const imagenes = [
+//     "https://images.unsplash.com/photo-1503951914875-452162b0f3f1"
+//   ];
 
-    "https://images.unsplash.com/photo-1622286342621-4bd786c2447c",
 
-    "https://images.unsplash.com/photo-1517832606299-7ae9b720a186",
+//   const [imagenActual, setImagenActual] = useState(0);
 
-    "https://images.unsplash.com/photo-1503951914875-452162b0f3f1"
-  ];
 
+//   useEffect(() => {
 
-  const [imagenActual, setImagenActual] = useState(0);
+//     const intervalo = setInterval(() => {
 
+//       setImagenActual((prev) =>
+//         prev === imagenes.length - 1
+//           ? 0
+//           : prev + 1
+//       );
 
-  useEffect(() => {
+//     }, 3000);
 
-    const intervalo = setInterval(() => {
+//     return () => clearInterval(intervalo);
 
-      setImagenActual((prev) =>
-        prev === imagenes.length - 1
-          ? 0
-          : prev + 1
-      );
+//   }, []);
 
-    }, 3000);
 
-    return () => clearInterval(intervalo);
+//   // =========================================
+//   // RETURN
+//   // =========================================
 
-  }, []);
+//   return (
 
+//     <div className="home-container">
 
-  // =========================================
-  // RETURN
-  // =========================================
 
-  return (
+//       {/* =====================================
+//           NAVBAR
+//       ===================================== */}
+//       <nav className="navbar">
 
-    <div className="home-container">
+//         {/* LOGO */}
+//         <div className="logo-container">
 
+//           <img
+//             src="/logo.png"
+//             alt="David Martinez"
+//             className="logo-img"
+//           />
 
-      {/* =====================================
-          NAVBAR
-      ===================================== */}
-      <nav className="navbar">
+//           <div>
 
-        {/* LOGO */}
-        <div className="logo-container">
+//             <h1 className="logo-title">
+//               David Martinez
+//             </h1>
 
-          <img
-            src="/logo.png"
-            alt="David Martinez"
-            className="logo-img"
-          />
+//             <p className="logo-subtitle">
+//               Estilista Unisex
+//             </p>
 
-          <div>
+//           </div>
 
-            <h1 className="logo-title">
-              David Martinez
-            </h1>
+//         </div>
 
-            <p className="logo-subtitle">
-              Estilista Unisex
-            </p>
 
-          </div>
+//         {/* MENÚ */}
+//         <div className="nav-links">
 
-        </div>
+//           <button onClick={() => navigate("/")}>
+//             Inicio
+//           </button>
 
+//           <button onClick={() => navigate("/servicios")}>
+//             Servicios
+//           </button>
 
-        {/* MENÚ */}
-        <div className="nav-links">
+//           <button>
+//             Nosotros
+//           </button>
 
-          <button onClick={() => navigate("/")}>
-            Inicio
-          </button>
+//           <button>
+//             Galería
+//           </button>
 
-          <button onClick={() => navigate("/servicios")}>
-            Servicios
-          </button>
+//           <button>
+//             Precios
+//           </button>
 
-          <button>
-            Nosotros
-          </button>
+//           <button>
+//             Contacto
+//           </button>
 
-          <button>
-            Galería
-          </button>
+//         </div>
 
-          <button>
-            Precios
-          </button>
 
-          <button>
-            Contacto
-          </button>
+//         {/* BOTON TURNO */}
+//         <button
+//           className="turno-btn"
+//           onClick={() => navigate("/turnos")}
+//         >
+//           Reservá tu turno
+//         </button>
 
-        </div>
+//       </nav>
 
 
-        {/* BOTON TURNO */}
-        <button
-          className="turno-btn"
-          onClick={() => navigate("/turnos")}
-        >
-          Reservá tu turno
-        </button>
+//       {/* =====================================
+//           HERO
+//       ===================================== */}
+//       <section className="hero">
 
-      </nav>
 
+//         {/* TEXTO */}
+//         <div className="hero-content">
 
-      {/* =====================================
-          HERO
-      ===================================== */}
-      <section className="hero">
+//           <p className="hero-mini">
+//             Peluquería & Barbería Profesional
+//           </p>
 
+//           <h2>
+//             DAVID MARTINEZ
+//           </h2>
 
-        {/* TEXTO */}
-        <div className="hero-content">
+//           <h3>
+//             ESTILISTA UNISEX
+//           </h3>
 
-          <p className="hero-mini">
-            Peluquería & Barbería Profesional
-          </p>
+//           <p className="hero-description">
 
-          <h2>
-            DAVID MARTINEZ
-          </h2>
+//             Estilo, confianza y personalidad
+//             en cada corte.
 
-          <h3>
-            ESTILISTA UNISEX
-          </h3>
+//             Un servicio profesional pensado
+//             para vos.
 
-          <p className="hero-description">
+//           </p>
 
-            Estilo, confianza y personalidad
-            en cada corte.
 
-            Un servicio profesional pensado
-            para vos.
+//           {/* BOTONES */}
+//           <div className="hero-buttons">
 
-          </p>
+//             <button
+//               onClick={() => navigate("/turnos")}
+//             >
+//               Reservá tu turno
+//             </button>
 
+//             <button className="secondary-btn">
+//               Ver servicios
+//             </button>
 
-          {/* BOTONES */}
-          <div className="hero-buttons">
+//           </div>
 
-            <button
-              onClick={() => navigate("/turnos")}
-            >
-              Reservá tu turno
-            </button>
+//         </div>
 
-            <button className="secondary-btn">
-              Ver servicios
-            </button>
 
-          </div>
+//         {/* CARRUSEL */}
+//         <div className="carousel">
 
-        </div>
+//           <img
+//             src={imagenes[imagenActual]}
+//             alt="Barberia"
+//           />
 
+//         </div>
 
-        {/* CARRUSEL */}
-        <div className="carousel">
+//       </section>
 
-          <img
-            src={imagenes[imagenActual]}
-            alt="Barberia"
-          />
 
-        </div>
+//       {/* =====================================
+//           FEATURES
+//       ===================================== */}
+//       <section className="features">
 
-      </section>
+//         <div className="feature-card">
 
+//           <h3>Profesionales</h3>
 
-      {/* =====================================
-          FEATURES
-      ===================================== */}
-      <section className="features">
+//           <p>
+//             Especialistas en cortes modernos y clásicos.
+//           </p>
 
-        <div className="feature-card">
+//         </div>
 
-          <h3>Profesionales</h3>
+//         <div className="feature-card">
 
-          <p>
-            Especialistas en cortes modernos y clásicos.
-          </p>
+//           <h3>Ambiente Premium</h3>
 
-        </div>
+//           <p>
+//             Espacio cómodo y relajado.
+//           </p>
 
-        <div className="feature-card">
+//         </div>
 
-          <h3>Ambiente Premium</h3>
+//         <div className="feature-card">
 
-          <p>
-            Espacio cómodo y relajado.
-          </p>
+//           <h3>Productos Premium</h3>
 
-        </div>
+//           <p>
+//             Trabajamos con primeras marcas.
+//           </p>
 
-        <div className="feature-card">
+//         </div>
 
-          <h3>Productos Premium</h3>
+//         <div className="feature-card">
 
-          <p>
-            Trabajamos con primeras marcas.
-          </p>
+//           <h3>Puntualidad</h3>
 
-        </div>
+//           <p>
+//             Respetamos tu tiempo.
+//           </p>
 
-        <div className="feature-card">
+//         </div>
 
-          <h3>Puntualidad</h3>
+//       </section>
 
-          <p>
-            Respetamos tu tiempo.
-          </p>
 
-        </div>
+//       {/* =====================================
+//           SERVICIOS
+//       ===================================== */}
+//       <section className="services-section">
 
-      </section>
+//         <h2>
+//           Nuestros Servicios
+//         </h2>
 
 
-      {/* =====================================
-          SERVICIOS
-      ===================================== */}
-      <section className="services-section">
+//         <div className="services-grid">
 
-        <h2>
-          Nuestros Servicios
-        </h2>
 
+//           {/* CARD */}
+//           <div className="service-card">
 
-        <div className="services-grid">
+//             <img
+//               src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c"
+//               alt="corte"
+//             />
 
+//             <h3>
+//               Corte de Cabello
+//             </h3>
 
-          {/* CARD */}
-          <div className="service-card">
+//             <p>
+//               Estilo moderno y personalizado.
+//             </p>
 
-            <img
-              src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c"
-              alt="corte"
-            />
+//             <span>$12.000</span>
 
-            <h3>
-              Corte de Cabello
-            </h3>
+//           </div>
 
-            <p>
-              Estilo moderno y personalizado.
-            </p>
 
-            <span>$12.000</span>
+//           <div className="service-card">
 
-          </div>
+//             <img
+//               src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186"
+//               alt="barba"
+//             />
 
+//             <h3>
+//               Corte + Barba
+//             </h3>
 
-          <div className="service-card">
+//             <p>
+//               Corte completo con perfilado.
+//             </p>
 
-            <img
-              src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186"
-              alt="barba"
-            />
+//             <span>$18.000</span>
 
-            <h3>
-              Corte + Barba
-            </h3>
+//           </div>
 
-            <p>
-              Corte completo con perfilado.
-            </p>
 
-            <span>$18.000</span>
+//           <div className="service-card">
 
-          </div>
+//             <img
+//               src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1"
+//               alt="barba"
+//             />
 
+//             <h3>
+//               Arreglo de Barba
+//             </h3>
 
-          <div className="service-card">
+//             <p>
+//               Diseño y perfilado profesional.
+//             </p>
 
-            <img
-              src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1"
-              alt="barba"
-            />
+//             <span>$8.000</span>
 
-            <h3>
-              Arreglo de Barba
-            </h3>
+//           </div>
 
-            <p>
-              Diseño y perfilado profesional.
-            </p>
 
-            <span>$8.000</span>
+//           <div className="service-card">
 
-          </div>
+//             <img
+//               src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f"
+//               alt="lavado"
+//             />
 
+//             <h3>
+//               Lavado Premium
+//             </h3>
 
-          <div className="service-card">
+//             <p>
+//               Lavado + hidratación capilar.
+//             </p>
 
-            <img
-              src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f"
-              alt="lavado"
-            />
+//             <span>$6.000</span>
 
-            <h3>
-              Lavado Premium
-            </h3>
+//           </div>
 
-            <p>
-              Lavado + hidratación capilar.
-            </p>
 
-            <span>$6.000</span>
+//           <div className="service-card">
 
-          </div>
+//             <img
+//               src="https://images.unsplash.com/photo-1516979187457-637abb4f9353"
+//               alt="color"
+//             />
 
+//             <h3>
+//               Color Personalizado
+//             </h3>
 
-          <div className="service-card">
+//             <p>
+//               Coloración y reflejos.
+//             </p>
 
-            <img
-              src="https://images.unsplash.com/photo-1516979187457-637abb4f9353"
-              alt="color"
-            />
+//             <span>$25.000</span>
 
-            <h3>
-              Color Personalizado
-            </h3>
+//           </div>
 
-            <p>
-              Coloración y reflejos.
-            </p>
+//         </div>
 
-            <span>$25.000</span>
+//       </section>
 
-          </div>
 
-        </div>
+//       {/* =====================================
+//           SOBRE NOSOTROS
+//       ===================================== */}
+//       <section className="about-section">
 
-      </section>
+//         <div className="about-text">
 
+//           <h2>
+//             Sobre Nosotros
+//           </h2>
 
-      {/* =====================================
-          SOBRE NOSOTROS
-      ===================================== */}
-      <section className="about-section">
+//           <p>
 
-        <div className="about-text">
+//             Combinamos experiencia,
+//             técnica y pasión para brindar
+//             el mejor servicio.
 
-          <h2>
-            Sobre Nosotros
-          </h2>
+//           </p>
 
-          <p>
+//           <ul>
 
-            Combinamos experiencia,
-            técnica y pasión para brindar
-            el mejor servicio.
+//             <li>
+//               Más de 10 años de experiencia
+//             </li>
 
-          </p>
+//             <li>
+//               Atención personalizada
+//             </li>
 
-          <ul>
+//             <li>
+//               Técnicas modernas
+//             </li>
 
-            <li>
-              Más de 10 años de experiencia
-            </li>
+//             <li>
+//               Productos premium
+//             </li>
 
-            <li>
-              Atención personalizada
-            </li>
+//           </ul>
 
-            <li>
-              Técnicas modernas
-            </li>
+//           <button>
+//             Conocé más
+//           </button>
 
-            <li>
-              Productos premium
-            </li>
+//         </div>
 
-          </ul>
 
-          <button>
-            Conocé más
-          </button>
+//         <div className="about-images">
 
-        </div>
+//           <img
+//             src="https://images.unsplash.com/photo-1512690459411-b0fd1c86b8f8"
+//             alt="barberia"
+//           />
 
+//           <img
+//             src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70"
+//             alt="herramientas"
+//           />
 
-        <div className="about-images">
+//         </div>
 
-          <img
-            src="https://images.unsplash.com/photo-1512690459411-b0fd1c86b8f8"
-            alt="barberia"
-          />
+//       </section>
 
-          <img
-            src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70"
-            alt="herramientas"
-          />
 
-        </div>
+//       {/* =====================================
+//           TESTIMONIOS
+//       ===================================== */}
+//       <section className="testimonials">
 
-      </section>
+//         <h2>
+//           Lo que dicen nuestros clientes
+//         </h2>
 
 
-      {/* =====================================
-          TESTIMONIOS
-      ===================================== */}
-      <section className="testimonials">
+//         <div className="testimonial-grid">
 
-        <h2>
-          Lo que dicen nuestros clientes
-        </h2>
 
+//           <div className="testimonial-card">
 
-        <div className="testimonial-grid">
+//             <h3>Lucas G.</h3>
 
+//             <p>
 
-          <div className="testimonial-card">
+//               Excelente atención y ambiente.
+//               Siempre salgo conforme.
 
-            <h3>Lucas G.</h3>
+//             </p>
 
-            <p>
+//           </div>
 
-              Excelente atención y ambiente.
-              Siempre salgo conforme.
 
-            </p>
+//           <div className="testimonial-card">
 
-          </div>
+//             <h3>Martín R.</h3>
 
+//             <p>
 
-          <div className="testimonial-card">
+//               Muy profesionales y detallistas.
+//               Excelente barbería.
 
-            <h3>Martín R.</h3>
+//             </p>
 
-            <p>
+//           </div>
 
-              Muy profesionales y detallistas.
-              Excelente barbería.
 
-            </p>
+//           <div className="testimonial-card">
 
-          </div>
+//             <h3>Javier P.</h3>
 
+//             <p>
 
-          <div className="testimonial-card">
+//               Ambiente premium y gran calidad.
 
-            <h3>Javier P.</h3>
+//             </p>
 
-            <p>
+//           </div>
 
-              Ambiente premium y gran calidad.
+//         </div>
 
-            </p>
+//       </section>
 
-          </div>
 
-        </div>
+//       {/* =====================================
+//           RESERVA
+//       ===================================== */}
+//       <section className="booking-section">
 
-      </section>
+//         <div>
 
+//           <h2>
+//             Reservá tu turno
+//           </h2>
 
-      {/* =====================================
-          RESERVA
-      ===================================== */}
-      <section className="booking-section">
+//           <p>
+//             Rápido, fácil y online.
+//           </p>
 
-        <div>
+//         </div>
 
-          <h2>
-            Reservá tu turno
-          </h2>
+//         <button
+//           onClick={() => navigate("/turnos")}
+//         >
+//           Reservar ahora
+//         </button>
 
-          <p>
-            Rápido, fácil y online.
-          </p>
+//       </section>
 
-        </div>
 
-        <button
-          onClick={() => navigate("/turnos")}
-        >
-          Reservar ahora
-        </button>
+//       {/* =====================================
+//           FOOTER
+//       ===================================== */}
+//       <footer className="footer">
 
-      </section>
+//         <div className="footer-content">
 
+//           <div>
 
-      {/* =====================================
-          FOOTER
-      ===================================== */}
-      <footer className="footer">
+//             <h3>
+//               David Martinez
+//             </h3>
 
-        <div className="footer-content">
+//             <p>
+//               Estilo que te define.
+//             </p>
 
-          <div>
+//           </div>
 
-            <h3>
-              David Martinez
-            </h3>
 
-            <p>
-              Estilo que te define.
-            </p>
+//           <div>
 
-          </div>
+//             <h4>Enlaces</h4>
 
+//             <p>Inicio</p>
+//             <p>Servicios</p>
+//             <p>Galería</p>
+//             <p>Contacto</p>
 
-          <div>
+//           </div>
 
-            <h4>Enlaces</h4>
 
-            <p>Inicio</p>
-            <p>Servicios</p>
-            <p>Galería</p>
-            <p>Contacto</p>
+//           <div>
 
-          </div>
+//             <h4>Información</h4>
 
+//             <p>11 1234 5678</p>
+//             <p>info@davidmartinez.com</p>
+//             <p>Buenos Aires, Argentina</p>
 
-          <div>
+//           </div>
 
-            <h4>Información</h4>
 
-            <p>11 1234 5678</p>
-            <p>info@davidmartinez.com</p>
-            <p>Buenos Aires, Argentina</p>
+//           <div>
 
-          </div>
+//             <h4>Suscribite</h4>
 
+//             <input
+//               type="email"
+//               placeholder="Tu email"
+//               className="footer-input"
+//             />
 
-          <div>
+//           </div>
 
-            <h4>Suscribite</h4>
+//         </div>
 
-            <input
-              type="email"
-              placeholder="Tu email"
-              className="footer-input"
-            />
 
-          </div>
+//         <p className="copyright">
 
-        </div>
+//           © 2026 David Martinez Estilista Unisex
 
+//         </p>
 
-        <p className="copyright">
+//       </footer>
 
-          © 2026 David Martinez Estilista Unisex
+//     </div>
+//   );
+// }
 
-        </p>
 
-      </footer>
-
-    </div>
-  );
-}

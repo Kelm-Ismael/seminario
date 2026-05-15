@@ -1,0 +1,243 @@
+# Estructura Frontend React + TypeScript
+
+## src/api/
+
+Funciones para conectar con el backend.
+
+Ejemplo:
+
+* clientes.ts
+* turnos.ts
+
+Aquí van:
+
+* fetch
+* axios
+* peticiones GET, POST, PUT, DELETE
+
+---
+
+## src/components/
+
+Componentes reutilizables de la aplicación.
+
+Ejemplo:
+
+* botones
+* cards
+* navbar
+* footer
+* modales
+
+### src/components/common
+
+Componentes genéricos reutilizables.
+
+Ejemplo:
+
+* Button.tsx
+* Input.tsx
+* Modal.tsx
+
+---
+
+## src/layout/
+
+Estructura visual general de la aplicación.
+
+Ejemplo:
+
+* Navbar
+* Sidebar
+* Footer
+* Layout principal
+
+---
+
+## src/hooks/
+
+Custom Hooks de React.
+
+Sirven para reutilizar lógica.
+
+Ejemplo:
+
+* useClientes.ts
+* useTurnos.ts
+
+Aquí normalmente se maneja:
+
+* estados
+* lógica
+* llamadas al backend
+* useEffect
+* useState
+
+---
+
+## src/pages/
+
+Páginas reales del sistema.
+
+Cada archivo representa una ruta.
+
+Ejemplo:
+
+* Home.tsx
+* ClientesPage.tsx
+* TurnosPage.tsx
+
+---
+
+## src/routes/
+
+Configuración de React Router.
+
+Ejemplo:
+
+* AppRoutes.tsx
+
+Aquí defines:
+
+* rutas
+* navegación
+* rutas privadas
+* protección login
+
+---
+
+## src/store/
+
+Estado global de la aplicación.
+
+Se usa con:
+
+* Redux
+* Zustand
+* Context API
+
+Ejemplo:
+
+* usuario logueado
+* token
+* tema oscuro
+* datos globales
+
+---
+
+## src/types/
+
+Tipos e interfaces TypeScript.
+
+Ejemplo:
+
+export interface Cliente {
+id_clientes: number;
+nombre: string;
+}
+
+---
+
+## src/utils/
+
+Funciones auxiliares reutilizables.
+
+Ejemplo:
+
+* formatear fechas
+* validaciones
+* helpers
+* funciones reutilizables
+
+---
+
+## App.tsx
+
+Componente principal de React.
+
+Normalmente carga:
+
+* rutas
+* layouts
+* providers
+
+---
+
+## index.tsx o main.tsx
+
+Punto de entrada de React.
+
+Aquí se monta la aplicación React.
+
+Ejemplo:
+
+ReactDOM.createRoot(...)
+
+---
+
+## App.css
+
+CSS principal de la aplicación.
+
+---
+
+## index.css
+
+Estilos globales.
+
+Ejemplo:
+
+* reset CSS
+* body
+* fuentes
+* variables globales
+
+---
+
+## .env
+
+Variables de entorno/configuración privada.
+
+Ejemplo React:
+
+REACT_APP_API=http://localhost:3001
+
+Ejemplo Vite:
+
+VITE_API_URL=http://localhost:3001
+
+Sirve para:
+
+* URL backend
+* configuración
+* tokens públicos
+* variables dev/prod
+
+Uso:
+
+process.env.REACT_APP_API
+
+o
+
+import.meta.env.VITE_API_URL
+
+---
+
+## public/
+
+Archivos estáticos.
+
+Ejemplo:
+
+* imágenes
+* logos
+* favicon
+* videos
+
+---
+
+## node_modules/
+
+Dependencias instaladas del proyecto.
+
+No se modifica manualmente.
