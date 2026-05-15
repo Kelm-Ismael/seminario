@@ -146,4 +146,3 @@ Deploy
 - Neon
 Escalabilidad futura
 
-Preparado para:

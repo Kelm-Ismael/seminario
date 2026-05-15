@@ -14,13 +14,11 @@ export default function PaymentsSection() {
         <div className="payment-card">
 
           <img
-            src="/cash.png"
+            src="https://cdn-icons-png.flaticon.com/512/2489/2489756.png"
             alt="efectivo"
           />
 
-          <p>
-            Efectivo
-          </p>
+          <p>Efectivo</p>
 
         </div>
 
@@ -28,13 +26,11 @@ export default function PaymentsSection() {
         <div className="payment-card">
 
           <img
-            src="/mercadopago.png"
+            src="https://logospng.org/download/mercado-pago/logo-mercado-pago-256.png"
             alt="mercado pago"
           />
 
-          <p>
-            Mercado Pago
-          </p>
+          <p>Mercado Pago</p>
 
         </div>
 
@@ -42,13 +38,11 @@ export default function PaymentsSection() {
         <div className="payment-card">
 
           <img
-            src="/credit-card.png"
+            src="https://cdn-icons-png.flaticon.com/512/633/633611.png"
             alt="tarjeta"
           />
 
-          <p>
-            Crédito / Débito
-          </p>
+          <p>Crédito / Débito</p>
 
         </div>
 
@@ -56,13 +50,11 @@ export default function PaymentsSection() {
         <div className="payment-card">
 
           <img
-            src="/transfer.png"
+            src="https://cdn-icons-png.flaticon.com/512/2489/2489756.png"
             alt="transferencia"
           />
 
-          <p>
-            Transferencia
-          </p>
+          <p>Transferencia</p>
 
         </div>
 
