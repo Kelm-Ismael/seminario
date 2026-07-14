@@ -1,0 +1,690 @@
+# ARQUITECTURA DE PANELES POR ROL — SISTEMA BARBERÍA / PELUQUERÍA SaaS
+
+# OBJETIVO
+
+Crear un sistema profesional multirol donde cada usuario vea únicamente:
+
+* funciones permitidas
+* métricas correspondientes
+* módulos autorizados
+* información relevante a su trabajo
+
+Manteniendo:
+
+* misma identidad visual
+* colores negro/dorado
+* diseño premium
+* dashboard moderno
+* experiencia SaaS
+
+Inspiración:
+
+* Fresha
+* Booksy
+* AgendaPro
+* Notion Dashboard
+* Stripe Admin
+* Linear
+
+---
+
+# IDENTIDAD VISUAL GLOBAL
+
+## Colores principales
+
+Fondo:
+
+* negro profundo
+* gris oscuro
+
+Acentos:
+
+* dorado
+* amarillo premium
+
+Estados:
+
+* verde → confirmado
+* rojo → cancelado
+* azul → en curso
+* amarillo → pendiente
+
+---
+
+# ESTRUCTURA GLOBAL DEL SISTEMA
+
+Todos los paneles deben compartir:
+
+---
+
+## Sidebar lateral
+
+Con:
+
+* logo
+* nombre barbería
+* navegación
+* perfil usuario
+* configuración
+* logout
+
+---
+
+## Topbar
+
+Con:
+
+* fecha
+* notificaciones
+* WhatsApp rápido
+* perfil usuario
+* búsqueda global
+
+---
+
+## Contenido central
+
+Dashboard dinámico según rol.
+
+---
+
+# ROLES DEL SISTEMA
+
+1. Cliente
+2. Peluquero
+3. Barbero
+4. Colorista
+5. Administrativo
+6. Administrador
+
+---
+
+# PANEL CLIENTE
+
+# OBJETIVO
+
+Experiencia simple, elegante y rápida.
+
+Tipo:
+
+* app de reservas
+* agenda personal
+* seguimiento de turnos
+
+---
+
+# MÓDULOS CLIENTE
+
+## Dashboard principal
+
+Cards:
+
+* próximos turnos
+* servicios favoritos
+* historial
+* promociones
+
+---
+
+## Reservar turno
+
+Con:
+
+* calendario visual
+* selección empleado
+* selección servicio
+* horarios disponibles
+* duración estimada
+
+---
+
+## Mis turnos
+
+Ver:
+
+* pendientes
+* confirmados
+* cancelados
+* completados
+
+---
+
+## Historial
+
+Mostrar:
+
+* servicios realizados
+* profesional asignado
+* fechas
+* gastos realizados
+
+---
+
+## Perfil
+
+Editar:
+
+* nombre
+* teléfono
+* email
+* preferencias
+
+---
+
+## WhatsApp
+
+Botón flotante:
+
+"Contactar peluquería"
+
+---
+
+# DISEÑO CLIENTE
+
+Más minimalista.
+
+Menos administrativo.
+
+Más orientado a experiencia UX.
+
+---
+
+# PANEL PELUQUERO / BARBERO / COLORISTA
+
+# OBJETIVO
+
+Convertirse en agenda profesional del empleado.
+
+Cada empleado verá:
+
+* sus turnos
+* sus métricas
+* sus clientes
+
+NO información financiera global.
+
+---
+
+# DIFERENCIA ENTRE ROLES
+
+## Peluquero
+
+Especialista general.
+
+Servicios:
+
+* cortes
+* peinados
+* styling
+
+---
+
+## Barbero
+
+Servicios:
+
+* barba
+* fade
+* razor
+* cortes masculinos
+
+---
+
+## Colorista
+
+Servicios:
+
+* tintura
+* balayage
+* decoloración
+* tratamientos
+
+---
+
+# DASHBOARD EMPLEADO
+
+## Cards superiores
+
+* turnos hoy
+* confirmados
+* cancelados
+* ingresos personales
+* clientes atendidos
+
+---
+
+## Agenda diaria
+
+Calendario visual:
+
+* horarios
+* clientes
+* duración
+* estado
+
+---
+
+## Estados rápidos
+
+Botones:
+
+* confirmar
+* en curso
+* completado
+* cancelado
+
+---
+
+## Historial clientes
+
+Ver:
+
+* nombre
+* preferencias
+* historial servicios
+* notas
+
+---
+
+## Métricas personales
+
+* servicios realizados
+* clientes frecuentes
+* ocupación semanal
+* ingresos personales
+* comisión estimada
+
+---
+
+# RESTRICCIONES EMPLEADOS
+
+NO pueden:
+
+❌ ver recaudación global
+❌ modificar empleados
+❌ modificar permisos
+❌ acceder auditoría
+❌ administrar inventario completo
+
+---
+
+# PANEL ADMINISTRATIVO
+
+# OBJETIVO
+
+Operador principal del negocio.
+
+Gestiona funcionamiento diario.
+
+---
+
+# MÓDULOS ADMINISTRATIVO
+
+## Turnos
+
+Gestión completa:
+
+* crear
+* editar
+* cancelar
+* mover horarios
+
+---
+
+## Clientes
+
+Administrar:
+
+* historial
+* contacto
+* observaciones
+* frecuencia
+
+---
+
+## Servicios
+
+Gestionar:
+
+* precios
+* duración
+* disponibilidad
+
+---
+
+## Inventario
+
+Ver:
+
+* stock
+* movimientos
+* alertas
+* proveedores
+
+---
+
+## Pagos
+
+Registrar:
+
+* efectivo
+* QR
+* transferencia
+* Mercado Pago
+
+---
+
+## Gastos
+
+Cargar:
+
+* productos
+* alquiler
+* servicios
+* mantenimiento
+
+---
+
+## Empleados
+
+Gestionar:
+
+* horarios
+* disponibilidad
+* datos básicos
+
+---
+
+# RESTRICCIONES ADMINISTRATIVO
+
+NO puede:
+
+❌ ver reportes financieros completos
+❌ modificar permisos globales
+❌ acceder auditoría avanzada
+❌ administrar sistema completo
+
+---
+
+# PANEL ADMINISTRADOR
+
+# OBJETIVO
+
+Control total del sistema SaaS.
+
+---
+
+# MÓDULOS ADMINISTRADOR
+
+## Dashboard ejecutivo
+
+Cards:
+
+* ingresos globales
+* turnos
+* ocupación
+* clientes nuevos
+* cancelaciones
+* sucursales
+
+---
+
+## Métricas avanzadas
+
+Gráficos:
+
+* ingresos mensuales
+* servicios más vendidos
+* empleados más solicitados
+* crecimiento negocio
+
+---
+
+## Finanzas
+
+Acceso total:
+
+* ingresos
+* gastos
+* balances
+* arqueos
+* cierres caja
+
+---
+
+## Gestión usuarios
+
+Administrar:
+
+* empleados
+* clientes
+* roles
+* permisos
+
+---
+
+## Multi-sucursal
+
+Ver:
+
+* sedes
+* métricas separadas
+* empleados separados
+
+---
+
+## Auditoría
+
+Logs completos:
+
+* acciones usuarios
+* cambios
+* pagos
+* modificaciones
+
+---
+
+## Configuración sistema
+
+Modificar:
+
+* horarios negocio
+* branding
+* WhatsApp
+* APIs
+* Stripe
+* Mercado Pago
+
+---
+
+# INVENTARIO GLOBAL
+
+## Funciones
+
+* stock
+* categorías
+* movimientos
+* alertas
+* proveedores
+
+---
+
+# PAGOS
+
+# MÉTODOS
+
+* efectivo
+* transferencia
+* QR
+* débito
+* crédito
+* Mercado Pago
+* Stripe
+
+---
+
+# REGISTROS
+
+Guardar:
+
+* monto
+* fecha
+* método
+* usuario responsable
+
+---
+
+# MÉTRICAS GLOBALES
+
+## Dashboard analytics
+
+Mostrar:
+
+* ingresos
+* clientes nuevos
+* cancelaciones
+* turnos diarios
+* ocupación
+* mejores empleados
+* mejores servicios
+
+---
+
+# WHATSAPP
+
+# FUNCIONES
+
+## Cliente
+
+* reservar
+* cancelar
+* consultar
+
+---
+
+## Sistema
+
+* confirmaciones
+* recordatorios
+* promociones
+
+---
+
+## Administrativo
+
+* contacto rápido
+* seguimiento clientes
+
+---
+
+# ARQUITECTURA FRONTEND RECOMENDADA
+
+pages/
+
+---
+
+## Cliente
+
+pages/cliente/
+
+ClienteDashboard.tsx
+ClienteTurnos.tsx
+ClienteHistorial.tsx
+ClientePerfil.tsx
+
+---
+
+## Empleados
+
+pages/empleado/
+
+EmpleadoDashboard.tsx
+EmpleadoAgenda.tsx
+EmpleadoClientes.tsx
+EmpleadoMetricas.tsx
+
+---
+
+## Administrativo
+
+pages/admin/
+
+AdminDashboard.tsx
+AdminTurnos.tsx
+AdminClientes.tsx
+AdminInventario.tsx
+AdminPagos.tsx
+
+---
+
+## Administrador
+
+pages/superadmin/
+
+SuperDashboard.tsx
+SuperMetricas.tsx
+SuperUsuarios.tsx
+SuperFinanzas.tsx
+SuperAuditoria.tsx
+
+---
+
+# COMPONENTES REUTILIZABLES
+
+components/dashboard/
+
+Sidebar.tsx
+Topbar.tsx
+StatsCard.tsx
+CalendarPanel.tsx
+TurnosList.tsx
+MetricChart.tsx
+WhatsappFloat.tsx
+StatusBadge.tsx
+
+---
+
+# SISTEMA DE PERMISOS
+
+Backend:
+
+JWT + Roles.
+
+Ejemplo:
+
+CLIENTE
+EMPLEADO
+ADMIN
+SUPER_ADMIN
+
+---
+
+# EXPERIENCIA FINAL ESPERADA
+
+El sistema debe sentirse como:
+
+* SaaS profesional
+* plataforma moderna
+* agenda inteligente
+* ERP de barbería/peluquería
+* app premium
+
+No como:
+
+❌ formulario HTML básico
+❌ panel improvisado
+❌ CRUD simple
+
+---
+
+# OBJETIVO VISUAL
+
+Mantener:
+
+* negro premium
+* dorado elegante
+* diseño moderno
+* sombras suaves
+* cards glassmorphism
+* UI minimalista
+* responsive completo

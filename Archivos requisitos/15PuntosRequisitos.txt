@@ -1,0 +1,478 @@
+1- Auth + Roles
+- login seguro
+- JWT
+- permisos por rol
+- rutas protegidas
+
+2- WhatsApp Automático
+- confirmaciones
+- recordatorios
+- cancelaciones
+- promociones
+- integración Meta API/Twilio
+
+3- Recordatorios Automáticos
+- mensajes automáticos
+- 24 hs antes
+- 2 hs antes
+- email + WhatsApp
+
+4- Dashboard Profesional
+- métricas
+- gráficos
+- ingresos
+- turnos diarios
+- servicios más vendidos
+
+5- Inventario
+- stock
+- proveedores
+- alertas stock bajo
+- movimientos stock
+
+6- Caja / Pagos
+- efectivo
+- QR
+- Mercado Pago
+- Stripe
+- cierre de caja
+- arqueo diario
+
+7- Auditoría
+- historial acciones
+- cambios usuarios
+- modificaciones pagos
+- control administrativo
+
+8- Multi-sucursal
+- varias peluquerías/barberías
+- sedes separadas
+- empleados separados
+- datos independientes
+
+9- Reportes
+- PDF
+- Excel
+- ingresos
+- métricas
+- clientes
+- inventario
+
+10- Deploy Profesional
+Frontend:
+- Vercel
+
+Backend:
+- Render
+
+Database:
+- Neon PostgreSQL
+
+11- Agenda Inteligente
+- evitar doble reserva
+- horarios automáticos
+- duración servicios
+- disponibilidad dinámica
+
+12- Sistema de Comisiones
+- porcentaje empleados
+- comisión servicios
+- bonos
+- métricas personales
+
+13- App Móvil
+- React Native
+- Expo
+- Android/iOS
+- sincronización con API
+
+14- Seguridad Avanzada
+- hash contraseñas
+- permisos granulares
+- sesiones
+- logs
+- backups
+
+15- SaaS Multiempresa
+- múltiples peluquerías/barberías
+- clientes separados
+- datos aislados
+- suscripciones
+- planes mensuales
+- plataforma comercial escalable
+
+---------------------------------------------------------
+Mejoras Profesionales para Home Barbería / Peluquería
+1. Buscador de Servicios
+
+Ubicación recomendada:
+
+debajo del Hero
+
+Funciones:
+
+buscar servicios
+buscar precios
+buscar cortes
+
+Ejemplos:
+
+Fade
+Corte + barba
+Color
+Lavado premium
+
+Ejemplo visual:
+
+<section className="search-section">
+
+
+  <h2>
+    ¿Qué servicio estás buscando?
+  </h2>
+
+
+  <input
+    type="text"
+    placeholder="Buscar servicio..."
+    className="search-input"
+  />
+
+
+</section>
+2. Galería Profesional
+
+Nueva sección:
+
+Galería de Trabajos
+
+Mostrar:
+
+cortes realizados
+estilos modernos
+coloración
+barba
+antes/después
+
+Ideas:
+
+slider horizontal
+masonry grid
+hover zoom
+3. Login Profesional
+
+Navbar:
+
+Iniciar sesión
+
+Tipos:
+
+administrador
+empleado
+cliente
+
+Funciones:
+
+ver turnos
+gestionar servicios
+panel admin
+4. Calendario de Turnos
+
+Muy importante para profesionalizar el sistema.
+
+Funciones:
+
+horarios disponibles
+horarios ocupados
+selección visual
+calendario semanal
+calendario mensual
+
+Librerías recomendadas:
+
+react-calendar
+fullcalendar
+5. Botón WhatsApp Flotante
+
+Muy útil para reservas rápidas.
+
+Ejemplo:
+
+Reservar por WhatsApp
+
+Ubicación:
+
+esquina inferior derecha
+6. Servicios Dinámicos desde Backend
+
+Actualmente:
+
+hardcodeados
+
+Mejora:
+
+traer servicios desde PostgreSQL
+
+Ventajas:
+
+agregar servicios sin tocar frontend
+cambiar precios fácilmente
+sistema más real
+
+Ejemplo:
+
+{servicios.map((servicio) => (
+  <ServiceCard
+    key={servicio.id_servicios}
+    title={servicio.nombre}
+    price={servicio.precio}
+  />
+))}
+7. Animaciones Premium
+
+Agregar:
+
+fade-in
+hover premium
+zoom imágenes
+transición suave
+reveal on scroll
+
+Librerías:
+
+framer-motion
+aos
+8. Estadísticas Visuales
+
+Nueva sección:
+
++10 años experiencia
++500 clientes
++3000 cortes realizados
++1000 turnos completados
+
+Da confianza visual.
+
+9. Diseño Premium Moderno
+
+Mejoras visuales:
+
+glassmorphism
+blur
+degradados oscuros
+sombras suaves
+bordes modernos
+animaciones hover
+
+Colores recomendados:
+
+negro premium
+dorado
+gris oscuro
+10. Sección Promociones
+
+Ejemplo:
+
+Promo Fade + Barba
+20% OFF lunes y martes
+
+Muy útil para marketing.
+
+11. Opiniones con Estrellas
+
+Agregar:
+
+estrellas
+foto cliente
+puntuación
+
+Ejemplo:
+
+★★★★★
+
+12. Modo Responsive Avanzado
+
+Mejorar:
+
+navbar mobile
+menú hamburguesa
+cards responsive
+grid adaptable
+imágenes optimizadas
+13. Footer Más Completo
+
+Agregar:
+
+redes sociales
+mapa Google Maps
+horarios
+WhatsApp
+Instagram
+14. Panel Administrador
+
+Funciones:
+
+gestionar clientes
+gestionar turnos
+gestionar empleados
+ver estadísticas
+editar servicios
+subir imágenes
+15. Upload de Imágenes
+
+Permitir:
+
+subir trabajos realizados
+fotos de cortes
+galería dinámica
+
+Backend:
+
+multer
+
+Cloud:
+
+Cloudinary
+16. Deploy Profesional
+
+Frontend:
+
+Vercel
+Netlify
+
+Backend:
+
+Render
+Railway
+
+Base de datos:
+
+Neon PostgreSQL
+Supabase
+17. Arquitectura Profesional Final
+Frontend
+├── pages
+├── components
+├── hooks
+├── api
+├── routes
+├── layouts
+├── types
+├── utils
+└── store
+
+
+Backend
+├── routes
+├── controllers
+├── use-cases
+├── repositories
+├── middlewares
+├── config
+└── database
+18. Próximo Paso Recomendado
+
+Orden recomendado:
+
+Login/Auth
+Dashboard Admin
+Servicios dinámicos
+Calendario turnos
+WhatsApp
+Deploy
+Upload imágenes
+Estadísticas
+Panel empleados
+Optimización visual
+*********************************************
+Mejoras recomendadas:
+
+1. Buscador
+
+Ubicación ideal:
+
+debajo del Hero
+
+Podría buscar:
+
+servicios
+cortes
+precios
+
+Ejemplo:
+
+"Corte fade"
+"Barba"
+"Color"
+2. Galería real
+
+Agregar:
+
+cortes realizados
+slider de trabajos
+antes/después
+
+Da mucho aspecto profesional.
+
+3. Login real
+
+Botón:
+
+Iniciar sesión
+
+con:
+
+admin
+empleados
+clientes
+4. Calendario visual
+
+Muy importante para turnos.
+
+Ejemplo:
+
+horarios disponibles
+días ocupados
+selección visual
+5. CTA más fuerte
+
+Más llamados a acción:
+
+Reservar ahora
+Ver promociones
+WhatsApp
+6. Integración WhatsApp
+
+Botón flotante:
+
+"Reservar por WhatsApp"
+
+Muy útil para barberías reales.
+
+7. Animaciones suaves
+
+Ejemplo:
+
+fade-in
+hover premium
+zoom imágenes
+transición carrusel
+8. Servicios dinámicos desde backend
+
+En vez de hardcodeados:
+
+traer desde PostgreSQL
+renderizar con .map()
+
+Eso ya lo vuelve sistema real profesional.
+
+9. Dark premium más moderno
+
+Podrías agregar:
+
+blur
+glassmorphism
+sombras suaves
+degradados oscuros
+10. Estadísticas
+

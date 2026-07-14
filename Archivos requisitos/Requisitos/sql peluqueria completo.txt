@@ -1,0 +1,237 @@
+```sql
+-- =========================
+-- BASE DE DATOS
+-- =========================
+CREATE DATABASE peluqueria;
+\c peluqueria;
+
+-- =========================
+-- SUCURSALES
+-- =========================
+CREATE TABLE sucursales (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    direccion TEXT
+);
+
+-- =========================
+-- ROLES
+-- =========================
+CREATE TABLE roles (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(50) UNIQUE NOT NULL
+);
+
+-- =========================
+-- USUARIOS
+-- =========================
+CREATE TABLE usuarios (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password TEXT NOT NULL,
+    rol_id INT REFERENCES roles(id),
+    sucursal_id INT REFERENCES sucursales(id),
+    activo BOOLEAN DEFAULT true,
+    creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- =========================
+-- AUDITORÍA
+-- =========================
+CREATE TABLE auditoria (
+    id SERIAL PRIMARY KEY,
+    usuario_id INT REFERENCES usuarios(id),
+    accion VARCHAR(100),
+    tabla VARCHAR(50),
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    descripcion TEXT
+);
+
+-- =========================
+-- CLIENTES
+-- =========================
+CREATE TABLE clientes (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    telefono VARCHAR(20),
+    email VARCHAR(100),
+    creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- =========================
+-- SERVICIOS
+-- =========================
+CREATE TABLE servicios (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    precio NUMERIC(10,2) NOT NULL,
+    duracion INT NOT NULL
+);
+
+-- =========================
+-- ESTADOS TURNOS
+-- =========================
+CREATE TABLE estados_turno (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(50) UNIQUE NOT NULL
+);
+
+-- =========================
+-- TURNOS
+-- =========================
+CREATE TABLE turnos (
+    id SERIAL PRIMARY KEY,
+    cliente_id INT REFERENCES clientes(id),
+    usuario_id INT REFERENCES usuarios(id),
+    servicio_id INT REFERENCES servicios(id),
+    sucursal_id INT REFERENCES sucursales(id),
+    fecha TIMESTAMP NOT NULL,
+    estado_id INT REFERENCES estados_turno(id),
+    creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- =========================
+-- HISTORIAL TURNOS
+-- =========================
+CREATE TABLE historial_turnos (
+    id SERIAL PRIMARY KEY,
+    turno_id INT REFERENCES turnos(id),
+    estado_id INT REFERENCES estados_turno(id),
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    comentario TEXT
+);
+
+-- =========================
+-- CANCELACIONES
+-- =========================
+CREATE TABLE cancelaciones (
+    id SERIAL PRIMARY KEY,
+    turno_id INT REFERENCES turnos(id),
+    motivo TEXT NOT NULL,
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- =========================
+-- HORARIOS USUARIOS
+-- =========================
+CREATE TABLE horarios_usuarios (
+    id SERIAL PRIMARY KEY,
+    usuario_id INT REFERENCES usuarios(id),
+    dia_semana INT NOT NULL,
+    hora_inicio TIME NOT NULL,
+    hora_fin TIME NOT NULL
+);
+
+-- =========================
+-- PROVEEDORES
+-- =========================
+CREATE TABLE proveedores (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    telefono VARCHAR(20),
+    email VARCHAR(100),
+    direccion TEXT
+);
+
+-- =========================
+-- PRODUCTOS
+-- =========================
+CREATE TABLE productos (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    precio NUMERIC(10,2) NOT NULL,
+    stock_minimo INT DEFAULT 0
+);
+
+-- =========================
+-- STOCK POR SUCURSAL
+-- =========================
+CREATE TABLE stock_sucursal (
+    id SERIAL PRIMARY KEY,
+    producto_id INT REFERENCES productos(id),
+    sucursal_id INT REFERENCES sucursales(id),
+    stock_actual INT DEFAULT 0,
+    UNIQUE(producto_id, sucursal_id)
+);
+
+-- =========================
+-- MOVIMIENTOS DE STOCK
+-- =========================
+CREATE TABLE movimientos_stock (
+    id SERIAL PRIMARY KEY,
+    producto_id INT REFERENCES productos(id),
+    sucursal_id INT REFERENCES sucursales(id),
+    tipo VARCHAR(20) NOT NULL,
+    cantidad INT NOT NULL,
+    motivo VARCHAR(100),
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- =========================
+-- ALERTAS STOCK
+-- =========================
+CREATE TABLE alertas_stock (
+    id SERIAL PRIMARY KEY,
+    producto_id INT REFERENCES productos(id),
+    sucursal_id INT REFERENCES sucursales(id),
+    mensaje TEXT,
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    resuelta BOOLEAN DEFAULT false
+);
+
+-- =========================
+-- COMPRAS
+-- =========================
+CREATE TABLE compras (
+    id SERIAL PRIMARY KEY,
+    proveedor_id INT REFERENCES proveedores(id),
+    sucursal_id INT REFERENCES sucursales(id),
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    total NUMERIC(10,2)
+);
+
+-- =========================
+-- DETALLE COMPRA
+-- =========================
+CREATE TABLE compra_detalle (
+    id SERIAL PRIMARY KEY,
+    compra_id INT REFERENCES compras(id),
+    producto_id INT REFERENCES productos(id),
+    cantidad INT NOT NULL,
+    precio NUMERIC(10,2) NOT NULL
+);
+
+-- =========================
+-- SERVICIO - PRODUCTOS
+-- =========================
+CREATE TABLE servicio_producto (
+    servicio_id INT REFERENCES servicios(id),
+    producto_id INT REFERENCES productos(id),
+    cantidad INT NOT NULL,
+    PRIMARY KEY (servicio_id, producto_id)
+);
+
+-- =========================
+-- FACTURAS
+-- =========================
+CREATE TABLE facturas (
+    id SERIAL PRIMARY KEY,
+    cliente_id INT REFERENCES clientes(id),
+    sucursal_id INT REFERENCES sucursales(id),
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    total NUMERIC(10,2)
+);
+
+-- =========================
+-- DETALLE FACTURA
+-- =========================
+CREATE TABLE factura_detalle (
+    id SERIAL PRIMARY KEY,
+    factura_id INT REFERENCES facturas(id),
+    servicio_id INT REFERENCES servicios(id),
+    producto_id INT REFERENCES productos(id),
+    cantidad INT,
+    precio NUMERIC(10,2)
+);
+```

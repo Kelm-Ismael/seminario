@@ -1,0 +1,464 @@
+# MEJORAS PROFESIONALES PARA TURNOSPAGE.TSX
+
+# OBJETIVO FINAL
+
+La página TurnosPage debe convertirse en:
+
+* panel central de reservas
+* agenda visual
+* control de horarios
+* creación rápida de turnos
+* vista de disponibilidad
+* integración WhatsApp
+* experiencia visual profesional tipo SaaS
+
+Inspiración:
+
+* Booksy
+* Fresha
+* Calendly
+* AgendaPro
+
+---
+
+# LO QUE YA EXISTE
+
+Actualmente el sistema tiene:
+
+✅ crear turnos
+✅ listar turnos
+✅ seleccionar fecha
+✅ seleccionar hora
+✅ seleccionar servicio
+✅ navegación básica
+
+Problemas actuales:
+
+❌ diseño básico
+❌ no hay calendario visual
+❌ no hay dashboard
+❌ no hay disponibilidad automática
+❌ no hay validación de horarios
+❌ no hay estados visuales
+❌ no hay métricas
+❌ no hay filtros
+❌ no hay integración WhatsApp
+❌ no hay experiencia mobile profesional
+
+---
+
+# 1. ESTRUCTURA VISUAL DASHBOARD
+
+La página debe dividirse en secciones.
+
+## Header profesional
+
+Debe contener:
+
+* título grande
+* fecha actual
+* botones rápidos
+* resumen del día
+
+Ejemplo:
+
+---
+
+Turnos y Agenda
+Viernes 15 Mayo 2026
+
+[ Nuevo Turno ]
+[ Ver Calendario ]
+[ Exportar ]
+------------
+
+---
+
+# 2. CARDS DE MÉTRICAS
+
+Agregar cards visuales arriba.
+
+Cards recomendadas:
+
+* turnos hoy
+* pendientes
+* confirmados
+* cancelados
+* ingresos estimados
+
+Ejemplo:
+
+┌────────────┐
+│ 12         │
+│ Turnos Hoy │
+└────────────┘
+
+---
+
+# 3. CALENDARIO VISUAL
+
+PRIORIDAD ALTA
+
+Implementar calendario interactivo.
+
+Debe permitir:
+
+✅ seleccionar día
+✅ visualizar disponibilidad
+✅ mostrar días ocupados
+✅ mostrar horarios disponibles
+✅ bloquear horarios tomados
+
+Opciones recomendadas:
+
+* react-calendar
+* FullCalendar (más adelante)
+
+Recomendación actual:
+
+✅ react-calendar
+
+---
+
+# 4. HORARIOS DINÁMICOS
+
+Eliminar:
+
+❌ input type="time"
+
+Reemplazar por:
+
+✅ botones visuales de horarios
+
+Ejemplo:
+
+09:00
+09:30
+10:00
+11:00
+14:00
+
+Estados:
+
+* disponible → verde
+* ocupado → rojo
+* seleccionado → azul
+
+---
+
+# 5. AGENDA INTELIGENTE
+
+Implementar lógica automática.
+
+## Evitar doble reserva
+
+Antes de crear turno:
+
+* verificar si horario está ocupado
+* bloquear creación duplicada
+
+## Disponibilidad dinámica
+
+Ejemplo:
+
+* Corte → 30 min
+* Tintura → 90 min
+
+Si 10:00 está ocupado 90 minutos:
+
+bloquear:
+
+* 10:30
+* 11:00
+
+---
+
+# 6. PANEL DE TURNOS DEL DÍA
+
+Agregar lista lateral moderna.
+
+Ejemplo:
+
+10:00 - Juan - Corte
+11:00 - Pedro - Barba
+12:30 - María - Tintura
+
+Con badges de estados:
+
+* pendiente
+* confirmado
+* cancelado
+* completado
+
+---
+
+# 7. ESTADOS VISUALES
+
+No usar texto plano.
+
+Usar colores:
+
+pendiente → amarillo
+confirmado → verde
+cancelado → rojo
+completado → azul
+
+---
+
+# 8. FILTROS PROFESIONALES
+
+Agregar:
+
+✅ filtrar por fecha
+✅ filtrar por empleado
+✅ filtrar por estado
+✅ buscar cliente
+
+---
+
+# 9. MODAL NUEVO TURNO
+
+No usar formulario fijo.
+
+Implementar:
+
+✅ botón “Nuevo Turno”
+✅ apertura de modal
+
+Ventajas:
+
+* mejor UX
+* apariencia SaaS profesional
+* mejor responsive
+
+---
+
+# 10. INTEGRACIÓN WHATSAPP
+
+MUY IMPORTANTE
+
+Reutilizar:
+
+components/common/WhatsappButton.tsx
+
+---
+
+## Botón flotante
+
+Texto:
+
+"Reservar por WhatsApp"
+
+---
+
+## Mensaje automático
+
+Ejemplo:
+
+Hola, quiero reservar un turno.
+
+---
+
+## Confirmación automática
+
+Cuando se crea turno:
+
+Tu turno fue registrado para el viernes 18 a las 14:00.
+
+---
+
+## Recordatorios automáticos
+
+Más adelante:
+
+* 24 hs antes
+* 2 hs antes
+
+---
+
+# 11. EXPERIENCIA MOBILE
+
+La página debe verse correctamente en:
+
+✅ celular
+✅ tablet
+✅ desktop
+
+Necesita:
+
+* grid responsive
+* cards responsive
+* calendario responsive
+* sidebar adaptable
+
+---
+
+# 12. COMPONENTIZACIÓN
+
+NO dejar toda la lógica dentro de TurnosPage.tsx
+
+Crear carpeta:
+
+components/turnos
+
+---
+
+## Componentes recomendados
+
+TurnosCalendar.tsx
+TurnosList.tsx
+TurnosStats.tsx
+TurnosForm.tsx
+HorarioSelector.tsx
+EstadoBadge.tsx
+NuevoTurnoModal.tsx
+
+---
+
+# 13. HOOKS RECOMENDADOS
+
+Separar lógica de negocio.
+
+Crear:
+
+hooks/useDisponibilidad.ts
+hooks/useCalendario.ts
+
+---
+
+# 14. ENDPOINTS NECESARIOS
+
+Backend recomendado:
+
+---
+
+## Disponibilidad
+
+GET /turnos/disponibles?fecha=2026-05-15
+
+---
+
+## Turnos por fecha
+
+GET /turnos/fecha/2026-05-15
+
+---
+
+## Confirmar turno
+
+PATCH /turnos/:id/confirmar
+
+---
+
+# 15. TECNOLOGÍAS RECOMENDADAS
+
+Frontend:
+
+* React
+* TypeScript
+* React Calendar
+* Tailwind CSS
+* React Icons
+
+Backend:
+
+* Express
+* PostgreSQL
+* JWT
+* Socket.io (más adelante)
+
+---
+
+# 16. PROBLEMAS ACTUALES A CORREGIR
+
+NO usar:
+
+window.location.reload()
+
+Porque rompe SPA y React.
+
+Actualizar estado local correctamente.
+
+---
+
+NO usar:
+
+any
+
+Crear interfaces TypeScript.
+
+---
+
+NO hardcodear:
+
+cliente_id: 1
+empleado_id: 1
+
+Más adelante usar login real.
+
+---
+
+# 17. ESTRUCTURA VISUAL FINAL
+
+---
+
+## | HEADER                                       |
+
+## | CARDS MÉTRICAS                               |
+
+| CALENDARIO | TURNOS DEL DÍA                  |
+|             |                                |
+|             |                                |
+------------------------------------------------
+
+## | BOTÓN WHATSAPP FLOTANTE                      |
+
+---
+
+# 18. ORDEN RECOMENDADO DE IMPLEMENTACIÓN
+
+## FASE 1
+
+✅ mejorar diseño
+✅ cards métricas
+✅ horarios visuales
+✅ estados con colores
+
+---
+
+## FASE 2
+
+✅ calendario visual
+✅ disponibilidad dinámica
+✅ evitar doble reserva
+
+---
+
+## FASE 3
+
+✅ modal nuevo turno
+✅ filtros
+✅ búsqueda
+
+---
+
+## FASE 4
+
+✅ WhatsApp
+✅ recordatorios automáticos
+✅ confirmaciones
+
+---
+
+## FASE 5
+
+✅ dashboard avanzado
+✅ gráficos
+✅ analytics
+✅ ingresos
+
+---
+
+# RESULTADO ESPERADO
+
+La página TurnosPage debe verse y sentirse como un sistema SaaS profesional de reservas y agenda inteligente para barberías/peluquerías.

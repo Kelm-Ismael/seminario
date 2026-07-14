@@ -1,0 +1,46 @@
+```txt
+BACKEND (Node + Express)
+
+src/config/
+- db.ts
+- env.ts
+
+src/application/use-cases/
+- crearTurno.ts
+
+src/infrastructure/repositories/
+- turno.repository.ts
+
+src/interfaces/controllers/
+- turno.controller.ts
+
+src/interfaces/routes/
+- turno.routes.ts
+
+src/
+- app.ts
+- server.ts
+
+
+FRONTEND (React)
+
+src/api/
+- turnos.ts
+
+src/hooks/
+- useTurnos.ts
+
+src/pages/Home/
+- Home.tsx
+
+src/pages/
+- TurnosPage.tsx
+
+src/routes/
+- AppRoutes.tsx
+
+src/
+- App.tsx
+- index.tsx
+- App.css
+```

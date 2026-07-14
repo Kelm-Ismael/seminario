@@ -1,0 +1,105 @@
+BACKEND
+|   app.ts
+|   server.ts
+|   
++---aplication
+|   +---dtos
+|   \---use-cases
+|           crearCliente.ts
+|           crearTurno.ts
+|           
++---config
+|       db.ts
+|       env.ts
+|       
++---database
++---domain
+|   +---entities
+|   \---repositories
++---infrastructure
+|   +---repositories
+|   |       actualizarCliente.ts
+|   |       cliente.repository.ts
+|   |       eliminarCliente.ts
+|   |       obtenerClientes.ts
+|   |       obtenerClientesPorID.ts
+|   |       obtenerTurnos.ts
+|   |       turno.repository.ts
+|   |       txt.txt
+|   |       
+|   \---services
+|           txt.txt
+|           
+\---interfaces
+    +---controllers
+    |       cliente.controller.ts
+    |       turno.controller.ts
+    |       txt.txt
+    |       
+    \---routes
+            cliente.routes.ts
+            turno.routes.ts
+            txt.txt
+
+FRONTEND
+|   App.css
+|   App.tsx
+|   Appcss.txt
+|   global.d.ts
+|   index.css
+|   index.tsx
+|   react-app-env.d.ts
+|   reportWebVitals.ts
+|   
++---api
+|       clientes.ts
+|       turnos.ts
+|       
++---components
+|   +---common
+|   |       Button.tsx
+|   |       Card.tsx
+|   |       Ingreso.tsx
+|   |       WhatsappButton.tsx
+|   |       
+|   +---home
+|   |       AboutSection.tsx
+|   |       BookingSection.tsx
+|   |       Carousel.tsx
+|   |       FeatureCard.tsx
+|   |       Features.tsx
+|   |       Hero.tsx
+|   |       LocationSection.tsx
+|   |       PaymentsSection.tsx
+|   |       PromoSection.tsx
+|   |       SearchSection.tsx
+|   |       ServiceCard.tsx
+|   |       ServicesSection.tsx
+|   |       StatsSection.tsx
+|   |       TestimonialCard.tsx
+|   |       Testimonials.tsx
+|   |       
+|   \---layout
+|           Footer.tsx
+|           Navbar.tsx
+|           
++---hooks
+|       useClientes.ts
+|       useTurnos.ts
+|       
++---pages
+|   |   clientePage.tsx
+|   |   TurnosPage.tsx
+|   |   
+|   +---Auth
+|   \---Home
+|           Home.tsx
+|           
++---routes
+|       AppRoutes.tsx
+|       
++---store
++---types
+|       user.ts
+|       
+\---utils

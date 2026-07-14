@@ -1,0 +1,69 @@
+[Usuario]
+   ↓ (click / submit form)
+[React Frontend]
+   ↓ (fetch / axios)
+[Controller - Express]
+   ↓
+[Use Case / lógica]
+   ↓
+[Repository]
+   ↓
+[Base de Datos]
+
+(Base de Datos responde ↑)
+[Repository]
+   ↑
+[Use Case]
+   ↑
+[Controller]
+   ↑ (JSON)
+[Frontend]
+   ↑ (render UI)
+[Usuario]
+
+BACKEND — CRUD CLIENTES
+cliente.repository.ts
+crearCliente
+obtenerClientes
+obtenerClientePorId
+actualizarCliente
+eliminarCliente
+crearCliente.ts
+lógica para crear cliente
+cliente.controller.ts
+funciones HTTP (req, res)
+cliente.routes.ts
+endpoints Express
+conectar rutas en app.ts
+🎨 FRONTEND
+api/clientes.ts
+llamadas HTTP
+useClientes.ts
+hook personalizado
+ClientesPage.tsx
+formulario + lista
+agregar ruta en AppRoutes.tsx
+
+
+Flujo ejemplo (CREATE cliente)
+Usuario llena formulario
+Front hace POST /clientes
+Controller recibe request
+Llama a lógica (valida datos)
+Repository inserta en DB
+Respuesta vuelve al front
+React actualiza lista
+🚀 Orden correcto que tenés que seguir
+
+BACKEND
+
+cliente.repository.ts
+crearCliente.ts (use-case)
+cliente.controller.ts
+cliente.routes.ts
+
+FRONTEND
+
+api/clientes.ts
+useClientes.ts
+UI (form + lista en página)

@@ -1,0 +1,41 @@
+En un backend con Node.js, Express y TypeScript, los archivos .env,
+env.ts, db.ts, app.ts y server.ts trabajan juntos siguiendo un flujo
+organizado.
+
+Todo comienza con el archivo .env, que es donde se almacenan las
+variables de configuración del proyecto, como el puerto del servidor, la
+conexión a la base de datos, claves secretas y el entorno de ejecución.
+Este archivo contiene valores como PORT=3000, DB_URL=…, JWT_SECRET=… y
+NODE_ENV=development. Es importante porque permite cambiar
+configuraciones sin modificar el código.
+
+Luego interviene env.ts, cuya función es cargar esas variables usando
+dotenv y centralizarlas en un solo lugar. Este archivo toma los valores
+de process.env, les asigna valores por defecto si es necesario y los
+exporta como un objeto (ENV). De esta forma, en lugar de acceder
+directamente a process.env, el resto del proyecto usa ENV.PORT,
+ENV.DB_URL, etc., lo que hace el código más limpio y seguro.
+
+Después, db.ts utiliza esas variables para gestionar la conexión a la
+base de datos. Por ejemplo, toma ENV.DB_URL y establece la conexión.
+Aunque en este caso no se use base de datos, este archivo sirve para
+centralizar cualquier lógica relacionada con conexiones externas.
+
+El archivo app.ts es donde se configura la aplicación de Express. Aquí
+se crea la instancia del servidor (express()), se agregan middlewares
+como express.json() y se definen las rutas básicas. Este archivo no
+arranca el servidor, solo lo configura y lo exporta.
+
+Finalmente, server.ts es el punto de entrada de la aplicación. Este
+archivo importa todo lo anterior: carga la configuración desde env.ts,
+ejecuta la conexión a la base de datos desde db.ts y usa la aplicación
+configurada en app.ts. Luego llama a app.listen() usando el puerto
+definido en ENV.PORT, lo que inicia el servidor.
+
+El flujo completo es: .env provee los datos → env.ts los organiza →
+db.ts y server.ts los utilizan → app.ts define la aplicación → server.ts
+arranca todo.
+
+Este enfoque permite tener un backend limpio, escalable y fácil de
+mantener, separando responsabilidades: configuración, lógica de servidor
+y conexiones externas.

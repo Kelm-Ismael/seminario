@@ -1,0 +1,52 @@
+```txt
+COMANDOS GIT MÁS USADOS
+
+# Inicializar repositorio
+git init
+
+# Clonar repositorio
+git clone URL
+
+# Ver estado de archivos
+git status
+
+# Agregar archivos
+git add .
+
+# Guardar cambios
+git commit -m "mensaje"
+
+# Subir cambios
+git push
+
+# Traer cambios
+git pull
+
+# Ver historial
+git log
+
+# Crear rama
+git branch nombre-rama
+
+# Cambiar de rama
+git checkout nombre-rama
+
+# Crear y cambiar de rama
+git checkout -b nombre-rama
+
+# Ver ramas
+git branch
+
+# Unir ramas
+git merge nombre-rama
+
+# Eliminar rama
+git branch -d nombre-rama
+
+# Configurar usuario
+git config --global user.name "Tu Nombre"
+git config --global user.email "tu@email.com"
+
+FLUJO BÁSICO:
+git add . → git commit -m "mensaje" → git push
+```
