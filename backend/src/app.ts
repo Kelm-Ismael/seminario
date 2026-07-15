@@ -1,14 +1,35 @@
-import express from 'express'
+// import express from 'express'
+// import cors from "cors";
+// import turnoRoutes from "./interfaces/routes/turno.routes"
+// import clienteRoutes from './interfaces/routes/cliente.routes';
+
+// const app = express() //crea aplicacion express
+
+// app.use(express.json()) // Middleware para permitir JSON sin esto req.body llega undefinded
+
+// app.use(cors());
+// app.use("/turnos", turnoRoutes);
+// app.use("/cliente", clienteRoutes)
+
+// export default app
+
+import express from "express";
 import cors from "cors";
-import turnoRoutes from "./interfaces/routes/turno.routes"
-import clienteRoutes from './interfaces/routes/cliente.routes';
+import path from "path";
 
-const app = express() //crea aplicacion express
+import turnoRoutes from "./interfaces/routes/turno.routes";
+import clienteRoutes from "./interfaces/routes/cliente.routes";
 
-app.use(express.json()) // Middleware para permitir JSON sin esto req.body llega undefinded
+const app = express();
 
+app.use(express.json());
 app.use(cors());
-app.use("/turnos", turnoRoutes);
-app.use("/cliente", clienteRoutes)
 
-export default app
+// Servir archivos del frontend
+app.use(express.static(path.join(__dirname, "../../frontend")));
+
+// API
+app.use("/turnos", turnoRoutes);
+app.use("/cliente", clienteRoutes);
+
+export default app;
