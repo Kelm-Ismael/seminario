@@ -1,25 +1,42 @@
+// Importa la aplicación Express configurada en app.ts.
+// Allí están los middlewares, las rutas y la configuración del frontend.
 import app from './app'
+
+// Importa el puerto definido en las variables de entorno (.env).
 import { PORT } from './config/env'
-import {conexion_db} from './config/db' 
 
+// Importa la función que realiza la conexión con PostgreSQL.
+import { conexion_db } from './config/db'
 
-app.listen(PORT, async() => {
+// Inicia el servidor Express en el puerto especificado.
+// Cuando el servidor comienza a escuchar peticiones,
+// primero intenta conectarse a la base de datos.
+app.listen(PORT, async () => {
+
+  // Conecta con PostgreSQL.
   await conexion_db();
+
+  // Muestra un mensaje indicando que el servidor está funcionando.
   console.log(`\x1b[32m🟢 Servidor corriendo en puerto ${PORT}\x1b[0m`)
 })
 
-// Captura Ctrl + C (SIGINT)
+// Captura la combinación Ctrl + C en la terminal.
+// Permite finalizar el servidor de forma controlada.
 process.on('SIGINT', () => {
+
   console.log('\n🛑 Servidor detenido')
+
   process.exit(0)
 })
 
-// Captura cierre del sistema o proceso
+// Captura cuando el sistema operativo o un administrador
+// solicita terminar el proceso del servidor.
 process.on('SIGTERM', () => {
+
   console.log('🛑 Servidor terminado (SIGTERM)')
+
   process.exit(0)
 })
-
 
 
 

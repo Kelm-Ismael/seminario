@@ -3,7 +3,9 @@ Tu backend es:
 ✅ Lenguaje: TypeScript
 ✅ Puerto: 3000
 ✅ Arquitectura: Clean Architecture (Application, Domain, Infrastructure, Interfaces)
+✅ cors@2.8.6 version de cors (CORS (Cross-Origin Resource Sharing) es un mecanismo de seguridad que permite o bloquea que un frontend se comunique con un backend ubicado en otro origen (dominio, puerto o protocolo).)
+Tu frontend es:
+✅ Fetch() (funcion de javascript para hacer peticion http con backend)
+✅ http://localhost:3000 para ver index.html en el navegador
 
-✅ cors@2.8.6 version de cors
 
-open live Server instalado para ver index.html
