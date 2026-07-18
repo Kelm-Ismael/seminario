@@ -8,4 +8,5 @@ Tu frontend es:
 ✅ Fetch() (funcion de javascript para hacer peticion http con backend)
 ✅ http://localhost:3000 para ver index.html en el navegador
 
-
+✅ npm install -g browser-sync (recargar el navegador automáticamente cuando modificas html, css o js.)
+✅ npm install --save-dev browser-sync (En backend y frontend)

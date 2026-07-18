@@ -1,5 +1,10 @@
 // js/app.js
 
+import { mostrarClientes } from "./clientes.js";
+
+document.addEventListener("DOMContentLoaded", () => {
+    mostrarClientes();
+});
 
 async function cargarComponente(id, archivo) {
     const respuesta = await fetch(`components/${archivo}`);
@@ -35,3 +40,30 @@ document.addEventListener("DOMContentLoaded", async () => {
         console.error(error);
     }
 });
+
+// async function loadComponent(id, file){
+
+//     const response = await fetch(file);
+
+//     const html = await response.text();
+
+//     document.getElementById(id).innerHTML = html;
+
+// }
+
+
+// loadComponent("navbar","components/layout/navbar.html");
+
+// loadComponent("hero","components/home/hero.html");
+
+// loadComponent("features","components/home/features.html");
+
+// loadComponent("services","components/home/services.html");
+
+// loadComponent("about","components/home/about.html");
+
+// loadComponent("testimonials","components/home/testimonials.html");
+
+// loadComponent("booking","components/home/booking.html");
+
+// loadComponent("footer","components/layout/footer.html");
