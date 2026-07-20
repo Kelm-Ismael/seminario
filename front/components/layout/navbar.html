@@ -1,0 +1,76 @@
+import { useNavigate } from "react-router-dom";
+
+export default function Navbar() {
+
+  const navigate = useNavigate();
+
+  return (
+    <nav className="navbar">
+
+      <div className="logo-container">
+
+        <img
+          src="/logo.png"
+          alt="David Martinez"
+          className="logo-img"
+        />
+
+        <div>
+
+          <h1 className="logo-title">
+            David Martinez
+          </h1>
+
+          <p className="logo-subtitle">
+            Estilista Unisex
+          </p>
+
+        </div>
+
+      </div>
+
+      <div className="nav-links">
+
+        <button onClick={() => navigate("/")}>
+          Inicio
+        </button>
+
+        <button onClick={() => navigate("/servicios")}>
+          Servicios
+        </button>
+
+        <button>
+          Nosotros
+        </button>
+
+        <button>
+          Galería
+        </button>
+
+        <button>
+          Contacto
+        </button>
+
+      </div>
+
+      <div className="navbar-actions">
+
+        <button
+          className="login-btn"
+          onClick={() => navigate("/login")}
+        >
+          Iniciar sesión
+        </button>
+
+        <button
+          className="turno-btn"
+          onClick={() => navigate("/turnos")}
+        >
+          Reservá tu turno
+        </button>
+
+      </div>
+
+    </nav>
+  );
+}
