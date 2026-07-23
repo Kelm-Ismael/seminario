@@ -8,6 +8,8 @@ npm install cors
 
 npm install express cors dotenv
 npm install -D typescript ts-node-dev @types/node @types/express
+npm install uuid
+npm install -D @types/uuid
 
 frontend-web
 npm install react-router-dom 
