@@ -41,6 +41,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 });
 
+
+
+
 // async function loadComponent(id, file){
 
 //     const response = await fetch(file);
