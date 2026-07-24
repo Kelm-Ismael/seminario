@@ -1,24 +1,6 @@
 import { pool } from "../../config/db";
 
 // Función async para obtener todos los turnos
-// export const obtenerTurnos = async () => {
-
-//   // Ejecutamos una query SQL
-//   // SELECT * trae todas las columnas
-//   const result = await pool.query(
-
-//     // Query para obtener todos los clientes
-//     `
-//     SELECT * FROM turnos
-//     ORDER BY id_turnos ASC
-//     `
-//   );
-
-//   // Devolvemos todas las filas encontradas
-//   return result.rows;
-// };
-
-// Función async para obtener todos los turnos
 export const obtenerTurnos = async () => {
 
   const result = await pool.query(
@@ -36,6 +18,8 @@ export const obtenerTurnos = async () => {
 
       c.email AS cliente_email,
 
+      e.nombre AS empleado_nombre,
+
       s.nombre AS servicio_nombre,
 
       s.precio,
@@ -46,6 +30,9 @@ export const obtenerTurnos = async () => {
 
     INNER JOIN clientes c
       ON t.cliente_id = c.id_clientes
+
+    INNER JOIN empleados e
+      ON t.empleado_id = e.id_empleados
 
     INNER JOIN servicios s
       ON t.servicio_id = s.id_servicios

@@ -1,0 +1,270 @@
+
+:root {
+
+  --primary: #b88a2a;
+  --primary-hover: #d4a94f;
+
+  --background: #f7f3eb;
+  --section: #ffffff;
+  --card: #faf7f0;
+
+  --dark: #1e2a27;
+  --text: #333333;
+  --muted: #777777;
+
+  --border: #e3d8c3;
+
+  --shadow:
+  0 15px 35px rgba(0,0,0,.08);
+
+}
+
+/* =========================================
+   TURNOS - Layout general de la página
+========================================= */
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.header h1 {
+    font-size: 34px;
+    color: var(--dark);
+    margin-bottom: 8px;
+}
+
+.header p {
+    color: var(--muted);
+    font-size: 16px;
+}
+
+
+/* =========================================
+   CARD (contenedor de secciones)
+========================================= */
+
+.card {
+    background: var(--section);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 30px;
+    box-shadow: var(--shadow);
+    margin-bottom: 30px;
+}
+
+.card h2 {
+    color: var(--primary);
+    font-size: 24px;
+    margin-bottom: 22px;
+}
+
+
+/* =========================================
+   FORMULARIO
+========================================= */
+
+.form-turno {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: var(--dark);
+    font-size: 15px;
+}
+
+.form-group input,
+.form-group select {
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: inherit;
+    background: white;
+    color: var(--text);
+    transition: .2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(184, 138, 42, .15);
+}
+
+
+/* =========================================
+   ACCIONES / BOTONES
+========================================= */
+
+.acciones {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+}
+
+.btn-primary,
+.btn-secondary {
+    padding: 13px 26px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--dark);
+}
+
+.btn-secondary:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+
+/* =========================================
+   MENSAJE (vacío / error)
+========================================= */
+
+.mensaje {
+    color: var(--muted);
+    text-align: center;
+    padding: 20px 0;
+    display: none;
+}
+
+
+/* =========================================
+   LISTA DE TURNOS
+========================================= */
+
+.lista-turnos {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.turno-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+
+    transition: .2s;
+}
+
+.turno-item:hover {
+    border-color: var(--primary);
+    transform: translateX(2px);
+}
+
+.turno-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.turno-fecha {
+    font-weight: bold;
+    color: var(--dark);
+    font-size: 15px;
+}
+
+.turno-detalle {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+
+/* =========================================
+   BADGES DE ESTADO
+========================================= */
+
+.badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: capitalize;
+    white-space: nowrap;
+}
+
+.badge-pendiente {
+    background: #fff3cd;
+    color: #8a6d1d;
+}
+
+.badge-confirmado {
+    background: #d4edda;
+    color: #256029;
+}
+
+.badge-cancelado {
+    background: #f8d7da;
+    color: #8a2b32;
+}
+
+.badge-finalizado {
+    background: #e2e3e5;
+    color: #494c4f;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .header h1 {
+        font-size: 26px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .turno-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+}

@@ -32,7 +32,7 @@
 import CONFIG from "../config/environment.js";
 
 export async function get(endpoint) {
-    const response = await fetch(`${CONFIG}${endpoint}`);
+    const response = await fetch(`${CONFIG.API_URL}${endpoint}`);
 
     if (!response.ok) {
         throw new Error("Error al obtener datos");
@@ -42,7 +42,7 @@ export async function get(endpoint) {
 }
 
 export async function post(endpoint, data) {
-    const response = await fetch(`${API_URL}${endpoint}`, {
+    const response = await fetch(`${CONFIG.API_URL}${endpoint}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -58,7 +58,7 @@ export async function post(endpoint, data) {
 }
 
 export async function put(endpoint, data) {
-    const response = await fetch(`${API_URL}${endpoint}`, {
+    const response = await fetch(`${CONFIG.API_URL}${endpoint}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
@@ -74,7 +74,7 @@ export async function put(endpoint, data) {
 }
 
 export async function remove(endpoint) {
-    const response = await fetch(`${API_URL}${endpoint}`, {
+    const response = await fetch(`${CONFIG.API_URL}${endpoint}`, {
         method: "DELETE"
     });
 

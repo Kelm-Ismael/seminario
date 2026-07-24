@@ -13,6 +13,8 @@ import turnoRoutes from "./interfaces/routes/turno.routes";
 
 // Importa las rutas relacionadas con los clientes.
 import clienteRoutes from "./interfaces/routes/cliente.routes";
+import servicioRoutes from "./interfaces/routes/servicio.routes";
+import empleadoRoutes from "./interfaces/routes/empleado.routes";
 
 // Crea una instancia de la aplicación Express.
 // Sobre esta instancia se configuran middlewares, rutas y el frontend.
@@ -42,6 +44,8 @@ app.use("/turnos", turnoRoutes);
 // Las peticiones que comiencen con "/cliente"
 // serán gestionadas por clienteRoutes.
 app.use("/cliente", clienteRoutes);
+app.use("/servicios", servicioRoutes);
+app.use("/empleados", empleadoRoutes);
 
 // Exporta la aplicación Express para que pueda ser utilizada
 // desde server.ts, donde finalmente se inicia el servidor.

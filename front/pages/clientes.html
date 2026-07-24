@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gestión de Clientes</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <main class="container">
+
+        <header class="header">
+            <h1>👤 Gestión de Clientes</h1>
+            <p>Alta y listado de clientes</p>
+        </header>
+
+
+        <!-- Formulario de creación -->
+        <section class="card">
+
+            <h2>Nuevo cliente</h2>
+
+            <form id="formCliente" class="form-turno">
+
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email">
+                </div>
+
+                <div class="acciones">
+                    <button type="submit" class="btn-primary">Crear cliente</button>
+                    <button type="button" id="btnVolver" class="btn-secondary">Volver al inicio</button>
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <!-- Listado de clientes -->
+        <section class="card">
+
+            <h2>Clientes registrados</h2>
+
+            <p id="mensaje" class="mensaje">No hay clientes registrados</p>
+
+            <table class="lista-turnos">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Teléfono</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-clientes">
+                </tbody>
+            </table>
+
+        </section>
+
+    </main>
+
+    <script>
+        document.getElementById("btnVolver").addEventListener("click", () => {
+            window.location.href = "../index.html";
+        });
+    </script>
+
+    <script type="module" src="../js/clientes.js"></script>
+
+</body>
+
+</html>

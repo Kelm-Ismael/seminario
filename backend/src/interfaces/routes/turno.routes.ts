@@ -1,12 +1,19 @@
 import { Router } from "express";
-import { crearTurnoControlador, obtenerTurnosController } from "../controllers/turno.controller";
+import {
+    crearTurnoControlador,
+    obtenerTurnosController,
+    obtenerTurnoPorIdController,
+    actualizarTurnoController,
+    cancelarTurnoController
+} from "../controllers/turno.controller";
 
 
 const router = Router();
 
-router.post("/", crearTurnoControlador); //Endpoint POST para crear turno
-router.get("/", obtenerTurnosController); // Endpoint GET para obtener clientes
+router.post("/", crearTurnoControlador);
+router.get("/", obtenerTurnosController);
+router.get("/:id", obtenerTurnoPorIdController);
+router.put("/:id", actualizarTurnoController);
+router.delete("/:id", cancelarTurnoController);
 
 export default router;
-
-
