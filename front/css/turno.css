@@ -1,270 +1,531 @@
+/* ==========================================================
+   VARIABLES
+========================================================== */
 
 :root {
 
-  --primary: #b88a2a;
-  --primary-hover: #d4a94f;
+    --primary: #b88a2a;
+    --primary-hover: #d4a94f;
 
-  --background: #f7f3eb;
-  --section: #ffffff;
-  --card: #faf7f0;
+    --background: #f7f3eb;
+    --section: #ffffff;
+    --card: #faf7f0;
 
-  --dark: #1e2a27;
-  --text: #333333;
-  --muted: #777777;
+    --dark: #1e2a27;
+    --text: #333333;
+    --muted: #777777;
 
-  --border: #e3d8c3;
+    --border: #e3d8c3;
 
-  --shadow:
-  0 15px 35px rgba(0,0,0,.08);
+    --shadow: 0 15px 35px rgba(0, 0, 0, .08);
 
 }
 
-/* =========================================
-   TURNOS - Layout general de la página
-========================================= */
 
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 40px 20px 80px;
-}
+/* ==========================================================
+   RESET
+========================================================== */
 
-.header {
-    text-align: center;
-    margin-bottom: 35px;
-}
-
-.header h1 {
-    font-size: 34px;
-    color: var(--dark);
-    margin-bottom: 8px;
-}
-
-.header p {
-    color: var(--muted);
-    font-size: 16px;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 
-/* =========================================
-   CARD (contenedor de secciones)
-========================================= */
+/* ==========================================================
+   BODY
+========================================================== */
 
-.card {
-    background: var(--section);
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    padding: 30px;
-    box-shadow: var(--shadow);
-    margin-bottom: 30px;
-}
+body{
 
-.card h2 {
-    color: var(--primary);
-    font-size: 24px;
-    margin-bottom: 22px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+    background:var(--background);
+
+    color:var(--text);
+
+    line-height:1.5;
+
 }
 
 
-/* =========================================
+/* ==========================================================
+   CONTENEDOR
+========================================================== */
+
+.container{
+
+    max-width:900px;
+
+    margin:40px auto;
+
+    padding:0 20px;
+
+}
+
+
+/* ==========================================================
+   ENCABEZADO
+========================================================== */
+
+.header{
+
+    text-align:center;
+
+    margin-bottom:35px;
+
+}
+
+.header h1{
+
+    font-size:2.2rem;
+
+    color:var(--dark);
+
+    margin-bottom:8px;
+
+}
+
+.header p{
+
+    color:var(--muted);
+
+    font-size:16px;
+
+}
+
+
+/* ==========================================================
+   TARJETAS
+========================================================== */
+
+.card{
+
+    background:var(--section);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    padding:30px;
+
+    margin-bottom:30px;
+
+    box-shadow:var(--shadow);
+
+    animation:fade .35s ease;
+
+}
+
+.card h2{
+
+    color:var(--primary);
+
+    margin-bottom:25px;
+
+    font-size:1.5rem;
+
+}
+
+
+/* ==========================================================
    FORMULARIO
-========================================= */
+========================================================== */
 
-.form-turno {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
+form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
 }
 
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
+.form-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
 }
 
-.form-group label {
-    font-weight: bold;
-    color: var(--dark);
-    font-size: 15px;
+.form-group label{
+
+    font-weight:600;
+
+    color:var(--dark);
+
 }
 
 .form-group input,
-.form-group select {
-    padding: 12px 14px;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    font-size: 15px;
-    font-family: inherit;
-    background: white;
-    color: var(--text);
-    transition: .2s;
+.form-group select{
+
+    width:100%;
+
+    padding:13px 15px;
+
+    font-size:15px;
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    background:#fff;
+
+    color:var(--text);
+
+    transition:
+        border-color .2s,
+        box-shadow .2s;
+
 }
 
 .form-group input:focus,
-.form-group select:focus {
-    outline: none;
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(184, 138, 42, .15);
+.form-group select:focus{
+
+    outline:none;
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 3px rgba(184,138,42,.18);
+
 }
 
 
-/* =========================================
-   ACCIONES / BOTONES
-========================================= */
+/* ==========================================================
+   FECHA Y HORA
+========================================================== */
 
-.acciones {
-    display: flex;
-    gap: 14px;
-    flex-wrap: wrap;
-    margin-top: 8px;
-}
+.fila{
 
-.btn-primary,
-.btn-secondary {
-    padding: 13px 26px;
-    border: none;
-    border-radius: 10px;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: .3s;
-}
+    display:grid;
 
-.btn-primary {
-    background: var(--primary);
-    color: white;
-}
+    grid-template-columns:1fr 1fr;
 
-.btn-primary:hover {
-    background: var(--primary-hover);
-    transform: translateY(-2px);
-}
+    gap:18px;
 
-.btn-secondary {
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--dark);
-}
-
-.btn-secondary:hover {
-    border-color: var(--primary);
-    color: var(--primary);
 }
 
 
-/* =========================================
-   MENSAJE (vacío / error)
-========================================= */
+/* ==========================================================
+   BOTONES
+========================================================== */
 
-.mensaje {
-    color: var(--muted);
-    text-align: center;
-    padding: 20px 0;
-    display: none;
+.acciones{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:15px;
+
+    margin-top:10px;
+
+    flex-wrap:wrap;
+
+}
+
+.btn{
+
+    min-width:170px;
+
+    padding:13px 22px;
+
+    border:none;
+
+    border-radius:10px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.btn-primary{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+.btn-primary:hover{
+
+    background:var(--primary-hover);
+
+    transform:translateY(-2px);
+
+}
+
+.btn-secondary{
+
+    background:#fff;
+
+    color:var(--dark);
+
+    border:1px solid var(--border);
+
+}
+
+.btn-secondary:hover{
+
+    border-color:var(--primary);
+
+    color:var(--primary);
+
+    transform:translateY(-2px);
+
 }
 
 
-/* =========================================
-   LISTA DE TURNOS
-========================================= */
+/* ==========================================================
+   MENSAJE
+========================================================== */
 
-.lista-turnos {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
+.mensaje{
 
-.turno-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
+    text-align:center;
 
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 16px 20px;
+    color:var(--muted);
 
-    transition: .2s;
-}
+    padding:20px 0;
 
-.turno-item:hover {
-    border-color: var(--primary);
-    transform: translateX(2px);
-}
+    display:none;
 
-.turno-info {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.turno-fecha {
-    font-weight: bold;
-    color: var(--dark);
-    font-size: 15px;
-}
-
-.turno-detalle {
-    color: var(--muted);
-    font-size: 14px;
 }
 
 
-/* =========================================
-   BADGES DE ESTADO
-========================================= */
+/* ==========================================================
+   LISTA
+========================================================== */
 
-.badge {
-    display: inline-block;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: bold;
-    text-transform: capitalize;
-    white-space: nowrap;
-}
+.lista-turnos{
 
-.badge-pendiente {
-    background: #fff3cd;
-    color: #8a6d1d;
-}
+    list-style:none;
 
-.badge-confirmado {
-    background: #d4edda;
-    color: #256029;
-}
+    display:flex;
 
-.badge-cancelado {
-    background: #f8d7da;
-    color: #8a2b32;
-}
+    flex-direction:column;
 
-.badge-finalizado {
-    background: #e2e3e5;
-    color: #494c4f;
+    gap:15px;
+
 }
 
 
-/* =========================================
+/* ==========================================================
+   ITEM TURNO
+========================================================== */
+
+.turno-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:20px;
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:12px;
+
+    padding:18px 20px;
+
+    transition:
+        transform .2s,
+        box-shadow .2s,
+        border-color .2s;
+
+}
+
+.turno-item:hover{
+
+    border-color:var(--primary);
+
+    box-shadow:0 8px 18px rgba(0,0,0,.08);
+
+    transform:translateY(-2px);
+
+}
+
+.turno-info{
+
+    flex:1;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:5px;
+
+}
+
+.turno-fecha{
+
+    font-weight:700;
+
+    color:var(--dark);
+
+}
+
+.turno-detalle{
+
+    color:var(--muted);
+
+    font-size:14px;
+
+}
+
+
+/* ==========================================================
+   BADGES
+========================================================== */
+
+.badge{
+
+    padding:7px 14px;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    letter-spacing:.4px;
+
+    text-transform:capitalize;
+
+    white-space:nowrap;
+
+}
+
+.badge-pendiente{
+
+    background:#fff3cd;
+
+    color:#856404;
+
+}
+
+.badge-confirmado{
+
+    background:#d4edda;
+
+    color:#155724;
+
+}
+
+.badge-cancelado{
+
+    background:#f8d7da;
+
+    color:#721c24;
+
+}
+
+.badge-finalizado{
+
+    background:#e2e3e5;
+
+    color:#495057;
+
+}
+
+
+/* ==========================================================
+   ANIMACIONES
+========================================================== */
+
+@keyframes fade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(12px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+/* ==========================================================
    RESPONSIVE
-========================================= */
+========================================================== */
 
-@media (max-width: 600px) {
+@media (max-width:768px){
 
-    .header h1 {
-        font-size: 26px;
+    .fila{
+
+        grid-template-columns:1fr;
+
     }
 
-    .card {
-        padding: 20px;
+    .acciones{
+
+        flex-direction:column;
+
     }
 
-    .turno-item {
-        flex-direction: column;
-        align-items: flex-start;
+    .btn{
+
+        width:100%;
+
+    }
+
+}
+
+@media (max-width:600px){
+
+    .container{
+
+        margin:25px auto;
+
+    }
+
+    .header h1{
+
+        font-size:1.8rem;
+
+    }
+
+    .card{
+
+        padding:22px;
+
+    }
+
+    .turno-item{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+    .badge{
+
+        align-self:flex-start;
+
     }
 
 }

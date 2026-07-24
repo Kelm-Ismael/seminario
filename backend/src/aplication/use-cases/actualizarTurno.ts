@@ -5,6 +5,8 @@ import {
 
 const ESTADOS_VALIDOS = ["pendiente", "confirmado", "cancelado", "finalizado"];
 
+// Caso de uso para actualizar un turno
+
 export const actualizarTurnoCasoDeUso = async (
     id: number,
     empleado_id: number,
@@ -22,7 +24,12 @@ export const actualizarTurnoCasoDeUso = async (
         throw new Error("El empleado ya tiene un turno en ese horario");
     }
 
-    const turnoActualizado = await actualizarTurnoRepository(id, fecha, estado);
+    const turnoActualizado = await actualizarTurnoRepository(
+        id,
+        empleado_id,
+        fecha,
+        estado
+    );
 
     return turnoActualizado;
 };

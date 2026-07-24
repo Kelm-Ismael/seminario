@@ -42,9 +42,30 @@ export const obtenerTurnoPorId = async (id: number) => {
     return resultado.rows[0];
 };
 
-// Actualizar fecha y/o estado de un turno
+// // Actualizar fecha y/o estado de un turno
+// export const actualizarTurno = async (
+//     id: number,
+//     fecha: string,
+//     estado: string
+// ) => {
+
+//     const resultado = await pool.query(
+//         `
+//         UPDATE turnos
+//         SET fecha = $1,
+//             estado = $2
+//         WHERE id_turnos = $3
+//         RETURNING *
+//         `,
+//         [fecha, estado, id]
+//     );
+
+//     return resultado.rows[0];
+// };
+
 export const actualizarTurno = async (
     id: number,
+    empleado_id: number,
     fecha: string,
     estado: string
 ) => {
@@ -52,12 +73,18 @@ export const actualizarTurno = async (
     const resultado = await pool.query(
         `
         UPDATE turnos
-        SET fecha = $1,
-            estado = $2
-        WHERE id_turnos = $3
+        SET empleado_id = $1,
+            fecha = $2,
+            estado = $3
+        WHERE id_turnos = $4
         RETURNING *
         `,
-        [fecha, estado, id]
+        [
+            empleado_id,
+            fecha,
+            estado,
+            id
+        ]
     );
 
     return resultado.rows[0];

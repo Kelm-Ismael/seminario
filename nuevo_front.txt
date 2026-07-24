@@ -10,3 +10,42 @@ Tu frontend es:
 
 ✅ npm install -g browser-sync (recargar el navegador automáticamente cuando modificas html, css o js.)
 ✅ npm install --save-dev browser-sync (En backend y frontend)
+frontend/
+│
+├── css/
+│   ├── style.css          ← estilos generales
+│   ├── turnos.css
+│   ├── clientes.css
+│   ├── empleados.css
+│   └── servicios.css
+│
+├── js/
+│   ├── core/
+│   │   ├── api.js         ← fetch GET, POST, PUT, DELETE
+│   │   ├── config.js      ← BASE_URL y endpoints
+│   │   └── utils.js       ← funciones comunes
+│   │
+│   ├── turnos/
+│   │   ├── turnos.js
+│   │   ├── selects.js
+│   │   ├── formulario.js
+│   │   └── listado.js
+│   │
+│   ├── clientes/
+│   │   ├── clientes.js
+│   │   ├── formulario.js
+│   │   └── listado.js
+│   │
+│   ├── empleados/
+│   │   └── ...
+│   │
+│   └── servicios/
+│       └── ...
+│
+├── pages/
+│   ├── clientes.html
+│   ├── empleados.html
+│   ├── servicios.html
+│   └── turnos.html
+│
+└── index.html
