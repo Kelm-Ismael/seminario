@@ -1,0 +1,51 @@
+/* =====================================
+            MODAL
+===================================== */
+
+
+.modal {
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.5);
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+
+.modal.active {
+
+    display:flex;
+
+}
+
+
+.modal-content {
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:15px;
+
+    width:400px;
+
+    max-width:90%;
+
+}
+
+
+.modal-close {
+
+    float:right;
+
+    cursor:pointer;
+
+}

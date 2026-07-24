@@ -1,0 +1,63 @@
+/* =====================================
+            NAVBAR
+===================================== */
+
+#navbar {
+
+    height: 70px;
+
+    background: var(--card-bg);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 30px;
+
+    border-bottom:1px solid var(--border-color);
+
+}
+
+
+.navbar-title {
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+
+.navbar-actions {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+
+.profile {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+
+.profile img {
+
+    width:40px;
+
+    height:40px;
+
+    border-radius:50%;
+
+}

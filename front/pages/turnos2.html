@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel Administrativo de Turnos</title>
+<link rel="stylesheet" href="../css/turno.css">
+</head>
+<body>
+<div class="app">
+
+<aside class="sidebar">
+<h2>Barbería</h2>
+<nav>
+<ul>
+<li>Dashboard</li>
+<li><strong>Turnos</strong></li>
+<li>Calendario</li>
+<li>Clientes</li>
+<li>Servicios</li>
+<li>Empleados</li>
+<li>Reportes</li>
+<li>Configuración</li>
+</ul>
+</nav>
+</aside>
+
+<main class="main">
+
+<header class="topbar">
+<div>
+<h1>Turnos y Agenda</h1>
+<p>Panel administrativo</p>
+</div>
+
+<div class="acciones">
+<button id="btnExportar">Exportar</button>
+<button id="btnNuevoTurno">Nuevo turno</button>
+</div>
+</header>
+
+<section class="stats">
+<div class="card"><h3>Turnos Hoy</h3><span id="kpiHoy">0</span></div>
+<div class="card"><h3>Pendientes</h3><span id="kpiPendientes">0</span></div>
+<div class="card"><h3>Confirmados</h3><span id="kpiConfirmados">0</span></div>
+<div class="card"><h3>Cancelados</h3><span id="kpiCancelados">0</span></div>
+</section>
+
+<section class="contenido">
+
+<section class="calendario">
+<h2>Calendario</h2>
+<div id="calendar"></div>
+</section>
+
+<section class="agenda">
+<h2>Agenda del día</h2>
+<div id="horarios"></div>
+</section>
+
+<aside class="lateral">
+<h2>Turnos del día</h2>
+
+<input id="busqueda" type="text" placeholder="Buscar cliente...">
+
+<select id="filtroEstado">
+<option value="">Todos</option>
+<option value="pendiente">Pendiente</option>
+<option value="confirmado">Confirmado</option>
+<option value="cancelado">Cancelado</option>
+<option value="finalizado">Finalizado</option>
+</select>
+
+</aside>
+
+</section>
+
+<section class="tabla">
+
+<h2>Listado de Turnos</h2>
+
+<table>
+
+<thead>
+<tr>
+<th>ID</th>
+<th>Cliente</th>
+<th>Empleado</th>
+<th>Servicio</th>
+<th>Fecha</th>
+<th>Estado</th>
+<th>Acciones</th>
+</tr>
+</thead>
+
+<tbody id="tablaTurnos">
+
+</tbody>
+
+</table>
+
+</section>
+
+<div id="modalTurno" hidden>
+
+<form id="formTurno">
+
+<h2>Nuevo / Editar Turno</h2>
+
+<select id="cliente"></select>
+
+<select id="empleado"></select>
+
+<select id="servicio"></select>
+
+<input id="fecha" type="datetime-local">
+
+<select id="estado">
+<option>pendiente</option>
+<option>confirmado</option>
+<option>cancelado</option>
+<option>finalizado</option>
+</select>
+
+<button type="submit">Guardar</button>
+
+<button type="button">Cancelar</button>
+
+</form>
+
+</div>
+
+</main>
+
+</div>
+</body>
+</html>

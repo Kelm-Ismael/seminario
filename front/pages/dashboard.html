@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Turnos y Agenda</title>
+
+
+<link rel="stylesheet" href="../css/variables.css">
+<link rel="stylesheet" href="../css/global.css">
+<link rel="stylesheet" href="../css/sidebar.css">
+<link rel="stylesheet" href="../css/navbar.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+<link rel="stylesheet" href="../css/cards.css">
+<link rel="stylesheet" href="../css/table.css">
+<link rel="stylesheet" href="../css/buttons.css">
+<link rel="stylesheet" href="../css/forms.css">
+<link rel="stylesheet" href="../css/modal.css">
+<link rel="stylesheet" href="../css/responsive.css">
+<link rel="stylesheet" href="../css/schedule.css">
+
+
+</head>
+
+
+<body>
+
+
+<div class="dashboard">
+
+
+
+<!-- ==========================
+        SIDEBAR
+=========================== -->
+
+<aside id="sidebar"></aside>
+
+
+
+
+<!-- ==========================
+        CONTENIDO
+=========================== -->
+
+
+<main class="main-content">
+
+
+
+<header id="navbar"></header>
+
+
+
+
+
+<!-- ==========================
+        METRICAS
+=========================== -->
+
+
+<section class="metrics">
+
+
+
+<div class="metric-card">
+
+<div class="metric-icon">
+📅
+</div>
+
+<div>
+
+<h2>18</h2>
+
+<p>Turnos Hoy</p>
+
+<span class="up">
+↑ 12% vs ayer
+</span>
+
+</div>
+
+</div>
+
+
+
+
+
+<div class="metric-card">
+
+
+<div class="metric-icon">
+⏱
+</div>
+
+
+<div>
+
+<h2>5</h2>
+
+<p>Pendientes</p>
+
+<span class="up">
+↑ 8% vs ayer
+</span>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="metric-card">
+
+
+<div class="metric-icon">
+✔
+</div>
+
+
+<div>
+
+<h2>11</h2>
+
+<p>Confirmados</p>
+
+<span class="up">
+↑ 15% vs ayer
+</span>
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div class="metric-card cancel">
+
+
+<div class="metric-icon">
+✕
+</div>
+
+
+<div>
+
+<h2>2</h2>
+
+<p>Cancelados</p>
+
+<span class="down">
+↓ 20% vs ayer
+</span>
+
+</div>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+<!-- ==========================
+        PANEL PRINCIPAL
+=========================== -->
+
+
+<section class="content-grid">
+
+
+
+
+
+<!-- ======================
+        CALENDARIO
+======================= -->
+
+
+<div class="card calendar-card">
+
+
+<div class="card-header">
+
+<h2>Mayo 2026</h2>
+
+<button>
+Hoy
+</button>
+
+
+</div>
+
+
+
+
+
+<div class="calendar">
+
+
+<span>LUN</span>
+<span>MAR</span>
+<span>MIÉ</span>
+<span>JUE</span>
+<span>VIE</span>
+<span>SÁB</span>
+<span>DOM</span>
+
+
+<div>27</div>
+<div>28</div>
+<div>29</div>
+<div>30</div>
+<div>1</div>
+<div>2</div>
+<div>3</div>
+
+
+<div>4</div>
+<div>5</div>
+<div>6</div>
+<div>7</div>
+<div>8</div>
+<div>9</div>
+<div>10</div>
+
+
+<div>11</div>
+<div>12</div>
+<div>13</div>
+<div>14</div>
+
+<div class="selected-day">
+15
+</div>
+
+<div>16</div>
+<div>17</div>
+
+
+<div>18</div>
+<div>19</div>
+<div>20</div>
+<div>21</div>
+<div>22</div>
+<div>23</div>
+<div>24</div>
+
+
+<div>25</div>
+<div>26</div>
+<div>27</div>
+<div>28</div>
+<div>29</div>
+<div>30</div>
+<div>31</div>
+
+
+</div>
+
+
+
+
+
+
+<div class="quick-view">
+
+
+<h3>
+Vista rápida
+</h3>
+
+
+<p>
+Día seleccionado
+<strong>
+15 Mayo 2026
+</strong>
+</p>
+
+
+<p>
+Turnos del día
+<strong>
+18
+</strong>
+</p>
+
+
+<p>
+Ocupación
+<strong>
+85%
+</strong>
+</p>
+
+
+
+<div class="progress">
+
+<div></div>
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ======================
+        AGENDA HORARIOS
+======================= -->
+
+
+<div class="card schedule-card">
+
+
+
+<div class="card-header">
+
+
+<h2>
+Viernes 15 de Mayo
+</h2>
+
+
+<select>
+
+<option>
+Todos los empleados
+</option>
+
+</select>
+
+
+</div>
+
+
+
+
+
+<div class="employees">
+
+
+<button class="active">
+David
+</button>
+
+
+<button>
+Sofía
+</button>
+
+
+<button>
+Tomás
+</button>
+
+
+<button>
+Lucía
+</button>
+
+
+</div>
+
+
+
+
+
+
+<p>
+Agregá o seleccioná un horario disponible
+</p>
+
+
+
+
+
+<h3>
+Mañana
+</h3>
+
+
+<div class="hours">
+
+
+<button>
+08:00
+</button>
+
+
+<button>
+08:30
+</button>
+
+
+<button class="busy">
+09:30
+</button>
+
+
+<button class="available">
+10:00
+</button>
+
+
+<button>
+10:30
+</button>
+
+
+<button class="available">
+11:00
+</button>
+
+
+<button class="busy">
+11:30
+</button>
+
+
+<button class="available">
+12:00
+</button>
+
+
+<button class="available">
+12:30
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+<h3>
+Tarde
+</h3>
+
+
+<div class="hours">
+
+
+<button>
+13:00
+</button>
+
+
+<button>
+13:30
+</button>
+
+
+<button class="selected-hour">
+14:00
+</button>
+
+
+<button>
+14:30
+</button>
+
+
+<button class="busy">
+15:00
+</button>
+
+
+
+<button>
+15:30
+</button>
+
+
+<button class="available">
+16:00
+</button>
+
+
+<button class="busy">
+16:30
+</button>
+
+
+<button class="available">
+17:00
+</button>
+
+
+<button>
+17:30
+</button>
+
+
+
+</div>
+
+
+
+
+
+<h3>
+Noche
+</h3>
+
+
+<div class="hours">
+
+
+<button>
+20:30
+</button>
+
+
+<button>
+21:00
+</button>
+
+
+<button>
+21:30
+</button>
+
+
+<button class="available">
+22:00
+</button>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ======================
+        TURNOS DEL DIA
+======================= -->
+
+
+<div class="card appointments">
+
+
+
+<div class="card-header">
+
+<h2>
+Turnos del día
+</h2>
+
+<span class="badge">
+18
+</span>
+
+
+</div>
+
+
+
+
+
+<input 
+type="text"
+placeholder="Buscar cliente..."
+>
+
+
+
+
+
+
+
+<div class="appointment">
+
+
+<div>
+
+<strong>
+09:00
+</strong>
+
+Juan Pérez
+
+<small>
+Corte de cabello
+</small>
+
+</div>
+
+
+<span class="success">
+Confirmado
+</span>
+
+
+</div>
+
+
+
+
+
+<div class="appointment">
+
+
+<div>
+
+<strong>
+09:30
+</strong>
+
+Fernando Ruiz
+
+<small>
+Corte
+</small>
+
+</div>
+
+
+<span class="pending">
+Pendiente
+</span>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="appointment">
+
+
+<div>
+
+<strong>
+10:00
+</strong>
+
+María González
+
+<small>
+Tintura completa
+</small>
+
+</div>
+
+
+<span class="success">
+Confirmado
+</span>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="appointment">
+
+
+<div>
+
+<strong>
+14:00
+</strong>
+
+Pedro Martínez
+
+<small>
+Corte de cabello
+</small>
+
+</div>
+
+
+<span class="pending">
+Pendiente
+</span>
+
+
+</div>
+
+
+
+
+
+
+<button class="view-all">
+
+Ver todos los turnos →
+
+</button>
+
+
+
+
+</div>
+
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- ==========================
+        CONSEJO
+=========================== -->
+
+
+<div class="daily-tip">
+
+
+<h3>
+👑 Consejo del día
+</h3>
+
+
+<p>
+Tenés 5 turnos pendientes de confirmación.
+</p>
+
+
+
+<button>
+Enviar recordatorios
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+</main>
+
+
+</div>
+
+
+
+
+
+<script src="../js/loader.js"></script>
+<script src="../js/dashboard.js"></script> 
+
+
+</body>
+
+</html>

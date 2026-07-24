@@ -1,0 +1,34 @@
+.card,
+.metric-card {
+
+
+    background:#111214;
+
+
+    border:1px solid #252525;
+
+
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+
+
+}
+
+
+
+.metric-card {
+
+
+    height:110px;
+
+
+}
+
+
+.metric-card:hover,
+.card:hover {
+
+
+    border-color:#4b3900;
+
+
+}

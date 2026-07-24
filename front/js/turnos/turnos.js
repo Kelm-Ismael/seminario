@@ -3,7 +3,10 @@ import { obtenerTurnos } from "./listado.js";
 import { crearTurno } from "./formulario.js";
 import { cancelarTurno } from "./cancelar.js";
 import { cambiarEstadoTurno } from "./estado.js";
+import { editarTurno } from "./editar.js";
 import { filtrarTurnos } from "./filtros.js";
+import { getDatos } from "../core/api.js";
+import { API_EMPLEADOS } from "../core/config.js";
 
 
 const formulario = document.getElementById("formTurno");
@@ -11,6 +14,15 @@ const btnVolver = document.getElementById("btnVolver");
 
 const busqueda = document.getElementById("busqueda");
 const filtroEstado = document.getElementById("filtroEstado");
+
+// Modal de edición
+const modalEditar = document.getElementById("modalEditar");
+const editarId = document.getElementById("editarId");
+const editarEmpleado = document.getElementById("editarEmpleado");
+const editarFecha = document.getElementById("editarFecha");
+const editarEstado = document.getElementById("editarEstado");
+const guardarEdicion = document.getElementById("guardarEdicion");
+const cerrarModal = document.getElementById("cerrarModal");
 
 let turnosActuales = [];
 
@@ -121,6 +133,12 @@ function mostrarTurnos(turnos) {
             <td>
 
                 <button 
+                class="editar"
+                data-id="${turno.id_turnos}">
+                ✏️
+                </button>
+
+                <button 
                 class="cancelar"
                 data-id="${turno.id_turnos}">
                 ❌
@@ -191,34 +209,139 @@ if (filtroEstado) {
 
 
 
-// Acciones cancelar
+// Carga los empleados dentro del <select> del modal de edición
+// y deja preseleccionado el empleado actual del turno.
+async function cargarEmpleadosModal(nombreEmpleadoActual) {
+
+    try {
+
+        const empleados = await getDatos(API_EMPLEADOS);
+
+        editarEmpleado.innerHTML = "";
+
+        empleados.forEach(emp => {
+
+            const option = document.createElement("option");
+
+            option.value = emp.id_empleados;
+            option.textContent = emp.nombre;
+
+            if (emp.nombre === nombreEmpleadoActual) {
+                option.selected = true;
+            }
+
+            editarEmpleado.appendChild(option);
+
+        });
+
+    } catch (error) {
+
+        console.error(error);
+
+        editarEmpleado.innerHTML =
+            `<option value="">Error al cargar empleados</option>`;
+
+    }
+
+}
+
+
+
+// Abre el modal y lo llena con los datos del turno elegido
+function abrirModalEditar(turno) {
+
+    editarId.value = turno.id_turnos;
+    editarEstado.value = turno.estado;
+
+    // datetime-local necesita formato "YYYY-MM-DDTHH:mm"
+    const fecha = new Date(turno.fecha);
+    const fechaLocal = new Date(
+        fecha.getTime() - fecha.getTimezoneOffset() * 60000
+    ).toISOString().slice(0, 16);
+
+    editarFecha.value = fechaLocal;
+
+    cargarEmpleadosModal(turno.empleado_nombre);
+
+    modalEditar.style.display = "flex";
+
+}
+
+function cerrarModalEditar() {
+    modalEditar.style.display = "none";
+}
+
+if (cerrarModal) {
+    cerrarModal.addEventListener("click", cerrarModalEditar);
+}
+
+if (guardarEdicion) {
+
+    guardarEdicion.addEventListener("click", async () => {
+
+        const id = editarId.value;
+
+        const datos = {
+            empleado_id: Number(editarEmpleado.value),
+            fecha: editarFecha.value,
+            estado: editarEstado.value
+        };
+
+        try {
+
+            await editarTurno(id, datos);
+
+            cerrarModalEditar();
+
+            cargarTurnos();
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert("No se pudo actualizar el turno");
+
+        }
+
+    });
+
+}
+
+
+
+// Acciones: cancelar y editar (delegación de eventos sobre la tabla)
 document.addEventListener(
     "click",
     async (e) => {
 
+        if (e.target.classList.contains("cancelar")) {
 
-        if (
-            e.target.classList.contains("cancelar")
-        ) {
-
-            const id =
-                e.target.dataset.id;
-
+            const id = e.target.dataset.id;
 
             await cancelarTurno(id);
-
 
             cargarTurnos();
 
         }
 
+        if (e.target.classList.contains("editar")) {
+
+            const id = e.target.dataset.id;
+
+            const turno = turnosActuales.find(
+                t => String(t.id_turnos) === String(id)
+            );
+
+            if (turno) abrirModalEditar(turno);
+
+        }
 
     }
 );
 
 
 
-// Cambio de estado
+// Cambio de estado (select inline en la tabla)
 document.addEventListener(
     "change",
     async (e) => {
@@ -256,6 +379,8 @@ document.addEventListener(
 document.addEventListener(
     "DOMContentLoaded",
     () => {
+
+        modalEditar.style.display = "none";
 
         cargarClientes();
 

@@ -1,5 +1,6 @@
-import { API_TURNOS } from "./api.js";
+import { API_TURNOS } from "../core/config.js";
 
+// datos = { empleado_id, fecha, estado }
 export async function editarTurno(id, datos) {
 
     const respuesta = await fetch(`${API_TURNOS}/${id}`, {

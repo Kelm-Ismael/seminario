@@ -19,8 +19,10 @@ export async function obtenerTurnos() {
 
         console.error(error);
 
-        mensaje.textContent =
-            "Error al cargar los turnos.";
+        if (mensaje) {
+            mensaje.textContent =
+                "Error al cargar los turnos.";
+        }
 
         return [];
 

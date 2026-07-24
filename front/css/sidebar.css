@@ -1,0 +1,208 @@
+/* =====================================
+        SIDEBAR
+===================================== */
+
+#sidebar {
+
+    width: 260px;
+    min-height: 100vh;
+
+    background: var(--primary-color, #111827);
+
+    color: white;
+
+    padding: 25px 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    position: fixed;
+
+    left: 0;
+    top: 0;
+
+    z-index: 1000;
+
+}
+
+
+/* Logo */
+
+.sidebar-logo {
+
+    font-size: 24px;
+
+    font-weight: 700;
+
+    margin-bottom: 40px;
+
+    text-align: center;
+
+}
+
+
+/* Navegación */
+
+.sidebar-menu {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+}
+
+
+/* Links */
+
+.sidebar-menu a {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 14px 16px;
+
+    color: #d1d5db;
+
+    text-decoration: none;
+
+    border-radius: 10px;
+
+    transition: 0.3s ease;
+
+    font-size: 15px;
+
+}
+
+
+/* Hover */
+
+.sidebar-menu a:hover {
+
+    background: rgba(255,255,255,0.1);
+
+    color: white;
+
+}
+
+
+/* Link activo */
+
+.sidebar-menu a.active {
+
+    background: var(--accent-color, #d4a373);
+
+    color: white;
+
+}
+
+
+/* Iconos */
+
+.sidebar-menu span {
+
+    font-size: 20px;
+
+}
+
+
+/* Separador */
+
+.sidebar-divider {
+
+    height: 1px;
+
+    background: rgba(255,255,255,0.15);
+
+    margin: 25px 0;
+
+}
+
+
+/* Usuario abajo */
+
+.sidebar-user {
+
+    margin-top: auto;
+
+    padding: 15px;
+
+    background: rgba(255,255,255,0.08);
+
+    border-radius: 12px;
+
+}
+
+
+.sidebar-user h4 {
+
+    margin: 0;
+
+    font-size: 15px;
+
+}
+
+
+.sidebar-user p {
+
+    margin: 5px 0 0;
+
+    font-size: 13px;
+
+    color: #9ca3af;
+
+}
+
+
+
+/* =====================================
+        AJUSTE CONTENIDO
+===================================== */
+
+.main-content {
+
+    margin-left: 260px;
+
+    width: calc(100% - 260px);
+
+}
+
+
+
+/* =====================================
+        RESPONSIVE
+===================================== */
+
+@media(max-width:900px){
+
+
+    #sidebar {
+
+        transform: translateX(-100%);
+
+        transition: 0.3s ease;
+
+    }
+
+
+    #sidebar.active {
+
+        transform: translateX(0);
+
+    }
+
+
+    .main-content {
+
+        margin-left:0;
+
+        width:100%;
+
+    }
+
+
+}

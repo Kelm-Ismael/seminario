@@ -1,0 +1,41 @@
+/* =====================================
+            TABLE
+===================================== */
+
+
+table {
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+
+th {
+
+    text-align:left;
+
+    padding:12px;
+
+    background:var(--primary-color);
+
+    color:white;
+
+}
+
+
+td {
+
+    padding:12px;
+
+    border-bottom:1px solid var(--border-color);
+
+}
+
+
+tr:hover {
+
+    background:rgba(0,0,0,0.03);
+
+}

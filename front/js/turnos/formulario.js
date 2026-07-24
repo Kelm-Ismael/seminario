@@ -1,9 +1,6 @@
 import { API_TURNOS } from "../core/config.js";
-// import { postDatos } from "../core/api.js";
-// import { obtenerTurnos } from "./listado.js";
-
 import { postDatos } from "../core/api.js";
-import { API_TURNOS } from "../core/config.js";
+import { obtenerTurnos } from "./listado.js";
 
 const formulario = document.getElementById("formTurno");
 
@@ -19,10 +16,11 @@ export async function crearTurno(e) {
     const empleado_id = selectEmpleado.value;
     const servicio_id = selectServicio.value;
 
+    // El input #fecha es type="datetime-local":
+    // ya trae fecha y hora juntas, ej: "2026-07-24T15:30"
     const fecha = document.getElementById("fecha").value;
-    const hora = document.getElementById("hora").value;
 
-    if (!cliente_id || !empleado_id || !servicio_id || !fecha || !hora) {
+    if (!cliente_id || !empleado_id || !servicio_id || !fecha) {
 
         alert("Completá todos los campos");
 
@@ -38,7 +36,7 @@ export async function crearTurno(e) {
 
         servicio_id: Number(servicio_id),
 
-        fecha: `${fecha} ${hora}`
+        fecha
 
     };
 

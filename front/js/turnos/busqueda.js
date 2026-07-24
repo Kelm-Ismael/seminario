@@ -1,5 +1,4 @@
-import { API_TURNOS } from "./api.js";
-
+import { API_TURNOS } from "../core/config.js";
 
 export async function buscarTurnos() {
 

@@ -1,0 +1,95 @@
+body {
+    overflow-x:hidden;
+}
+
+
+.dashboard {
+
+    display:flex;
+
+    min-height:100vh;
+
+    background:#080808;
+
+}
+
+
+.main-content {
+
+    margin-left:250px;
+
+    width:calc(100% - 250px);
+
+    padding:0 20px 30px;
+
+}
+
+
+
+#navbar {
+
+    height:80px;
+
+    margin-bottom:25px;
+
+}
+
+
+
+
+.metrics {
+
+    margin-top:0;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:20px;
+
+}
+
+.daily-tip {
+
+
+    margin-top:25px;
+
+
+    background:#111214;
+
+
+    border:1px solid #4d3900;
+
+
+    border-radius:14px;
+
+
+    padding:20px;
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+    align-items:center;
+
+
+}
+
+
+
+.daily-tip button {
+
+
+    background:transparent;
+
+
+    border:1px solid #f5b900;
+
+
+    color:#f5b900;
+
+
+}
