@@ -13,6 +13,35 @@ export const crearTurno = async (datos: any) => {
 };
 
 // Obtener un turno por id (con datos de cliente/empleado/servicio)
+// export const obtenerTurnoPorId = async (id: number) => {
+
+//     const resultado = await pool.query(
+//         `
+//         SELECT
+//             t.id_turnos,
+//             t.fecha,
+//             t.estado,
+//             t.cliente_id,
+//             t.empleado_id,
+//             t.servicio_id,
+//             c.nombre AS cliente_nombre,
+//             c.email AS cliente_email,
+//             e.nombre AS empleado_nombre,
+//             s.nombre AS servicio_nombre,
+//             s.precio,
+//             s.duracion
+//         FROM turnos t
+//         INNER JOIN clientes c ON t.cliente_id = c.id_clientes
+//         INNER JOIN empleados e ON t.empleado_id = e.id_empleados
+//         INNER JOIN servicios s ON t.servicio_id = s.id_servicios
+//         WHERE t.id_turnos = $1
+//         `,
+//         [id]
+//     );
+
+//     return resultado.rows[0];
+// };
+
 export const obtenerTurnoPorId = async (id: number) => {
 
     const resultado = await pool.query(
@@ -26,6 +55,7 @@ export const obtenerTurnoPorId = async (id: number) => {
             t.servicio_id,
             c.nombre AS cliente_nombre,
             c.email AS cliente_email,
+            c.telefono AS cliente_telefono,
             e.nombre AS empleado_nombre,
             s.nombre AS servicio_nombre,
             s.precio,
@@ -126,4 +156,30 @@ export const existeTurnoEnHorario = async (
     );
 
     return (resultado.rowCount ?? 0) > 0;
+};
+
+// Turnos de mañana, no cancelados, con teléfono del cliente
+export const obtenerTurnosDeManana = async () => {
+
+    const resultado = await pool.query(
+        `
+        SELECT
+            t.id_turnos,
+            t.fecha,
+            c.nombre AS cliente_nombre,
+            c.telefono AS cliente_telefono,
+            e.nombre AS empleado_nombre,
+            s.nombre AS servicio_nombre
+        FROM turnos t
+        INNER JOIN clientes c ON t.cliente_id = c.id_clientes
+        INNER JOIN empleados e ON t.empleado_id = e.id_empleados
+        INNER JOIN servicios s ON t.servicio_id = s.id_servicios
+        WHERE t.fecha::date = (CURRENT_DATE + INTERVAL '1 day')::date
+          AND t.estado != 'cancelado'
+          AND c.telefono IS NOT NULL
+          AND c.telefono != ''
+        `
+    );
+
+    return resultado.rows;
 };

@@ -12,392 +12,200 @@
 
 </head>
 
-
 <body>
-
 
 <main class="container">
 
+    <!-- ==========================
+         ENCABEZADO
+    ========================== -->
 
-<header class="header">
+    <header class="header">
 
-    <h1>📅 Panel Administrativo de Turnos</h1>
+        <button class="btn btn-secondary" onclick="history.back()">
+            ← Volver
+        </button>
 
-    <p>Gestión completa de clientes, empleados y reservas</p>
+        <h1>📅 Panel Administrativo de Turnos</h1>
 
-</header>
+        <p>Gestión completa de clientes, empleados y reservas</p>
 
+    </header>
 
 
-<!-- ==========================
-     CREAR TURNO
-========================== -->
+    <!-- ==========================
+         CREAR TURNO
+    ========================== -->
 
-<section class="card">
+    <section class="card">
 
+        <h2>Crear nuevo turno</h2>
 
-<h2>Crear nuevo turno</h2>
+        <form id="formTurno">
 
+            <div class="fila">
 
-<form id="formTurno">
+                <div class="form-group">
+                    <label for="cliente">Cliente</label>
+                    <select id="cliente" required>
+                        <option value="">Seleccionar cliente</option>
+                    </select>
+                </div>
 
+                <div class="form-group">
+                    <label for="empleado">Empleado</label>
+                    <select id="empleado" required>
+                        <option value="">Seleccionar empleado</option>
+                    </select>
+                </div>
 
-<div class="fila">
+            </div>
 
+            <div class="fila">
 
-<div class="form-group">
+                <div class="form-group">
+                    <label for="servicio">Servicio</label>
+                    <select id="servicio" required>
+                        <option value="">Seleccionar servicio</option>
+                    </select>
+                </div>
 
-<label>Cliente</label>
+                <div class="form-group">
+                    <label for="fecha">Fecha y hora</label>
+                    <input type="datetime-local" id="fecha" required>
+                </div>
 
-<select id="cliente">
+            </div>
 
-<option value="">
-Seleccionar cliente
-</option>
+            <div class="acciones">
+                <button type="submit" class="btn btn-primary">
+                    Crear turno
+                </button>
+            </div>
 
-</select>
+        </form>
 
-</div>
+    </section>
 
 
+    <!-- ==========================
+         BUSQUEDA Y FILTROS
+    ========================== -->
 
-<div class="form-group">
+    <section class="card">
 
-<label>Empleado</label>
+        <h2>Buscar turnos</h2>
 
-<select id="empleado">
+        <div class="fila">
 
-<option value="">
-Seleccionar empleado
-</option>
+            <div class="form-group">
+                <label for="busqueda">Buscar</label>
+                <input
+                    type="text"
+                    id="busqueda"
+                    placeholder="Cliente, empleado o servicio...">
+            </div>
 
-</select>
+            <div class="form-group">
+                <label for="filtroEstado">Estado</label>
+                <select id="filtroEstado">
+                    <option value="">Todos</option>
+                    <option value="pendiente">Pendiente</option>
+                    <option value="confirmado">Confirmado</option>
+                    <option value="cancelado">Cancelado</option>
+                    <option value="finalizado">Finalizado</option>
+                </select>
+            </div>
 
-</div>
+        </div>
 
+    </section>
 
 
-</div>
+    <!-- ==========================
+         TABLA TURNOS
+    ========================== -->
 
+    <section class="card">
 
+        <h2>Turnos registrados</h2>
 
-<div class="fila">
+        <div class="tabla-wrapper">
 
+            <table class="lista-turnos">
 
-<div class="form-group">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Cliente</th>
+                        <th>Empleado</th>
+                        <th>Servicio</th>
+                        <th>Fecha</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
 
-<label>Servicio</label>
+                <tbody id="tablaTurnos">
+                </tbody>
 
-<select id="servicio">
+            </table>
 
-<option value="">
-Seleccionar servicio
-</option>
+        </div>
 
-</select>
+        <p id="mensaje" class="mensaje" aria-live="polite"></p>
 
-</div>
+    </section>
 
 
+    <!-- ==========================
+         MODAL EDITAR
+    ========================== -->
 
-<div class="form-group">
+    <div id="modalEditar" class="modal" style="display:none;">
 
-<label>Fecha y hora</label>
+        <div class="modal-contenido">
 
-<input 
-type="datetime-local"
-id="fecha"
-required
->
+            <h2>Editar turno</h2>
 
-</div>
+            <input type="hidden" id="editarId">
 
+            <div class="form-group">
+                <label for="editarEmpleado">Empleado</label>
+                <select id="editarEmpleado"></select>
+            </div>
 
-</div>
+            <div class="form-group">
+                <label for="editarFecha">Fecha</label>
+                <input type="datetime-local" id="editarFecha">
+            </div>
 
+            <div class="form-group">
+                <label for="editarEstado">Estado</label>
+                <select id="editarEstado">
+                    <option value="pendiente">Pendiente</option>
+                    <option value="confirmado">Confirmado</option>
+                    <option value="cancelado">Cancelado</option>
+                    <option value="finalizado">Finalizado</option>
+                </select>
+            </div>
 
+            <div class="acciones">
+                <button id="guardarEdicion" class="btn btn-primary">
+                    Guardar
+                </button>
+                <button id="cerrarModal" class="btn btn-secondary">
+                    Cerrar
+                </button>
+            </div>
 
-<button class="btn btn-primary">
+        </div>
 
-Crear turno
-
-</button>
-
-
-
-</form>
-
-
-</section>
-
-
-
-
-
-
-<!-- ==========================
-     BUSQUEDA Y FILTROS
-========================== -->
-
-
-<section class="card">
-
-
-<h2>Buscar turnos</h2>
-
-
-
-<div class="fila">
-
-
-<div class="form-group">
-
-<label>Buscar</label>
-
-<input
-type="text"
-id="busqueda"
-placeholder="Cliente, empleado o servicio..."
->
-
-
-</div>
-
-
-
-<div class="form-group">
-
-
-<label>Estado</label>
-
-
-<select id="filtroEstado">
-
-<option value="">
-Todos
-</option>
-
-<option value="pendiente">
-Pendiente
-</option>
-
-<option value="confirmado">
-Confirmado
-</option>
-
-<option value="cancelado">
-Cancelado
-</option>
-
-<option value="finalizado">
-Finalizado
-</option>
-
-
-</select>
-
-
-</div>
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-<!-- ==========================
-     TABLA TURNOS
-========================== -->
-
-
-<section class="card">
-
-
-<h2>Turnos registrados</h2>
-
-
-
-<table class="tabla">
-
-
-<thead>
-
-
-<tr>
-
-<th>ID</th>
-
-<th>Cliente</th>
-
-<th>Empleado</th>
-
-<th>Servicio</th>
-
-<th>Fecha</th>
-
-<th>Estado</th>
-
-<th>Acciones</th>
-
-
-</tr>
-
-
-</thead>
-
-
-
-
-<tbody id="tablaTurnos">
-
-
-</tbody>
-
-
-
-</table>
-
-
-<p 
-id="mensaje"
-class="mensaje">
-</p>
-
-
-
-</section>
-
-
-
-
-
-
-<!-- ==========================
-     MODAL EDITAR
-========================== -->
-
-
-<div 
-id="modalEditar"
-class="modal"
-style="display:none;">
-
-
-<div class="modal-contenido">
-
-
-<h2>
-Editar turno
-</h2>
-
-
-
-<input 
-type="hidden"
-id="editarId"
->
-
-
-
-<label>Empleado</label>
-
-<select id="editarEmpleado">
-
-</select>
-
-
-
-
-<label>Fecha</label>
-
-<input
-type="datetime-local"
-id="editarFecha"
->
-
-
-
-
-<label>Estado</label>
-
-
-<select id="editarEstado">
-
-
-<option value="pendiente">
-Pendiente
-</option>
-
-
-<option value="confirmado">
-Confirmado
-</option>
-
-
-<option value="cancelado">
-Cancelado
-</option>
-
-
-<option value="finalizado">
-Finalizado
-</option>
-
-
-</select>
-
-
-
-
-<div class="acciones">
-
-
-<button
-id="guardarEdicion"
-class="btn btn-primary">
-
-Guardar
-
-</button>
-
-
-
-<button
-id="cerrarModal"
-class="btn btn-secondary">
-
-Cerrar
-
-</button>
-
-
-
-</div>
-
-
-</div>
-
-
-</div>
-
-
-
-
+    </div>
 
 </main>
 
-
-
-<script 
-type="module"
-src="../js/turnos/turnos.js">
-</script>
-
+<script type="module" src="../js/turnos/turnos.js"></script>
 
 </body>
 

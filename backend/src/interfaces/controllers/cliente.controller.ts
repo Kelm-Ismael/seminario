@@ -15,11 +15,11 @@ export const crearClienteController = async (
     //exportamos datos enviados desde frontend
     //req.body contiene el JSON recibido
 
-    const { nombre, telefono, email } = req.body;
+    const { nombre, telefono, email, created_at } = req.body;
 
     //ejecutamos la logica del caso de uso
     const nuevoCliente = await crearCliente(
-        nombre, telefono, email
+        nombre, telefono, email, created_at
     );
     
     //respodemos con status 201 creado 

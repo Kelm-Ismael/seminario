@@ -5,23 +5,31 @@ import { crearCliente as crearClienteRepository } from "../../infrastructure/rep
 //funcion principal del caso de uso
 
 export const crearCliente = async (
-    nomnbre: string,
+    nombre: string,
     telefono: string,
-    email: string
+    email: string,
+    created_at: string
+
 ) => {
     //validacion simple / trim elimina espacion vacio
-    if (!nomnbre.trim()) {//=> lanzar error si esta vacio
+    if (!nombre.trim()) {//=> lanzar error si esta vacio
 
     throw new Error("El nombre es obligatorio");
 }
 
 //llama a repositorio p/guardar en DB
 const clienteCreado = await crearClienteRepository(
-    nomnbre,
+    nombre,
     telefono,
-    email
+    email,  
+    created_at
+
+
+    
 );
 
 return clienteCreado; // devuelve cliente creado
 
 };
+
+

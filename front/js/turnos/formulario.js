@@ -1,6 +1,5 @@
 import { API_TURNOS } from "../core/config.js";
 import { postDatos } from "../core/api.js";
-import { obtenerTurnos } from "./listado.js";
 
 const formulario = document.getElementById("formTurno");
 
@@ -16,8 +15,7 @@ export async function crearTurno(e) {
     const empleado_id = selectEmpleado.value;
     const servicio_id = selectServicio.value;
 
-    // El input #fecha es type="datetime-local":
-    // ya trae fecha y hora juntas, ej: "2026-07-24T15:30"
+    // #fecha es datetime-local: ya trae fecha + hora juntas ("2026-07-25T14:30")
     const fecha = document.getElementById("fecha").value;
 
     if (!cliente_id || !empleado_id || !servicio_id || !fecha) {
@@ -29,15 +27,10 @@ export async function crearTurno(e) {
     }
 
     const turno = {
-
         cliente_id: Number(cliente_id),
-
         empleado_id: Number(empleado_id),
-
         servicio_id: Number(servicio_id),
-
-        fecha
-
+        fecha: fecha.replace("T", " ") // Postgres prefiere "YYYY-MM-DD HH:MM"
     };
 
     try {
@@ -45,19 +38,13 @@ export async function crearTurno(e) {
         const response = await postDatos(API_TURNOS, turno);
 
         if (response.status === 409) {
-
             const data = await response.json();
-
             alert(data.message);
-
             return;
-
         }
 
         if (!response.ok) {
-
             throw new Error("Error al crear turno");
-
         }
 
         await response.json();
@@ -66,7 +53,8 @@ export async function crearTurno(e) {
 
         formulario.reset();
 
-        obtenerTurnos();
+        // turnos.js ya llama a cargarTurnos() después de este await,
+        // no hace falta refrescar acá adentro.
 
     } catch (error) {
 

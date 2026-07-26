@@ -18,18 +18,24 @@ async function crearCliente(e) {
     const nombre = document.getElementById("nombre").value;
     const telefono = document.getElementById("telefono").value;
     const email = document.getElementById("email").value;
+    const created_at = document.getElementById("created_at").value;
 
     if (!nombre.trim()) {
         alert("El nombre es obligatorio");
         return;
     }
 
+    if (!created_at) {
+    alert("La fecha y hora son obligatorias");
+    return;
+}
+
     const cliente = {
         nombre,
         telefono,
-        email
+        email,
+        created_at
     };
-
     try {
 
         const response = await fetch(API, {
@@ -119,6 +125,7 @@ function mostrarClientes(clientes) {
             <td>${cliente.nombre}</td>
             <td>${cliente.telefono ?? "-"}</td>
             <td>${cliente.email ?? "-"}</td>
+            <td>${cliente.created_at ?? "-"}</td>
         `;
 
         tbody.appendChild(tr);

@@ -4,19 +4,41 @@ import { actualizarTurnoCasoDeUso } from "../../aplication/use-cases/actualizarT
 
 import { obtenerTurnos } from "../../infrastructure/repositories/obtenerTurnos";
 import {
-    obtenerTurnoPorId,
-    cancelarTurno
+  obtenerTurnoPorId,
+  cancelarTurno
 } from "../../infrastructure/repositories/turno.repository";
+
+import { enviarWhatsApp } from "../../infrastructure/whatsapp/whatsapp.service";
+// Crear turno
+
 
 // Crear turno
 export const crearTurnoControlador = async (req: Request, res: Response) => {
   try {
     const turno = await CrearTurnoCasoDeUso(req.body);
+
+    // Respondemos ya al frontend...
     res.status(201).json(turno);
+
+    // ...y mandamos el WhatsApp en segundo plano, sin bloquear la respuesta.
+    // Necesitamos los datos completos (nombre, teléfono) del turno recién creado.
+    const turnoCompleto = await obtenerTurnoPorId(turno.id_turnos);
+
+    if (turnoCompleto?.cliente_telefono) {
+
+      const fechaLegible = new Date(turnoCompleto.fecha)
+        .toLocaleString("es-AR", { dateStyle: "short", timeStyle: "short" });
+
+      enviarWhatsApp(
+        turnoCompleto.cliente_telefono,
+        `Hola ${turnoCompleto.cliente_nombre}! Tu turno para ${turnoCompleto.servicio_nombre} quedó confirmado para el ${fechaLegible} con ${turnoCompleto.empleado_nombre}. Te esperamos 💈`
+      );
+
+    }
+
   } catch (error: any) {
     console.error(error);
 
-    // Mensaje de negocio (choque de horario) -> 409 Conflict
     if (error.message === "El empleado ya tiene un turno en ese horario") {
       res.status(409).json({ message: error.message });
       return;
@@ -62,6 +84,7 @@ export const obtenerTurnoPorIdController = async (
 };
 
 // Actualizar turno (fecha y/o estado)
+// Actualizar turno (fecha y/o estado y/o empleado)
 export const actualizarTurnoController = async (
   req: Request,
   res: Response
@@ -70,14 +93,22 @@ export const actualizarTurnoController = async (
     const id = Number(req.params.id);
     const { empleado_id, fecha, estado } = req.body;
 
-    const turnoActualizado = await actualizarTurnoCasoDeUso(
-      id, empleado_id, fecha, estado
-    );
+    // Traemos el turno actual para permitir updates parciales
+    // (si solo mandan "estado", no queremos pisar empleado_id/fecha con NULL)
+    const turnoActual = await obtenerTurnoPorId(id);
 
-    if (!turnoActualizado) {
+    if (!turnoActual) {
       res.status(404).json({ message: "Turno no encontrado" });
       return;
     }
+
+    const empleadoFinal = empleado_id ?? turnoActual.empleado_id;
+    const fechaFinal = fecha ?? turnoActual.fecha;
+    const estadoFinal = estado ?? turnoActual.estado;
+
+    const turnoActualizado = await actualizarTurnoCasoDeUso(
+      id, empleadoFinal, fechaFinal, estadoFinal
+    );
 
     res.status(200).json(turnoActualizado);
   } catch (error: any) {
