@@ -1,10 +1,10 @@
 
 
-export const API_TURNOS = "https://seminario-pink.vercel.app/pages/turnos.html";
+export const API_TURNOS = "https://seminario-pink.vercel.app/turnos";
 
-export const API_SERVICIOS = "https://seminario-pink.vercel.app/pages/servicios/servicios.html";
-export const API_EMPLEADOS = "https://seminario-pink.vercel.app/pages/empleados/empleados.html";
-export const API_CLIENTES = "https://seminario-pink.vercel.app/pages/clientes/clientes.html";
+export const API_SERVICIOS = "https://seminario-pink.vercel.app/pages/servicios";
+export const API_EMPLEADOS = "https://seminario-pink.vercel.app/pages/empleados";
+export const API_CLIENTES = "https://seminario-pink.vercel.app/pages/clientes/clientes";
 
 //-------------------------------------------------------
 //esto para localhost nomas
