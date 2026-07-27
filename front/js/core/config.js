@@ -1,9 +1,10 @@
 
 
-export const API_TURNOS = "https://seminario-production-a1b2.up.railway.app/turnos";
-export const API_SERVICIOS = "https://seminario-production-a1b2.up.railway.app/servicios";
-export const API_EMPLEADOS = "https://seminario-production-a1b2.up.railway.app/empleados";
-export const API_CLIENTES = "https://seminario-production-a1b2.up.railway.app/cliente/clientes";
+export const API_TURNOS = "https://seminario-pink.vercel.app/pages/turnos.html";
+
+export const API_SERVICIOS = "https://seminario-pink.vercel.app/pages/servicios/servicios.html";
+export const API_EMPLEADOS = "https://seminario-pink.vercel.app/pages/empleados/empleados.html";
+export const API_CLIENTES = "https://seminario-pink.vercel.app/pages/clientes/clientes.html";
 
 //-------------------------------------------------------
 //esto para localhost nomas
