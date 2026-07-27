@@ -3,7 +3,7 @@
 import express from "express";
 
 // Importa el middleware CORS, que permite que el frontend pueda comunicarse con el backend.
-import cors from "cors";
+import cors from "cors"; //ver despues si se puede eliminar, ya que no se usa en el proyecto, pero es recomendable dejarlo por si se necesita en el futuro
 
 // Importa el módulo 'path' de Node.js para trabajar con rutas de archivos y carpetas.
 import path from "path";
