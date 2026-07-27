@@ -13,7 +13,7 @@ import turnoRoutes from "./interfaces/routes/turno.routes";
 
 // Importa las rutas relacionadas con los clientes.
 import clienteRoutes from "./interfaces/routes/cliente.routes";
-import servicioRoutes from "./interfaces/routes/servicio.routes";
+import servicioRoutes from "./interfaces/routes/Servicio.routes";
 import empleadoRoutes from "./interfaces/routes/empleado.routes";
 
 // Crea una instancia de la aplicación Express.

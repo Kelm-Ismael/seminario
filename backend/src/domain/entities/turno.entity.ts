@@ -25,12 +25,12 @@ export class Turno {
     return this.estado === 'pendiente' || this.estado === 'confirmado'
   }
 
-  esPasado(): boolean {
-    const ahora    = new Date()
-    const [h, m]   = this.hora.split(':').map(Number)
-    const fechaHora = new Date(this.fecha)
-    fechaHora.setHours(h, m, 0, 0)
-    return fechaHora < ahora
+    esPasado(): boolean {
+      const ahora    = new Date()
+      const [h, m]   = this.hora.split(':').map(Number)
+      const fechaHora = new Date(this.fecha)
+      fechaHora.setHours(h ?? 0, m ?? 0, 0, 0)
+      return fechaHora < ahora
   }
 
   puedesCancelar(): boolean {
