@@ -1,4 +1,4 @@
-const API = "https://seminario-pink.vercel.app/pages/clientes/clientes.html";
+const API = "https://seminario-pink.vercel.app/clientes/clientes";
 //para localhost nomas
 // const API = "http://localhost:3000/cliente/clientes";
 
