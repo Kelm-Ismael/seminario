@@ -1,7 +1,7 @@
 // front/config/environment.js
 const CONFIG = {
     //API_URL: "http://localhost:3000"
-    API_URL: "https://tu-url-de-railway.up.railway.app"
+    API_URL: "https://seminario-production-627f.up.railway.app"
 };
 
 export default CONFIG;
