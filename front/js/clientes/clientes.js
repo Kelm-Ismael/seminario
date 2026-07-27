@@ -1,4 +1,6 @@
-const API = "http://localhost:3000/cliente/clientes";
+const API = "https://tu-url-de-railway.up.railway.app/cliente/clientes";
+//para localhost nomas
+// const API = "http://localhost:3000/cliente/clientes";
 
 const tbody = document.getElementById("tabla-clientes");
 const mensaje = document.getElementById("mensaje");
