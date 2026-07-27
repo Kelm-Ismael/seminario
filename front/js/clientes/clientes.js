@@ -1,4 +1,4 @@
-const API = "https://tu-url-de-railway.up.railway.app/cliente/clientes";
+const API = "https://seminario-production-a1b2.up.railway.app/cliente/clientes";
 //para localhost nomas
 // const API = "http://localhost:3000/cliente/clientes";
 
