@@ -5,7 +5,7 @@ import { enviarWhatsApp } from "../whatsapp/whatsapp.service";
 export function iniciarSchedulerRecordatorios() {
 
   // Corre todos los días a las 9:00 AM, (0 9 * * *) hora del servidor. pra probar "*/1 * * * *"
-  cron.schedule("0 9 * * *", async () => {
+  cron.schedule("*/1 * * * *", async () => {
 
     console.log("⏰ Ejecutando recordatorios de turnos de mañana...");
 
