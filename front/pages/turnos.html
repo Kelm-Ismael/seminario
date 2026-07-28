@@ -37,56 +37,71 @@
          CREAR TURNO
     ========================== -->
 
-    <section class="card">
+    <div class="contenedor-secciones">
 
-        <h2>Crear nuevo turno</h2>
+        <!-- Tarjeta izquierda -->
+        <section class="card card-formulario">
 
-        <form id="formTurno">
+            <h2>Crear nuevo turno</h2>
 
-            <div class="fila">
+            <form id="formTurno">
 
-                <div class="form-group">
-                    <label for="cliente">Cliente</label>
-                    <select id="cliente" required>
-                        <option value="">Seleccionar cliente</option>
-                    </select>
+                <div class="fila">
+
+                    <div class="form-group">
+                        <label for="cliente">Cliente</label>
+                        <select id="cliente" required>
+                            <option value="">Seleccionar cliente</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="empleado">Empleado</label>
+                        <select id="empleado" required>
+                            <option value="">Seleccionar empleado</option>
+                        </select>
+                    </div>
+
                 </div>
 
-                <div class="form-group">
-                    <label for="empleado">Empleado</label>
-                    <select id="empleado" required>
-                        <option value="">Seleccionar empleado</option>
-                    </select>
+                <div class="fila">
+
+                    <div class="form-group">
+                        <label for="servicio">Servicio</label>
+                        <select id="servicio" required>
+                            <option value="">Seleccionar servicio</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fecha">Fecha y hora</label>
+                        <input type="datetime-local" id="fecha" required>
+                    </div>
+
                 </div>
 
-            </div>
-
-            <div class="fila">
-
-                <div class="form-group">
-                    <label for="servicio">Servicio</label>
-                    <select id="servicio" required>
-                        <option value="">Seleccionar servicio</option>
-                    </select>
+                <div class="acciones">
+                    <button type="submit" class="btn btn-primary">
+                        Crear turno
+                    </button>
                 </div>
 
-                <div class="form-group">
-                    <label for="fecha">Fecha y hora</label>
-                    <input type="datetime-local" id="fecha" required>
-                </div>
+            </form>
 
-            </div>
+        </section>
 
-            <div class="acciones">
-                <button type="submit" class="btn btn-primary">
-                    Crear turno
-                </button>
-            </div>
+        <!-- Tarjeta derecha -->
+        <section class="card card-menu">
 
-        </form>
+            <h2>Accesos rápidos</h2>
 
-    </section>
+            <a href="./clientes.html" class="btn-menu">Clientes</a>
+            <a href="./empleados.html" class="btn-menu">Empleados</a>
+            <a href="./empleados.html" class="btn-menu">Servicios</a>
 
+        </section>
+
+    </div>
 
     <!-- ==========================
          BUSQUEDA Y FILTROS
@@ -119,7 +134,10 @@
 
         </div>
 
+
     </section>
+    
+
 
 
     <!-- ==========================

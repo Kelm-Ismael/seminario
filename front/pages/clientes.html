@@ -8,6 +8,7 @@
     <title>Gestión de Clientes</title>
 
     <link rel="stylesheet" href="../css/turno.css">
+    
 </head>
 
 <body>
@@ -18,6 +19,9 @@
             <h1>👤 Gestión de Clientes</h1>
             <p>Alta y listado de clientes</p>
         </header>
+         <nav class="nav-links">
+            <a href="../index.html">Inicio</a>
+        </nav>
 
 
         <!-- Formulario de creación -->
@@ -48,9 +52,13 @@
 
                 <div class="acciones">
                     <button type="submit" class="btn-primary">Crear cliente</button>
-                    <button type="button" id="btnVolver" class="btn-secondary">Volver al inicio</button>
-                </div>
+                    
 
+                    <button class="btn btn-secondary" onclick="history.back()">
+                        ← Volver a turnos
+                    </button>
+                </div>
+               
             </form>
 
         </section>

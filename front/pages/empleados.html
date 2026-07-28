@@ -6,10 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Servicios</title>
+    <title>Empleados</title>
 
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/servicios.css">
+    <link rel="stylesheet" href="../css/empleadoyservicio.css">
 
 </head>
 
@@ -19,16 +19,16 @@
 
         <header class="page-header">
 
-            <h1>Administración de Servicios</h1>
-            <p>Gestión completa de servicios</p>
+            <h1>Administración de Empleados</h1>
+            <p>Gestión completa de empleados</p>
 
         </header>
 
         <section class="card">
 
-            <h2>Nuevo servicio</h2>
+            <h2>Nuevo empleado</h2>
 
-            <form id="formServicio">
+            <form id="formEmpleado">
 
                 <div class="fila">
 
@@ -38,8 +38,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Precio</label>
-                        <input type="number" step="0.01" id="precio" required>
+                        <label>Teléfono</label>
+                        <input type="text" id="telefono" required>
                     </div>
 
                 </div>
@@ -47,8 +47,8 @@
                 <div class="fila">
 
                     <div class="form-group">
-                        <label>Duración (min)</label>
-                        <input type="number" id="duracion" required>
+                        <label>Email</label>
+                        <input type="email" id="email">
                     </div>
 
                     <div class="form-group">
@@ -65,7 +65,7 @@
 
                 <div class="acciones">
                     <button class="btn btn-primary">
-                        Guardar servicio
+                        Guardar empleado
                     </button>
                     <button class="btn btn-secondary" onclick="history.back()">
                         ← Volver a turnos
@@ -78,7 +78,7 @@
 
         <section class="card">
 
-            <h2>Lista de servicios</h2>
+            <h2>Lista de empleados</h2>
 
             <table>
 
@@ -86,15 +86,15 @@
 
                     <tr>
                         <th>Nombre</th>
-                        <th>Precio</th>
-                        <th>Duración</th>
+                        <th>Teléfono</th>
+                        <th>Email</th>
                         <th>Estado</th>
                         <th>Acciones</th>
                     </tr>
 
                 </thead>
 
-                <tbody id="tablaServicios"></tbody>
+                <tbody id="tablaEmpleados"></tbody>
 
             </table>
 
@@ -102,7 +102,7 @@
 
     </main>
 
-    <script type="module" src="../js/servicios/servicios.js"></script>
+    <script type="module" src="../js/empleado/empleado.js"></script>
 
 </body>
 
