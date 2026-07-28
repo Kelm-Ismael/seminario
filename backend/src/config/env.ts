@@ -9,6 +9,14 @@ export const contraseña_db = process.env.DB_PASSWORD || "476235";
 export const nombre_db = process.env.nombre_db || "peluqueria"; //nombre db
 export const puerto_db = process.env.puerto_db || "5432"; //puerto de PostgresSQ
 
+console.log("DEBUG ENV →", {
+  host: host_db,
+  user: usuario_db,
+  db: nombre_db,
+  port: puerto_db,
+  passLen: contraseña_db?.length
+});
+
 // Twilio / WhatsApp
 export const TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID || "AC5ff95232ac4e9136f02668c38405435c";
 export const TWILIO_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN || "f493a7770679926d5e13a044907d65a6";
