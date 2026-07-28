@@ -11,9 +11,15 @@ btnVolver.addEventListener("click", () => {
     window.location.href = "../index.html";
 });
 
+let clientesActuales = [];
+let editandoId = null;
+
+const btnSubmit = formulario.querySelector("button.btn-primary");
 formulario.addEventListener("submit", crearCliente);
 
-async function crearCliente(e) {
+formulario.addEventListener("submit", guardarCliente);
+
+async function guardarCliente(e) {
 
     e.preventDefault();
 
@@ -22,56 +28,48 @@ async function crearCliente(e) {
     const email = document.getElementById("email").value;
     const created_at = document.getElementById("created_at").value;
 
-    if (!nombre.trim()) {
-        alert("El nombre es obligatorio");
-        return;
-    }
-
-    if (!created_at) {
-    alert("La fecha y hora son obligatorias");
-    return;
-}
-
     const cliente = {
         nombre,
         telefono,
         email,
         created_at
     };
+
     try {
 
-        const response = await fetch(API, {
+        const url = editandoId
+            ? `${API}/${editandoId}`
+            : API;
 
-            method: "POST",
+        const method = editandoId
+            ? "PUT"
+            : "POST";
+
+        const response = await fetch(url, {
+
+            method,
 
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type":"application/json"
             },
 
             body: JSON.stringify(cliente)
 
         });
 
-        if (!response.ok) {
-            throw new Error("Error al crear el cliente");
+        if(!response.ok){
+            throw new Error();
         }
 
-        const nuevoCliente = await response.json();
+        await response.json();
 
-        console.log("Cliente creado:", nuevoCliente);
+        cancelarEdicion();
 
-        alert("Cliente creado correctamente");
-
-        formulario.reset();
-
-        // Recargar la lista
         obtenerClientes();
 
-    } catch (error) {
+    }catch(error){
 
         console.error(error);
-
-        alert("No se pudo crear el cliente");
 
     }
 
@@ -92,7 +90,10 @@ async function obtenerClientes() {
 
         const clientes = await response.json();
 
-        mostrarClientes(clientes);
+        // mostrarClientes(clientes);
+        clientesActuales = await response.json();
+
+        mostrarClientes(clientesActuales);
 
     } catch (error) {
 
@@ -122,16 +123,92 @@ function mostrarClientes(clientes) {
 
         const tr = document.createElement("tr");
 
-        tr.innerHTML = `
-            <td>${cliente.id_clientes}</td>
-            <td>${cliente.nombre}</td>
-            <td>${cliente.telefono ?? "-"}</td>
-            <td>${cliente.email ?? "-"}</td>
-            <td>${cliente.created_at ?? "-"}</td>
-        `;
+        // tr.innerHTML = `
+        //     <td>${cliente.id_clientes}</td>
+        //     <td>${cliente.nombre}</td>
+        //     <td>${cliente.telefono ?? "-"}</td>
+        //     <td>${cliente.email ?? "-"}</td>
+        //     <td>${cliente.created_at ?? "-"}</td>
+        // `;
+        <tr>
+        <td>${cliente.nombre}</td>
+        <td>${cliente.telefono ?? "-"}</td>
+        <td>${cliente.email ?? "-"}</td>
+        <td>${cliente.created_at ?? "-"}</td>
 
-        tbody.appendChild(tr);
+        <td>
 
+        <button
+        class="editar"
+        data-id="${cliente.id_clientes}">
+        ✏️
+        </button>
+
+        <button
+        class="eliminar"
+        data-id="${cliente.id_clientes}">
+        🗑️
+        </button>
+
+        </td>
+
+        </tr>
     });
 
+
 }
+function entrarModoEdicion(cliente){
+
+    editandoId = cliente.id_clientes;
+
+    document.getElementById("nombre").value = cliente.nombre;
+    document.getElementById("telefono").value = cliente.telefono ?? "";
+    document.getElementById("email").value = cliente.email ?? "";
+    document.getElementById("created_at").value = cliente.created_at;
+
+    btnSubmit.textContent = "Actualizar cliente";
+
+}
+
+function cancelarEdicion(){
+
+    editandoId = null;
+
+    formulario.reset();
+
+    btnSubmit.textContent = "Guardar cliente";
+
+}
+document.addEventListener("click", async (e)=>{
+
+    if(e.target.classList.contains("editar")){
+
+        const id = e.target.dataset.id;
+
+        const cliente = clientesActuales.find(c=>String(c.id_clientes)===String(id));
+
+        if(cliente){
+
+            entrarModoEdicion(cliente);
+
+        }
+
+    }
+
+    if(e.target.classList.contains("eliminar")){
+
+        const id = e.target.dataset.id;
+
+        if(!confirm("¿Eliminar cliente?")) return;
+
+        await fetch(`${API}/${id}`,{
+
+            method:"DELETE"
+
+        });
+
+        obtenerClientes();
+
+    }
+
+});
