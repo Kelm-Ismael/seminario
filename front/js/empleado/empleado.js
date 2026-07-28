@@ -1,21 +1,15 @@
 import { API_EMPLEADOS } from "../core/config.js";
 
-const tbody = document.getElementById("tabla-empleados");
-const mensaje = document.getElementById("mensaje");
+const tbody = document.getElementById("tablaEmpleados");
 const formulario = document.getElementById("formEmpleado");
-const btnVolver = document.getElementById("btnVolver");
+const btnSubmit = formulario.querySelector("button.btn-primary");
 
-if (btnVolver) {
-    btnVolver.addEventListener("click", () => {
-        window.location.href = "../index.html";
-    });
-}
+let empleadosActuales = [];
+let editandoId = null;
 
-if (formulario) {
-    formulario.addEventListener("submit", crearEmpleado);
-}
+formulario.addEventListener("submit", guardarEmpleado);
 
-async function crearEmpleado(e) {
+async function guardarEmpleado(e) {
 
     e.preventDefault();
 
@@ -28,35 +22,64 @@ async function crearEmpleado(e) {
         return;
     }
 
-    const empleado = { nombre, telefono, email };
+    const datos = { nombre, telefono, email };
 
     try {
 
-        const response = await fetch(API_EMPLEADOS, {
-            method: "POST",
+        const url = editandoId
+            ? `${API_EMPLEADOS}/${editandoId}`
+            : API_EMPLEADOS;
+
+        const method = editandoId ? "PUT" : "POST";
+
+        const response = await fetch(url, {
+            method,
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(empleado)
+            body: JSON.stringify(datos)
         });
 
         if (!response.ok) {
-            throw new Error("Error al crear el empleado");
+            throw new Error(editandoId ? "Error al actualizar" : "Error al crear el empleado");
         }
 
         await response.json();
 
-        alert("Empleado creado correctamente");
+        alert(editandoId ? "Empleado actualizado" : "Empleado creado correctamente");
 
-        formulario.reset();
+        cancelarEdicion();
 
         obtenerEmpleados();
 
     } catch (error) {
 
         console.error(error);
-
-        alert("No se pudo crear el empleado");
+        alert(editandoId ? "No se pudo actualizar el empleado" : "No se pudo crear el empleado");
 
     }
+
+}
+
+function entrarModoEdicion(empleado) {
+
+    editandoId = empleado.id_empleados;
+
+    document.getElementById("nombre").value = empleado.nombre;
+    document.getElementById("telefono").value = empleado.telefono ?? "";
+    document.getElementById("email").value = empleado.email ?? "";
+
+    btnSubmit.textContent = "Actualizar empleado";
+
+    formulario.scrollIntoView({ behavior: "smooth" });
+
+}
+
+function cancelarEdicion() {
+
+    editandoId = null;
+
+    formulario.reset();
+
+    btnSubmit.textContent = "Guardar empleado";
 
 }
 
@@ -72,15 +95,17 @@ async function obtenerEmpleados() {
             throw new Error("Error al obtener los empleados");
         }
 
-        const empleados = await response.json();
+        empleadosActuales = await response.json();
 
-        mostrarEmpleados(empleados);
+        mostrarEmpleados(empleadosActuales);
 
     } catch (error) {
 
         console.error(error);
 
-        if (mensaje) mensaje.textContent = "Error al cargar los empleados.";
+        if (tbody) {
+            tbody.innerHTML = `<tr><td colspan="5">Error al cargar los empleados.</td></tr>`;
+        }
 
     }
 
@@ -93,23 +118,22 @@ function mostrarEmpleados(empleados) {
     tbody.innerHTML = "";
 
     if (empleados.length === 0) {
-        if (mensaje) mensaje.style.display = "block";
+        tbody.innerHTML = `<tr><td colspan="5">No hay empleados registrados</td></tr>`;
         return;
     }
-
-    if (mensaje) mensaje.style.display = "none";
 
     empleados.forEach(empleado => {
 
         const tr = document.createElement("tr");
 
         tr.innerHTML = `
-            <td>${empleado.id_empleados}</td>
             <td>${empleado.nombre}</td>
             <td>${empleado.telefono ?? "-"}</td>
             <td>${empleado.email ?? "-"}</td>
+            <td>Activo</td>
             <td>
-                <button class="eliminar" data-id="${empleado.id_empleados}">🗑️</button>
+                <button type="button" class="editar" data-id="${empleado.id_empleados}">✏️</button>
+                <button type="button" class="eliminar" data-id="${empleado.id_empleados}">🗑️</button>
             </td>
         `;
 
@@ -119,8 +143,19 @@ function mostrarEmpleados(empleados) {
 
 }
 
-// Baja lógica (activo = false, mismo criterio que usa el backend)
 document.addEventListener("click", async (e) => {
+
+    if (e.target.classList.contains("editar")) {
+
+        const id = e.target.dataset.id;
+
+        const empleado = empleadosActuales.find(
+            emp => String(emp.id_empleados) === String(id)
+        );
+
+        if (empleado) entrarModoEdicion(empleado);
+
+    }
 
     if (e.target.classList.contains("eliminar")) {
 
@@ -137,6 +172,8 @@ document.addEventListener("click", async (e) => {
             if (!response.ok) {
                 throw new Error("Error al eliminar");
             }
+
+            if (editandoId === id) cancelarEdicion();
 
             obtenerEmpleados();
 

@@ -1,21 +1,15 @@
 import { API_SERVICIOS } from "../core/config.js";
 
-const tbody = document.getElementById("tabla-servicios");
-const mensaje = document.getElementById("mensaje");
+const tbody = document.getElementById("tablaServicios");
 const formulario = document.getElementById("formServicio");
-const btnVolver = document.getElementById("btnVolver");
+const btnSubmit = formulario.querySelector("button.btn-primary");
 
-if (btnVolver) {
-    btnVolver.addEventListener("click", () => {
-        window.location.href = "../index.html";
-    });
-}
+let serviciosActuales = [];
+let editandoId = null;
 
-if (formulario) {
-    formulario.addEventListener("submit", crearServicio);
-}
+formulario.addEventListener("submit", guardarServicio);
 
-async function crearServicio(e) {
+async function guardarServicio(e) {
 
     e.preventDefault();
 
@@ -38,35 +32,64 @@ async function crearServicio(e) {
         return;
     }
 
-    const servicio = { nombre, precio, duracion };
+    const datos = { nombre, precio, duracion };
 
     try {
 
-        const response = await fetch(API_SERVICIOS, {
-            method: "POST",
+        const url = editandoId
+            ? `${API_SERVICIOS}/${editandoId}`
+            : API_SERVICIOS;
+
+        const method = editandoId ? "PUT" : "POST";
+
+        const response = await fetch(url, {
+            method,
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(servicio)
+            body: JSON.stringify(datos)
         });
 
         if (!response.ok) {
-            throw new Error("Error al crear el servicio");
+            throw new Error(editandoId ? "Error al actualizar" : "Error al crear el servicio");
         }
 
         await response.json();
 
-        alert("Servicio creado correctamente");
+        alert(editandoId ? "Servicio actualizado" : "Servicio creado correctamente");
 
-        formulario.reset();
+        cancelarEdicion();
 
         obtenerServicios();
 
     } catch (error) {
 
         console.error(error);
-
-        alert("No se pudo crear el servicio");
+        alert(editandoId ? "No se pudo actualizar el servicio" : "No se pudo crear el servicio");
 
     }
+
+}
+
+function entrarModoEdicion(servicio) {
+
+    editandoId = servicio.id_servicios;
+
+    document.getElementById("nombre").value = servicio.nombre;
+    document.getElementById("precio").value = servicio.precio;
+    document.getElementById("duracion").value = servicio.duracion;
+
+    btnSubmit.textContent = "Actualizar servicio";
+
+    formulario.scrollIntoView({ behavior: "smooth" });
+
+}
+
+function cancelarEdicion() {
+
+    editandoId = null;
+
+    formulario.reset();
+
+    btnSubmit.textContent = "Guardar servicio";
 
 }
 
@@ -82,15 +105,17 @@ async function obtenerServicios() {
             throw new Error("Error al obtener los servicios");
         }
 
-        const servicios = await response.json();
+        serviciosActuales = await response.json();
 
-        mostrarServicios(servicios);
+        mostrarServicios(serviciosActuales);
 
     } catch (error) {
 
         console.error(error);
 
-        if (mensaje) mensaje.textContent = "Error al cargar los servicios.";
+        if (tbody) {
+            tbody.innerHTML = `<tr><td colspan="5">Error al cargar los servicios.</td></tr>`;
+        }
 
     }
 
@@ -103,23 +128,22 @@ function mostrarServicios(servicios) {
     tbody.innerHTML = "";
 
     if (servicios.length === 0) {
-        if (mensaje) mensaje.style.display = "block";
+        tbody.innerHTML = `<tr><td colspan="5">No hay servicios registrados</td></tr>`;
         return;
     }
-
-    if (mensaje) mensaje.style.display = "none";
 
     servicios.forEach(servicio => {
 
         const tr = document.createElement("tr");
 
         tr.innerHTML = `
-            <td>${servicio.id_servicios}</td>
             <td>${servicio.nombre}</td>
             <td>$${servicio.precio}</td>
             <td>${servicio.duracion} min</td>
+            <td>Activo</td>
             <td>
-                <button class="eliminar" data-id="${servicio.id_servicios}">🗑️</button>
+                <button type="button" class="editar" data-id="${servicio.id_servicios}">✏️</button>
+                <button type="button" class="eliminar" data-id="${servicio.id_servicios}">🗑️</button>
             </td>
         `;
 
@@ -130,6 +154,18 @@ function mostrarServicios(servicios) {
 }
 
 document.addEventListener("click", async (e) => {
+
+    if (e.target.classList.contains("editar")) {
+
+        const id = e.target.dataset.id;
+
+        const servicio = serviciosActuales.find(
+            s => String(s.id_servicios) === String(id)
+        );
+
+        if (servicio) entrarModoEdicion(servicio);
+
+    }
 
     if (e.target.classList.contains("eliminar")) {
 
@@ -146,6 +182,8 @@ document.addEventListener("click", async (e) => {
             if (!response.ok) {
                 throw new Error("Error al eliminar");
             }
+
+            if (editandoId === id) cancelarEdicion();
 
             obtenerServicios();
 
