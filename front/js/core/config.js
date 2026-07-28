@@ -1,10 +1,10 @@
 
 
-export const API_TURNOS = "seminario-production-627f.up.railway.app/turnos";
+export const API_TURNOS = "https://seminario-production-627f.up.railway.app/turnos";
 
-export const API_SERVICIOS = "seminario-production-627f.up.railway.app/servicios";
-export const API_EMPLEADOS = "seminario-production-627f.up.railway.app/empleados";
-export const API_CLIENTES = "seminario-production-627f.up.railway.app/clientes/clientes";
+export const API_SERVICIOS = "https://seminario-production-627f.up.railway.app/servicios";
+export const API_EMPLEADOS = "https://seminario-production-627f.up.railway.app/empleados";
+export const API_CLIENTES = "https://seminario-production-627f.up.railway.app/cliente/clientes";
 
 //-------------------------------------------------------
 //esto para localhost nomas
