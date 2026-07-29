@@ -2,7 +2,7 @@
   "name": "David Martinez - Estilista Unisex",
   "short_name": "David Martinez",
   "description": "Reservá tu turno de peluquería online",
-  "start_url": "/index.html",
+  "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "background_color": "#f7f3eb",
