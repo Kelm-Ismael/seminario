@@ -130,29 +130,28 @@ function mostrarClientes(clientes) {
         //     <td>${cliente.email ?? "-"}</td>
         //     <td>${cliente.created_at ?? "-"}</td>
         // `;
-        <tr>
+        tr.innerHTML = `
         <td>${cliente.nombre}</td>
         <td>${cliente.telefono ?? "-"}</td>
         <td>${cliente.email ?? "-"}</td>
         <td>${cliente.created_at ?? "-"}</td>
 
         <td>
+            <button
+                class="editar"
+                data-id="${cliente.id_clientes}">
+                ✏️
+            </button>
 
-        <button
-        class="editar"
-        data-id="${cliente.id_clientes}">
-        ✏️
-        </button>
-
-        <button
-        class="eliminar"
-        data-id="${cliente.id_clientes}">
-        🗑️
-        </button>
-
+            <button
+                class="eliminar"
+                data-id="${cliente.id_clientes}">
+                🗑️
+            </button>
         </td>
+    `;
 
-        </tr>
+    tbody.appendChild(tr);
     });
 
 
