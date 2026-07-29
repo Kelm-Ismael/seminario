@@ -1,6 +1,6 @@
-const CACHE_NAME = "david-martinez-v1";
-
+const CACHE_NAME = "david-martinez-v2"; // 👈 subí la versión para forzar refresco de caché
 const ASSETS_TO_CACHE = [
+  "/",
   "/index.html",
   "/css/style.css",
   "/js/carrusel.js",
@@ -32,7 +32,6 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
-  // No cachear llamadas a la API — siempre red
   if (event.request.url.includes("/turnos") ||
       event.request.url.includes("/cliente") ||
       event.request.url.includes("/servicios") ||
@@ -42,15 +41,19 @@ self.addEventListener("fetch", (event) => {
 
   event.respondWith(
     caches.match(event.request).then((cached) => {
-      return (
-        cached ||
-        fetch(event.request).then((response) => {
+      if (cached) return cached;
+
+      return fetch(event.request)
+        .then((response) => {
           return caches.open(CACHE_NAME).then((cache) => {
             cache.put(event.request, response.clone());
             return response;
           });
         })
-      );
+        .catch(() => {
+          // Sin red y sin caché: devolvemos algo servible en vez de romper
+          return caches.match("/index.html");
+        });
     })
   );
 });
