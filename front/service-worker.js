@@ -11,31 +11,19 @@ const ASSETS_TO_CACHE = [
   "/css/turno.css"
 ];
 
-self.addEventListener("install", (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS_TO_CACHE))
-  );
-  self.skipWaiting();
-});
-
-self.addEventListener("activate", (event) => {
-  event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(
-        keys
-          .filter((key) => key !== CACHE_NAME)
-          .map((key) => caches.delete(key))
-      )
-    )
-  );
-  self.clients.claim();
-});
-
 self.addEventListener("fetch", (event) => {
-  if (event.request.url.includes("/turnos") ||
-      event.request.url.includes("/cliente") ||
-      event.request.url.includes("/servicios") ||
-      event.request.url.includes("/empleados")) {
+
+  const url = event.request.url;
+
+  // Solo cachear peticiones GET del propio origen — nunca extensiones, nunca otros esquemas
+  if (event.request.method !== "GET" || !url.startsWith(self.location.origin)) {
+    return;
+  }
+
+  if (url.includes("/turnos") ||
+      url.includes("/cliente") ||
+      url.includes("/servicios") ||
+      url.includes("/empleados")) {
     return;
   }
 
@@ -45,13 +33,19 @@ self.addEventListener("fetch", (event) => {
 
       return fetch(event.request)
         .then((response) => {
-          return caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, response.clone());
+          if (!response || response.status !== 200 || response.type !== "basic") {
             return response;
+          }
+
+          const responseClone = response.clone();
+
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, responseClone);
           });
+
+          return response;
         })
         .catch(() => {
-          // Sin red y sin caché: devolvemos algo servible en vez de romper
           return caches.match("/index.html");
         });
     })
