@@ -27,7 +27,7 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  event.respondWith(
+    event.respondWith(
     caches.match(event.request).then((cached) => {
       if (cached) return cached;
 
@@ -46,8 +46,15 @@ self.addEventListener("fetch", (event) => {
           return response;
         })
         .catch(() => {
-          return caches.match("/index.html");
+          // Solo mostramos un fallback si es una NAVEGACIÓN (el usuario
+          // está entrando a una página), nunca para JS/CSS/imágenes.
+          if (event.request.mode === "navigate") {
+            return caches.match("/index.html");
+          }
+          // Para assets, dejamos que el error se propague normalmente
+          return Response.error();
         });
     })
   );
 });
+
