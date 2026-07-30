@@ -1,5 +1,7 @@
 /* ==========================================
-   VARIABLES GLOBALES
+   VARIABLES GLOBALES — TEMA OSCURO (PANELES)
+   Usado por: dashboard, sidebar, navbar interno,
+   cards, tablas, formularios, botones, modal, schedule.
 ========================================== */
 
 :root {
@@ -15,6 +17,7 @@
     --color-danger: #EF4444;
     --color-warning: #F59E0B;
     --color-info: #3B82F6;
+    --color-tip: #F5B900; /* acento usado en "consejo del día" */
 
     --color-white: #FFFFFF;
     --color-black: #000000;
@@ -24,6 +27,7 @@
     --color-card: #1A1A1A;
 
     --color-border: #2D2D2D;
+    --color-border-hover: #4B3900;
 
     --color-text: #F5F5F5;
     --color-text-secondary: #B5B5B5;
@@ -33,9 +37,7 @@
     =========================== */
 
     --shadow-sm: 0 2px 8px rgba(0,0,0,.20);
-
     --shadow-md: 0 8px 20px rgba(0,0,0,.30);
-
     --shadow-lg: 0 15px 35px rgba(0,0,0,.40);
 
     /* ===========================
@@ -43,11 +45,8 @@
     =========================== */
 
     --radius-sm: 8px;
-
     --radius-md: 12px;
-
     --radius-lg: 18px;
-
     --radius-xl: 24px;
 
     /* ===========================
@@ -55,64 +54,39 @@
     =========================== */
 
     --space-xs: 4px;
-
     --space-sm: 8px;
-
     --space-md: 16px;
-
     --space-lg: 24px;
-
     --space-xl: 32px;
-
     --space-xxl: 48px;
 
     /* ===========================
        FUENTES
     =========================== */
 
-    --font-family:
-        "Segoe UI",
-        Arial,
-        sans-serif;
+    --font-family: "Segoe UI", Arial, sans-serif;
 
     --font-xs: 12px;
-
     --font-sm: 14px;
-
     --font-md: 16px;
-
     --font-lg: 20px;
-
     --font-xl: 28px;
-
     --font-xxl: 40px;
 
-    /* ===========================
-       PESOS
-    =========================== */
-
     --font-light: 300;
-
     --font-regular: 400;
-
     --font-medium: 500;
-
     --font-semibold: 600;
-
     --font-bold: 700;
 
     /* ===========================
-       SIDEBAR
+       LAYOUT (fuente única — antes
+       dashboard.css y sidebar.css
+       tenían valores distintos)
     =========================== */
 
-    --sidebar-width: 280px;
-
+    --sidebar-width: 260px;
     --sidebar-collapsed: 90px;
-
-    /* ===========================
-       NAVBAR
-    =========================== */
-
     --navbar-height: 80px;
 
     /* ===========================
@@ -120,9 +94,7 @@
     =========================== */
 
     --transition-fast: .2s;
-
     --transition-normal: .3s;
-
     --transition-slow: .5s;
 
 }
