@@ -1,0 +1,36 @@
+/* =====================================
+            CARDS (paneles)
+===================================== */
+
+.card,
+.metric-card {
+
+    background: var(--color-card);
+
+    border: 1px solid var(--color-border);
+
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow-md);
+
+    color: var(--color-text);
+
+}
+
+
+
+.metric-card {
+
+    height:110px;
+
+    padding: var(--space-md);
+
+}
+
+
+.metric-card:hover,
+.card:hover {
+
+    border-color: var(--color-border-hover);
+
+}

@@ -1,0 +1,53 @@
+/* =====================================
+            FORMS (paneles)
+===================================== */
+
+
+form {
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+}
+
+
+label {
+
+    font-weight:600;
+
+    color: var(--color-text);
+
+}
+
+
+input,
+select,
+textarea {
+
+    width:100%;
+
+    padding:12px;
+
+    border-radius:var(--radius-sm);
+
+    border:1px solid var(--color-border);
+
+    background:var(--color-card);
+
+    color: var(--color-text);
+
+}
+
+
+input:focus,
+select:focus,
+textarea:focus {
+
+    outline:none;
+
+    border-color:var(--color-primary);
+
+}

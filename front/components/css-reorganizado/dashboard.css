@@ -1,0 +1,70 @@
+/* =====================================
+        DASHBOARD — layout shell del panel
+===================================== */
+
+body {
+    overflow-x:hidden;
+}
+
+
+.dashboard {
+
+    display:flex;
+
+    min-height:100vh;
+
+    background: var(--color-bg);
+
+}
+
+
+/* .main-content (margin/width según sidebar)
+   vive en components/sidebar.css — antes estaba
+   duplicada acá con un valor distinto (250px vs 260px) */
+
+
+.metrics {
+
+    margin-top:0;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:20px;
+
+}
+
+.daily-tip {
+
+    margin-top:25px;
+
+    background: var(--color-card);
+
+    border:1px solid var(--color-border-hover);
+
+    border-radius: var(--radius-lg);
+
+    padding:20px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    color: var(--color-text);
+
+}
+
+
+
+.daily-tip button {
+
+    background:transparent;
+
+    border:1px solid var(--color-tip);
+
+    color: var(--color-tip);
+
+}

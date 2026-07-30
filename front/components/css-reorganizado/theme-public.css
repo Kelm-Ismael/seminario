@@ -1,0 +1,40 @@
+/* ==========================================================
+   TEMA CLARO — SITIO PÚBLICO
+   Antes este mismo bloque estaba duplicado (idéntico) en
+   turno.css, empleadoyservicio.css y style.css.
+   Cargar este archivo ANTES que home.css, turno.css y
+   empleadoyservicio.css en cada página pública.
+========================================================== */
+
+:root {
+
+    --primary: #b88a2a;
+    --primary-hover: #d4a94f;
+
+    --background: #f7f3eb;
+    --section: #ffffff;
+    --card: #faf7f0;
+
+    --dark: #1e2a27;
+    --text: #333333;
+    --muted: #777777;
+
+    --border: #e3d8c3;
+    --danger: #c0392b;
+    --danger-hover: #e74c3c;
+
+    --shadow: 0 15px 35px rgba(0, 0, 0, .08);
+
+}
+
+/* Reset compartido por las páginas públicas */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.5;
+}

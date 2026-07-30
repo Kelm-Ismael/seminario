@@ -1,0 +1,64 @@
+/* =====================================
+            MODAL (paneles)
+            NOTA: el modal del sitio público
+            (cancelar/editar turno) tiene su
+            propio estilo claro dentro de
+            turno.css — este es solo para
+            los paneles internos (tema oscuro).
+===================================== */
+
+
+.modal {
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.6);
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    z-index: 2000;
+
+}
+
+
+.modal.active {
+
+    display:flex;
+
+}
+
+
+.modal-content {
+
+    background: var(--color-card);
+
+    color: var(--color-text);
+
+    padding:30px;
+
+    border-radius: var(--radius-lg);
+
+    border: 1px solid var(--color-border);
+
+    width:400px;
+
+    max-width:90%;
+
+}
+
+
+.modal-close {
+
+    float:right;
+
+    cursor:pointer;
+
+    color: var(--color-text-secondary);
+
+}

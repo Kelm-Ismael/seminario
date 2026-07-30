@@ -1,0 +1,52 @@
+/* =====================================
+            BUTTONS (paneles)
+===================================== */
+
+
+button {
+
+    border:none;
+
+    padding:12px 20px;
+
+    border-radius:var(--radius-sm);
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    background:var(--color-primary);
+
+    color:var(--color-white);
+
+    transition:var(--transition-normal);
+
+}
+
+
+button:hover {
+
+    opacity:.85;
+
+}
+
+
+.btn-danger {
+
+    background:var(--color-danger);
+
+}
+
+
+.btn-success {
+
+    background:var(--color-success);
+
+}
+
+
+.btn-secondary {
+
+    background:#6b7280;
+
+}

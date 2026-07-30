@@ -1,0 +1,214 @@
+/* =====================================
+        SIDEBAR (panel)
+===================================== */
+
+#sidebar {
+
+    width: var(--sidebar-width);
+    min-height: 100vh;
+
+    background: var(--color-bg-secondary);
+
+    color: var(--color-text);
+
+    padding: 25px 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    position: fixed;
+
+    left: 0;
+    top: 0;
+
+    z-index: 1000;
+
+}
+
+
+/* Logo */
+
+.sidebar-logo {
+
+    font-size: 24px;
+
+    font-weight: 700;
+
+    margin-bottom: 40px;
+
+    text-align: center;
+
+}
+
+
+/* Navegación */
+
+.sidebar-menu {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+}
+
+
+/* Links */
+
+.sidebar-menu a {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 14px 16px;
+
+    color: var(--color-text-secondary);
+
+    text-decoration: none;
+
+    border-radius: var(--radius-md);
+
+    transition: var(--transition-normal);
+
+    font-size: 15px;
+
+}
+
+
+/* Hover */
+
+.sidebar-menu a:hover {
+
+    background: rgba(255,255,255,0.1);
+
+    color: var(--color-text);
+
+}
+
+
+/* Link activo */
+
+.sidebar-menu a.active {
+
+    background: var(--color-primary);
+
+    color: var(--color-white);
+
+}
+
+
+/* Iconos */
+
+.sidebar-menu span {
+
+    font-size: 20px;
+
+}
+
+
+/* Separador */
+
+.sidebar-divider {
+
+    height: 1px;
+
+    background: rgba(255,255,255,0.15);
+
+    margin: 25px 0;
+
+}
+
+
+/* Usuario abajo */
+
+.sidebar-user {
+
+    margin-top: auto;
+
+    padding: 15px;
+
+    background: rgba(255,255,255,0.08);
+
+    border-radius: var(--radius-md);
+
+}
+
+
+.sidebar-user h4 {
+
+    margin: 0;
+
+    font-size: 15px;
+
+    color: var(--color-text);
+
+}
+
+
+.sidebar-user p {
+
+    margin: 5px 0 0;
+
+    font-size: 13px;
+
+    color: var(--color-text-secondary);
+
+}
+
+
+
+/* =====================================
+        AJUSTE CONTENIDO
+        (única fuente de verdad — antes
+        dashboard.css repetía esto con
+        un valor distinto: 250px vs 260px)
+===================================== */
+
+.main-content {
+
+    margin-left: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
+
+}
+
+
+
+/* =====================================
+        RESPONSIVE (queda acá porque es
+        comportamiento propio del sidebar,
+        no una regla general del layout)
+===================================== */
+
+@media(max-width:900px){
+
+
+    #sidebar {
+
+        transform: translateX(-100%);
+
+        transition: var(--transition-normal);
+
+    }
+
+
+    #sidebar.active {
+
+        transform: translateX(0);
+
+    }
+
+
+    .main-content {
+
+        margin-left:0;
+
+        width:100%;
+
+    }
+
+
+}
