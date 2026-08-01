@@ -1,7 +1,7 @@
-const CACHE_NAME = "david-martinez-v2"; // 👈 subí la versión para forzar refresco de caché
+const CACHE_NAME = "david-martinez-v4"; // 👈 subí la versión para forzar refresco de caché
 const ASSETS_TO_CACHE = [
   "/",
-  "/index.html",
+  "./index.html",
   "/css/style.css",
   "/js/carrusel.js",
   "/assets/logo/logo.png",
