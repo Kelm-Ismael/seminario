@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel Cliente | Contacto / Soporte</title>
+
+<link rel="stylesheet" href="../css/theme-public.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/sidebar.css">
+<link rel="stylesheet" href="../css/navbar.css">
+<link rel="stylesheet" href="../css/cards.css">
+<link rel="stylesheet" href="../css/table.css">
+<link rel="stylesheet" href="../css/buttons.css">
+<link rel="stylesheet" href="../css/forms.css">
+<link rel="stylesheet" href="../css/panel-cliente.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside id="sidebar">
+
+        <div class="panel-brand">
+            <div class="avatar-initials avatar-md">DM</div>
+            <div class="panel-brand-info">
+                <h2>David Martínez</h2>
+                <p>Estilista Unisex</p>
+            </div>
+        </div>
+
+        <nav class="sidebar-menu">
+            <a href="inicio.html"><span>🏠</span> Inicio</a>
+            <a href="reservar-turno.html"><span>📅</span> Reservar turno</a>
+            <a href="mis-turnos.html"><span>🕐</span> Mis turnos</a>
+            <a href="historial.html"><span>📖</span> Historial</a>
+            <a href="favoritos.html"><span>⭐</span> Mis favoritos</a>
+            <a href="perfil.html"><span>👤</span> Perfil</a>
+            <a href="promociones.html"><span>🏷️</span> Promociones</a>
+            <a href="contacto.html" class="active"><span>📞</span> Contacto</a>
+        </nav>
+
+        <div class="panel-help">
+            ¿Necesitás ayuda?
+            <a href="https://wa.me/5491112345678" target="_blank" rel="noreferrer">
+                💬 Escribinos por WhatsApp
+            </a>
+        </div>
+
+    </aside>
+
+    <!-- ============ CONTENIDO ============ -->
+    <main class="main-content">
+
+        <header class="panel-topbar">
+            <div class="panel-greeting">
+                <h1>📞 Contacto / Soporte</h1>
+                <p>Estamos aquí para ayudarte</p>
+            </div>
+
+            <div class="panel-topbar-actions">
+                <div class="panel-bell">🔔</div>
+                <div class="panel-user">
+                    <div class="avatar-initials avatar-sm">JP</div>
+                    <span>Juan Pérez</span>
+                    <span>▾</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="panel-content">
+
+            <div class="panel-row">
+
+                <!-- Contáctanos + FAQ -->
+                <div>
+                    <div class="card">
+                        <h3>Contáctanos</h3>
+
+                        <div class="contacto-item">
+                            <div class="contacto-icon">💬</div>
+                            <div class="contacto-texto">
+                                <h4>Atención al cliente</h4>
+                                <p>Lunes a Viernes de 9:00 AM a 7:00 PM</p>
+                            </div>
+                        </div>
+
+                        <div class="contacto-item">
+                            <div class="contacto-icon">✉️</div>
+                            <div class="contacto-texto">
+                                <h4>Correo electrónico</h4>
+                                <p>soporte@barbershop.cl</p>
+                            </div>
+                        </div>
+
+                        <div class="contacto-item">
+                            <div class="contacto-icon">📍</div>
+                            <div class="contacto-texto">
+                                <h4>Ubicación</h4>
+                                <p>Encuentra nuestras sucursales — <a href="#">Ver ubicaciones</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card" style="margin-top:24px;">
+                        <h3>Preguntas frecuentes</h3>
+
+                        <div class="faq-lista">
+                            <div class="faq-item">
+                                ¿Cómo puedo reservar un turno?
+                                <span class="chevron">›</span>
+                            </div>
+                            <div class="faq-item">
+                                ¿Puedo reprogramar o cancelar mi turno?
+                                <span class="chevron">›</span>
+                            </div>
+                            <div class="faq-item">
+                                ¿Qué métodos de pago aceptan?
+                                <span class="chevron">›</span>
+                            </div>
+                            <div class="faq-item">
+                                ¿Cuánto tiempo de anticipación necesito?
+                                <span class="chevron">›</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Envíanos un mensaje -->
+                <div class="card">
+                    <h3>Envíanos un mensaje</h3>
+                    <form class="form-mensaje">
+                        <div>
+                            <label for="asunto">Asunto</label>
+                            <input type="text" id="asunto" placeholder="¿En qué te ayudamos?">
+                        </div>
+                        <div>
+                            <label for="mensaje">Mensaje</label>
+                            <textarea id="mensaje" placeholder="Escribí tu consulta..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">Enviar mensaje</button>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+</html>

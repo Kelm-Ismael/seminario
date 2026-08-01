@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Panel Cliente | Inicio</title>
+<title>Panel Cliente | Perfil</title>
 
 <link rel="stylesheet" href="../css/theme-public.css">
 <link rel="stylesheet" href="../css/base.css">
@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="../css/cards.css">
 <link rel="stylesheet" href="../css/table.css">
 <link rel="stylesheet" href="../css/buttons.css">
+<link rel="stylesheet" href="../css/forms.css">
 <link rel="stylesheet" href="../css/panel-cliente.css">
 </head>
 <body>
@@ -30,14 +31,14 @@
         </div>
 
         <nav class="sidebar-menu">
-            <a href="inicio.html" class="active"><span class="icon">🏠</span> Inicio</a>
-            <a href="reservar-turno.html"><span class="icon">📅</span> Reservar turno</a>
-            <a href="mis-turnos.html"><span class="icon">🕐</span> Mis turnos</a>
-            <a href="historial.html"><span class="icon">📖</span> Historial</a>
-            <a href="favoritos.html"><span class="icon">⭐</span> Mis favoritos</a>
-            <a href="perfil.html"><span class="icon">👤</span> Perfil</a>
-            <a href="promociones.html"><span class="icon">🏷️</span> Promociones</a>
-            <a href="contacto.html"><span class="icon">📞</span> Contacto</a>
+            <a href="inicio.html"><span>🏠</span> Inicio</a>
+            <a href="reservar-turno.html"><span>📅</span> Reservar turno</a>
+            <a href="mis-turnos.html"><span>🕐</span> Mis turnos</a>
+            <a href="historial.html"><span>📖</span> Historial</a>
+            <a href="favoritos.html"><span>⭐</span> Mis favoritos</a>
+            <a href="perfil.html" class="active"><span>👤</span> Perfil</a>
+            <a href="promociones.html"><span>🏷️</span> Promociones</a>
+            <a href="contacto.html"><span>📞</span> Contacto</a>
         </nav>
 
         <div class="panel-help">
@@ -53,10 +54,9 @@
     <main class="main-content">
 
         <header class="panel-topbar">
-
             <div class="panel-greeting">
-                <h1>Hola, Juan 👋</h1>
-                <p>¿Listo para tu próximo cambio?</p>
+                <h1>👤 Perfil</h1>
+                <p>Gestiona tu información personal</p>
             </div>
 
             <div class="panel-topbar-actions">
@@ -67,126 +67,81 @@
                     <span>▾</span>
                 </div>
             </div>
-
         </header>
 
         <div class="panel-content">
 
-            <!-- FILA 1: próximo turno + favoritos -->
-            <div class="panel-row">
-
-                <div class="card">
-                    <h3>Próximo turno</h3>
-                    <div class="turno-proximo">
-                        <div class="turno-fecha-box">
-                            <div class="hora">10:00 AM</div>
-                        </div>
-                        <div class="turno-info">
-                            <h4>Viernes 17 de Mayo</h4>
-                            <p>Corte + Barba</p>
-                            <p>David Martínez</p>
-                        </div>
-                        <button class="btn-outline">Ver detalles</button>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h3>Servicios favoritos</h3>
-                    <div class="favoritos-row">
-                        <div class="favorito-item">
-                            <div class="avatar-initials avatar-sm">CO</div>
-                            <span>Corte</span>
-                        </div>
-                        <div class="favorito-item">
-                            <div class="avatar-initials avatar-sm">BA</div>
-                            <span>Barba</span>
-                        </div>
-                        <div class="favorito-item">
-                            <div class="avatar-initials avatar-sm">TI</div>
-                            <span>Tintura</span>
-                        </div>
-                        <div class="favorito-item">
-                            <div class="avatar-initials avatar-sm">PE</div>
-                            <span>Peinado</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- FILA 2: reservar nuevo turno + promo -->
-            <div class="panel-row">
-
-                <div class="card">
-                    <h3>Reservar nuevo turno</h3>
-                    <div class="stepper-mini">
-                        <div class="step current"><span class="step-num">1</span> Servicio</div>
-                        <div class="divider"></div>
-                        <div class="step"><span class="step-num">2</span> Profesional</div>
-                        <div class="divider"></div>
-                        <div class="step"><span class="step-num">3</span> Fecha y hora</div>
-                    </div>
-                    <button class="btn-primary">Reservar ahora</button>
-                </div>
-
-                <div class="card promo-highlight">
-                    <div class="pct">15% OFF</div>
-                    <p>En tu próximo servicio<br>Válido hasta 31/05</p>
-                    <a href="promociones.html">Ver promociones ›</a>
-                </div>
-
-            </div>
-
-            <!-- FILA 3: historial reciente -->
+            <!-- Información personal -->
             <div class="card">
-                <div class="historial-header">
-                    <h3 style="margin:0;">Historial reciente</h3>
-                    <a href="historial.html">Ver todo</a>
+                <div class="card-header-row">
+                    <h3>Información personal</h3>
+                    <a href="#" class="link-editar">Editar</a>
                 </div>
 
-                <table class="tabla-historial">
-                    <thead>
-                        <tr>
-                            <th>Servicio</th>
-                            <th>Profesional</th>
-                            <th>Fecha</th>
-                            <th>Precio</th>
-                            <th>Estado</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="persona">
-                                <div class="avatar-initials avatar-xs">DM</div>
-                                Corte + Barba
-                            </td>
-                            <td>David Martínez</td>
-                            <td>10/05/2026</td>
-                            <td>$15.000</td>
-                            <td><span class="badge badge-completado">Completado</span></td>
-                        </tr>
-                        <tr>
-                            <td class="persona">
-                                <div class="avatar-initials avatar-xs">SC</div>
-                                Tintura Completa
-                            </td>
-                            <td>Sofía Colorista</td>
-                            <td>26/04/2026</td>
-                            <td>$28.000</td>
-                            <td><span class="badge badge-completado">Completado</span></td>
-                        </tr>
-                        <tr>
-                            <td class="persona">
-                                <div class="avatar-initials avatar-xs">DM</div>
-                                Corte
-                            </td>
-                            <td>David Martínez</td>
-                            <td>12/04/2026</td>
-                            <td>$12.000</td>
-                            <td><span class="badge badge-completado">Completado</span></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="datos-lista">
+                    <div class="dato-fila">
+                        <span class="label">Nombre completo</span>
+                        <span class="valor">Juan Pérez</span>
+                    </div>
+                    <div class="dato-fila">
+                        <span class="label">Correo electrónico</span>
+                        <span class="valor">juan.perez@gmail.com</span>
+                    </div>
+                    <div class="dato-fila">
+                        <span class="label">Teléfono</span>
+                        <span class="valor">+56 9 1234 5678</span>
+                    </div>
+                    <div class="dato-fila">
+                        <span class="label">Fecha de nacimiento</span>
+                        <span class="valor">12 de Marzo de 1990</span>
+                    </div>
+                    <div class="dato-fila">
+                        <span class="label">Género</span>
+                        <span class="valor">Masculino</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preferencias -->
+            <div class="card" style="margin-top:24px;">
+                <div class="card-header-row">
+                    <h3>Preferencias</h3>
+                    <a href="#" class="link-editar">Editar</a>
+                </div>
+
+                <div class="datos-lista">
+                    <div class="dato-fila">
+                        <span class="label">Sucursal preferida</span>
+                        <span class="valor">Sucursal Centro</span>
+                    </div>
+                    <div class="dato-fila">
+                        <span class="label">Profesionales preferidos</span>
+                        <span class="valor">David Martínez, Sofía Colorista</span>
+                    </div>
+                    <div class="dato-fila">
+                        <span class="label">Recordatorio de turnos</span>
+                        <label class="toggle">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="dato-fila">
+                        <span class="label">Recibir promociones</span>
+                        <label class="toggle">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seguridad -->
+            <div class="card" style="margin-top:24px;">
+                <h3>Seguridad</h3>
+                <div class="seguridad-item">
+                    Cambiar contraseña
+                    <span class="chevron">›</span>
+                </div>
             </div>
 
         </div>
