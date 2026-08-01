@@ -1,1 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel Cliente | Inicio</title>
 
+<link rel="stylesheet" href="../css/variables.css">
+<link rel="stylesheet" href="../css/global.css">
+<link rel="stylesheet" href="../css/sidebar.css">
+<link rel="stylesheet" href="../css/navbar.css">
+<link rel="stylesheet" href="../css/cards.css">
+<link rel="stylesheet" href="../css/table.css">
+<link rel="stylesheet" href="../css/buttons.css">
+<link rel="stylesheet" href="../css/panel-cliente.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside id="sidebar">
+
+        <div class="panel-brand">
+            <div class="avatar-initials avatar-md">DM</div>
+            <div class="panel-brand-info">
+                <h2>David Martínez</h2>
+                <p>Estilista Unisex</p>
+            </div>
+        </div>
+
+        <nav class="sidebar-menu">
+            <a href="inicio.html" class="active"><span class="icon">🏠</span> Inicio</a>
+            <a href="reservar-turno.html"><span class="icon">📅</span> Reservar turno</a>
+            <a href="mis-turnos.html"><span class="icon">🕐</span> Mis turnos</a>
+            <a href="historial.html"><span class="icon">📖</span> Historial</a>
+            <a href="favoritos.html"><span class="icon">⭐</span> Mis favoritos</a>
+            <a href="perfil.html"><span class="icon">👤</span> Perfil</a>
+            <a href="promociones.html"><span class="icon">🏷️</span> Promociones</a>
+            <a href="contacto.html"><span class="icon">📞</span> Contacto</a>
+        </nav>
+
+        <div class="panel-help">
+            ¿Necesitás ayuda?
+            <a href="https://wa.me/5491112345678" target="_blank" rel="noreferrer">
+                💬 Escribinos por WhatsApp
+            </a>
+        </div>
+
+    </aside>
+
+    <!-- ============ CONTENIDO ============ -->
+    <main class="main-content">
+
+        <header class="panel-topbar">
+
+            <div class="panel-greeting">
+                <h1>Hola, Juan 👋</h1>
+                <p>¿Listo para tu próximo cambio?</p>
+            </div>
+
+            <div class="panel-topbar-actions">
+                <div class="panel-bell">🔔</div>
+                <div class="panel-user">
+                    <div class="avatar-initials avatar-sm">JP</div>
+                    <span>Juan Pérez</span>
+                    <span>▾</span>
+                </div>
+            </div>
+
+        </header>
+
+        <div class="panel-content">
+
+            <!-- FILA 1: próximo turno + favoritos -->
+            <div class="panel-row">
+
+                <div class="card">
+                    <h3>Próximo turno</h3>
+                    <div class="turno-proximo">
+                        <div class="turno-fecha-box">
+                            <div class="hora">10:00 AM</div>
+                        </div>
+                        <div class="turno-info">
+                            <h4>Viernes 17 de Mayo</h4>
+                            <p>Corte + Barba</p>
+                            <p>David Martínez</p>
+                        </div>
+                        <button class="btn-outline">Ver detalles</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Servicios favoritos</h3>
+                    <div class="favoritos-row">
+                        <div class="favorito-item">
+                            <div class="avatar-initials avatar-sm">CO</div>
+                            <span>Corte</span>
+                        </div>
+                        <div class="favorito-item">
+                            <div class="avatar-initials avatar-sm">BA</div>
+                            <span>Barba</span>
+                        </div>
+                        <div class="favorito-item">
+                            <div class="avatar-initials avatar-sm">TI</div>
+                            <span>Tintura</span>
+                        </div>
+                        <div class="favorito-item">
+                            <div class="avatar-initials avatar-sm">PE</div>
+                            <span>Peinado</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- FILA 2: reservar nuevo turno + promo -->
+            <div class="panel-row">
+
+                <div class="card">
+                    <h3>Reservar nuevo turno</h3>
+                    <div class="stepper-mini">
+                        <div class="step current"><span class="step-num">1</span> Servicio</div>
+                        <div class="divider"></div>
+                        <div class="step"><span class="step-num">2</span> Profesional</div>
+                        <div class="divider"></div>
+                        <div class="step"><span class="step-num">3</span> Fecha y hora</div>
+                    </div>
+                    <button class="btn-primary">Reservar ahora</button>
+                </div>
+
+                <div class="card promo-highlight">
+                    <div class="pct">15% OFF</div>
+                    <p>En tu próximo servicio<br>Válido hasta 31/05</p>
+                    <a href="promociones.html">Ver promociones ›</a>
+                </div>
+
+            </div>
+
+            <!-- FILA 3: historial reciente -->
+            <div class="card">
+                <div class="historial-header">
+                    <h3 style="margin:0;">Historial reciente</h3>
+                    <a href="historial.html">Ver todo</a>
+                </div>
+
+                <table class="tabla-historial">
+                    <thead>
+                        <tr>
+                            <th>Servicio</th>
+                            <th>Profesional</th>
+                            <th>Fecha</th>
+                            <th>Precio</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="persona">
+                                <div class="avatar-initials avatar-xs">DM</div>
+                                Corte + Barba
+                            </td>
+                            <td>David Martínez</td>
+                            <td>10/05/2026</td>
+                            <td>$15.000</td>
+                            <td><span class="badge badge-completado">Completado</span></td>
+                        </tr>
+                        <tr>
+                            <td class="persona">
+                                <div class="avatar-initials avatar-xs">SC</div>
+                                Tintura Completa
+                            </td>
+                            <td>Sofía Colorista</td>
+                            <td>26/04/2026</td>
+                            <td>$28.000</td>
+                            <td><span class="badge badge-completado">Completado</span></td>
+                        </tr>
+                        <tr>
+                            <td class="persona">
+                                <div class="avatar-initials avatar-xs">DM</div>
+                                Corte
+                            </td>
+                            <td>David Martínez</td>
+                            <td>12/04/2026</td>
+                            <td>$12.000</td>
+                            <td><span class="badge badge-completado">Completado</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+</html>

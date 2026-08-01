@@ -1,9 +1,9 @@
 /* ==========================================================
+Antes este mismo bloque estaba duplicado (idéntico) en
+turno.css, empleadoyservicio.css y style.css.
+Cargar este archivo ANTES que home.css, turno.css y
+empleadoyservicio.css en cada página pública.
    TEMA CLARO — SITIO PÚBLICO
-   Antes este mismo bloque estaba duplicado (idéntico) en
-   turno.css, empleadoyservicio.css y style.css.
-   Cargar este archivo ANTES que home.css, turno.css y
-   empleadoyservicio.css en cada página pública.
 ========================================================== */
 
 :root {
