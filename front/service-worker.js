@@ -49,7 +49,7 @@ self.addEventListener("fetch", (event) => {
           // Solo mostramos un fallback si es una NAVEGACIÓN (el usuario
           // está entrando a una página), nunca para JS/CSS/imágenes.
           if (event.request.mode === "navigate") {
-            return caches.match("/index.html");
+            return caches.match("./index.html");
           }
           // Para assets, dejamos que el error se propague normalmente
           return Response.error();
