@@ -1,8 +1,3 @@
-/* ==========================================================
-   THEME PUBLIC — paleta clara usada en style.css / turno.css /
-   empleadoyservicio.css. Fuente única de colores del panel.
-========================================================== */
-
 :root {
 
     --primary: #b88a2a;
@@ -17,22 +12,21 @@
     --muted: #777777;
 
     --border: #e3d8c3;
-
-    --success: #16a34a;
-    --success-bg: #d4edda;
-    --warning-bg: #fff3cd;
-    --warning-text: #856404;
-    --info-bg: #cfe2ff;
-    --info-text: #084298;
-
     --danger: #c0392b;
     --danger-hover: #e74c3c;
 
     --shadow: 0 15px 35px rgba(0, 0, 0, .08);
 
-    /* medidas reutilizadas por sidebar/navbar */
-    --sidebar-width: 260px;
-    --radius-sm: 8px;
-    --radius-md: 10px;
-    --radius-lg: 18px;
+}
+
+/* Reset compartido por las páginas públicas */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.5;
 }
