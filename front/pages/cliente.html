@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gestión de Clientes</title>
+
+    <link rel="stylesheet" href="./css/theme-public.css">
+    <link rel="stylesheet" href="../css/empleadoyservicio.css">
+</head>
+
+<body>
+
+    <main class="container">
+
+        <!-- =========================================
+             ENCABEZADO
+        ========================================== -->
+
+        <header class="header">
+
+            <h1>👥 Gestión de Clientes</h1>
+
+            <p>
+                Administra los clientes de la barbería
+            </p>
+
+        </header>
+
+
+        <!-- =========================================
+             FORMULARIO
+        ========================================== -->
+
+        <section class="card">
+
+            <h2>Nuevo cliente</h2>
+
+            <form id="formCliente" class="form-cliente">
+
+                <div class="form-group">
+
+                    <label for="nombre">
+                        Nombre
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nombre"
+                        name="nombre"
+                        placeholder="Nombre completo"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="telefono">
+                        Teléfono
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="telefono"
+                        name="telefono"
+                        placeholder="Ej: 1145678901"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="cliente@email.com"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="created_at">
+                        Fecha de registro
+                    </label>
+
+                    <input
+                        type="datetime-local"
+                        id="created_at"
+                        name="created_at"
+                    >
+
+                </div>
+
+
+                <div class="acciones">
+
+                    <button
+                        type="submit"
+                        class="btn-primary"
+                    >
+                        Guardar cliente
+                    </button>
+
+                    <button
+                        type="button"
+                        id="btnVolver"
+                        class="btn-secondary"
+                    >
+                        Volver
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <!-- =========================================
+             LISTADO DE CLIENTES
+        ========================================== -->
+
+        <section class="card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>Clientes registrados</h2>
+
+                    <p class="card-description">
+                        Lista de clientes registrados en el sistema
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Mensajes -->
+
+            <p
+                id="mensaje"
+                class="mensaje"
+            >
+            </p>
+
+
+            <!-- Tabla -->
+
+            <div class="table-container">
+
+                <table class="tabla-clientes">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Nombre</th>
+
+                            <th>Teléfono</th>
+
+                            <th>Email</th>
+
+                            <th>Fecha de registro</th>
+
+                            <th>Acciones</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="tabla-clientes">
+
+                        <tr>
+
+                            <td colspan="5">
+                                Cargando clientes...
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script
+        type="module"
+        src="../js/clientes/clientes.js">
+    </script>
+
+</body>
+
+</html>
