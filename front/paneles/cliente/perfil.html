@@ -4,16 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Panel Cliente | Perfil</title>
-
-<link rel="stylesheet" href="../../css/theme-public.css">
-<link rel="stylesheet" href="../../css/base.css">
-<link rel="stylesheet" href="../../css/sidebar.css">
-<link rel="stylesheet" href="../../css/navbar.css">
-<link rel="stylesheet" href="../../css/cards.css">
-<link rel="stylesheet" href="../../css/table.css">
-<link rel="stylesheet" href="../../css/buttons.css">
-<link rel="stylesheet" href="../../css/forms.css">
-<link rel="stylesheet" href="../../css/panel-cliente.css">
+<link rel="stylesheet" href="../../css/cliente/theme-public.css">
+<link rel="stylesheet" href="../../css/cliente/variables.css">
+<link rel="stylesheet" href="../../css/cliente/sidebar.css">
+<link rel="stylesheet" href="../../css/cliente/navbar.css">
+<link rel="stylesheet" href="../../css/cliente/cards.css">
+<link rel="stylesheet" href="../../css/cliente/table.css">
+<link rel="stylesheet" href="../../css/cliente/buttons.css">
 </head>
 <body>
 
@@ -31,14 +28,15 @@
         </div>
 
         <nav class="sidebar-menu">
-            <a href="clientes.html"><span>🏠</span> Inicio</a>
-            <a href="reservar-turno.html"><span>📅</span> Reservar turno</a>
-            <a href="mis-turnos.html"><span>🕐</span> Mis turnos</a>
-            <a href="historial.html"><span>📖</span> Historial</a>
-            <a href="favoritos.html"><span>⭐</span> Mis favoritos</a>
-            <a href="perfil.html" class="active"><span>👤</span> Perfil</a>
-            <a href="../../pages/promociones.html"><span>🏷️</span> Promociones</a>
-            <a href="contacto.html"><span>📞</span> Contacto</a>
+            <a href="index.html"><span class="icon">🏠</span> Inicio</a>
+            <a href="../../pages/reservar-turno.html"><span class="icon">📅</span> Reservar turno</a>
+            <a href="mis-turnos.html"><span class="icon">🕐</span> Mis turnos</a>
+            <a href="historial.html"><span class="icon">📖</span> Historial</a>
+            <a href="favoritos.html"><span class="icon">⭐</span> Mis favoritos</a>
+            <a href="perfil.html" class="active"><span class="icon">👤</span> Perfil</a>
+            <a href="promociones.html"><span class="icon">🏷️</span> Promociones</a>
+            <a href="notificaciones.html"><span class="icon">🔔</span> Notificaciones</a>
+            <a href="contacto.html"><span class="icon">📞</span> Contacto</a>
         </nav>
 
         <div class="panel-help">
@@ -55,8 +53,8 @@
 
         <header class="panel-topbar">
             <div class="panel-greeting">
-                <h1>👤 Perfil</h1>
-                <p>Gestiona tu información personal</p>
+                <h1>Hola, Juan 👋</h1>
+                <p>¿Listo para tu próximo cambio?</p>
             </div>
 
             <div class="panel-topbar-actions">
@@ -71,77 +69,100 @@
 
         <div class="panel-content">
 
-            <!-- Información personal -->
-            <div class="card">
-                <div class="card-header-row">
-                    <h3>Información personal</h3>
-                    <a href="#" class="link-editar">Editar</a>
+            <div class="panel-columns">
+
+                <!-- Columna izquierda -->
+                <div class="panel-stack">
+
+                    <div class="card">
+                        <div class="card-header-row">
+                            <h3>🪪 Información personal</h3>
+                            <button class="link-editar">Editar</button>
+                        </div>
+
+                        <div class="datos-lista">
+                            <div class="dato-fila">
+                                <span class="label">Nombre completo</span>
+                                <span class="valor">Juan Pérez</span>
+                            </div>
+                            <div class="dato-fila">
+                                <span class="label">Correo electrónico</span>
+                                <span class="valor">juan.perez@gmail.com</span>
+                            </div>
+                            <div class="dato-fila">
+                                <span class="label">Teléfono</span>
+                                <span class="valor">+56 9 1234 5678</span>
+                            </div>
+                            <div class="dato-fila">
+                                <span class="label">Fecha de nacimiento</span>
+                                <span class="valor">12 de Marzo de 1990</span>
+                            </div>
+                            <div class="dato-fila">
+                                <span class="label">Género</span>
+                                <span class="valor">Masculino</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header-row">
+                            <h3>⚙️ Preferencias</h3>
+                            <button class="link-editar">Editar</button>
+                        </div>
+
+                        <div class="datos-lista">
+                            <div class="dato-fila">
+                                <span class="label">Sucursal preferida</span>
+                                <span class="valor">Sucursal Centro</span>
+                            </div>
+                            <div class="dato-fila">
+                                <span class="label">Profesionales preferidos</span>
+                                <span class="valor">David Martínez, Sofía Colorista</span>
+                            </div>
+                            <div class="dato-fila">
+                                <span class="label">Recordatorio de turnos</span>
+                                <label class="toggle">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="dato-fila">
+                                <span class="label">Recibir promociones</span>
+                                <label class="toggle">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>🔒 Seguridad</h3>
+                        <a href="#" class="chevron-item">
+                            Cambiar contraseña
+                            <span class="chevron">›</span>
+                        </a>
+                    </div>
+
                 </div>
 
-                <div class="datos-lista">
-                    <div class="dato-fila">
-                        <span class="label">Nombre completo</span>
-                        <span class="valor">Juan Pérez</span>
-                    </div>
-                    <div class="dato-fila">
-                        <span class="label">Correo electrónico</span>
-                        <span class="valor">juan.perez@gmail.com</span>
-                    </div>
-                    <div class="dato-fila">
-                        <span class="label">Teléfono</span>
-                        <span class="valor">+56 9 1234 5678</span>
-                    </div>
-                    <div class="dato-fila">
-                        <span class="label">Fecha de nacimiento</span>
-                        <span class="valor">12 de Marzo de 1990</span>
-                    </div>
-                    <div class="dato-fila">
-                        <span class="label">Género</span>
-                        <span class="valor">Masculino</span>
-                    </div>
-                </div>
-            </div>
+                <!-- Columna derecha -->
+                <div class="card perfil-destacado">
+                    <div class="avatar-initials avatar-md">JP</div>
+                    <h3>Juan Pérez</h3>
+                    <p>Cliente Premium</p>
 
-            <!-- Preferencias -->
-            <div class="card" style="margin-top:24px;">
-                <div class="card-header-row">
-                    <h3>Preferencias</h3>
-                    <a href="#" class="link-editar">Editar</a>
+                    <div class="progreso-nivel" style="width:100%;">
+                        <div class="fila">
+                            <span>Nivel Plata</span>
+                            <span>850 / 1000 pts</span>
+                        </div>
+                        <div class="progreso-barra">
+                            <div class="relleno" style="width:85%;"></div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="datos-lista">
-                    <div class="dato-fila">
-                        <span class="label">Sucursal preferida</span>
-                        <span class="valor">Sucursal Centro</span>
-                    </div>
-                    <div class="dato-fila">
-                        <span class="label">Profesionales preferidos</span>
-                        <span class="valor">David Martínez, Sofía Colorista</span>
-                    </div>
-                    <div class="dato-fila">
-                        <span class="label">Recordatorio de turnos</span>
-                        <label class="toggle">
-                            <input type="checkbox" checked>
-                            <span class="slider"></span>
-                        </label>
-                    </div>
-                    <div class="dato-fila">
-                        <span class="label">Recibir promociones</span>
-                        <label class="toggle">
-                            <input type="checkbox" checked>
-                            <span class="slider"></span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Seguridad -->
-            <div class="card" style="margin-top:24px;">
-                <h3>Seguridad</h3>
-                <div class="seguridad-item">
-                    Cambiar contraseña
-                    <span class="chevron">›</span>
-                </div>
             </div>
 
         </div>
@@ -150,5 +171,6 @@
 
 </div>
 
+<script src="../../js/clientes/panel-cliente.js" defer></script>
 </body>
 </html>

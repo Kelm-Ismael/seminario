@@ -7,11 +7,13 @@ table { width:100%; border-collapse:collapse; }
 th {
     text-align:left;
     padding:12px;
-    background: var(--dark);
-    color:white;
+    background: transparent;
+    color: var(--muted);
     font-size: var(--font-xs, 12px);
+    font-weight: var(--font-semibold, 600);
     text-transform: uppercase;
     letter-spacing: .4px;
+    border-bottom: 2px solid var(--border);
 }
 
 td {

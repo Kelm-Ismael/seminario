@@ -1,12 +1,12 @@
 /* =====================================
-        SIDEBAR
+        SIDEBAR (clara)
 ===================================== */
 
 #sidebar {
     width: var(--sidebar-width, 260px);
     min-height: 100vh;
-    background: var(--dark);
-    color: #f2efe6;
+    background: var(--section);
+    color: var(--text);
     padding: 25px 20px;
     display: flex;
     flex-direction: column;
@@ -14,6 +14,7 @@
     left: 0;
     top: 0;
     z-index: 1000;
+    border-right: 1px solid var(--border);
 }
 
 /* Marca (logo + nombre + rubro) */
@@ -35,13 +36,13 @@
 
 .panel-brand-info h2 {
     font-size: var(--font-md, 16px);
-    color: #fff;
+    color: var(--dark);
     line-height: 1.2;
 }
 
 .panel-brand-info p {
     font-size: var(--font-xs, 12px);
-    color: var(--primary-hover);
+    color: var(--primary);
     text-transform: uppercase;
     letter-spacing: .5px;
 }
@@ -59,7 +60,7 @@
     align-items: center;
     gap: 14px;
     padding: 13px 16px;
-    color: #cfd6d1;
+    color: var(--muted);
     text-decoration: none;
     border-radius: var(--radius-md, 10px);
     transition: .2s ease;
@@ -67,8 +68,8 @@
 }
 
 .sidebar-menu a:hover {
-    background: rgba(255,255,255,0.08);
-    color: #ffffff;
+    background: var(--card);
+    color: var(--dark);
 }
 
 .sidebar-menu a.active {
@@ -85,26 +86,26 @@
 
 .sidebar-divider {
     height: 1px;
-    background: rgba(255,255,255,0.12);
+    background: var(--border);
     margin: 25px 0;
 }
 
 /* Caja de ayuda / WhatsApp al pie */
 .panel-help {
     margin-top: var(--space-lg, 24px);
-    background: rgba(255,255,255,.06);
-    border: 1px solid rgba(255,255,255,.12);
+    background: var(--card);
+    border: 1px solid var(--border);
     border-radius: var(--radius-lg, 18px);
     padding: var(--space-md, 16px);
     text-align: center;
     font-size: var(--font-xs, 12px);
-    color: #cfd6d1;
+    color: var(--muted);
 }
 
 .panel-help a {
     display: inline-block;
     margin-top: var(--space-sm, 8px);
-    color: #6fcf97;
+    color: var(--success);
     font-weight: var(--font-semibold, 600);
 }
 

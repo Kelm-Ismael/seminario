@@ -3,17 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Panel Cliente | Contacto / Soporte</title>
-
-<link rel="stylesheet" href="../../css/theme-public.css">
-<link rel="stylesheet" href="../../css/base.css">
-<link rel="stylesheet" href="../../css/sidebar.css">
-<link rel="stylesheet" href="../../css/navbar.css">
-<link rel="stylesheet" href="../../css/cards.css">
-<link rel="stylesheet" href="../../css/table.css">
-<link rel="stylesheet" href="../../css/buttons.css">
-<link rel="stylesheet" href="../../css/forms.css">
-<link rel="stylesheet" href="../../css/panel-cliente.css">
+<title>Panel Cliente | Contacto</title>
+<link rel="stylesheet" href="../../css/cliente/theme-public.css">
+<link rel="stylesheet" href="../../css/cliente/variables.css">
+<link rel="stylesheet" href="../../css/cliente/sidebar.css">
+<link rel="stylesheet" href="../../css/cliente/navbar.css">
+<link rel="stylesheet" href="../../css/cliente/cards.css">
+<link rel="stylesheet" href="../../css/cliente/table.css">
+<link rel="stylesheet" href="../../css/cliente/buttons.css">
 </head>
 <body>
 
@@ -31,14 +28,15 @@
         </div>
 
         <nav class="sidebar-menu">
-            <a href="clientes.html"><span>🏠</span> Inicio</a>
-            <a href="../../pages/turnos.html"><span>📅</span> Reservar turno</a>
-            <a href="mis-turnos.html"><span>🕐</span> Mis turnos</a>
-            <a href="historial.html"><span>📖</span> Historial</a>
-            <a href="favoritos.html"><span>⭐</span> Mis favoritos</a>
-            <a href="perfil.html"><span>👤</span> Perfil</a>
-            <a href="../../pages/promociones.html"><span>🏷️</span> Promociones</a>
-            <a href="pages/contacto.html" class="active"><span>📞</span> Contacto</a>
+            <a href="index.html"><span class="icon">🏠</span> Inicio</a>
+            <a href="../../pages/reservar-turno.html"><span class="icon">📅</span> Reservar turno</a>
+            <a href="mis-turnos.html"><span class="icon">🕐</span> Mis turnos</a>
+            <a href="historial.html"><span class="icon">📖</span> Historial</a>
+            <a href="favoritos.html"><span class="icon">⭐</span> Mis favoritos</a>
+            <a href="perfil.html"><span class="icon">👤</span> Perfil</a>
+            <a href="promociones.html"><span class="icon">🏷️</span> Promociones</a>
+            <a href="notificaciones.html"><span class="icon">🔔</span> Notificaciones</a>
+            <a href="contacto.html" class="active"><span class="icon">📞</span> Contacto</a>
         </nav>
 
         <div class="panel-help">
@@ -55,8 +53,8 @@
 
         <header class="panel-topbar">
             <div class="panel-greeting">
-                <h1>📞 Contacto / Soporte</h1>
-                <p>Estamos aquí para ayudarte</p>
+                <h1>Hola, Juan 👋</h1>
+                <p>¿Listo para tu próximo cambio?</p>
             </div>
 
             <div class="panel-topbar-actions">
@@ -71,12 +69,13 @@
 
         <div class="panel-content">
 
-            <div class="panel-row">
+            <div class="panel-columns">
 
-                <!-- Contáctanos + FAQ -->
-                <div>
+                <!-- Columna izquierda -->
+                <div class="panel-stack">
+
                     <div class="card">
-                        <h3>Contáctanos</h3>
+                        <h3>💬 Contáctanos</h3>
 
                         <div class="contacto-item">
                             <div class="contacto-icon">💬</div>
@@ -98,38 +97,37 @@
                             <div class="contacto-icon">📍</div>
                             <div class="contacto-texto">
                                 <h4>Ubicación</h4>
-                                <p>Encuentra nuestras sucursales — <a href="#">Ver ubicaciones</a></p>
+                                <p>Encontrá nuestras sucursales — <a href="#">Ver ubicaciones</a></p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="card" style="margin-top:24px;">
-                        <h3>Preguntas frecuentes</h3>
+                    <div class="card">
+                        <h3>❓ Preguntas frecuentes</h3>
 
-                        <div class="faq-lista">
-                            <div class="faq-item">
-                                ¿Cómo puedo reservar un turno?
-                                <span class="chevron">›</span>
-                            </div>
-                            <div class="faq-item">
-                                ¿Puedo reprogramar o cancelar mi turno?
-                                <span class="chevron">›</span>
-                            </div>
-                            <div class="faq-item">
-                                ¿Qué métodos de pago aceptan?
-                                <span class="chevron">›</span>
-                            </div>
-                            <div class="faq-item">
-                                ¿Cuánto tiempo de anticipación necesito?
-                                <span class="chevron">›</span>
-                            </div>
-                        </div>
+                        <a href="#" class="chevron-item">
+                            ¿Cómo puedo reservar un turno?
+                            <span class="chevron">›</span>
+                        </a>
+                        <a href="#" class="chevron-item">
+                            ¿Puedo reprogramar o cancelar mi turno?
+                            <span class="chevron">›</span>
+                        </a>
+                        <a href="#" class="chevron-item">
+                            ¿Qué métodos de pago aceptan?
+                            <span class="chevron">›</span>
+                        </a>
+                        <a href="#" class="chevron-item">
+                            ¿Cuánto tiempo de anticipación necesito?
+                            <span class="chevron">›</span>
+                        </a>
                     </div>
+
                 </div>
 
-                <!-- Envíanos un mensaje -->
+                <!-- Columna derecha: formulario -->
                 <div class="card">
-                    <h3>Envíanos un mensaje</h3>
+                    <h3>📝 Envíanos un mensaje</h3>
                     <form class="form-mensaje">
                         <div>
                             <label for="asunto">Asunto</label>
@@ -151,5 +149,6 @@
 
 </div>
 
+<script src="../../js/clientes/panel-cliente.js" defer></script>
 </body>
 </html>
