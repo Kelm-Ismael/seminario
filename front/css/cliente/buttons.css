@@ -1,0 +1,43 @@
+/* =====================================
+            BUTTONS
+===================================== */
+
+button,
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: none;
+    padding: 12px 22px;
+    border-radius: var(--radius-md, 10px);
+    cursor: pointer;
+    font-weight: var(--font-semibold, 600);
+    font-size: var(--font-sm, 14px);
+    background: var(--primary);
+    color: white;
+    transition: .3s;
+    text-decoration: none;
+}
+
+button:hover,
+.btn:hover { background: var(--primary-hover); }
+
+.btn-danger { background: var(--danger); }
+.btn-danger:hover { background: var(--danger-hover); }
+
+.btn-success { background: var(--success); }
+.btn-secondary { background: #6b7280; }
+
+.btn-primary { background: var(--primary); color: #fff; }
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    font-size: var(--font-xs, 12px);
+    padding: 10px 18px;
+}
+.btn-outline:hover { background: rgba(184,138,42,.08); color: var(--primary-hover); border-color: var(--primary-hover); }
+
+.btn-sm { padding: 8px 16px; font-size: var(--font-xs, 12px); }

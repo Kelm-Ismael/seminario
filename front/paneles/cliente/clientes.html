@@ -5,14 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Panel Cliente | Inicio</title>
 
-<link rel="stylesheet" href="../../css/cliente/panel-cliente.css">
-<!-- <link rel="stylesheet" href="../../css/theme-public.css"> -->
-<link rel="stylesheet" href="../../css/variables.css">
-<link rel="stylesheet" href="../../css/sidebar.css">
-<link rel="stylesheet" href="../../css/navbar.css">
-<link rel="stylesheet" href="../../css/cards.css">
-<link rel="stylesheet" href="../../css/table.css">
-<link rel="stylesheet" href="../../css/buttons.css">
+<link rel="stylesheet" href="../../css/cliente/theme-public.css">
+<link rel="stylesheet" href="../../css/cliente/variables.css">
+<link rel="stylesheet" href="../../css/cliente/sidebar.css">
+<link rel="stylesheet" href="../../css/cliente/navbar.css">
+<link rel="stylesheet" href="../../css/cliente/cards.css">
+<link rel="stylesheet" href="../../css/cliente/table.css">
+<link rel="stylesheet" href="../../css/cliente/buttons.css">
 </head>
 <body>
 
@@ -30,13 +29,14 @@
         </div>
 
         <nav class="sidebar-menu">
-            <a href="clientes.html" class="active"><span class="icon">🏠</span> Inicio</a>
-            <a href="../../pages/turnos.html"><span class="icon">📅</span> Reservar turno</a>
+            <a href="index.html" class="active"><span class="icon">🏠</span> Inicio</a>
+            <a href="reservar-turno.html"><span class="icon">📅</span> Reservar turno</a>
             <a href="mis-turnos.html"><span class="icon">🕐</span> Mis turnos</a>
             <a href="historial.html"><span class="icon">📖</span> Historial</a>
             <a href="favoritos.html"><span class="icon">⭐</span> Mis favoritos</a>
             <a href="perfil.html"><span class="icon">👤</span> Perfil</a>
             <a href="promociones.html"><span class="icon">🏷️</span> Promociones</a>
+            <a href="notificaciones.html"><span class="icon">🔔</span> Notificaciones</a>
             <a href="contacto.html"><span class="icon">📞</span> Contacto</a>
         </nav>
 
@@ -53,7 +53,6 @@
     <main class="main-content">
 
         <header class="panel-topbar">
-
             <div class="panel-greeting">
                 <h1>Hola, Juan 👋</h1>
                 <p>¿Listo para tu próximo cambio?</p>
@@ -67,7 +66,6 @@
                     <span>▾</span>
                 </div>
             </div>
-
         </header>
 
         <div class="panel-content">
@@ -114,7 +112,7 @@
 
             </div>
 
-            <!-- FILA 2: reservar nuevo turno + promo -->
+            <!-- FILA 2: reservar nuevo turno + beneficios -->
             <div class="panel-row">
 
                 <div class="card">
@@ -130,21 +128,30 @@
                 </div>
 
                 <div class="card promo-highlight">
-                    <div class="pct">15% OFF</div>
-                    <p>En tu próximo servicio<br>Válido hasta 31/05</p>
-                    <a href="promociones.html">Ver promociones ›</a>
+                    <div class="icon-circle" style="margin:0 auto 8px;">⭐</div>
+                    <h3 style="justify-content:center;">Beneficios Premium</h3>
+                    <p>Alcanzá tu próximo nivel de fidelidad para obtener un tratamiento capilar de cortesía.</p>
+                    <div class="progreso-nivel">
+                        <div class="fila">
+                            <span>Nivel Plata</span>
+                            <span>850 / 1000 pts</span>
+                        </div>
+                        <div class="progreso-barra">
+                            <div class="relleno" style="width:85%;"></div>
+                        </div>
+                    </div>
                 </div>
 
             </div>
 
             <!-- FILA 3: historial reciente -->
             <div class="card">
-                <div class="historial-header">
-                    <h3 style="margin:0;">Historial reciente</h3>
+                <div class="tabla-header">
+                    <h3 style="margin:0;">📖 Historial reciente</h3>
                     <a href="historial.html">Ver todo</a>
                 </div>
 
-                <table class="tabla-historial">
+                <table>
                     <thead>
                         <tr>
                             <th>Servicio</th>
