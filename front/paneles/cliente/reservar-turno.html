@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -85,56 +86,13 @@
                         </div>
 
                         <h4 class="section-title">✂️ Seleccioná el servicio</h4>
-                        <div class="service-cards">
-                            <div class="service-card selected">
-                                <div class="icon">✂️</div>
-                                <h4>Corte</h4>
-                                <p>Desde $15.000</p>
-                            </div>
-                            <div class="service-card">
-                                <div class="icon">🪒</div>
-                                <h4>Barba</h4>
-                                <p>Desde $12.000</p>
-                            </div>
-                            <div class="service-card">
-                                <div class="icon">✂️</div>
-                                <h4>Corte + Barba</h4>
-                                <p>Desde $22.000</p>
-                            </div>
-                            <div class="service-card">
-                                <div class="icon">🎨</div>
-                                <h4>Tintura</h4>
-                                <p>Desde $28.000</p>
-                            </div>
-                            <div class="service-card">
-                                <div class="icon">💇</div>
-                                <h4>Peinado</h4>
-                                <p>Desde $10.000</p>
-                            </div>
+                        <div class="service-cards" id="serviciosContainer">
+                            <p class="mensaje">Cargando servicios...</p>
                         </div>
 
                         <h4 class="section-title">👤 Seleccioná el profesional</h4>
-                        <div class="professional-cards">
-                            <div class="professional-card selected">
-                                <div class="avatar-initials avatar-sm">DM</div>
-                                <h4>David Martínez</h4>
-                                <p>Experto</p>
-                            </div>
-                            <div class="professional-card">
-                                <div class="avatar-initials avatar-sm">SC</div>
-                                <h4>Sofía Colorista</h4>
-                                <p>Experta</p>
-                            </div>
-                            <div class="professional-card">
-                                <div class="avatar-initials avatar-sm">CD</div>
-                                <h4>Carlos Díaz</h4>
-                                <p>Junior</p>
-                            </div>
-                            <div class="professional-card">
-                                <div class="avatar-initials avatar-sm">AR</div>
-                                <h4>Andrés Rojas</h4>
-                                <p>Experto</p>
-                            </div>
+                        <div class="professional-cards" id="profesionalesContainer">
+                            <p class="mensaje">Cargando profesionales...</p>
                         </div>
 
                         <h4 class="section-title">🗓️ Seleccioná fecha y hora</h4>
@@ -146,7 +104,7 @@
                                     <span>Mayo 2026</span>
                                     <button>›</button>
                                 </div>
-                                <div class="calendar-grid">
+                                <div class="calendar-grid" id="calendarioGrid">
                                     <div class="weekday">Lun</div>
                                     <div class="weekday">Mar</div>
                                     <div class="weekday">Mié</div>
@@ -197,7 +155,7 @@
                                 </div>
                             </div>
 
-                            <div class="time-slots">
+                            <div class="time-slots" id="timeSlotsContainer">
                                 <div class="time-slot selected">09:00 AM</div>
                                 <div class="time-slot">10:00 AM</div>
                                 <div class="time-slot">11:00 AM</div>
@@ -219,27 +177,28 @@
                     <div class="resumen-box">
                         <div class="resumen-fila">
                             <span class="label">Servicio</span>
-                            <span class="valor">Corte</span>
+                            <span class="valor" id="resumenServicio">-</span>
                         </div>
                         <div class="resumen-fila">
                             <span class="label">Profesional</span>
-                            <span class="valor">David Martínez</span>
+                            <span class="valor" id="resumenProfesional">-</span>
                         </div>
                         <div class="resumen-fila">
                             <span class="label">Fecha</span>
-                            <span class="valor">16/05/2026</span>
+                            <span class="valor" id="resumenFecha">-</span>
                         </div>
                         <div class="resumen-fila">
                             <span class="label">Hora</span>
-                            <span class="valor">09:00 AM</span>
+                            <span class="valor" id="resumenHora">-</span>
                         </div>
                         <div class="resumen-fila">
                             <span class="label">Precio</span>
-                            <span class="valor">$15.000</span>
+                            <span class="valor" id="resumenPrecio">-</span>
                         </div>
                     </div>
 
-                    <button class="btn-primary" style="width:100%; margin-top:16px;">Continuar a confirmación</button>
+                    <button type="button" id="btnContinuar" class="btn-primary" style="width:100%; margin-top:16px;">Continuar a confirmación</button>
+                    <p id="mensajeReserva" class="mensaje" aria-live="polite"></p>
                 </div>
 
             </div>
@@ -251,5 +210,6 @@
 </div>
 
 <script src="../../js/panel-cliente.js" defer></script>
+<script type="module" src="../../js/turnos/reservar-turno.js"></script>
 </body>
 </html>
