@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Panel Administrativo - Turnos</title>
+    <link rel="stylesheet" href="../../css/theme-public.css">
+    <link rel="stylesheet" href="../../css/turno.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <!-- <link rel="stylesheet" href="../../css/dashboard.css"> -->
+    <!-- <link rel="stylesheet" href="../../css/global.css"> -->
+
+</head>
+
+<body>
+
+<main class="container">
+
+    <!-- ==========================
+         ENCABEZADO
+    ========================== -->
+
+    <header class="header">
+
+        <nav class="nav-links">
+            <a href="../index.html">Inicio</a>
+        </nav>
+
+
+        <h1>📅 Panel Administrativo de Turnos</h1>
+
+        <p>Gestión completa de clientes, empleados y reservas</p>
+
+    </header>
+
+
+    <!-- ==========================
+         CREAR TURNO
+    ========================== -->
+
+    <div class="contenedor-secciones">
+
+        <!-- Tarjeta izquierda -->
+        <section class="card card-formulario">
+
+            <h2>Crear nuevo turno</h2>
+
+            <form id="formTurno">
+
+                <div class="fila">
+
+                    <div class="form-group">
+                        <label for="cliente">Cliente</label>
+                        <select id="cliente" required>
+                            <option value="">Seleccionar cliente</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="empleado">Empleado</label>
+                        <select id="empleado" required>
+                            <option value="">Seleccionar empleado</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="fila">
+
+                    <div class="form-group">
+                        <label for="servicio">Servicio</label>
+                        <select id="servicio" required>
+                            <option value="">Seleccionar servicio</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fecha">Fecha y hora</label>
+                        <input type="datetime-local" id="fecha" required>
+                    </div>
+
+                </div>
+
+                <div class="acciones">
+                    <button type="submit" class="btn btn-primary">
+                        Crear turno
+                    </button>
+                </div>
+
+            </form>
+
+        </section>
+
+        <!-- Tarjeta derecha -->
+        <section class="card card-menu">
+
+            <h2>Accesos rápidos</h2>
+
+            <a href="./clientes.html" class="btn-menu">Clientes</a>
+            <a href="./empleados.html" class="btn-menu">Empleados</a>
+            <a href="./servicios.html" class="btn-menu">Servicios</a>
+
+        </section>
+
+    </div>
+
+    <!-- ==========================
+         BUSQUEDA Y FILTROS
+    ========================== -->
+
+    <section class="card">
+
+        <h2>Buscar turnos</h2>
+
+        <div class="fila">
+
+            <div class="form-group">
+                <label for="busqueda">Buscar</label>
+                <input
+                    type="text"
+                    id="busqueda"
+                    placeholder="Cliente, empleado o servicio...">
+            </div>
+
+            <div class="form-group">
+                <label for="filtroEstado">Estado</label>
+                <select id="filtroEstado">
+                    <option value="">Todos</option>
+                    <option value="pendiente">Pendiente</option>
+                    <option value="confirmado">Confirmado</option>
+                    <option value="cancelado">Cancelado</option>
+                    <option value="finalizado">Finalizado</option>
+                </select>
+            </div>
+
+        </div>
+
+
+    </section>
+    
+
+
+
+    <!-- ==========================
+         TABLA TURNOS
+    ========================== -->
+
+    <section class="card">
+
+        <h2>Turnos registrados</h2>
+
+        <div class="tabla-wrapper">
+
+            <table class="lista-turnos">
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Cliente</th>
+                        <th>Empleado</th>
+                        <th>Servicio</th>
+                        <th>Fecha</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tablaTurnos">
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <p id="mensaje" class="mensaje" aria-live="polite"></p>
+
+    </section>
+
+
+    <!-- ==========================
+         MODAL EDITAR
+    ========================== -->
+
+    <div id="modalEditar" class="modal" style="display:none;">
+
+        <div class="modal-contenido">
+
+            <h2>Editar turno</h2>
+
+            <input type="hidden" id="editarId">
+
+            <div class="form-group">
+                <label for="editarEmpleado">Empleado</label>
+                <select id="editarEmpleado"></select>
+            </div>
+
+            <div class="form-group">
+                <label for="editarFecha">Fecha</label>
+                <input type="datetime-local" id="editarFecha">
+            </div>
+
+            <div class="form-group">
+                <label for="editarEstado">Estado</label>
+                <select id="editarEstado">
+                    <option value="pendiente">Pendiente</option>
+                    <option value="confirmado">Confirmado</option>
+                    <option value="cancelado">Cancelado</option>
+                    <option value="finalizado">Finalizado</option>
+                </select>
+            </div>
+
+            <div class="acciones">
+                <button id="guardarEdicion" class="btn btn-primary">
+                    Guardar
+                </button>
+                <button id="cerrarModal" class="btn btn-secondary">
+                    Cerrar
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+<script type="module" src="../js/turnos/turnos.js"></script>
+
+</body>
+
+</html>
