@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel Cliente | Notificaciones</title>
+<link rel="stylesheet" href="../../css/cliente/theme-public.css">
+<link rel="stylesheet" href="../../css/cliente/variables.css">
+<link rel="stylesheet" href="../../css/cliente/sidebar.css">
+<link rel="stylesheet" href="../../css/cliente/navbar.css">
+<link rel="stylesheet" href="../../css/cliente/cards.css">
+<link rel="stylesheet" href="../../css/cliente/table.css">
+<link rel="stylesheet" href="../../css/cliente/buttons.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside id="sidebar">
+
+        <div class="panel-brand">
+            <div class="avatar-initials avatar-md">DM</div>
+            <div class="panel-brand-info">
+                <h2>David Martínez</h2>
+                <p>Estilista Unisex</p>
+            </div>
+        </div>
+
+        <nav class="sidebar-menu">
+            <a href="clientes.html"><span class="icon">🏠</span> Inicio</a>
+            <a href="../../pages/turnos.html"><span class="icon">📅</span> Reservar turno</a>
+            <a href="mis-turnos.html"><span class="icon">🕐</span> Mis turnos</a>
+            <a href="historial.html"><span class="icon">📖</span> Historial</a>
+            <a href="favoritos.html"><span class="icon">⭐</span> Mis favoritos</a>
+            <a href="perfil.html"><span class="icon">👤</span> Perfil</a>
+            <a href="promociones.html"><span class="icon">🏷️</span> Promociones</a>
+            <a href="notificaciones.html" class="active"><span class="icon">🔔</span> Notificaciones</a>
+            <a href="contacto.html"><span class="icon">📞</span> Contacto</a>
+        </nav>
+
+        <div class="panel-help">
+            ¿Necesitás ayuda?
+            <a href="https://wa.me/5491112345678" target="_blank" rel="noreferrer">
+                💬 Escribinos por WhatsApp
+            </a>
+        </div>
+
+    </aside>
+
+    <!-- ============ CONTENIDO ============ -->
+    <main class="main-content">
+
+        <header class="panel-topbar">
+            <div class="panel-greeting">
+                <h1>Hola, Juan 👋</h1>
+                <p>¿Listo para tu próximo cambio?</p>
+            </div>
+
+            <div class="panel-topbar-actions">
+                <div class="panel-bell">🔔</div>
+                <div class="panel-user">
+                    <div class="avatar-initials avatar-sm">JP</div>
+                    <span>Juan Pérez</span>
+                    <span>▾</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="panel-content">
+            <div class="card">
+                <div class="seccion-header">
+                    <div class="tabs" style="margin-bottom:0;">
+                        <button class="tab active">Todas</button>
+                        <button class="tab">Turnos</button>
+                        <button class="tab">Promociones</button>
+                        <button class="tab">Sistema</button>
+                    </div>
+                    <a href="#">Marcar todas como leídas</a>
+                </div>
+
+                <div class="notif-item no-leida">
+                    <div class="icon-circle">📅</div>
+                    <div class="info">
+                        <h4>Recordatorio de turno</h4>
+                        <p>Tenés un turno mañana a las 10:00 AM.</p>
+                        <time>15/05/2026 · 08:00 PM</time>
+                    </div>
+                    <span class="dot"></span>
+                </div>
+
+                <div class="notif-item no-leida">
+                    <div class="icon-circle">🏷️</div>
+                    <div class="info">
+                        <h4>Promoción exclusiva</h4>
+                        <p>15% OFF en tu próximo servicio.</p>
+                        <time>14/05/2026 · 11:30 AM</time>
+                    </div>
+                    <span class="dot"></span>
+                </div>
+
+                <div class="notif-item">
+                    <div class="icon-circle">✅</div>
+                    <div class="info">
+                        <h4>Turno confirmado</h4>
+                        <p>Tu turno del 16/05/2026 a las 10:00 AM fue confirmado.</p>
+                        <time>10/05/2026 · 09:15 AM</time>
+                    </div>
+                </div>
+
+                <div class="notif-item">
+                    <div class="icon-circle">🔁</div>
+                    <div class="info">
+                        <h4>Cambio de horario</h4>
+                        <p>Tu turno fue reprogramado para el 19/05/2026 a las 03:00 PM.</p>
+                        <time>08/05/2026 · 04:45 PM</time>
+                    </div>
+                </div>
+
+                <div class="notif-item">
+                    <div class="icon-circle">💬</div>
+                    <div class="info">
+                        <h4>¡Gracias por tu visita!</h4>
+                        <p>Esperamos verte pronto nuevamente.</p>
+                        <time>02/05/2026 · 01:20 PM</time>
+                    </div>
+                </div>
+
+                <button class="btn-outline btn-cargar-mas">Cargar más</button>
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="../../js/panel-cliente.js" defer></script>
+</body>
+</html>

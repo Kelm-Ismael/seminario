@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel Cliente | Historial</title>
+
+<link rel="stylesheet" href="../css/theme-public.css">
+<link rel="stylesheet" href="../css/variables.css">
+<link rel="stylesheet" href="../css/sidebar.css">
+<link rel="stylesheet" href="../css/navbar.css">
+<link rel="stylesheet" href="../css/cards.css">
+<link rel="stylesheet" href="../css/table.css">
+<link rel="stylesheet" href="../css/buttons.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside id="sidebar">
+
+        <div class="panel-brand">
+            <div class="avatar-initials avatar-md">DM</div>
+            <div class="panel-brand-info">
+                <h2>David Martínez</h2>
+                <p>Estilista Unisex</p>
+            </div>
+        </div>
+
+        <nav class="sidebar-menu">
+            <a href="clientes.html"><span class="icon">🏠</span> Inicio</a>
+            <a href="../../pages/turnos.html"><span class="icon">📅</span> Reservar turno</a>
+            <a href="mis-turnos.html"><span class="icon">🕐</span> Mis turnos</a>
+            <a href="historial.html" class="active"><span class="icon">📖</span> Historial</a>
+            <a href="favoritos.html"><span class="icon">⭐</span> Mis favoritos</a>
+            <a href="perfil.html"><span class="icon">👤</span> Perfil</a>
+            <a href="promociones.html"><span class="icon">🏷️</span> Promociones</a>
+            <a href="notificaciones.html"><span class="icon">🔔</span> Notificaciones</a>
+            <a href="contacto.html"><span class="icon">📞</span> Contacto</a>
+        </nav>
+
+        <div class="panel-help">
+            ¿Necesitás ayuda?
+            <a href="https://wa.me/5491112345678" target="_blank" rel="noreferrer">
+                💬 Escribinos por WhatsApp
+            </a>
+        </div>
+
+    </aside>
+
+    <!-- ============ CONTENIDO ============ -->
+    <main class="main-content">
+
+        <header class="panel-topbar">
+            <div class="panel-greeting">
+                <h1>Hola, Juan 👋</h1>
+                <p>¿Listo para tu próximo cambio?</p>
+            </div>
+
+            <div class="panel-topbar-actions">
+                <div class="panel-bell">🔔</div>
+                <div class="panel-user">
+                    <div class="avatar-initials avatar-sm">JP</div>
+                    <span>Juan Pérez</span>
+                    <span>▾</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="panel-content">
+            <div class="card">
+                <div class="tabs">
+                    <button class="tab active">Todos</button>
+                    <button class="tab">Completados</button>
+                    <button class="tab">Cancelados</button>
+                    <button class="tab">No asistidos</button>
+                </div>
+
+                <div class="turno-item">
+                    <div class="fecha-box">
+                        <div class="dia-semana">Vie</div>
+                        <div class="dia-num">09</div>
+                        <div class="mes">May</div>
+                    </div>
+                    <div class="info">
+                        <h4>Corte + Barba</h4>
+                        <p>David Martínez · Sucursal Centro</p>
+                        <p>09:00 AM</p>
+                    </div>
+                    <span class="precio">$22.000</span>
+                    <span class="badge badge-completado">Completado</span>
+                    <div class="acciones">
+                        <button class="btn-outline btn-sm">Ver detalle</button>
+                    </div>
+                </div>
+
+                <div class="turno-item">
+                    <div class="fecha-box">
+                        <div class="dia-semana">Lun</div>
+                        <div class="dia-num">05</div>
+                        <div class="mes">May</div>
+                    </div>
+                    <div class="info">
+                        <h4>Tintura Completa</h4>
+                        <p>Sofía Colorista · Sucursal Norte</p>
+                        <p>02:00 PM</p>
+                    </div>
+                    <span class="precio">$28.000</span>
+                    <span class="badge badge-completado">Completado</span>
+                    <div class="acciones">
+                        <button class="btn-outline btn-sm">Ver detalle</button>
+                    </div>
+                </div>
+
+                <div class="turno-item">
+                    <div class="fecha-box">
+                        <div class="dia-semana">Vie</div>
+                        <div class="dia-num">02</div>
+                        <div class="mes">May</div>
+                    </div>
+                    <div class="info">
+                        <h4>Corte</h4>
+                        <p>Carlos Díaz · Sucursal Centro</p>
+                        <p>11:00 AM</p>
+                    </div>
+                    <span class="precio">$15.000</span>
+                    <span class="badge badge-completado">Completado</span>
+                    <div class="acciones">
+                        <button class="btn-outline btn-sm">Ver detalle</button>
+                    </div>
+                </div>
+
+                <div class="turno-item">
+                    <div class="fecha-box">
+                        <div class="dia-semana">Lun</div>
+                        <div class="dia-num">28</div>
+                        <div class="mes">Abr</div>
+                    </div>
+                    <div class="info">
+                        <h4>Corte + Barba</h4>
+                        <p>Andrés Rojas · Sucursal Norte</p>
+                        <p>10:00 AM</p>
+                    </div>
+                    <span class="precio">$20.000</span>
+                    <span class="badge badge-cancelado">Cancelado</span>
+                    <div class="acciones">
+                        <button class="btn-outline btn-sm">Ver detalle</button>
+                    </div>
+                </div>
+
+                <div class="turno-item">
+                    <div class="fecha-box">
+                        <div class="dia-semana">Vie</div>
+                        <div class="dia-num">25</div>
+                        <div class="mes">Abr</div>
+                    </div>
+                    <div class="info">
+                        <h4>Peinado</h4>
+                        <p>Carlos Díaz · Sucursal Centro</p>
+                        <p>04:00 PM</p>
+                    </div>
+                    <span class="precio">$10.000</span>
+                    <span class="badge badge-completado">Completado</span>
+                    <div class="acciones">
+                        <button class="btn-outline btn-sm">Ver detalle</button>
+                    </div>
+                </div>
+
+                <button class="btn-outline btn-cargar-mas">Cargar más</button>
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="../../js/panel-cliente.js" defer></script>
+</body>
+</html>

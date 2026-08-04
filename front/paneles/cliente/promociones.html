@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel Cliente | Promociones</title>
+<link rel="stylesheet" href="../../css/cliente/theme-public.css">
+<link rel="stylesheet" href="../../css/cliente/variables.css">
+<link rel="stylesheet" href="../../css/cliente/sidebar.css">
+<link rel="stylesheet" href="../../css/cliente/navbar.css">
+<link rel="stylesheet" href="../../css/cliente/cards.css">
+<link rel="stylesheet" href="../../css/cliente/table.css">
+<link rel="stylesheet" href="../../css/cliente/buttons.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside id="sidebar">
+
+        <div class="panel-brand">
+            <div class="avatar-initials avatar-md">DM</div>
+            <div class="panel-brand-info">
+                <h2>David Martínez</h2>
+                <p>Estilista Unisex</p>
+            </div>
+        </div>
+
+        <nav class="sidebar-menu">
+            <a href="clientes.html"><span class="icon">🏠</span> Inicio</a>
+            <a href="../../pages/turnos.html"><span class="icon">📅</span> Reservar turno</a>
+            <a href="mis-turnos.html"><span class="icon">🕐</span> Mis turnos</a>
+            <a href="historial.html"><span class="icon">📖</span> Historial</a>
+            <a href="favoritos.html"><span class="icon">⭐</span> Mis favoritos</a>
+            <a href="perfil.html"><span class="icon">👤</span> Perfil</a>
+            <a href="promociones.html" class="active"><span class="icon">🏷️</span> Promociones</a>
+            <a href="notificaciones.html"><span class="icon">🔔</span> Notificaciones</a>
+            <a href="contacto.html"><span class="icon">📞</span> Contacto</a>
+        </nav>
+
+        <div class="panel-help">
+            ¿Necesitás ayuda?
+            <a href="https://wa.me/5491112345678" target="_blank" rel="noreferrer">
+                💬 Escribinos por WhatsApp
+            </a>
+        </div>
+
+    </aside>
+
+    <!-- ============ CONTENIDO ============ -->
+    <main class="main-content">
+
+        <header class="panel-topbar">
+            <div class="panel-greeting">
+                <h1>Hola, Juan 👋</h1>
+                <p>¿Listo para tu próximo cambio?</p>
+            </div>
+
+            <div class="panel-topbar-actions">
+                <div class="panel-bell">🔔</div>
+                <div class="panel-user">
+                    <div class="avatar-initials avatar-sm">JP</div>
+                    <span>Juan Pérez</span>
+                    <span>▾</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="panel-content">
+            <div class="card">
+                <div class="tabs">
+                    <button class="tab active">Disponibles</button>
+                    <button class="tab">Mis promociones</button>
+                </div>
+
+                <div class="promo-grid">
+
+                    <div class="promo-card">
+                        <span class="pct-badge">15% OFF</span>
+                        <h4>En tu próximo servicio</h4>
+                        <p>Válido hasta 31/05/2026. Aplica en servicios de corte o barba.</p>
+                        <button class="btn-outline btn-sm">Ver detalles</button>
+                    </div>
+
+                    <div class="promo-card">
+                        <span class="pct-badge">2x1</span>
+                        <h4>En tintura</h4>
+                        <p>Válido hasta 30/05/2026. Llevá 2 servicios de tintura y pagá 1.</p>
+                        <button class="btn-outline btn-sm">Ver detalles</button>
+                    </div>
+
+                    <div class="promo-card">
+                        <span class="pct-badge">20% OFF</span>
+                        <h4>En productos</h4>
+                        <p>Válido hasta 25/05/2026. En productos seleccionados.</p>
+                        <button class="btn-outline btn-sm">Ver detalles</button>
+                    </div>
+
+                    <div class="promo-card">
+                        <span class="pct-badge">10% OFF</span>
+                        <h4>Para nuevos clientes</h4>
+                        <p>Válido hasta 30/06/2026. En tu primera visita.</p>
+                        <button class="btn-outline btn-sm">Ver detalles</button>
+                    </div>
+
+                </div>
+
+                <div class="promo-code-box">
+                    <input type="text" placeholder="Ingresá tu código">
+                    <button class="btn-primary">Aplicar</button>
+                </div>
+
+                <button class="btn-outline btn-cargar-mas">Cargar más</button>
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="../../js/panel-cliente.js" defer></script>
+</body>
+</html>
