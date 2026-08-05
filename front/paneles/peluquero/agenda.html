@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi agenda | Panel Peluquero</title>
+
+<link rel="stylesheet" href="../../css/cliente/theme-public.css">
+<link rel="stylesheet" href="../../css/cliente/variables.css">
+<link rel="stylesheet" href="../../css/cliente/sidebar.css">
+<link rel="stylesheet" href="../../css/cliente/navbar.css">
+<link rel="stylesheet" href="../../css/cliente/cards.css">
+<link rel="stylesheet" href="../../css/cliente/buttons.css">
+<link rel="stylesheet" href="../../css/peluquero/peluquero.css">
+</head>
+<body>
+
+<aside id="sidebar">
+    <div class="panel-brand">
+        <div class="avatar-initials avatar-md" id="brand-avatar">DM</div>
+        <div class="panel-brand-info">
+            <h2>David Martínez</h2>
+            <p>Panel Peluquero</p>
+        </div>
+    </div>
+
+    <nav class="sidebar-menu">
+        <a href="./inicio.html"><span class="icon">🏠</span> Inicio</a>
+        <a href="./agenda.html" class="active"><span class="icon">📅</span> Mi agenda</a>
+        <a href="./clientes.html"><span class="icon">👥</span> Clientes</a>
+        <a href="./historial.html"><span class="icon">🕓</span> Historial</a>
+        <a href="./perfil.html"><span class="icon">👤</span> Perfil</a>
+    </nav>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="panel-help">
+        Cualquier duda con tu agenda, escribinos.
+        <br>
+        <a href="https://wa.me/5493764000000" target="_blank">Asistencia por WhatsApp</a>
+    </div>
+</aside>
+
+<div class="main-content">
+
+    <header class="panel-topbar">
+        <div class="panel-greeting">
+            <h1>Hola, <span id="saludo-nombre">—</span> 👋</h1>
+            <p id="saludo-fecha">—</p>
+        </div>
+        <div class="panel-topbar-actions">
+            <div class="panel-bell" title="Notificaciones">🔔</div>
+            <div class="panel-user">
+                <div class="avatar-initials avatar-sm" id="user-avatar">--</div>
+                <span id="user-nombre">Cargando…</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="panel-content">
+
+        <section class="card">
+
+            <div class="tabs" id="agenda-tabs">
+                <button class="tab active" data-vista="dia">Día</button>
+                <button class="tab" data-vista="semana">Semana</button>
+            </div>
+
+            <div class="agenda-toolbar" id="agenda-toolbar">
+                <div class="agenda-nav-dia">
+                    <button id="btn-dia-anterior" title="Día anterior">‹</button>
+                    <span class="fecha-actual" id="agenda-fecha-actual">—</span>
+                    <button id="btn-dia-siguiente" title="Día siguiente">›</button>
+                </div>
+                <button class="btn-outline" id="btn-hoy">Hoy</button>
+            </div>
+
+            <div id="vista-dia">
+                <div id="agenda-lista">
+                    <p class="dato-fila" id="agenda-vacio" style="display:none;">
+                        <span class="label">No tenés turnos para este día.</span>
+                    </p>
+                </div>
+            </div>
+
+            <div id="vista-semana" style="display:none;">
+                <p class="agenda-semana-placeholder">
+                    Vista semanal — próximamente. Por ahora usá la vista de Día.
+                </p>
+            </div>
+
+        </section>
+
+    </div>
+</div>
+
+<script type="module" src="../../js/peluquero/agenda.js"></script>
+</body>
+</html>

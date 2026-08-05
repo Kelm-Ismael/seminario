@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perfil | Panel Peluquero</title>
+
+<link rel="stylesheet" href="../../css/cliente/theme-public.css">
+<link rel="stylesheet" href="../../css/cliente/variables.css">
+<link rel="stylesheet" href="../../css/cliente/sidebar.css">
+<link rel="stylesheet" href="../../css/cliente/navbar.css">
+<link rel="stylesheet" href="../../css/cliente/cards.css">
+<link rel="stylesheet" href="../../css/cliente/buttons.css">
+<link rel="stylesheet" href="../../css/peluquero/peluquero.css">
+</head>
+<body>
+
+<aside id="sidebar">
+    <div class="panel-brand">
+        <div class="avatar-initials avatar-md" id="brand-avatar">DM</div>
+        <div class="panel-brand-info">
+            <h2>David Martínez</h2>
+            <p>Panel Peluquero</p>
+        </div>
+    </div>
+
+    <nav class="sidebar-menu">
+        <a href="./inicio.html"><span class="icon">🏠</span> Inicio</a>
+        <a href="./agenda.html"><span class="icon">📅</span> Mi agenda</a>
+        <a href="./clientes.html"><span class="icon">👥</span> Clientes</a>
+        <a href="./historial.html"><span class="icon">🕓</span> Historial</a>
+        <a href="./perfil.html" class="active"><span class="icon">👤</span> Perfil</a>
+    </nav>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="panel-help">
+        Cualquier duda con tu agenda, escribinos.
+        <br>
+        <a href="https://wa.me/5493764000000" target="_blank">Asistencia por WhatsApp</a>
+    </div>
+</aside>
+
+<div class="main-content">
+
+    <header class="panel-topbar">
+        <div class="panel-greeting">
+            <h1>Hola, <span id="saludo-nombre">—</span> 👋</h1>
+            <p id="saludo-fecha">—</p>
+        </div>
+        <div class="panel-topbar-actions">
+            <div class="panel-bell" title="Notificaciones">🔔</div>
+            <div class="panel-user">
+                <div class="avatar-initials avatar-sm" id="user-avatar">--</div>
+                <span id="user-nombre">Cargando…</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="panel-content">
+
+        <div class="panel-columns">
+
+            <section class="card perfil-destacado">
+                <div class="avatar-initials avatar-md" id="perfil-avatar">--</div>
+                <h3 id="perfil-nombre">Cargando…</h3>
+                <span class="rol-badge">Peluquero/a</span>
+            </section>
+
+            <div class="panel-stack">
+
+                <section class="card">
+                    <h3>Mis datos</h3>
+                    <div class="datos-lista">
+                        <div class="dato-fila">
+                            <span class="label">Nombre</span>
+                            <span class="valor" id="dato-nombre">—</span>
+                        </div>
+                        <div class="dato-fila">
+                            <span class="label">Especialidad</span>
+                            <span class="valor">Corte y color</span>
+                        </div>
+                        <div class="dato-fila">
+                            <span class="label">Turnos totales</span>
+                            <span class="valor" id="dato-turnos-totales">—</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <h3>Preferencias</h3>
+                    <div class="dato-fila">
+                        <span class="label">Notificarme nuevos turnos</span>
+                        <label class="toggle">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="dato-fila">
+                        <span class="label">Avisos por WhatsApp</span>
+                        <label class="toggle">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <h3>Cuenta</h3>
+                    <div class="chevron-item">Seguridad <span class="chevron">›</span></div>
+                    <div class="chevron-item">Preguntas frecuentes <span class="chevron">›</span></div>
+                    <div class="chevron-item" style="color:var(--danger)">Cerrar sesión <span class="chevron">›</span></div>
+                </section>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<script type="module" src="../../js/peluquero/perfil.js"></script>
+</body>
+</html>
