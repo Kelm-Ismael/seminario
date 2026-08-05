@@ -17,7 +17,7 @@
 .auth-showcase {
     flex: 1;
     position: relative;
-    background: url("../../assets/img/silla.png") no-repeat center center;
+    background: url("../../assets/silla.png") no-repeat center center;
     background-size: cover;
     display: flex;
     flex-direction: column;
