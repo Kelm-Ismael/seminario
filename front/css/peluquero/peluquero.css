@@ -177,3 +177,140 @@
     padding: 4px 12px;
     border-radius: var(--radius-full, 999px);
 }
+
+/* ----------------------------------------------------------
+   6) LOGO DEL NEGOCIO editable (sidebar)
+---------------------------------------------------------- */
+.logo-upload {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 4px;
+    cursor: pointer;
+}
+
+.brand-logo-img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--border);
+}
+
+.logo-upload-badge {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: #fff;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--section);
+}
+
+/* ----------------------------------------------------------
+   7) FOTO DE PERFIL editable + menú desplegable (topbar)
+---------------------------------------------------------- */
+.panel-user {
+    position: relative;
+}
+
+.user-avatar-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.chevron-down {
+    color: var(--muted);
+    font-size: 11px;
+    margin-left: 2px;
+}
+
+.user-dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    min-width: 200px;
+    background: var(--section);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md, 12px);
+    box-shadow: var(--shadow);
+    padding: 6px;
+    display: none;
+    flex-direction: column;
+    gap: 2px;
+    z-index: 1100;
+}
+
+.user-dropdown.open { display: flex; }
+
+.user-dropdown-item {
+    background: none;
+    color: var(--dark);
+    text-align: left;
+    padding: 10px 12px;
+    border-radius: var(--radius-sm, 8px);
+    font-size: var(--font-sm, 14px);
+    font-weight: var(--font-regular, 400);
+    width: 100%;
+}
+
+.user-dropdown-item:hover { background: var(--card); }
+.user-dropdown-item.danger { color: var(--danger); }
+
+/* Avatar grande de Perfil, mismo criterio que el del topbar */
+.perfil-avatar-img {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: var(--space-md, 16px);
+}
+
+/* ----------------------------------------------------------
+   8) MIS MÉTRICAS — gráfico de barras simple (ingresos por mes)
+---------------------------------------------------------- */
+.barras-mensuales {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--space-md, 16px);
+    height: 180px;
+    padding-top: var(--space-md, 16px);
+}
+
+.barra-mes {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+    gap: 8px;
+}
+
+.barra-mes .valor {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: var(--font-semibold, 600);
+}
+
+.barra-mes .relleno {
+    width: 100%;
+    max-width: 36px;
+    background: var(--primary);
+    border-radius: var(--radius-sm, 8px) var(--radius-sm, 8px) 0 0;
+    transition: height .3s;
+}
+
+.barra-mes .etiqueta {
+    font-size: 11px;
+    color: var(--muted);
+}

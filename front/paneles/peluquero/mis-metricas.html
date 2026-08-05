@@ -3,17 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Inicio | Panel Peluquero</title>
+<title>Mis métricas | Panel Peluquero</title>
 
-<!-- Compartidos con el panel cliente: no tocar acá, se editan en su archivo original -->
 <link rel="stylesheet" href="../../css/cliente/theme-public.css">
 <link rel="stylesheet" href="../../css/cliente/variables.css">
 <link rel="stylesheet" href="../../css/cliente/sidebar.css">
 <link rel="stylesheet" href="../../css/cliente/navbar.css">
 <link rel="stylesheet" href="../../css/cliente/cards.css">
 <link rel="stylesheet" href="../../css/cliente/buttons.css">
-
-<!-- Exclusivo del panel peluquero -->
 <link rel="stylesheet" href="../../css/peluquero/peluquero.css">
 </head>
 <body>
@@ -33,11 +30,11 @@
     </div>
 
     <nav class="sidebar-menu">
-        <a href="./peluquero.html" class="active"><span class="icon">🏠</span> Inicio</a>
+        <a href="./inicio.html"><span class="icon">🏠</span> Inicio</a>
         <a href="./agenda.html"><span class="icon">📅</span> Mi agenda</a>
         <a href="./servicios.html"><span class="icon">✂️</span> Servicios</a>
         <a href="./clientes.html"><span class="icon">👥</span> Clientes</a>
-        <a href="./mis-metricas.html"><span class="icon">📊</span> Mis métricas</a>
+        <a href="./mis-metricas.html" class="active"><span class="icon">📊</span> Mis métricas</a>
         <a href="./historial.html"><span class="icon">🕓</span> Historial</a>
         <a href="./perfil.html"><span class="icon">👤</span> Perfil</a>
     </nav>
@@ -80,50 +77,38 @@
         <div class="stats-grid" id="stats-grid">
             <div class="stat-card">
                 <div class="icon-circle">📅</div>
-                <div class="stat-value" id="stat-turnos-hoy">–</div>
-                <div class="stat-label">Turnos hoy</div>
+                <div class="stat-value" id="stat-turnos-totales">–</div>
+                <div class="stat-label">Turnos totales</div>
             </div>
             <div class="stat-card">
                 <div class="icon-circle" style="color:var(--success)">✅</div>
-                <div class="stat-value" id="stat-confirmados">–</div>
-                <div class="stat-label">Confirmados</div>
+                <div class="stat-value" id="stat-finalizados">–</div>
+                <div class="stat-label">Finalizados</div>
             </div>
             <div class="stat-card">
-                <div class="icon-circle" style="color:var(--danger)">✖</div>
-                <div class="stat-value" id="stat-cancelados">–</div>
-                <div class="stat-label">Cancelados</div>
+                <div class="icon-circle">👥</div>
+                <div class="stat-value" id="stat-clientes-distintos">–</div>
+                <div class="stat-label">Clientes distintos</div>
             </div>
             <div class="stat-card">
                 <div class="icon-circle">💰</div>
-                <div class="stat-value" id="stat-ingresos-hoy">–</div>
-                <div class="stat-label">Ingresos hoy</div>
+                <div class="stat-value" id="stat-ingresos-totales">–</div>
+                <div class="stat-label">Ingresos totales</div>
             </div>
         </div>
 
         <div class="panel-row">
 
             <section class="card">
-                <div class="card-header-row">
-                    <h3>Mi agenda — <span id="agenda-fecha-titulo">hoy</span></h3>
-                    <a href="./agenda.html">Ver completa</a>
-                </div>
-                <div id="agenda-lista">
-                    <p class="dato-fila" id="agenda-vacio" style="display:none;">
-                        <span class="label">No tenés turnos para hoy.</span>
-                    </p>
+                <h3>Ingresos por mes (últimos 6 meses)</h3>
+                <div class="barras-mensuales" id="barras-mensuales">
+                    <p class="dato-fila"><span class="label">Cargando…</span></p>
                 </div>
             </section>
 
             <aside class="panel-stack">
                 <section class="card">
-                    <h3>Próximo turno</h3>
-                    <div class="turno-proximo" id="proximo-turno">
-                        <p class="dato-fila"><span class="label">Cargando…</span></p>
-                    </div>
-                </section>
-
-                <section class="card">
-                    <h3>Métricas personales</h3>
+                    <h3>Esta semana</h3>
                     <div class="progreso-nivel">
                         <div class="fila"><span>Clientes atendidos</span><span id="metrica-clientes-txt">0 / 20</span></div>
                         <div class="progreso-barra"><div class="relleno" id="metrica-clientes-barra" style="width:0%"></div></div>
@@ -140,9 +125,10 @@
             </aside>
 
         </div>
+
     </div>
 </div>
 
-<script type="module" src="../../js/peluquero/inicio.js"></script>
+<script type="module" src="../../js/peluquero/mismetricas.js"></script>
 </body>
 </html>

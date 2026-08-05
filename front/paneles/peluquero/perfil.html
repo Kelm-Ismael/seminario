@@ -17,7 +17,12 @@
 
 <aside id="sidebar">
     <div class="panel-brand">
-        <div class="avatar-initials avatar-md" id="brand-avatar">DM</div>
+        <div class="logo-upload" id="logo-upload" title="Cambiar logo del negocio">
+            <div class="avatar-initials avatar-md" id="brand-avatar">DM</div>
+            <img id="brand-logo-img" class="brand-logo-img" alt="Logo del negocio" style="display:none;">
+            <span class="logo-upload-badge">✎</span>
+        </div>
+        <input type="file" id="brand-logo-input" accept="image/*" hidden>
         <div class="panel-brand-info">
             <h2>David Martínez</h2>
             <p>Panel Peluquero</p>
@@ -25,9 +30,11 @@
     </div>
 
     <nav class="sidebar-menu">
-        <a href="./inicio.html"><span class="icon">🏠</span> Inicio</a>
+        <a href="./peluquero.html"><span class="icon">🏠</span> Inicio</a>
         <a href="./agenda.html"><span class="icon">📅</span> Mi agenda</a>
+        <a href="./servicios.html"><span class="icon">✂️</span> Servicios</a>
         <a href="./clientes.html"><span class="icon">👥</span> Clientes</a>
+        <a href="./mis-metricas.html"><span class="icon">📊</span> Mis métricas</a>
         <a href="./historial.html"><span class="icon">🕓</span> Historial</a>
         <a href="./perfil.html" class="active"><span class="icon">👤</span> Perfil</a>
     </nav>
@@ -50,10 +57,18 @@
         </div>
         <div class="panel-topbar-actions">
             <div class="panel-bell" title="Notificaciones">🔔</div>
-            <div class="panel-user">
+            <div class="panel-user" id="panel-user">
                 <div class="avatar-initials avatar-sm" id="user-avatar">--</div>
+                <img id="user-avatar-img" class="user-avatar-img" alt="Foto de perfil" style="display:none;">
                 <span id="user-nombre">Cargando…</span>
+                <span class="chevron-down">▾</span>
+
+                <div class="user-dropdown" id="user-dropdown">
+                    <button type="button" class="user-dropdown-item" id="btn-cambiar-foto">Cambiar foto de perfil</button>
+                    <button type="button" class="user-dropdown-item danger" id="btn-cerrar-sesion">Cerrar sesión</button>
+                </div>
             </div>
+            <input type="file" id="user-avatar-input" accept="image/*" hidden>
         </div>
     </header>
 
@@ -63,8 +78,10 @@
 
             <section class="card perfil-destacado">
                 <div class="avatar-initials avatar-md" id="perfil-avatar">--</div>
+                <img id="perfil-avatar-img" class="perfil-avatar-img" alt="Foto de perfil" style="display:none;">
                 <h3 id="perfil-nombre">Cargando…</h3>
                 <span class="rol-badge">Peluquero/a</span>
+                <button type="button" class="btn-outline btn-sm" id="btn-cambiar-foto-perfil" style="margin-top:10px;">Cambiar foto</button>
             </section>
 
             <div class="panel-stack">
