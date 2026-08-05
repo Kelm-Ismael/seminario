@@ -209,6 +209,217 @@
 
 </div>
 
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel Cliente | Reservar turno</title>
+<link rel="stylesheet" href="../../css/cliente/theme-public.css">
+<link rel="stylesheet" href="../../css/cliente/variables.css">
+<link rel="stylesheet" href="../../css/cliente/sidebar.css">
+<link rel="stylesheet" href="../../css/cliente/navbar.css">
+<link rel="stylesheet" href="../../css/cliente/cards.css">
+<link rel="stylesheet" href="../../css/cliente/table.css">
+<link rel="stylesheet" href="../../css/cliente/buttons.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside id="sidebar">
+
+        <div class="panel-brand">
+            <div class="avatar-initials avatar-md">DM</div>
+            <div class="panel-brand-info">
+                <h2>David Martínez</h2>
+                <p>Estilista Unisex</p>
+            </div>
+        </div>
+
+        <nav class="sidebar-menu">
+            <a href="clientes.html"><span class="icon">🏠</span> Inicio</a>
+            <a href="reservar-turno.html" class="active"><span class="icon">📅</span> Reservar turno</a>
+            <a href="mis-turnos.html"><span class="icon">🕐</span> Mis turnos</a>
+            <a href="historial.html"><span class="icon">📖</span> Historial</a>
+            <a href="favoritos.html"><span class="icon">⭐</span> Mis favoritos</a>
+            <a href="perfil.html"><span class="icon">👤</span> Perfil</a>
+            <a href="promociones.html"><span class="icon">🏷️</span> Promociones</a>
+            <a href="notificaciones.html"><span class="icon">🔔</span> Notificaciones</a>
+            <a href="contacto.html"><span class="icon">📞</span> Contacto</a>
+        </nav>
+
+        <div class="panel-help">
+            ¿Necesitás ayuda?
+            <a href="https://wa.me/5491112345678" target="_blank" rel="noreferrer">
+                💬 Escribinos por WhatsApp
+            </a>
+        </div>
+
+    </aside>
+
+    <!-- ============ CONTENIDO ============ -->
+    <main class="main-content">
+
+        <header class="panel-topbar">
+            <div class="panel-greeting">
+                <h1>Hola, Juan 👋</h1>
+                <p>¿Listo para tu próximo cambio?</p>
+            </div>
+
+            <div class="panel-topbar-actions">
+                <div class="panel-bell">🔔</div>
+                <div class="panel-user">
+                    <div class="avatar-initials avatar-sm">JP</div>
+                    <span>Juan Pérez</span>
+                    <span>▾</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="panel-content">
+            <div class="panel-columns">
+
+                <div class="panel-stack">
+
+                    <div class="card">
+
+                        <div class="stepper-full">
+                            <div class="step current"><span class="step-num">1</span> Servicio</div>
+                            <div class="divider"></div>
+                            <div class="step"><span class="step-num">2</span> Profesional</div>
+                            <div class="divider"></div>
+                            <div class="step"><span class="step-num">3</span> Fecha y hora</div>
+                            <div class="divider"></div>
+                            <div class="step"><span class="step-num">4</span> Confirmación</div>
+                        </div>
+
+                        <h4 class="section-title">✂️ Seleccioná el servicio</h4>
+                        <div class="service-cards" id="serviciosContainer">
+                            <p class="mensaje">Cargando servicios...</p>
+                        </div>
+
+                        <h4 class="section-title">👤 Seleccioná el profesional</h4>
+                        <div class="professional-cards" id="profesionalesContainer">
+                            <p class="mensaje">Cargando profesionales...</p>
+                        </div>
+
+                        <h4 class="section-title">🗓️ Seleccioná fecha y hora</h4>
+                        <div class="panel-columns" style="grid-template-columns: 1.2fr 1fr;">
+
+                            <div class="calendar-box">
+                                <div class="calendar-header">
+                                    <button type="button">‹</button>
+                                    <span id="calendarioMesAno">Mayo 2026</span>
+                                    <button type="button">›</button>
+                                </div>
+                                <div class="calendar-grid" id="calendarioGrid">
+                                    <div class="weekday">Lun</div>
+                                    <div class="weekday">Mar</div>
+                                    <div class="weekday">Mié</div>
+                                    <div class="weekday">Jue</div>
+                                    <div class="weekday">Vie</div>
+                                    <div class="weekday">Sáb</div>
+                                    <div class="weekday">Dom</div>
+
+                                    <div class="day muted">27</div>
+                                    <div class="day muted">28</div>
+                                    <div class="day muted">29</div>
+                                    <div class="day muted">30</div>
+                                    <div class="day">1</div>
+                                    <div class="day">2</div>
+                                    <div class="day">3</div>
+
+                                    <div class="day">4</div>
+                                    <div class="day">5</div>
+                                    <div class="day">6</div>
+                                    <div class="day">7</div>
+                                    <div class="day">8</div>
+                                    <div class="day">9</div>
+                                    <div class="day">10</div>
+
+                                    <div class="day">11</div>
+                                    <div class="day">12</div>
+                                    <div class="day">13</div>
+                                    <div class="day">14</div>
+                                    <div class="day">15</div>
+                                    <div class="day selected">16</div>
+                                    <div class="day">17</div>
+
+                                    <div class="day">18</div>
+                                    <div class="day">19</div>
+                                    <div class="day">20</div>
+                                    <div class="day">21</div>
+                                    <div class="day">22</div>
+                                    <div class="day">23</div>
+                                    <div class="day">24</div>
+
+                                    <div class="day">25</div>
+                                    <div class="day">26</div>
+                                    <div class="day">27</div>
+                                    <div class="day">28</div>
+                                    <div class="day">29</div>
+                                    <div class="day">30</div>
+                                    <div class="day">31</div>
+                                </div>
+                            </div>
+
+                            <div class="time-slots" id="timeSlotsContainer">
+                                <div class="time-slot selected">09:00 AM</div>
+                                <div class="time-slot">10:00 AM</div>
+                                <div class="time-slot">11:00 AM</div>
+                                <div class="time-slot">12:00 PM</div>
+                                <div class="time-slot">02:00 PM</div>
+                                <div class="time-slot">03:00 PM</div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Columna derecha: resumen -->
+                <div class="card">
+                    <h3>📋 Resumen de tu reserva</h3>
+
+                    <div class="resumen-box">
+                        <div class="resumen-fila">
+                            <span class="label">Servicio</span>
+                            <span class="valor" id="resumenServicio">-</span>
+                        </div>
+                        <div class="resumen-fila">
+                            <span class="label">Profesional</span>
+                            <span class="valor" id="resumenProfesional">-</span>
+                        </div>
+                        <div class="resumen-fila">
+                            <span class="label">Fecha</span>
+                            <span class="valor" id="resumenFecha">-</span>
+                        </div>
+                        <div class="resumen-fila">
+                            <span class="label">Hora</span>
+                            <span class="valor" id="resumenHora">-</span>
+                        </div>
+                        <div class="resumen-fila">
+                            <span class="label">Precio</span>
+                            <span class="valor" id="resumenPrecio">-</span>
+                        </div>
+                    </div>
+
+                    <button type="button" id="btnContinuar" class="btn-primary" style="width:100%; margin-top:16px;">Continuar a confirmación</button>
+                    <p id="mensajeReserva" class="mensaje" aria-live="polite"></p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
 <script src="../../js/panel-cliente.js" defer></script>
 <script type="module" src="../../js/turnos/reservar-turno.js"></script>
 </body>
