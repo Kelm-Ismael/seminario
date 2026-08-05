@@ -1,17 +1,24 @@
 // js/reservar-turno.js
 // Lógica de selección/reserva para el panel cliente, siguiendo el mismo
-// patrón que paneles/administrativo/js/turnos/turnos.js (getDatos + config
-// centralizada de endpoints).
+// patrón que paneles/administrativo/js/turnos/turnos.js (getDatos/postDatos
+// de core/api.js + endpoints de core/config.js).
 //
-// SUPUESTOS a verificar contra tu core/config.js real:
-//   - API_SERVICIOS: endpoint GET que devuelve [{ id_servicios, nombre, precio }]
-//   - API_EMPLEADOS: endpoint GET que devuelve [{ id_empleados, nombre, rol }]
-//   - API_TURNOS:    endpoint POST para crear un turno
-// Si los nombres de campo difieren (por ej. "precio" vs "costo"), ajustá
-// las referencias marcadas más abajo.
+// SUPUESTOS a verificar contra tu backend real:
+//   - API_SERVICIOS: GET -> [{ id_servicios, nombre, precio }]
+//   - API_EMPLEADOS: GET -> [{ id_empleados, nombre, rol }]
+//   - API_TURNOS:    POST -> { cliente_id, empleado_id, servicio_id, fecha }
+//     con "fecha" en formato "YYYY-MM-DDTHH:mm" (mismo formato que usa
+//     el datetime-local del modal de edición en turnos.js).
+//   - cliente_id está hardcodeado en 1 hasta que haya sesión de cliente
+//     conectada (ver TODO en crearTurnoCliente).
 
-import { getDatos } from "../core/api.js";
+import { getDatos, postDatos } from "../core/api.js";
 import { API_SERVICIOS, API_EMPLEADOS, API_TURNOS } from "../core/config.js";
+
+const MESES = {
+    enero: 0, febrero: 1, marzo: 2, abril: 3, mayo: 4, junio: 5,
+    julio: 6, agosto: 7, septiembre: 8, octubre: 9, noviembre: 10, diciembre: 11
+};
 
 const seleccion = {
     servicio: null,
@@ -23,6 +30,7 @@ const seleccion = {
 const contenedorServicios = document.getElementById("serviciosContainer");
 const contenedorProfesionales = document.getElementById("profesionalesContainer");
 const calendarioGrid = document.getElementById("calendarioGrid");
+const calendarioMesAno = document.getElementById("calendarioMesAno");
 const timeSlotsContainer = document.getElementById("timeSlotsContainer");
 
 const resumenServicio = document.getElementById("resumenServicio");
@@ -194,11 +202,26 @@ if (calendarioGrid) {
 
         dia.classList.add("selected");
 
-        seleccion.fecha = dia.textContent.trim();
+        seleccion.fecha = obtenerFechaSeleccionada(dia.textContent.trim());
 
         actualizarResumen();
 
     });
+
+}
+
+
+// Arma un Date a partir del día clickeado + el "Mes Año" del header del calendario
+function obtenerFechaSeleccionada(diaTexto) {
+
+    const textoHeader = calendarioMesAno ? calendarioMesAno.textContent.trim() : "";
+
+    const [mesNombre, anioTexto] = textoHeader.split(" ");
+
+    const mesIndex = MESES[mesNombre?.toLowerCase()] ?? new Date().getMonth();
+    const anio = Number(anioTexto) || new Date().getFullYear();
+
+    return new Date(anio, mesIndex, Number(diaTexto));
 
 }
 
@@ -231,6 +254,21 @@ if (timeSlotsContainer) {
 // RESUMEN (se actualiza en vivo con cada selección)
 // ==========================================================
 
+// "Sábado 16 de mayo de 2026"
+function formatearFechaLarga(fecha) {
+
+    const texto = fecha.toLocaleDateString("es-AR", {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+    });
+
+    return texto.charAt(0).toUpperCase() + texto.slice(1);
+
+}
+
+
 function actualizarResumen() {
 
     if (resumenServicio) {
@@ -242,7 +280,11 @@ function actualizarResumen() {
     }
 
     if (resumenFecha) {
-        resumenFecha.textContent = seleccion.fecha || "-";
+
+        resumenFecha.textContent = seleccion.fecha
+            ? formatearFechaLarga(seleccion.fecha)
+            : "-";
+
     }
 
     if (resumenHora) {
@@ -286,25 +328,34 @@ async function crearTurnoCliente() {
     }
 
     const datos = {
-        servicio_id: Number(seleccion.servicio.id),
+        // TODO: reemplazar por el id del cliente autenticado cuando haya sesión conectada
+        cliente_id: 1,
         empleado_id: Number(seleccion.profesional.id),
-        fecha: seleccion.fecha,
-        hora: seleccion.hora
-        // TODO: sumar cliente_id del usuario logueado cuando haya sesión conectada
+        servicio_id: Number(seleccion.servicio.id),
+        fecha: combinarFechaYHora(seleccion.fecha, seleccion.hora)
     };
 
     try {
 
-        // TODO: si core/api.js ya tiene un helper de POST (ej. postDatos),
-        // reemplazar este fetch por esa función para mantener el mismo patrón.
-        const respuesta = await fetch(API_TURNOS, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(datos)
-        });
+        const respuesta = await postDatos(API_TURNOS, datos);
 
         if (!respuesta.ok) {
-            throw new Error("No se pudo crear el turno");
+
+            // Leemos el cuerpo de la respuesta para saber el motivo real
+            // (constraint de FK, campo faltante, etc.) en vez de un 500 mudo.
+            let detalle = "";
+
+            try {
+                const cuerpo = await respuesta.clone().json();
+                detalle = cuerpo?.message || cuerpo?.error || JSON.stringify(cuerpo);
+            } catch {
+                detalle = await respuesta.text();
+            }
+
+            console.error(`Error ${respuesta.status} al crear turno:`, detalle);
+
+            throw new Error(detalle || `Error ${respuesta.status} al crear el turno`);
+
         }
 
         if (mensajeReserva) {
@@ -320,10 +371,33 @@ async function crearTurnoCliente() {
         console.error(error);
 
         if (mensajeReserva) {
-            mensajeReserva.textContent = "Ocurrió un error al reservar el turno. Intentá nuevamente.";
+            mensajeReserva.textContent = error.message || "Ocurrió un error al reservar el turno. Intentá nuevamente.";
         }
 
     }
+
+}
+
+
+// Combina el Date (día) + la hora tipo "10:00 AM" en formato "YYYY-MM-DDTHH:mm",
+// igual al que arma editarFecha en el modal de turnos.js
+function combinarFechaYHora(fecha, horaTexto) {
+
+    const [horaMin, periodo] = horaTexto.split(" ");
+    let [horas, minutos] = horaMin.split(":").map(Number);
+
+    if (periodo === "PM" && horas !== 12) horas += 12;
+    if (periodo === "AM" && horas === 12) horas = 0;
+
+    const combinada = new Date(fecha);
+    combinada.setHours(horas, minutos, 0, 0);
+
+    const pad = (n) => String(n).padStart(2, "0");
+
+    return (
+        `${combinada.getFullYear()}-${pad(combinada.getMonth() + 1)}-${pad(combinada.getDate())}` +
+        `T${pad(combinada.getHours())}:${pad(combinada.getMinutes())}`
+    );
 
 }
 
