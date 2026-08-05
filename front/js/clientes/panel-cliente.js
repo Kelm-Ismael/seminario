@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             marcarLinkActivo(url);
+            ejecutarScriptsDeSeccion(doc);
 
         } catch (error) {
 
@@ -49,6 +50,31 @@ document.addEventListener("DOMContentLoaded", () => {
             window.location.href = url;
 
         }
+
+    }
+
+    // Los <script src="..."> de la página destino (ej. reservar-turno.js)
+    // viven FUERA de .panel-content, así que nunca se copian ni se ejecutan
+    // con el swap de innerHTML de arriba. Los volvemos a insertar acá para
+    // que el navegador los corra de nuevo (evitando reinyectar panel-cliente.js).
+    function ejecutarScriptsDeSeccion(doc) {
+
+        const scripts = doc.querySelectorAll("script[src]");
+
+        scripts.forEach(original => {
+
+            const src = original.getAttribute("src");
+
+            if (!src || src.includes("panel-cliente.js")) return;
+
+            const nuevo = document.createElement("script");
+
+            if (original.type) nuevo.type = original.type;
+            nuevo.src = src;
+
+            document.body.appendChild(nuevo);
+
+        });
 
     }
 
