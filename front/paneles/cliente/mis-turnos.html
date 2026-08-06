@@ -16,9 +16,7 @@
 
 <div class="dashboard">
 
-    <!-- ============ SIDEBAR ============ -->
     <aside id="sidebar">
-
         <div class="panel-brand">
             <div class="avatar-initials avatar-md">DM</div>
             <div class="panel-brand-info">
@@ -29,7 +27,7 @@
 
         <nav class="sidebar-menu">
             <a href="clientes.html"><span class="icon">🏠</span> Inicio</a>
-            <a href="turnos.html"><span class="icon">📅</span> Reservar turno</a>
+            <a href="reservar-turno.html"><span class="icon">📅</span> Reservar turno</a>
             <a href="mis-turnos.html" class="active"><span class="icon">🕐</span> Mis turnos</a>
             <a href="historial.html"><span class="icon">📖</span> Historial</a>
             <a href="favoritos.html"><span class="icon">⭐</span> Mis favoritos</a>
@@ -45,10 +43,8 @@
                 💬 Escribinos por WhatsApp
             </a>
         </div>
-
     </aside>
 
-    <!-- ============ CONTENIDO ============ -->
     <main class="main-content">
 
         <header class="panel-topbar">
@@ -56,7 +52,6 @@
                 <h1>Hola, Juan 👋</h1>
                 <p>¿Listo para tu próximo cambio?</p>
             </div>
-
             <div class="panel-topbar-actions">
                 <div class="panel-bell">🔔</div>
                 <div class="panel-user">
@@ -73,60 +68,13 @@
                 <div class="panel-stack">
 
                     <div class="card">
-                        <div class="tabs">
-                            <button class="tab active">Próximos</button>
-                            <button class="tab">Pasados</button>
+                        <div class="tabs" id="turnosTabs">
+                            <button class="tab active" data-tab="proximos">Próximos</button>
+                            <button class="tab" data-tab="pasados">Pasados</button>
                         </div>
 
-                        <div class="turno-item">
-                            <div class="fecha-box">
-                                <div class="dia-semana">Vie</div>
-                                <div class="dia-num">16</div>
-                                <div class="mes">May</div>
-                            </div>
-                            <div class="info">
-                                <h4>10:00 AM · Corte</h4>
-                                <p>David Martínez</p>
-                                <p>Sucursal Centro</p>
-                            </div>
-                            <span class="badge badge-confirmado">Confirmado</span>
-                            <div class="acciones">
-                                <button class="btn-outline btn-sm">Ver detalle</button>
-                            </div>
-                        </div>
-
-                        <div class="turno-item">
-                            <div class="fecha-box">
-                                <div class="dia-semana">Lun</div>
-                                <div class="dia-num">19</div>
-                                <div class="mes">May</div>
-                            </div>
-                            <div class="info">
-                                <h4>03:00 PM · Corte + Barba</h4>
-                                <p>Andrés Rojas</p>
-                                <p>Sucursal Norte</p>
-                            </div>
-                            <span class="badge badge-confirmado">Confirmado</span>
-                            <div class="acciones">
-                                <button class="btn-outline btn-sm">Ver detalle</button>
-                            </div>
-                        </div>
-
-                        <div class="turno-item">
-                            <div class="fecha-box">
-                                <div class="dia-semana">Vie</div>
-                                <div class="dia-num">23</div>
-                                <div class="mes">May</div>
-                            </div>
-                            <div class="info">
-                                <h4>11:00 AM · Tintura</h4>
-                                <p>Sofía Colorista</p>
-                                <p>Sucursal Centro</p>
-                            </div>
-                            <span class="badge badge-pendiente">Pendiente</span>
-                            <div class="acciones">
-                                <button class="btn-outline btn-sm">Ver detalle</button>
-                            </div>
+                        <div id="turnosLista">
+                            <p class="mensaje">Cargando…</p>
                         </div>
                     </div>
 
@@ -136,7 +84,7 @@
                 <div class="card">
                     <h3>¿Qué deseás hacer?</h3>
 
-                    <a href="../../pages/turnos.html" class="accion-item">
+                    <a href="reservar-turno.html" class="accion-item">
                         <span class="icon">📅</span>
                         <span>
                             Reservar nuevo turno
@@ -144,6 +92,11 @@
                         </span>
                     </a>
 
+                    <!--
+                      Reprogramar/Cancelar necesitarían un endpoint de edición de
+                      turnos (PATCH) que no vi confirmado en core/api.js todavía,
+                      así que quedan como enlaces visuales por ahora.
+                    -->
                     <a href="#" class="accion-item">
                         <span class="icon">🔁</span>
                         <span>
@@ -166,13 +119,13 @@
                 </div>
 
             </div>
-
         </div>
 
     </main>
 
 </div>
 
-<script src="../../js/panel-cliente.js" defer></script>
+<script src="../../js/clientes/panel-cliente.js" defer></script>
+<script src="../../js/clientes/misturnos.js" defer></script>
 </body>
 </html>

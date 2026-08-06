@@ -16,9 +16,7 @@
 
 <div class="dashboard">
 
-    <!-- ============ SIDEBAR ============ -->
     <aside id="sidebar">
-
         <div class="panel-brand">
             <div class="avatar-initials avatar-md">DM</div>
             <div class="panel-brand-info">
@@ -29,7 +27,7 @@
 
         <nav class="sidebar-menu">
             <a href="clientes.html"><span class="icon">🏠</span> Inicio</a>
-            <a href="turnos.html"><span class="icon">📅</span> Reservar turno</a>
+            <a href="reservar-turno.html"><span class="icon">📅</span> Reservar turno</a>
             <a href="mis-turnos.html"><span class="icon">🕐</span> Mis turnos</a>
             <a href="historial.html"><span class="icon">📖</span> Historial</a>
             <a href="favoritos.html"><span class="icon">⭐</span> Mis favoritos</a>
@@ -45,10 +43,8 @@
                 💬 Escribinos por WhatsApp
             </a>
         </div>
-
     </aside>
 
-    <!-- ============ CONTENIDO ============ -->
     <main class="main-content">
 
         <header class="panel-topbar">
@@ -56,7 +52,6 @@
                 <h1>Hola, Juan 👋</h1>
                 <p>¿Listo para tu próximo cambio?</p>
             </div>
-
             <div class="panel-topbar-actions">
                 <div class="panel-bell">🔔</div>
                 <div class="panel-user">
@@ -71,7 +66,6 @@
 
             <div class="panel-columns">
 
-                <!-- Columna izquierda -->
                 <div class="panel-stack">
 
                     <div class="card">
@@ -80,30 +74,37 @@
                             <button class="link-editar">Editar</button>
                         </div>
 
+                        <!--
+                          nombre/email/teléfono existen en la tabla clientes.
+                          Fecha de nacimiento y género NO existen en el esquema
+                          actual, así que quedan fijos como "Sin registrar"
+                          en vez de inventar un dato falso.
+                        -->
                         <div class="datos-lista">
                             <div class="dato-fila">
                                 <span class="label">Nombre completo</span>
-                                <span class="valor">Juan Pérez</span>
+                                <span class="valor" id="datoNombre">Cargando…</span>
                             </div>
                             <div class="dato-fila">
                                 <span class="label">Correo electrónico</span>
-                                <span class="valor">juan.perez@gmail.com</span>
+                                <span class="valor" id="datoEmail">Cargando…</span>
                             </div>
                             <div class="dato-fila">
                                 <span class="label">Teléfono</span>
-                                <span class="valor">+56 9 1234 5678</span>
+                                <span class="valor" id="datoTelefono">Cargando…</span>
                             </div>
                             <div class="dato-fila">
                                 <span class="label">Fecha de nacimiento</span>
-                                <span class="valor">12 de Marzo de 1990</span>
+                                <span class="valor">Sin registrar</span>
                             </div>
                             <div class="dato-fila">
                                 <span class="label">Género</span>
-                                <span class="valor">Masculino</span>
+                                <span class="valor">Sin registrar</span>
                             </div>
                         </div>
                     </div>
 
+                    <!-- Sin backend para preferencias todavía: queda de muestra -->
                     <div class="card">
                         <div class="card-header-row">
                             <h3>⚙️ Preferencias</h3>
@@ -148,10 +149,11 @@
 
                 <!-- Columna derecha -->
                 <div class="card perfil-destacado">
-                    <div class="avatar-initials avatar-md">JP</div>
-                    <h3>Juan Pérez</h3>
+                    <div class="avatar-initials avatar-md" id="perfilAvatar">--</div>
+                    <h3 id="perfilNombre">Cargando…</h3>
                     <p>Cliente Premium</p>
 
+                    <!-- Sin sistema de puntos/fidelidad en el backend: queda de muestra -->
                     <div class="progreso-nivel" style="width:100%;">
                         <div class="fila">
                             <span>Nivel Plata</span>
@@ -172,5 +174,6 @@
 </div>
 
 <script src="../../js/clientes/panel-cliente.js" defer></script>
+<script src="../../js/clientes/perfil.js" defer></script>
 </body>
 </html>

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -53,31 +52,20 @@
 
         <header class="panel-topbar">
             <div class="panel-greeting">
-                <h1>Hola, Juan 👋</h1>
+                <h1 id="saludoTitulo">Hola, — 👋</h1>
                 <p>¿Listo para tu próximo cambio?</p>
             </div>
 
+            <!-- Antes había dos bloques .panel-topbar-actions duplicados; dejo uno solo -->
             <div class="panel-topbar-actions">
                 <div class="panel-bell">🔔</div>
                 <div class="panel-user">
-                    <div class="avatar-initials avatar-sm">JP</div>
-                    <span>Juan Pérez</span>
+                    <div class="avatar-initials avatar-sm" id="avatarIniciales">--</div>
+                    <span id="nombreUsuario">Cargando…</span>
                     <span>▾</span>
+                    <a href="../../index.html" class="btn-logout">Cerrar sesión</a>
                 </div>
             </div>
-            <div class="panel-topbar-actions">
-            <div class="panel-bell">🔔</div>
-
-                <div class="panel-user">
-                    <div class="avatar-initials avatar-sm">JP</div>
-                    <span>Juan Pérez</span>
-                    <span>▾</span>
-                    <a href="../../index.html" class="btn-logout">
-                        Cerrar sesión
-                    </a>
-                </div>
-            </div>
-
         </header>
 
         <div class="panel-content">
@@ -87,19 +75,12 @@
 
                 <div class="card">
                     <h3>Próximo turno</h3>
-                    <div class="turno-proximo">
-                        <div class="turno-fecha-box">
-                            <div class="hora">10:00 AM</div>
-                        </div>
-                        <div class="turno-info">
-                            <h4>Viernes 17 de Mayo</h4>
-                            <p>Corte + Barba</p>
-                            <p>David Martínez</p>
-                        </div>
-                        <button class="btn-outline">Ver detalles</button>
+                    <div class="turno-proximo" id="proximoTurnoBox">
+                        <p class="mensaje">Cargando…</p>
                     </div>
                 </div>
 
+                <!-- Sin tabla de favoritos en el backend todavía: queda de muestra -->
                 <div class="card">
                     <h3>Servicios favoritos</h3>
                     <div class="favoritos-row">
@@ -136,9 +117,10 @@
                         <div class="divider"></div>
                         <div class="step"><span class="step-num">3</span> Fecha y hora</div>
                     </div>
-                    <button class="btn-primary">Reservar ahora</button>
+                    <a href="reservar-turno.html" class="btn-primary" style="display:inline-block;text-align:center;">Reservar ahora</a>
                 </div>
 
+                <!-- Sin sistema de puntos/fidelidad en el backend: queda de muestra -->
                 <div class="card promo-highlight">
                     <div class="icon-circle" style="margin:0 auto 8px;">⭐</div>
                     <h3 style="justify-content:center;">Beneficios Premium</h3>
@@ -173,37 +155,8 @@
                             <th>Estado</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td class="persona">
-                                <div class="avatar-initials avatar-xs">DM</div>
-                                Corte + Barba
-                            </td>
-                            <td>David Martínez</td>
-                            <td>10/05/2026</td>
-                            <td>$15.000</td>
-                            <td><span class="badge badge-completado">Completado</span></td>
-                        </tr>
-                        <tr>
-                            <td class="persona">
-                                <div class="avatar-initials avatar-xs">SC</div>
-                                Tintura Completa
-                            </td>
-                            <td>Sofía Colorista</td>
-                            <td>26/04/2026</td>
-                            <td>$28.000</td>
-                            <td><span class="badge badge-completado">Completado</span></td>
-                        </tr>
-                        <tr>
-                            <td class="persona">
-                                <div class="avatar-initials avatar-xs">DM</div>
-                                Corte
-                            </td>
-                            <td>David Martínez</td>
-                            <td>12/04/2026</td>
-                            <td>$12.000</td>
-                            <td><span class="badge badge-completado">Completado</span></td>
-                        </tr>
+                    <tbody id="historialTbody">
+                        <tr><td colspan="5">Cargando…</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -215,5 +168,6 @@
 </div>
 
 <script src="../../js/clientes/panel-cliente.js" defer></script>
+<script src="../../js/clientes/inicio.js" defer></script>
 </body>
 </html>
