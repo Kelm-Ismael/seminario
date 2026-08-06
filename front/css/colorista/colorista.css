@@ -1,0 +1,316 @@
+/* ==========================================================
+   PANEL COLORISTA — estilos exclusivos
+   Todo lo que SÍ va acá es porque no existe en los 7 archivos
+   compartidos (theme-public, variables, sidebar, navbar,
+   cards, table, buttons). Todo lo demás (card, turno-item,
+   avatar-initials, tabs, progreso-barra, dato-fila, toggle,
+   chevron-item, badges de table.css, botones) se reutiliza
+   tal cual está — no se duplica acá.
+========================================================== */
+
+/* ----------------------------------------------------------
+   1) INICIO — stats rápidas del día
+---------------------------------------------------------- */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-lg, 24px);
+    margin-bottom: var(--space-lg, 24px);
+}
+
+.stat-card {
+    background: var(--section);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg, 18px);
+    box-shadow: var(--shadow);
+    padding: var(--space-lg, 24px);
+    text-align: center;
+}
+
+.stat-card .icon-circle { margin: 0 auto var(--space-sm, 8px); }
+
+.stat-card .stat-value {
+    font-size: var(--font-xl, 28px);
+    font-weight: var(--font-bold, 700);
+    color: var(--dark);
+    line-height: 1.1;
+}
+
+.stat-card .stat-label {
+    font-size: var(--font-xs, 12px);
+    color: var(--muted);
+    margin-top: 4px;
+}
+
+@media (max-width: 900px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ----------------------------------------------------------
+   2) AGENDA / HISTORIAL — variante de color por estado
+   sobre el componente .turno-item que ya existe en cards.css
+---------------------------------------------------------- */
+.turno-item {
+    border-left: 3px solid transparent;
+    padding-left: var(--space-md, 16px);
+}
+
+.turno-item--confirmado { border-left-color: var(--success); }
+.turno-item--pendiente  { border-left-color: var(--primary); }
+.turno-item--cancelado  { border-left-color: var(--danger); opacity: .7; }
+.turno-item--finalizado { border-left-color: var(--muted); }
+
+/* ----------------------------------------------------------
+   3) AGENDA — barra de navegación de día
+---------------------------------------------------------- */
+.agenda-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-md, 16px);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-lg, 24px);
+}
+
+.agenda-nav-dia {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.agenda-nav-dia button {
+    background: var(--card);
+    color: var(--dark);
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    padding: 0;
+    font-size: 14px;
+}
+
+.agenda-nav-dia button:hover { background: var(--primary); color: #fff; }
+
+.agenda-nav-dia .fecha-actual {
+    font-weight: var(--font-semibold, 600);
+    color: var(--dark);
+    min-width: 190px;
+    text-align: center;
+    font-size: var(--font-sm, 14px);
+}
+
+/* Nota de vista semanal (placeholder, todavía no hay grilla semanal) */
+.agenda-semana-placeholder {
+    text-align: center;
+    color: var(--muted);
+    font-size: var(--font-sm, 14px);
+    padding: var(--space-xl, 32px) 0;
+}
+
+/* ----------------------------------------------------------
+   4) CLIENTES — grilla de tarjetas de clientes atendidos
+---------------------------------------------------------- */
+.clientes-toolbar {
+    margin-bottom: var(--space-lg, 24px);
+}
+
+.clientes-toolbar input {
+    width: 100%;
+    max-width: 320px;
+    padding: 12px 16px;
+    border-radius: var(--radius-full, 999px);
+    border: 1px solid var(--border);
+    background: var(--section);
+    color: var(--text);
+    font-size: var(--font-sm, 14px);
+}
+
+.clientes-toolbar input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(184,138,42,.15);
+}
+
+.clientes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: var(--space-lg, 24px);
+}
+
+.cliente-card {
+    background: var(--section);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg, 18px);
+    box-shadow: var(--shadow);
+    padding: var(--space-lg, 24px);
+    text-align: center;
+}
+
+.cliente-card .avatar-initials { margin: 0 auto var(--space-sm, 8px); }
+.cliente-card h4 { font-size: var(--font-md, 16px); margin-bottom: 4px; }
+.cliente-card p { font-size: var(--font-xs, 12px); color: var(--muted); margin-bottom: 2px; }
+
+.cliente-card .cliente-turnos-count {
+    display: inline-block;
+    margin-top: var(--space-sm, 8px);
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--primary);
+    font-size: 11px;
+    font-weight: var(--font-semibold, 600);
+    padding: 4px 12px;
+    border-radius: var(--radius-full, 999px);
+}
+
+/* ----------------------------------------------------------
+   5) PERFIL — chip de rol (colorista/a) junto al avatar
+---------------------------------------------------------- */
+.rol-badge {
+    display: inline-block;
+    margin-top: 4px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--primary);
+    font-size: 11px;
+    font-weight: var(--font-semibold, 600);
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    padding: 4px 12px;
+    border-radius: var(--radius-full, 999px);
+}
+
+/* ----------------------------------------------------------
+   6) LOGO DEL NEGOCIO editable (sidebar)
+---------------------------------------------------------- */
+.logo-upload {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 4px;
+    cursor: pointer;
+}
+
+.brand-logo-img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--border);
+}
+
+.logo-upload-badge {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: #fff;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--section);
+}
+
+/* ----------------------------------------------------------
+   7) FOTO DE PERFIL editable + menú desplegable (topbar)
+---------------------------------------------------------- */
+.panel-user {
+    position: relative;
+}
+
+.user-avatar-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.chevron-down {
+    color: var(--muted);
+    font-size: 11px;
+    margin-left: 2px;
+}
+
+.user-dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    min-width: 200px;
+    background: var(--section);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md, 12px);
+    box-shadow: var(--shadow);
+    padding: 6px;
+    display: none;
+    flex-direction: column;
+    gap: 2px;
+    z-index: 1100;
+}
+
+.user-dropdown.open { display: flex; }
+
+.user-dropdown-item {
+    background: none;
+    color: var(--dark);
+    text-align: left;
+    padding: 10px 12px;
+    border-radius: var(--radius-sm, 8px);
+    font-size: var(--font-sm, 14px);
+    font-weight: var(--font-regular, 400);
+    width: 100%;
+}
+
+.user-dropdown-item:hover { background: var(--card); }
+.user-dropdown-item.danger { color: var(--danger); }
+
+/* Avatar grande de Perfil, mismo criterio que el del topbar */
+.perfil-avatar-img {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: var(--space-md, 16px);
+}
+
+/* ----------------------------------------------------------
+   8) MIS MÉTRICAS — gráfico de barras simple (ingresos por mes)
+---------------------------------------------------------- */
+.barras-mensuales {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--space-md, 16px);
+    height: 180px;
+    padding-top: var(--space-md, 16px);
+}
+
+.barra-mes {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+    gap: 8px;
+}
+
+.barra-mes .valor {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: var(--font-semibold, 600);
+}
+
+.barra-mes .relleno {
+    width: 100%;
+    max-width: 36px;
+    background: var(--primary);
+    border-radius: var(--radius-sm, 8px) var(--radius-sm, 8px) 0 0;
+    transition: height .3s;
+}
+
+.barra-mes .etiqueta {
+    font-size: 11px;
+    color: var(--muted);
+}

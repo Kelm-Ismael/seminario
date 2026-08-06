@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clientes | Panel Barbero</title>
+
+<link rel="stylesheet" href="../../css/cliente/theme-public.css">
+<link rel="stylesheet" href="../../css/cliente/variables.css">
+<link rel="stylesheet" href="../../css/cliente/sidebar.css">
+<link rel="stylesheet" href="../../css/cliente/navbar.css">
+<link rel="stylesheet" href="../../css/cliente/cards.css">
+<link rel="stylesheet" href="../../css/cliente/buttons.css">
+<link rel="stylesheet" href="../../css/barbero/barbero.css">
+</head>
+<body>
+
+<aside id="sidebar">
+    <div class="panel-brand">
+        <div class="logo-upload" id="logo-upload" title="Cambiar logo del negocio">
+            <div class="avatar-initials avatar-md" id="brand-avatar">DM</div>
+            <img id="brand-logo-img" class="brand-logo-img" alt="Logo del negocio" style="display:none;">
+            <span class="logo-upload-badge">✎</span>
+        </div>
+        <input type="file" id="brand-logo-input" accept="image/*" hidden>
+        <div class="panel-brand-info">
+            <h2>David Martínez</h2>
+            <p>Panel Barbero</p>
+        </div>
+    </div>
+
+    <nav class="sidebar-menu">
+        <a href="./inicio.html"><span class="icon">🏠</span> Inicio</a>
+        <a href="./agenda.html"><span class="icon">📅</span> Mi agenda</a>
+        <a href="./servicios.html"><span class="icon">✂️</span> Servicios</a>
+        <a href="./clientes.html" class="active"><span class="icon">👥</span> Clientes</a>
+        <a href="./mis-metricas.html"><span class="icon">📊</span> Mis métricas</a>
+        <a href="./historial.html"><span class="icon">🕓</span> Historial</a>
+        <a href="./perfil.html"><span class="icon">👤</span> Perfil</a>
+    </nav>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="panel-help">
+        Cualquier duda con tu agenda, escribinos.
+        <br>
+        <a href="https://wa.me/5493764000000" target="_blank">Asistencia por WhatsApp</a>
+    </div>
+</aside>
+
+<div class="main-content">
+
+    <header class="panel-topbar">
+        <div class="panel-greeting">
+            <h1>Hola, <span id="saludo-nombre">—</span> 👋</h1>
+            <p id="saludo-fecha">—</p>
+        </div>
+        <div class="panel-topbar-actions">
+            <div class="panel-bell" title="Notificaciones">🔔</div>
+            <div class="panel-user" id="panel-user">
+                <div class="avatar-initials avatar-sm" id="user-avatar">--</div>
+                <img id="user-avatar-img" class="user-avatar-img" alt="Foto de perfil" style="display:none;">
+                <span id="user-nombre">Cargando…</span>
+                <span class="chevron-down">▾</span>
+
+                <div class="user-dropdown" id="user-dropdown">
+                    <button type="button" class="user-dropdown-item" id="btn-cambiar-foto">Cambiar foto de perfil</button>
+                    <button type="button" class="user-dropdown-item danger" id="btn-cerrar-sesion">Cerrar sesión</button>
+                </div>
+            </div>
+            <input type="file" id="user-avatar-input" accept="image/*" hidden>
+        </div>
+    </header>
+
+    <div class="panel-content">
+
+        <section class="card">
+            <div class="card-header-row">
+                <h3>Clientes atendidos</h3>
+            </div>
+
+            <div class="clientes-toolbar">
+                <input type="text" id="buscador-clientes" placeholder="Buscar por nombre...">
+            </div>
+
+            <div class="clientes-grid" id="clientes-grid">
+                <p class="dato-fila"><span class="label">Cargando clientes…</span></p>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+<script type="module" src="../../js/barbero/clientes.js"></script>
+</body>
+</html>

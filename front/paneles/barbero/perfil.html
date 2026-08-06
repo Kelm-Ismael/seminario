@@ -1,20 +1,16 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Inicio | Panel Barbero</title>
+<title>Perfil | Panel Barbero</title>
 
-<!-- Compartidos con el panel cliente: no tocar acá, se editan en su archivo original -->
 <link rel="stylesheet" href="../../css/cliente/theme-public.css">
 <link rel="stylesheet" href="../../css/cliente/variables.css">
 <link rel="stylesheet" href="../../css/cliente/sidebar.css">
 <link rel="stylesheet" href="../../css/cliente/navbar.css">
 <link rel="stylesheet" href="../../css/cliente/cards.css">
 <link rel="stylesheet" href="../../css/cliente/buttons.css">
-
-<!-- Exclusivo del panel barbero -->
 <link rel="stylesheet" href="../../css/barbero/barbero.css">
 </head>
 <body>
@@ -34,13 +30,13 @@
     </div>
 
     <nav class="sidebar-menu">
-        <a href="./barbero.html" class="active"><span class="icon">🏠</span> Inicio</a>
+        <a href="./inicio.html"><span class="icon">🏠</span> Inicio</a>
         <a href="./agenda.html"><span class="icon">📅</span> Mi agenda</a>
         <a href="./servicios.html"><span class="icon">✂️</span> Servicios</a>
         <a href="./clientes.html"><span class="icon">👥</span> Clientes</a>
         <a href="./mis-metricas.html"><span class="icon">📊</span> Mis métricas</a>
         <a href="./historial.html"><span class="icon">🕓</span> Historial</a>
-        <a href="./perfil.html"><span class="icon">👤</span> Perfil</a>
+        <a href="./perfil.html" class="active"><span class="icon">👤</span> Perfil</a>
     </nav>
 
     <div class="sidebar-divider"></div>
@@ -78,72 +74,68 @@
 
     <div class="panel-content">
 
-        <div class="stats-grid" id="stats-grid">
-            <div class="stat-card">
-                <div class="icon-circle">📅</div>
-                <div class="stat-value" id="stat-turnos-hoy">–</div>
-                <div class="stat-label">Turnos hoy</div>
-            </div>
-            <div class="stat-card">
-                <div class="icon-circle" style="color:var(--success)">✅</div>
-                <div class="stat-value" id="stat-confirmados">–</div>
-                <div class="stat-label">Confirmados</div>
-            </div>
-            <div class="stat-card">
-                <div class="icon-circle" style="color:var(--danger)">✖</div>
-                <div class="stat-value" id="stat-cancelados">–</div>
-                <div class="stat-label">Cancelados</div>
-            </div>
-            <div class="stat-card">
-                <div class="icon-circle">💰</div>
-                <div class="stat-value" id="stat-ingresos-hoy">–</div>
-                <div class="stat-label">Ingresos hoy</div>
-            </div>
-        </div>
+        <div class="panel-columns">
 
-        <div class="panel-row">
-
-            <section class="card">
-                <div class="card-header-row">
-                    <h3>Mi agenda — <span id="agenda-fecha-titulo">hoy</span></h3>
-                    <a href="./agenda.html">Ver completa</a>
-                </div>
-                <div id="agenda-lista">
-                    <p class="dato-fila" id="agenda-vacio" style="display:none;">
-                        <span class="label">No tenés turnos para hoy.</span>
-                    </p>
-                </div>
+            <section class="card perfil-destacado">
+                <div class="avatar-initials avatar-md" id="perfil-avatar">--</div>
+                <img id="perfil-avatar-img" class="perfil-avatar-img" alt="Foto de perfil" style="display:none;">
+                <h3 id="perfil-nombre">Cargando…</h3>
+                <span class="rol-badge">Barbero/a</span>
+                <button type="button" class="btn-outline btn-sm" id="btn-cambiar-foto-perfil" style="margin-top:10px;">Cambiar foto</button>
             </section>
 
-            <aside class="panel-stack">
+            <div class="panel-stack">
+
                 <section class="card">
-                    <h3>Próximo turno</h3>
-                    <div class="turno-proximo" id="proximo-turno">
-                        <p class="dato-fila"><span class="label">Cargando…</span></p>
+                    <h3>Mis datos</h3>
+                    <div class="datos-lista">
+                        <div class="dato-fila">
+                            <span class="label">Nombre</span>
+                            <span class="valor" id="dato-nombre">—</span>
+                        </div>
+                        <div class="dato-fila">
+                            <span class="label">Especialidad</span>
+                            <span class="valor">Corte y color</span>
+                        </div>
+                        <div class="dato-fila">
+                            <span class="label">Turnos totales</span>
+                            <span class="valor" id="dato-turnos-totales">—</span>
+                        </div>
                     </div>
                 </section>
 
                 <section class="card">
-                    <h3>Métricas personales</h3>
-                    <div class="progreso-nivel">
-                        <div class="fila"><span>Clientes atendidos</span><span id="metrica-clientes-txt">0 / 20</span></div>
-                        <div class="progreso-barra"><div class="relleno" id="metrica-clientes-barra" style="width:0%"></div></div>
-                    </div>
-                    <div class="progreso-nivel">
-                        <div class="fila"><span>Servicios realizados</span><span id="metrica-servicios-txt">0 / 20</span></div>
-                        <div class="progreso-barra"><div class="relleno" id="metrica-servicios-barra" style="width:0%"></div></div>
+                    <h3>Preferencias</h3>
+                    <div class="dato-fila">
+                        <span class="label">Notificarme nuevos turnos</span>
+                        <label class="toggle">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
                     </div>
                     <div class="dato-fila">
-                        <span class="label">Ingresos esta semana</span>
-                        <span class="valor" id="metrica-ingresos-semana">$0</span>
+                        <span class="label">Avisos por WhatsApp</span>
+                        <label class="toggle">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
                     </div>
                 </section>
-            </aside>
+
+                <section class="card">
+                    <h3>Cuenta</h3>
+                    <div class="chevron-item">Seguridad <span class="chevron">›</span></div>
+                    <div class="chevron-item">Preguntas frecuentes <span class="chevron">›</span></div>
+                    <div class="chevron-item" style="color:var(--danger)">Cerrar sesión <span class="chevron">›</span></div>
+                </section>
+
+            </div>
 
         </div>
+
     </div>
 </div>
 
-<script type="module" src="../../js/barbero/inicio.js"></script>
+<script type="module" src="../../js/barbero/perfil.js"></script>
 </body>
 </html>
