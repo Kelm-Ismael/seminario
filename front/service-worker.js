@@ -1,4 +1,4 @@
-const CACHE_NAME = "david-martinez-v15"; // 👈 subí la versión para forzar refresco de caché
+const CACHE_NAME = "david-martinez-v16";
 
 const ASSETS_TO_CACHE = [
   "/",
@@ -59,7 +59,6 @@ self.addEventListener("fetch", (event) => {
   }
 
   // Navegación (cargar una página): red primero, caché solo como respaldo offline.
-  // Usamos la caché de ESTA versión puntualmente, no todas.
   if (event.request.mode === "navigate") {
     event.respondWith(
       fetch(event.request)
@@ -77,23 +76,20 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Assets (css/js/img): caché primero, buscando SOLO en la versión actual
-  // (no en caches.match global, que podría devolver algo de una versión vieja)
+  // Assets (css/js/img): RED PRIMERO. Así cualquier cambio en un archivo se ve
+  // apenas se sube, sin depender de acordarse de subir CACHE_NAME a mano.
+  // La caché queda solo como respaldo para cuando no hay conexión.
   event.respondWith(
-    caches.open(CACHE_NAME).then((cache) =>
-      cache.match(event.request).then((cached) => {
-        if (cached) return cached;
-
-        return fetch(event.request).then((response) => {
-          if (!response || response.status !== 200 || response.type !== "basic") {
-            return response;
-          }
-
+    fetch(event.request, { cache: "no-store" })
+      .then((response) => {
+        if (response && response.status === 200 && response.type === "basic") {
           const clone = response.clone();
-          cache.put(event.request, clone);
-          return response;
-        });
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+        }
+        return response;
       })
-    )
+      .catch(() =>
+        caches.open(CACHE_NAME).then((cache) => cache.match(event.request))
+      )
   );
 });
