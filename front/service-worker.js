@@ -1,4 +1,4 @@
-const CACHE_NAME = "david-martinez-v16";
+const CACHE_NAME = "david-martinez-v17";
 
 const ASSETS_TO_CACHE = [
   "/",
