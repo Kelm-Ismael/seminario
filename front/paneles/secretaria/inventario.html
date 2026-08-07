@@ -3,9 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Resumen | Panel Administrativo</title>
+<title>Inventario | Panel Administrativo</title>
 
-<!-- Compartidos con el panel cliente: no tocar acá, se editan en su archivo original -->
 <link rel="stylesheet" href="../../css/cliente/theme-public.css">
 <link rel="stylesheet" href="../../css/cliente/variables.css">
 <link rel="stylesheet" href="../../css/cliente/sidebar.css">
@@ -13,8 +12,6 @@
 <link rel="stylesheet" href="../../css/cliente/cards.css">
 <link rel="stylesheet" href="../../css/cliente/buttons.css">
 <link rel="stylesheet" href="../../css/cliente/table.css">
-
-<!-- Exclusivo del panel secretaría -->
 <link rel="stylesheet" href="../../css/secretaria/secretaria.css">
 </head>
 <body>
@@ -34,7 +31,7 @@
     </div>
 
     <nav class="sidebar-menu">
-        <a href="./secretaria.html" class="active"><span class="icon">🏠</span> Resumen</a>
+        <a href="./secretaria.html"><span class="icon">🏠</span> Resumen</a>
         <a href="./agenda.html"><span class="icon">📅</span> Agenda</a>
         <a href="./turnos.html"><span class="icon">📝</span> Turnos</a>
         <a href="./clientes.html"><span class="icon">👥</span> Clientes</a>
@@ -42,7 +39,7 @@
         <a href="./empleados.html"><span class="icon">🧑‍💼</span> Empleados</a>
         <a href="./finanzas.html"><span class="icon">💰</span> Finanzas</a>
         <a href="./reportes.html"><span class="icon">📈</span> Reportes</a>
-        <a href="./inventario.html"><span class="icon">📦</span> Inventario</a>
+        <a href="./inventario.html" class="active"><span class="icon">📦</span> Inventario</a>
         <a href="./promociones.html"><span class="icon">🏷️</span> Promociones</a>
         <a href="./usuarios.html"><span class="icon">🔐</span> Usuarios y Roles</a>
         <a href="./configuracion.html"><span class="icon">⚙️</span> Configuración</a>
@@ -61,8 +58,8 @@
 
     <header class="panel-topbar">
         <div class="panel-greeting">
-            <h1>Hola, <span id="saludo-nombre">—</span> 👋</h1>
-            <p id="saludo-fecha">—</p>
+            <h1>Inventario</h1>
+            <p>Productos e insumos del negocio</p>
         </div>
         <div class="panel-topbar-actions">
             <div class="panel-bell" title="Notificaciones">🔔</div>
@@ -71,7 +68,6 @@
                 <img id="user-avatar-img" class="user-avatar-img" alt="Foto de perfil" style="display:none;">
                 <span id="user-nombre">Cargando…</span>
                 <span class="chevron-down">▾</span>
-
                 <div class="user-dropdown" id="user-dropdown">
                     <button type="button" class="user-dropdown-item" id="btn-cambiar-foto">Cambiar foto de perfil</button>
                     <button type="button" class="user-dropdown-item danger" id="btn-cerrar-sesion">Cerrar sesión</button>
@@ -83,66 +79,50 @@
 
     <div class="panel-content">
 
-        <div class="stats-grid stats-grid-5" id="stats-grid">
+        <div class="preview-banner">
+            ⚠️ Vista previa — no hay tabla de inventario en la base de datos. Los productos de abajo son de ejemplo.
+        </div>
+
+        <div class="stats-grid" style="grid-template-columns:repeat(3,1fr);">
             <div class="stat-card">
-                <div class="icon-circle">📅</div>
-                <div class="stat-value" id="stat-turnos-hoy">–</div>
-                <div class="stat-label">Turnos hoy</div>
+                <div class="icon-circle">📦</div>
+                <div class="stat-value">128</div>
+                <div class="stat-label">Productos totales</div>
             </div>
             <div class="stat-card">
-                <div class="icon-circle" style="color:var(--success)">✅</div>
-                <div class="stat-value" id="stat-confirmados">–</div>
-                <div class="stat-label">Confirmados</div>
+                <div class="icon-circle" style="color:var(--warning-text)">⚠️</div>
+                <div class="stat-value">12</div>
+                <div class="stat-label">Stock bajo</div>
             </div>
             <div class="stat-card">
                 <div class="icon-circle" style="color:var(--danger)">✖</div>
-                <div class="stat-value" id="stat-cancelados">–</div>
-                <div class="stat-label">Cancelados</div>
-            </div>
-            <div class="stat-card">
-                <div class="icon-circle">💰</div>
-                <div class="stat-value" id="stat-ingresos-hoy">–</div>
-                <div class="stat-label">Ingresos hoy</div>
-            </div>
-            <div class="stat-card">
-                <div class="icon-circle">👥</div>
-                <div class="stat-value" id="stat-clientes-atendidos">–</div>
-                <div class="stat-label">Clientes atendidos hoy</div>
+                <div class="stat-value">4</div>
+                <div class="stat-label">Sin stock</div>
             </div>
         </div>
 
-        <div class="panel-row">
+        <section class="card">
+            <div class="card-header-row">
+                <h3>Productos</h3>
+                <button type="button" class="btn-primary btn-sm" disabled title="Se habilita cuando exista el módulo de inventario">+ Nuevo producto</button>
+            </div>
+            <table>
+                <thead>
+                    <tr><th>Producto</th><th>Categoría</th><th>Stock</th><th>Estado</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Shampoo Premium</td><td>Cuidado capilar</td><td>18</td><td><span class="badge badge-activo">En stock</span></td></tr>
+                    <tr><td>Acondicionador</td><td>Cuidado capilar</td><td>10</td><td><span class="badge badge-activo">En stock</span></td></tr>
+                    <tr><td>Cera Mate</td><td>Estilizado</td><td>6</td><td><span class="badge badge-stock-bajo">Stock bajo</span></td></tr>
+                    <tr><td>Gel Fijador</td><td>Estilizado</td><td>0</td><td><span class="badge badge-sin-stock">Sin stock</span></td></tr>
+                    <tr><td>Tinte Negro 1.0</td><td>Coloración</td><td>15</td><td><span class="badge badge-activo">En stock</span></td></tr>
+                </tbody>
+            </table>
+        </section>
 
-            <section class="card">
-                <div class="card-header-row">
-                    <h3>Agenda de hoy — todos los empleados</h3>
-                    <a href="./agenda.html">Ver agenda completa</a>
-                </div>
-                <div id="agenda-lista">
-                    <p class="dato-fila" id="agenda-vacio" style="display:none;">
-                        <span class="label">No hay turnos cargados para hoy.</span>
-                    </p>
-                </div>
-            </section>
-
-            <aside class="panel-stack">
-                <section class="card">
-                    <h3>Ingresos de la semana</h3>
-                    <div class="chart-semana" id="chart-semana"></div>
-                </section>
-
-                <section class="card">
-                    <h3>Servicios más realizados</h3>
-                    <div id="ranking-servicios">
-                        <p class="dato-fila"><span class="label">Cargando…</span></p>
-                    </div>
-                </section>
-            </aside>
-
-        </div>
     </div>
 </div>
 
-<script type="module" src="../../js/secretaria/inicio.js"></script>
+<script type="module" src="../../js/secretaria/inventario.js"></script>
 </body>
 </html>

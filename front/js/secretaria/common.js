@@ -1,6 +1,31 @@
+import { putDatos, deleteDatos } from "../core/api.js";
+import { API_TURNOS } from "../core/config.js";
+
 // Panel secretaría: ve todo el negocio, no un solo empleado.
 // TODO reemplazar por el nombre real cuando haya login.
 export const ADMIN_NOMBRE = "Administrador/a";
+
+// NOTA: el backend confirmó que existe PUT/DELETE para turnos, pero no
+// tengo a la vista el controller real, así que no sé con certeza si el
+// PUT espera el objeto completo (cliente_id, empleado_id, servicio_id,
+// fecha, estado) o admite un update parcial. Mandamos solo lo que cambió;
+// si el backend responde error, probablemente haya que mandar el turno
+// completo — avisar para ajustar esta función.
+export async function cambiarEstadoTurno(idTurno, estado) {
+    const response = await putDatos(`${API_TURNOS}/${idTurno}`, { estado });
+    if (!response.ok) {
+        throw new Error("No se pudo actualizar el estado del turno");
+    }
+    return response;
+}
+
+export async function eliminarTurno(idTurno) {
+    const response = await deleteDatos(`${API_TURNOS}/${idTurno}`);
+    if (!response.ok) {
+        throw new Error("No se pudo eliminar el turno");
+    }
+    return response;
+}
 
 export function indexarPorId(lista, campoId) {
     const mapa = {};
@@ -46,6 +71,11 @@ export function formatoFechaLarga(fecha) {
     return texto.charAt(0).toUpperCase() + texto.slice(1);
 }
 
+export function formatoFechaCorta(fechaStr) {
+    const texto = new Date(fechaStr).toLocaleDateString("es-AR", { day: "2-digit", month: "short" });
+    return texto;
+}
+
 export function formatoMoneda(valor) {
     return "$" + Math.round(valor || 0).toLocaleString("es-AR");
 }
@@ -53,6 +83,14 @@ export function formatoMoneda(valor) {
 export function iniciales(nombre) {
     if (!nombre) return "??";
     return nombre.trim().split(/\s+/).slice(0, 2).map(p => p[0].toUpperCase()).join("");
+}
+
+// table.css define badge-pendiente / badge-confirmado / badge-cancelado /
+// badge-completado. Nuestro estado real es "finalizado", no "completado",
+// así que acá se traduce.
+export function claseBadgeEstado(estado) {
+    if (estado === "finalizado") return "badge-completado";
+    return `badge-${estado}`;
 }
 
 export function capitalizar(str) {

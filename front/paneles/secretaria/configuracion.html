@@ -3,9 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Resumen | Panel Administrativo</title>
+<title>Configuración | Panel Administrativo</title>
 
-<!-- Compartidos con el panel cliente: no tocar acá, se editan en su archivo original -->
 <link rel="stylesheet" href="../../css/cliente/theme-public.css">
 <link rel="stylesheet" href="../../css/cliente/variables.css">
 <link rel="stylesheet" href="../../css/cliente/sidebar.css">
@@ -13,8 +12,6 @@
 <link rel="stylesheet" href="../../css/cliente/cards.css">
 <link rel="stylesheet" href="../../css/cliente/buttons.css">
 <link rel="stylesheet" href="../../css/cliente/table.css">
-
-<!-- Exclusivo del panel secretaría -->
 <link rel="stylesheet" href="../../css/secretaria/secretaria.css">
 </head>
 <body>
@@ -34,7 +31,7 @@
     </div>
 
     <nav class="sidebar-menu">
-        <a href="./secretaria.html" class="active"><span class="icon">🏠</span> Resumen</a>
+        <a href="./secretaria.html"><span class="icon">🏠</span> Resumen</a>
         <a href="./agenda.html"><span class="icon">📅</span> Agenda</a>
         <a href="./turnos.html"><span class="icon">📝</span> Turnos</a>
         <a href="./clientes.html"><span class="icon">👥</span> Clientes</a>
@@ -45,7 +42,7 @@
         <a href="./inventario.html"><span class="icon">📦</span> Inventario</a>
         <a href="./promociones.html"><span class="icon">🏷️</span> Promociones</a>
         <a href="./usuarios.html"><span class="icon">🔐</span> Usuarios y Roles</a>
-        <a href="./configuracion.html"><span class="icon">⚙️</span> Configuración</a>
+        <a href="./configuracion.html" class="active"><span class="icon">⚙️</span> Configuración</a>
     </nav>
 
     <div class="sidebar-divider"></div>
@@ -61,8 +58,8 @@
 
     <header class="panel-topbar">
         <div class="panel-greeting">
-            <h1>Hola, <span id="saludo-nombre">—</span> 👋</h1>
-            <p id="saludo-fecha">—</p>
+            <h1>Configuración</h1>
+            <p>Ajustes generales del negocio</p>
         </div>
         <div class="panel-topbar-actions">
             <div class="panel-bell" title="Notificaciones">🔔</div>
@@ -71,7 +68,6 @@
                 <img id="user-avatar-img" class="user-avatar-img" alt="Foto de perfil" style="display:none;">
                 <span id="user-nombre">Cargando…</span>
                 <span class="chevron-down">▾</span>
-
                 <div class="user-dropdown" id="user-dropdown">
                     <button type="button" class="user-dropdown-item" id="btn-cambiar-foto">Cambiar foto de perfil</button>
                     <button type="button" class="user-dropdown-item danger" id="btn-cerrar-sesion">Cerrar sesión</button>
@@ -83,66 +79,27 @@
 
     <div class="panel-content">
 
-        <div class="stats-grid stats-grid-5" id="stats-grid">
-            <div class="stat-card">
-                <div class="icon-circle">📅</div>
-                <div class="stat-value" id="stat-turnos-hoy">–</div>
-                <div class="stat-label">Turnos hoy</div>
-            </div>
-            <div class="stat-card">
-                <div class="icon-circle" style="color:var(--success)">✅</div>
-                <div class="stat-value" id="stat-confirmados">–</div>
-                <div class="stat-label">Confirmados</div>
-            </div>
-            <div class="stat-card">
-                <div class="icon-circle" style="color:var(--danger)">✖</div>
-                <div class="stat-value" id="stat-cancelados">–</div>
-                <div class="stat-label">Cancelados</div>
-            </div>
-            <div class="stat-card">
-                <div class="icon-circle">💰</div>
-                <div class="stat-value" id="stat-ingresos-hoy">–</div>
-                <div class="stat-label">Ingresos hoy</div>
-            </div>
-            <div class="stat-card">
-                <div class="icon-circle">👥</div>
-                <div class="stat-value" id="stat-clientes-atendidos">–</div>
-                <div class="stat-label">Clientes atendidos hoy</div>
-            </div>
+        <div class="preview-banner">
+            ⚠️ Vista previa — ninguno de estos ajustes se guarda todavía; no hay backend para persistirlos.
         </div>
 
-        <div class="panel-row">
+        <section class="card config-card">
+            <h3>General</h3>
+            <div class="chevron-item"><span class="icon">🏪</span> Datos del negocio <span class="chevron">›</span></div>
+            <div class="chevron-item"><span class="icon">🕐</span> Horarios de atención <span class="chevron">›</span></div>
+            <div class="chevron-item"><span class="icon">💳</span> Métodos de pago <span class="chevron">›</span></div>
+            <div class="chevron-item"><span class="icon">🧾</span> Impuestos <span class="chevron">›</span></div>
+        </section>
 
-            <section class="card">
-                <div class="card-header-row">
-                    <h3>Agenda de hoy — todos los empleados</h3>
-                    <a href="./agenda.html">Ver agenda completa</a>
-                </div>
-                <div id="agenda-lista">
-                    <p class="dato-fila" id="agenda-vacio" style="display:none;">
-                        <span class="label">No hay turnos cargados para hoy.</span>
-                    </p>
-                </div>
-            </section>
+        <section class="card config-card">
+            <h3>Sistema</h3>
+            <div class="chevron-item"><span class="icon">🔒</span> Respaldo y seguridad <span class="chevron">›</span></div>
+            <div class="chevron-item"><span class="icon">🔗</span> Integraciones <span class="chevron">›</span></div>
+        </section>
 
-            <aside class="panel-stack">
-                <section class="card">
-                    <h3>Ingresos de la semana</h3>
-                    <div class="chart-semana" id="chart-semana"></div>
-                </section>
-
-                <section class="card">
-                    <h3>Servicios más realizados</h3>
-                    <div id="ranking-servicios">
-                        <p class="dato-fila"><span class="label">Cargando…</span></p>
-                    </div>
-                </section>
-            </aside>
-
-        </div>
     </div>
 </div>
 
-<script type="module" src="../../js/secretaria/inicio.js"></script>
+<script type="module" src="../../js/secretaria/configuracion.js"></script>
 </body>
 </html>

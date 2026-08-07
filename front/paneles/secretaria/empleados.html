@@ -3,9 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Resumen | Panel Administrativo</title>
+<title>Empleados | Panel Administrativo</title>
 
-<!-- Compartidos con el panel cliente: no tocar acá, se editan en su archivo original -->
 <link rel="stylesheet" href="../../css/cliente/theme-public.css">
 <link rel="stylesheet" href="../../css/cliente/variables.css">
 <link rel="stylesheet" href="../../css/cliente/sidebar.css">
@@ -13,8 +12,6 @@
 <link rel="stylesheet" href="../../css/cliente/cards.css">
 <link rel="stylesheet" href="../../css/cliente/buttons.css">
 <link rel="stylesheet" href="../../css/cliente/table.css">
-
-<!-- Exclusivo del panel secretaría -->
 <link rel="stylesheet" href="../../css/secretaria/secretaria.css">
 </head>
 <body>
@@ -34,12 +31,12 @@
     </div>
 
     <nav class="sidebar-menu">
-        <a href="./secretaria.html" class="active"><span class="icon">🏠</span> Resumen</a>
+        <a href="./secretaria.html"><span class="icon">🏠</span> Resumen</a>
         <a href="./agenda.html"><span class="icon">📅</span> Agenda</a>
         <a href="./turnos.html"><span class="icon">📝</span> Turnos</a>
         <a href="./clientes.html"><span class="icon">👥</span> Clientes</a>
         <a href="./servicios.html"><span class="icon">✂️</span> Servicios</a>
-        <a href="./empleados.html"><span class="icon">🧑‍💼</span> Empleados</a>
+        <a href="./empleados.html" class="active"><span class="icon">🧑‍💼</span> Empleados</a>
         <a href="./finanzas.html"><span class="icon">💰</span> Finanzas</a>
         <a href="./reportes.html"><span class="icon">📈</span> Reportes</a>
         <a href="./inventario.html"><span class="icon">📦</span> Inventario</a>
@@ -61,8 +58,8 @@
 
     <header class="panel-topbar">
         <div class="panel-greeting">
-            <h1>Hola, <span id="saludo-nombre">—</span> 👋</h1>
-            <p id="saludo-fecha">—</p>
+            <h1>Empleados</h1>
+            <p>Alta y listado del personal</p>
         </div>
         <div class="panel-topbar-actions">
             <div class="panel-bell" title="Notificaciones">🔔</div>
@@ -71,7 +68,6 @@
                 <img id="user-avatar-img" class="user-avatar-img" alt="Foto de perfil" style="display:none;">
                 <span id="user-nombre">Cargando…</span>
                 <span class="chevron-down">▾</span>
-
                 <div class="user-dropdown" id="user-dropdown">
                     <button type="button" class="user-dropdown-item" id="btn-cambiar-foto">Cambiar foto de perfil</button>
                     <button type="button" class="user-dropdown-item danger" id="btn-cerrar-sesion">Cerrar sesión</button>
@@ -83,66 +79,48 @@
 
     <div class="panel-content">
 
-        <div class="stats-grid stats-grid-5" id="stats-grid">
-            <div class="stat-card">
-                <div class="icon-circle">📅</div>
-                <div class="stat-value" id="stat-turnos-hoy">–</div>
-                <div class="stat-label">Turnos hoy</div>
-            </div>
-            <div class="stat-card">
-                <div class="icon-circle" style="color:var(--success)">✅</div>
-                <div class="stat-value" id="stat-confirmados">–</div>
-                <div class="stat-label">Confirmados</div>
-            </div>
-            <div class="stat-card">
-                <div class="icon-circle" style="color:var(--danger)">✖</div>
-                <div class="stat-value" id="stat-cancelados">–</div>
-                <div class="stat-label">Cancelados</div>
-            </div>
-            <div class="stat-card">
-                <div class="icon-circle">💰</div>
-                <div class="stat-value" id="stat-ingresos-hoy">–</div>
-                <div class="stat-label">Ingresos hoy</div>
-            </div>
-            <div class="stat-card">
-                <div class="icon-circle">👥</div>
-                <div class="stat-value" id="stat-clientes-atendidos">–</div>
-                <div class="stat-label">Clientes atendidos hoy</div>
-            </div>
-        </div>
-
-        <div class="panel-row">
-
-            <section class="card">
-                <div class="card-header-row">
-                    <h3>Agenda de hoy — todos los empleados</h3>
-                    <a href="./agenda.html">Ver agenda completa</a>
-                </div>
-                <div id="agenda-lista">
-                    <p class="dato-fila" id="agenda-vacio" style="display:none;">
-                        <span class="label">No hay turnos cargados para hoy.</span>
-                    </p>
-                </div>
-            </section>
-
-            <aside class="panel-stack">
-                <section class="card">
-                    <h3>Ingresos de la semana</h3>
-                    <div class="chart-semana" id="chart-semana"></div>
-                </section>
-
-                <section class="card">
-                    <h3>Servicios más realizados</h3>
-                    <div id="ranking-servicios">
-                        <p class="dato-fila"><span class="label">Cargando…</span></p>
+        <section class="card">
+            <h3>Nuevo empleado</h3>
+            <form id="form-empleado">
+                <div class="form-card-grid">
+                    <div class="form-group">
+                        <label for="empleado-nombre">Nombre</label>
+                        <input type="text" id="empleado-nombre" required>
                     </div>
-                </section>
-            </aside>
+                </div>
+                <button type="submit" class="btn-primary">Crear empleado</button>
+            </form>
+        </section>
 
-        </div>
+        <section class="card">
+            <div class="card-header-row">
+                <h3>Personal registrado</h3>
+            </div>
+
+            <div class="info-box">
+                <strong>Nota:</strong> la tabla de empleados todavía no tiene campos de rol (peluquero, barbero, colorista) ni de estado activo/inactivo. Se muestran solo nombre y turnos asignados hasta que se sumen esos campos al backend.
+            </div>
+
+            <div class="filtros-bar" style="margin-top:16px;">
+                <input type="text" id="buscar-empleado" placeholder="Buscar empleado…">
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Turnos asignados</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-empleados"></tbody>
+            </table>
+            <p class="mensaje-vacio" id="empleados-vacio" style="display:none;">No hay empleados que coincidan con la búsqueda.</p>
+        </section>
+
     </div>
 </div>
 
-<script type="module" src="../../js/secretaria/inicio.js"></script>
+<script type="module" src="../../js/secretaria/empleados.js"></script>
 </body>
 </html>

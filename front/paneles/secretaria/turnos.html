@@ -3,9 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Resumen | Panel Administrativo</title>
+<title>Turnos | Panel Administrativo</title>
 
-<!-- Compartidos con el panel cliente: no tocar acá, se editan en su archivo original -->
 <link rel="stylesheet" href="../../css/cliente/theme-public.css">
 <link rel="stylesheet" href="../../css/cliente/variables.css">
 <link rel="stylesheet" href="../../css/cliente/sidebar.css">
@@ -13,8 +12,6 @@
 <link rel="stylesheet" href="../../css/cliente/cards.css">
 <link rel="stylesheet" href="../../css/cliente/buttons.css">
 <link rel="stylesheet" href="../../css/cliente/table.css">
-
-<!-- Exclusivo del panel secretaría -->
 <link rel="stylesheet" href="../../css/secretaria/secretaria.css">
 </head>
 <body>
@@ -34,9 +31,9 @@
     </div>
 
     <nav class="sidebar-menu">
-        <a href="./secretaria.html" class="active"><span class="icon">🏠</span> Resumen</a>
+        <a href="./secretaria.html"><span class="icon">🏠</span> Resumen</a>
         <a href="./agenda.html"><span class="icon">📅</span> Agenda</a>
-        <a href="./turnos.html"><span class="icon">📝</span> Turnos</a>
+        <a href="./turnos.html" class="active"><span class="icon">📝</span> Turnos</a>
         <a href="./clientes.html"><span class="icon">👥</span> Clientes</a>
         <a href="./servicios.html"><span class="icon">✂️</span> Servicios</a>
         <a href="./empleados.html"><span class="icon">🧑‍💼</span> Empleados</a>
@@ -61,8 +58,8 @@
 
     <header class="panel-topbar">
         <div class="panel-greeting">
-            <h1>Hola, <span id="saludo-nombre">—</span> 👋</h1>
-            <p id="saludo-fecha">—</p>
+            <h1>Turnos</h1>
+            <p>Alta y gestión de todos los turnos</p>
         </div>
         <div class="panel-topbar-actions">
             <div class="panel-bell" title="Notificaciones">🔔</div>
@@ -71,7 +68,6 @@
                 <img id="user-avatar-img" class="user-avatar-img" alt="Foto de perfil" style="display:none;">
                 <span id="user-nombre">Cargando…</span>
                 <span class="chevron-down">▾</span>
-
                 <div class="user-dropdown" id="user-dropdown">
                     <button type="button" class="user-dropdown-item" id="btn-cambiar-foto">Cambiar foto de perfil</button>
                     <button type="button" class="user-dropdown-item danger" id="btn-cerrar-sesion">Cerrar sesión</button>
@@ -83,66 +79,74 @@
 
     <div class="panel-content">
 
-        <div class="stats-grid stats-grid-5" id="stats-grid">
-            <div class="stat-card">
-                <div class="icon-circle">📅</div>
-                <div class="stat-value" id="stat-turnos-hoy">–</div>
-                <div class="stat-label">Turnos hoy</div>
-            </div>
-            <div class="stat-card">
-                <div class="icon-circle" style="color:var(--success)">✅</div>
-                <div class="stat-value" id="stat-confirmados">–</div>
-                <div class="stat-label">Confirmados</div>
-            </div>
-            <div class="stat-card">
-                <div class="icon-circle" style="color:var(--danger)">✖</div>
-                <div class="stat-value" id="stat-cancelados">–</div>
-                <div class="stat-label">Cancelados</div>
-            </div>
-            <div class="stat-card">
-                <div class="icon-circle">💰</div>
-                <div class="stat-value" id="stat-ingresos-hoy">–</div>
-                <div class="stat-label">Ingresos hoy</div>
-            </div>
-            <div class="stat-card">
-                <div class="icon-circle">👥</div>
-                <div class="stat-value" id="stat-clientes-atendidos">–</div>
-                <div class="stat-label">Clientes atendidos hoy</div>
-            </div>
-        </div>
-
-        <div class="panel-row">
-
-            <section class="card">
-                <div class="card-header-row">
-                    <h3>Agenda de hoy — todos los empleados</h3>
-                    <a href="./agenda.html">Ver agenda completa</a>
-                </div>
-                <div id="agenda-lista">
-                    <p class="dato-fila" id="agenda-vacio" style="display:none;">
-                        <span class="label">No hay turnos cargados para hoy.</span>
-                    </p>
-                </div>
-            </section>
-
-            <aside class="panel-stack">
-                <section class="card">
-                    <h3>Ingresos de la semana</h3>
-                    <div class="chart-semana" id="chart-semana"></div>
-                </section>
-
-                <section class="card">
-                    <h3>Servicios más realizados</h3>
-                    <div id="ranking-servicios">
-                        <p class="dato-fila"><span class="label">Cargando…</span></p>
+        <section class="card">
+            <h3>Nuevo turno</h3>
+            <form id="form-turno">
+                <div class="form-card-grid">
+                    <div class="form-group">
+                        <label for="turno-cliente">Cliente</label>
+                        <select id="turno-cliente" required>
+                            <option value="">Seleccionar cliente</option>
+                        </select>
                     </div>
-                </section>
-            </aside>
+                    <div class="form-group">
+                        <label for="turno-empleado">Empleado</label>
+                        <select id="turno-empleado" required>
+                            <option value="">Seleccionar empleado</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="turno-servicio">Servicio</label>
+                        <select id="turno-servicio" required>
+                            <option value="">Seleccionar servicio</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="turno-fecha">Fecha y hora</label>
+                        <input type="datetime-local" id="turno-fecha" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary">Crear turno</button>
+            </form>
+        </section>
 
-        </div>
+        <section class="card">
+            <div class="card-header-row">
+                <h3>Turnos registrados</h3>
+            </div>
+
+            <div class="filtros-bar">
+                <input type="text" id="buscar-turno" placeholder="Buscar por cliente, empleado o servicio…">
+                <select id="filtro-estado-turno">
+                    <option value="">Todos los estados</option>
+                    <option value="pendiente">Pendiente</option>
+                    <option value="confirmado">Confirmado</option>
+                    <option value="finalizado">Finalizado</option>
+                    <option value="cancelado">Cancelado</option>
+                </select>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Cliente</th>
+                        <th>Empleado</th>
+                        <th>Servicio</th>
+                        <th>Precio</th>
+                        <th>Estado</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-turnos"></tbody>
+            </table>
+            <p class="mensaje-vacio" id="turnos-vacio" style="display:none;">No hay turnos que coincidan con la búsqueda.</p>
+        </section>
+
     </div>
 </div>
 
-<script type="module" src="../../js/secretaria/inicio.js"></script>
+<script type="module" src="../../js/secretaria/turnos.js"></script>
 </body>
 </html>
