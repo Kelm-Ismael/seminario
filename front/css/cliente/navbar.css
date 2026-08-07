@@ -1,157 +1,177 @@
 /* =====================================
-        SIDEBAR (clara)
+        TOPBAR
 ===================================== */
 
-#sidebar {
-    width: var(--sidebar-width, 260px);
-    min-height: 100vh;
-    background: var(--section);
-    color: var(--text);
-    padding: 25px 20px;
+.panel-topbar {
     display: flex;
-    flex-direction: column;
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 1000;
-    border-right: 1px solid var(--border);
-}
-
-/* Marca (logo + nombre + rubro) */
-.panel-brand {
-    display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    text-align: center;
-    gap: 6px;
-    margin-bottom: var(--space-xl, 32px);
+    padding: var(--space-lg, 24px) var(--space-xl, 32px) 0;
+    flex-wrap: wrap;
+    gap: var(--space-md, 16px);
 }
 
-.panel-brand .avatar-initials {
-    width: 64px;
-    height: 64px;
-    font-size: var(--font-lg, 20px);
-    margin-bottom: 4px;
+.panel-greeting h1 {
+    font-size: var(--font-xl, 28px);
 }
 
-/* Logo del negocio subible por el usuario (reemplaza a las
-   iniciales cuando se sube una imagen). El contenedor fija el
-   tamaño del círculo y recorta la imagen; sin esto el <img> se
-   muestra a su resolución original y se desborda del sidebar. */
-.logo-upload {
+.panel-greeting p {
+    color: var(--muted);
+    font-size: var(--font-sm, 14px);
+    margin-top: 2px;
+}
+
+.panel-topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg, 24px);
+}
+
+.panel-bell {
     position: relative;
-    width: 64px;
-    height: 64px;
-    margin-bottom: 4px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--card);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.panel-bell::after {
+    content: "";
+    position: absolute;
+    top: 7px;
+    right: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--danger);
+    border: 2px solid var(--section);
+}
+
+/* =====================================
+        MENÚ DE USUARIO (avatar + nombre + dropdown)
+===================================== */
+
+.panel-user {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm, 8px);
     cursor: pointer;
 }
 
-.brand-logo-img {
-    width: 64px;
-    height: 64px;
+.panel-user span {
+    font-size: var(--font-sm, 14px);
+    color: var(--dark);
+}
+
+.chevron-down {
+    font-size: 10px;
+    color: var(--muted);
+    transition: transform .2s ease;
+}
+
+.panel-user:has(.user-dropdown.open) .chevron-down {
+    transform: rotate(180deg);
+}
+
+.user-dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    display: none;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 200px;
+    padding: 8px;
+    background: var(--section);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md, 12px);
+    box-shadow: var(--shadow);
+    z-index: 1100;
+}
+
+.user-dropdown.open {
+    display: flex;
+}
+
+.user-dropdown-item {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 10px 12px;
+    border-radius: var(--radius-sm, 8px);
+    font-size: var(--font-sm, 14px);
+    color: var(--dark);
+    cursor: pointer;
+}
+
+.user-dropdown-item:hover {
+    background: var(--card);
+}
+
+.user-dropdown-item.danger {
+    color: var(--danger);
+}
+
+.user-dropdown-item.danger:hover {
+    background: #f8d7da;
+}
+
+/* =====================================
+        AVATAR CON INICIALES
+===================================== */
+
+.avatar-initials {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--primary);
+    color: #fff;
+    font-weight: var(--font-bold, 700);
+    flex-shrink: 0;
+}
+
+.avatar-xs { width: 32px; height: 32px; font-size: 12px; }
+.avatar-sm { width: 40px; height: 40px; font-size: 13px; }
+.avatar-md { width: 56px; height: 56px; font-size: 18px; }
+
+/* Foto de perfil real (reemplaza a las iniciales cuando el usuario
+   sube una imagen). Sin este tamaño fijo, el <img> se muestra a su
+   resolución original y se desborda del topbar. */
+.user-avatar-img {
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     object-fit: cover;
     display: block;
 }
 
-.logo-upload-badge {
-    position: absolute;
-    bottom: -2px;
-    right: -2px;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: var(--primary);
-    color: #fff;
+/* Búsqueda del topbar (opcional) */
+.panel-search {
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: 11px;
-    border: 2px solid var(--section);
-}
-
-.panel-brand-info h2 {
-    font-size: var(--font-md, 16px);
-    color: var(--dark);
-    line-height: 1.2;
-}
-
-.panel-brand-info p {
-    font-size: var(--font-xs, 12px);
-    color: var(--primary);
-    text-transform: uppercase;
-    letter-spacing: .5px;
-}
-
-/* Menú */
-.sidebar-menu {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    flex: 1;
-}
-
-.sidebar-menu a {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 13px 16px;
-    color: var(--muted);
-    text-decoration: none;
-    border-radius: var(--radius-md, 10px);
-    transition: .2s ease;
+    gap: 6px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full, 999px);
+    padding: 8px 16px;
     font-size: var(--font-sm, 14px);
 }
 
-.sidebar-menu a:hover {
-    background: var(--card);
-    color: var(--dark);
+.panel-search input {
+    border: none;
+    background: transparent;
+    color: var(--text);
+    width: 160px;
 }
 
-.sidebar-menu a.active {
-    background: var(--primary);
-    color: #ffffff;
-    font-weight: var(--font-semibold, 600);
-}
-
-.sidebar-menu a .icon {
-    font-size: 16px;
-    width: 18px;
-    text-align: center;
-}
-
-.sidebar-divider {
-    height: 1px;
-    background: var(--border);
-    margin: 25px 0;
-}
-
-/* Caja de ayuda / WhatsApp al pie */
-.panel-help {
-    margin-top: var(--space-lg, 24px);
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg, 18px);
-    padding: var(--space-md, 16px);
-    text-align: center;
-    font-size: var(--font-xs, 12px);
-    color: var(--muted);
-}
-
-.panel-help a {
-    display: inline-block;
-    margin-top: var(--space-sm, 8px);
-    color: var(--success);
-    font-weight: var(--font-semibold, 600);
-}
-
-.main-content {
-    margin-left: var(--sidebar-width, 260px);
-    width: calc(100% - 260px);
-}
-
-@media(max-width:900px){
-    #sidebar { transform: translateX(-100%); transition: 0.3s ease; }
-    #sidebar.active { transform: translateX(0); }
-    .main-content { margin-left:0; width:100%; }
+@media (max-width: 900px) {
+    .panel-topbar { flex-direction: column; align-items: flex-start; }
 }
