@@ -1,0 +1,329 @@
+/* ==========================================================
+   SIDEBAR — override puntual para este panel. Mismo selector
+   que css/cliente/sidebar.css (#sidebar); como admin.css
+   se carga después en el <head>, esta regla gana por orden de
+   cascada sin tocar el archivo compartido.
+
+   Por qué hace falta acá y no en los otros paneles: el sidebar
+   compartido usa min-height:100vh + position:fixed sin
+   overflow-y. Con 7 ítems (peluquero/barbero/colorista) el
+   contenido siempre entra en pantalla. Este panel tiene 12
+   ítems + la caja de ayuda, que en la mayoría de las pantallas
+   suma más alto que el viewport — al ser "fixed" sin scroll
+   propio, los últimos ítems quedaban renderizados fuera de
+   vista y sin forma de llegar a ellos. Con height:100vh +
+   overflow-y:auto, el sidebar scrollea internamente cuando no
+   entra, y se ve exactamente igual que antes cuando sí entra.
+========================================================== */
+#sidebar {
+    height: 100vh;
+    overflow-y: auto;
+}
+
+/* ==========================================================
+   STATS GRID — panel secretaría usa 5 tarjetas (vs. 4 en los
+   paneles de empleado), así que no reutiliza el .stats-grid
+   de peluquero.css: se define acá, propio de este rol.
+========================================================== */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-lg, 24px);
+    margin-bottom: var(--space-lg, 24px);
+}
+
+.stats-grid-5 {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.stat-card {
+    background: var(--section);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg, 18px);
+    box-shadow: var(--shadow);
+    padding: var(--space-lg, 24px);
+}
+
+.stat-value {
+    font-size: var(--font-xxl, 40px);
+    font-weight: var(--font-bold, 700);
+    color: var(--dark);
+    line-height: 1.1;
+    margin-bottom: 4px;
+}
+
+.stat-label {
+    font-size: var(--font-sm, 14px);
+    color: var(--muted);
+}
+
+@media (max-width: 1200px) {
+    .stats-grid-5 { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 700px) {
+    .stats-grid,
+    .stats-grid-5 { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ==========================================================
+   AGENDA — turno-item con nombre de empleado
+   (reutiliza .turno-item de cards.css; solo agrega la línea
+   de empleado con un pequeño ícono para diferenciarla)
+========================================================== */
+.turno-item .info .empleado {
+    color: var(--primary);
+    font-weight: var(--font-semibold, 600);
+}
+
+/* ==========================================================
+   GRÁFICO DE INGRESOS DE LA SEMANA — barras en CSS puro,
+   sin dependencias nuevas.
+========================================================== */
+.chart-semana {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--space-sm, 8px);
+    height: 160px;
+    padding-top: var(--space-md, 16px);
+}
+
+.chart-bar-wrap {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+}
+
+.chart-bar-valor {
+    font-size: 10px;
+    color: var(--muted);
+    white-space: nowrap;
+}
+
+.chart-bar {
+    width: 100%;
+    max-width: 28px;
+    background: var(--border);
+    border-radius: 6px 6px 0 0;
+    min-height: 3px;
+    transition: height .3s ease;
+}
+
+.chart-bar.hoy {
+    background: var(--primary);
+}
+
+.chart-bar-label {
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+}
+
+/* ==========================================================
+   RANKING DE SERVICIOS — reutiliza .progreso-barra de
+   cards.css para la barra, solo agrega el layout de fila.
+========================================================== */
+.ranking-item {
+    margin-bottom: var(--space-md, 16px);
+}
+
+.ranking-item:last-child { margin-bottom: 0; }
+
+.ranking-item .ranking-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--font-sm, 14px);
+    margin-bottom: 6px;
+}
+
+.ranking-item .ranking-info .ranking-nombre { color: var(--dark); }
+.ranking-item .ranking-info .ranking-count { color: var(--primary); font-weight: var(--font-semibold, 600); }
+
+/* ==========================================================
+   BARRA DE FILTROS (búsqueda + selects) — Turnos, Clientes,
+   Servicios, Empleados
+========================================================== */
+.filtros-bar {
+    display: flex;
+    gap: var(--space-md, 16px);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-lg, 24px);
+}
+
+.filtros-bar input,
+.filtros-bar select {
+    height: 44px;
+    padding: 0 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md, 10px);
+    background: var(--section);
+    color: var(--text);
+    font-size: var(--font-sm, 14px);
+    font-family: inherit;
+}
+
+.filtros-bar input { flex: 2; min-width: 200px; }
+.filtros-bar select { flex: 1; min-width: 150px; }
+
+.filtros-bar input:focus,
+.filtros-bar select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(184,138,42,.15);
+}
+
+/* ==========================================================
+   NAVEGACIÓN DE FECHA — Agenda
+========================================================== */
+.fecha-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md, 16px);
+    margin-bottom: var(--space-lg, 24px);
+}
+
+.fecha-nav button {
+    background: var(--card);
+    color: var(--dark);
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border-radius: 50%;
+    font-size: 16px;
+}
+
+.fecha-nav button:hover { background: var(--border); }
+
+.fecha-nav .fecha-actual {
+    font-weight: var(--font-semibold, 600);
+    color: var(--dark);
+    min-width: 220px;
+    text-align: center;
+}
+
+/* ==========================================================
+   FORMULARIOS DE ALTA (crear turno / cliente / servicio / empleado)
+========================================================== */
+.form-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--space-md, 16px);
+    margin-bottom: var(--space-md, 16px);
+}
+
+.form-card-grid .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-card-grid label {
+    font-size: var(--font-xs, 12px);
+    font-weight: var(--font-semibold, 600);
+    color: var(--muted);
+}
+
+.form-card-grid input,
+.form-card-grid select {
+    height: 44px;
+    padding: 0 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md, 10px);
+    background: var(--section);
+    color: var(--text);
+    font-size: var(--font-sm, 14px);
+    font-family: inherit;
+}
+
+.form-card-grid input:focus,
+.form-card-grid select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(184,138,42,.15);
+}
+
+/* ==========================================================
+   ACCIONES EN TABLA (select de estado + botón eliminar/editar)
+========================================================== */
+.select-estado {
+    height: 36px;
+    padding: 0 10px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm, 8px);
+    background: var(--section);
+    color: var(--text);
+    font-size: var(--font-xs, 12px);
+    font-family: inherit;
+}
+
+.tabla-acciones {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.btn-icon {
+    background: var(--card);
+    color: var(--muted);
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border-radius: var(--radius-sm, 8px);
+    font-size: 14px;
+}
+
+.btn-icon:hover { background: var(--border); color: var(--dark); }
+.btn-icon.danger:hover { background: #f8d7da; color: var(--danger); }
+
+/* Fila en edición inline (Servicios / Empleados) */
+tr.editando input {
+    width: 100%;
+    height: 34px;
+    padding: 0 10px;
+    border: 1px solid var(--primary);
+    border-radius: var(--radius-sm, 8px);
+    font-size: var(--font-sm, 14px);
+    font-family: inherit;
+}
+
+.mensaje-vacio {
+    text-align: center;
+    color: var(--muted);
+    padding: var(--space-xl, 32px) 0;
+    font-size: var(--font-sm, 14px);
+}
+
+/* ==========================================================
+   BANNER DE "VISTA PREVIA" — secciones sin tabla real en la
+   base (Finanzas, Reportes, Inventario, Promociones, Usuarios
+   y Roles, Configuración). Todo lo que se ve debajo es
+   maqueta estática, no datos reales.
+========================================================== */
+.preview-banner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--warning-bg);
+    color: var(--warning-text);
+    border-radius: var(--radius-md, 10px);
+    padding: 12px 18px;
+    font-size: var(--font-sm, 14px);
+    margin-bottom: var(--space-lg, 24px);
+}
+
+/* ==========================================================
+   INVENTARIO / USUARIOS — tabla con badge de estado propio
+========================================================== */
+.badge-activo { background: var(--success-bg); color: #155724; }
+.badge-inactivo { background: #f1f1f1; color: var(--muted); }
+.badge-stock-bajo { background: var(--warning-bg); color: var(--warning-text); }
+.badge-sin-stock { background: #f8d7da; color: #721c24; }
+
+/* ==========================================================
+   CONFIGURACIÓN — items tipo chevron dentro de una card
+========================================================== */
+.config-card .chevron-item .icon { margin-right: 10px; }

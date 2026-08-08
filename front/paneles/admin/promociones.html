@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Promociones | Panel Administrativo</title>
+
+<link rel="stylesheet" href="../../css/cliente/theme-public.css">
+<link rel="stylesheet" href="../../css/cliente/variables.css">
+<link rel="stylesheet" href="../../css/cliente/sidebar.css">
+<link rel="stylesheet" href="../../css/cliente/navbar.css">
+<link rel="stylesheet" href="../../css/cliente/cards.css">
+<link rel="stylesheet" href="../../css/cliente/buttons.css">
+<link rel="stylesheet" href="../../css/cliente/table.css">
+<link rel="stylesheet" href="../../css/admin/admin.css">
+</head>
+<body>
+
+<aside id="sidebar">
+    <div class="panel-brand">
+        <div class="logo-upload" id="logo-upload" title="Cambiar logo del negocio">
+            <div class="avatar-initials avatar-md" id="brand-avatar">DM</div>
+            <img id="brand-logo-img" class="brand-logo-img" alt="Logo del negocio" style="display:none;">
+            <span class="logo-upload-badge">✎</span>
+        </div>
+        <input type="file" id="brand-logo-input" accept="image/*" hidden>
+        <div class="panel-brand-info">
+            <h2>David Martínez</h2>
+            <p>Panel Administrativo</p>
+        </div>
+    </div>
+
+        <nav class="sidebar-menu">
+        <a href="./admin.html"><span class="icon">🏠</span> Resumen</a>
+        <a href="./agenda.html"><span class="icon">📅</span> Agenda</a>
+        <a href="./turnos.html"><span class="icon">📝</span> Turnos</a>
+        <a href="./clientes.html"><span class="icon">👥</span> Clientes</a>
+        <a href="./servicios.html"><span class="icon">✂️</span> Servicios</a>
+        <a href="./empleados.html"><span class="icon">🧑‍💼</span> Empleados</a>
+        <a href="./finanzas.html"><span class="icon">💰</span> Finanzas</a>
+        <a href="./reportes.html"><span class="icon">📈</span> Reportes</a>
+        <a href="./inventario.html"><span class="icon">📦</span> Inventario</a>
+        <a href="./promociones.html" class="active"><span class="icon">🏷️</span> Promociones</a>
+        <a href="./usuarios.html"><span class="icon">👤</span> Usuarios</a>
+        <a href="./roles.html"><span class="icon">🔐</span> Roles y permisos</a>
+        <a href="./auditoria.html"><span class="icon">🕵️</span> Auditoría</a>
+        <a href="./configuracion.html"><span class="icon">⚙️</span> Configuración</a>
+    </nav>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="panel-help">
+        Cualquier duda con el sistema, escribinos.
+        <br>
+        <a href="https://wa.me/5493764000000" target="_blank">Asistencia por WhatsApp</a>
+    </div>
+</aside>
+
+<div class="main-content">
+
+    <header class="panel-topbar">
+        <div class="panel-greeting">
+            <h1>Promociones</h1>
+            <p>Descuentos y ofertas activas</p>
+        </div>
+        <div class="panel-topbar-actions">
+            <div class="panel-bell" title="Notificaciones">🔔</div>
+            <div class="panel-user" id="panel-user">
+                <div class="avatar-initials avatar-sm" id="user-avatar">--</div>
+                <img id="user-avatar-img" class="user-avatar-img" alt="Foto de perfil" style="display:none;">
+                <span id="user-nombre">Cargando…</span>
+                <span class="chevron-down">▾</span>
+                <div class="user-dropdown" id="user-dropdown">
+                    <button type="button" class="user-dropdown-item" id="btn-cambiar-foto">Cambiar foto de perfil</button>
+                    <button type="button" class="user-dropdown-item danger" id="btn-cerrar-sesion">Cerrar sesión</button>
+                </div>
+            </div>
+            <input type="file" id="user-avatar-input" accept="image/*" hidden>
+        </div>
+    </header>
+
+    <div class="panel-content">
+
+        <div class="preview-banner">
+            ⚠️ Vista previa — no hay tabla de promociones en la base de datos. Los switches de abajo cambian solo en pantalla, no se guardan.
+        </div>
+
+        <div class="card-header-row" style="margin-bottom:16px;">
+            <h3 style="margin:0;">Promociones activas</h3>
+            <button type="button" class="btn-primary btn-sm" disabled title="Se habilita cuando exista el módulo de promociones">+ Nueva promoción</button>
+        </div>
+
+        <div class="promo-grid">
+            <div class="promo-card">
+                <span class="pct-badge">15% OFF</span>
+                <h4>15% OFF en corte + barba</h4>
+                <p>Válido hasta el 31/05/2026 · Usado 24 veces</p>
+                <label class="toggle" style="align-self:flex-end;">
+                    <input type="checkbox" class="toggle-promo" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="promo-card">
+                <span class="pct-badge">2x1</span>
+                <h4>2x1 en tintura</h4>
+                <p>Válido hasta el 31/05/2026 · Usado 15 veces</p>
+                <label class="toggle" style="align-self:flex-end;">
+                    <input type="checkbox" class="toggle-promo" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="promo-card">
+                <span class="pct-badge">20% OFF</span>
+                <h4>20% OFF en color</h4>
+                <p>Válido hasta el 25/05/2026 · Usado 18 veces</p>
+                <label class="toggle" style="align-self:flex-end;">
+                    <input type="checkbox" class="toggle-promo" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="promo-card">
+                <span class="pct-badge">Promo</span>
+                <h4>Lavado premium con regalo</h4>
+                <p>Válido hasta el 20/05/2026 · Usado 32 veces</p>
+                <label class="toggle" style="align-self:flex-end;">
+                    <input type="checkbox" class="toggle-promo">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script type="module" src="../../js/admin/promociones.js"></script>
+</body>
+</html>

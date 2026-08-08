@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agenda | Panel Administrativo</title>
+
+<link rel="stylesheet" href="../../css/cliente/theme-public.css">
+<link rel="stylesheet" href="../../css/cliente/variables.css">
+<link rel="stylesheet" href="../../css/cliente/sidebar.css">
+<link rel="stylesheet" href="../../css/cliente/navbar.css">
+<link rel="stylesheet" href="../../css/cliente/cards.css">
+<link rel="stylesheet" href="../../css/cliente/buttons.css">
+<link rel="stylesheet" href="../../css/cliente/table.css">
+<link rel="stylesheet" href="../../css/admin/admin.css">
+</head>
+<body>
+
+<aside id="sidebar">
+    <div class="panel-brand">
+        <div class="logo-upload" id="logo-upload" title="Cambiar logo del negocio">
+            <div class="avatar-initials avatar-md" id="brand-avatar">DM</div>
+            <img id="brand-logo-img" class="brand-logo-img" alt="Logo del negocio" style="display:none;">
+            <span class="logo-upload-badge">✎</span>
+        </div>
+        <input type="file" id="brand-logo-input" accept="image/*" hidden>
+        <div class="panel-brand-info">
+            <h2>David Martínez</h2>
+            <p>Panel Administrativo</p>
+        </div>
+    </div>
+
+        <nav class="sidebar-menu">
+        <a href="./admin.html"><span class="icon">🏠</span> Resumen</a>
+        <a href="./agenda.html" class="active"><span class="icon">📅</span> Agenda</a>
+        <a href="./turnos.html"><span class="icon">📝</span> Turnos</a>
+        <a href="./clientes.html"><span class="icon">👥</span> Clientes</a>
+        <a href="./servicios.html"><span class="icon">✂️</span> Servicios</a>
+        <a href="./empleados.html"><span class="icon">🧑‍💼</span> Empleados</a>
+        <a href="./finanzas.html"><span class="icon">💰</span> Finanzas</a>
+        <a href="./reportes.html"><span class="icon">📈</span> Reportes</a>
+        <a href="./inventario.html"><span class="icon">📦</span> Inventario</a>
+        <a href="./promociones.html"><span class="icon">🏷️</span> Promociones</a>
+        <a href="./usuarios.html"><span class="icon">👤</span> Usuarios</a>
+        <a href="./roles.html"><span class="icon">🔐</span> Roles y permisos</a>
+        <a href="./auditoria.html"><span class="icon">🕵️</span> Auditoría</a>
+        <a href="./configuracion.html"><span class="icon">⚙️</span> Configuración</a>
+    </nav>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="panel-help">
+        Cualquier duda con el sistema, escribinos.
+        <br>
+        <a href="https://wa.me/5493764000000" target="_blank">Asistencia por WhatsApp</a>
+    </div>
+</aside>
+
+<div class="main-content">
+
+    <header class="panel-topbar">
+        <div class="panel-greeting">
+            <h1>Agenda</h1>
+            <p>Turnos de todos los empleados</p>
+        </div>
+        <div class="panel-topbar-actions">
+            <div class="panel-bell" title="Notificaciones">🔔</div>
+            <div class="panel-user" id="panel-user">
+                <div class="avatar-initials avatar-sm" id="user-avatar">--</div>
+                <img id="user-avatar-img" class="user-avatar-img" alt="Foto de perfil" style="display:none;">
+                <span id="user-nombre">Cargando…</span>
+                <span class="chevron-down">▾</span>
+                <div class="user-dropdown" id="user-dropdown">
+                    <button type="button" class="user-dropdown-item" id="btn-cambiar-foto">Cambiar foto de perfil</button>
+                    <button type="button" class="user-dropdown-item danger" id="btn-cerrar-sesion">Cerrar sesión</button>
+                </div>
+            </div>
+            <input type="file" id="user-avatar-input" accept="image/*" hidden>
+        </div>
+    </header>
+
+    <div class="panel-content">
+
+        <div class="fecha-nav">
+            <button type="button" id="btn-dia-anterior">◀</button>
+            <span class="fecha-actual" id="fecha-actual">—</span>
+            <button type="button" id="btn-dia-siguiente">▶</button>
+            <button type="button" class="btn-outline btn-sm" id="btn-hoy" style="margin-left:auto;">Hoy</button>
+        </div>
+
+        <section class="card">
+            <div class="card-header-row">
+                <h3>Turnos del día</h3>
+                <select id="filtro-empleado" class="select-estado">
+                    <option value="">Todos los empleados</option>
+                </select>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Hora</th>
+                        <th>Cliente</th>
+                        <th>Servicio</th>
+                        <th>Empleado</th>
+                        <th>Precio</th>
+                        <th>Estado</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-agenda"></tbody>
+            </table>
+            <p class="mensaje-vacio" id="agenda-vacio" style="display:none;">No hay turnos para este día.</p>
+        </section>
+
+    </div>
+</div>
+
+<script type="module" src="../../js/admin/agenda.js"></script>
+</body>
+</html>
