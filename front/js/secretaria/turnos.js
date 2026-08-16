@@ -257,8 +257,12 @@ function pintarHorarios() {
 
     const servicio = serviciosPorId[servicioSeleccionado];
     const duracion = Number(servicio.duracion) || PASO_MIN;
-    const finMin = horaAMin(horario.fin);
 
+    // Verificación de conflicto: se compara contra TODOS los turnos existentes
+    // de ese empleado ese día, sin importar si los creó el cliente desde su
+    // propio panel o la secretaria desde este panel — mismo empleado + mismo
+    // horario (considerando la duración real del servicio) = conflicto, para
+    // que nunca se pueda otorgar un turno que ya eligió otro cliente antes.
     const turnosEmpleadoDia = todosLosTurnos.filter(t =>
         Number(t.empleado_id) === empleadoSeleccionado
         && t.estado !== "cancelado"
@@ -270,40 +274,29 @@ function pintarHorarios() {
         return { inicioMin, finMin: inicioMin + dur };
     });
 
+    // Grilla FIJA: siempre los mismos horarios de 30 min dentro del horario de
+    // atención, sin agrupar en Mañana/Tarde/Noche y sin acortar cerca del
+    // cierre (no se ocultan los últimos casilleros aunque el servicio
+    // termine después de la hora de cierre — solo se marcan ocupados si
+    // pisan un turno real).
     const slots = slotsDelDia(horario).map(hora => {
         const inicioMin = horaAMin(hora);
         const propioFin = inicioMin + duracion;
-
-        // No entra completo antes del cierre.
-        if (propioFin > finMin) return { hora, estado: "cerrado" };
-
-        // Se solapa con algún turno existente de ese empleado ese día.
         const ocupado = turnosEmpleadoDia.some(t => inicioMin < t.finMin && propioFin > t.inicioMin);
-
         return { hora, estado: ocupado ? "ocupado" : "disponible" };
-    }).filter(s => s.estado !== "cerrado");
+    });
 
-    const grupos = {
-        "Mañana": slots.filter(s => horaAMin(s.hora) < horaAMin("13:00")),
-        "Tarde": slots.filter(s => horaAMin(s.hora) >= horaAMin("13:00") && horaAMin(s.hora) < horaAMin("19:00")),
-        "Noche": slots.filter(s => horaAMin(s.hora) >= horaAMin("19:00")),
-    };
-
-    let html = "";
-    for (const [nombreGrupo, lista] of Object.entries(grupos)) {
-        if (lista.length === 0) continue;
-        html += `<div class="horario-grupo-titulo">${nombreGrupo}</div><div class="horario-grid">`;
-        html += lista.map(s => {
-            let clase = s.estado;
-            if (s.hora === horaSeleccionada) clase = "seleccionado";
-            const disabled = s.estado === "ocupado" ? "disabled" : "";
-            return `<button type="button" class="horario-slot ${clase}" data-hora="${s.hora}" ${disabled}>${s.hora}</button>`;
-        }).join("");
-        html += `</div>`;
-    }
+    let html = `<div class="horario-grid">`;
+    html += slots.map(s => {
+        let clase = s.estado;
+        if (s.hora === horaSeleccionada) clase = "seleccionado";
+        const disabled = s.estado === "ocupado" ? "disabled" : "";
+        return `<button type="button" class="horario-slot ${clase}" data-hora="${s.hora}" ${disabled}>${s.hora}</button>`;
+    }).join("");
+    html += `</div>`;
 
     if (slots.every(s => s.estado === "ocupado")) {
-        html += `<p class="sin-seleccion">No quedan horarios disponibles para este empleado y servicio ese día.</p>`;
+        html += `<p class="sin-seleccion">No quedan horarios disponibles para este empleado ese día.</p>`;
     }
 
     if (horaSeleccionada) {
@@ -364,6 +357,40 @@ async function onCrearTurno(ev) {
     if (!datos.cliente_id || !datos.empleado_id || !datos.servicio_id || !datos.fecha) {
         alert("Completá cliente, servicio, empleado y elegí un horario en la grilla.");
         return;
+    }
+
+    // Resguardo extra: re-verificar el conflicto contra los datos más
+    // recientes antes de enviar, por si otro cliente (desde su propio panel)
+    // o la propia secretaria tomó ese mismo horario mientras esta pantalla
+    // estaba abierta. La verificación definitiva la hace igual el backend
+    // (respuesta 409 más abajo), esto es solo para avisar más rápido.
+    try {
+        const turnosActuales = await getDatos(API_TURNOS);
+        const duracionNueva = Number(serviciosPorId[datos.servicio_id]?.duracion) || PASO_MIN;
+        const inicioNuevo = new Date(datos.fecha);
+        const inicioNuevoMin = inicioNuevo.getHours() * 60 + inicioNuevo.getMinutes();
+        const finNuevoMin = inicioNuevoMin + duracionNueva;
+
+        const hayConflicto = turnosActuales.some(t => {
+            if (Number(t.empleado_id) !== datos.empleado_id) return false;
+            if (t.estado === "cancelado") return false;
+            const fechaExistente = new Date(t.fecha);
+            if (fechaExistente.toDateString() !== inicioNuevo.toDateString()) return false;
+            const inicioExistenteMin = fechaExistente.getHours() * 60 + fechaExistente.getMinutes();
+            const durExistente = Number(serviciosPorId[t.servicio_id]?.duracion) || PASO_MIN;
+            const finExistenteMin = inicioExistenteMin + durExistente;
+            return inicioNuevoMin < finExistenteMin && finNuevoMin > inicioExistenteMin;
+        });
+
+        if (hayConflicto) {
+            alert("Ese horario ya fue tomado (probablemente por el cliente desde su propio panel). Elegí otro horario.");
+            todosLosTurnos = turnosActuales;
+            pintarCalendario();
+            pintarHorarios();
+            return;
+        }
+    } catch (err) {
+        console.warn("No se pudo re-verificar conflictos antes de crear el turno, se intenta igual:", err);
     }
 
     try {
