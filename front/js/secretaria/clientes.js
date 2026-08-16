@@ -2,6 +2,10 @@ import { getDatos, postDatos } from "../core/api.js";
 import { API_CLIENTES, API_TURNOS } from "../core/config.js";
 import { pintarTopbar, inicializarShell } from "./common.js";
 
+// Recepcionista: puede registrar clientes nuevos (alta básica) y
+// consultarlos, pero NO editarlos ni eliminarlos (backlog, Escenario 25/26).
+// Este archivo no cambió respecto al original — ya cumplía la regla.
+
 let todosLosClientes = [];
 let conteoTurnosPorCliente = {};
 

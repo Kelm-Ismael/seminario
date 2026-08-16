@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Usuarios y Roles | Panel Administrativo</title>
+<title>Empleados | Panel Recepción</title>
 
 <link rel="stylesheet" href="../../css/cliente/theme-public.css">
 <link rel="stylesheet" href="../../css/cliente/variables.css">
@@ -26,7 +26,7 @@
         <input type="file" id="brand-logo-input" accept="image/*" hidden>
         <div class="panel-brand-info">
             <h2>David Martínez</h2>
-            <p>Panel Administrativo</p>
+            <p>Panel Recepción</p>
         </div>
     </div>
 
@@ -36,13 +36,11 @@
         <a href="./turnos.html"><span class="icon">📝</span> Turnos</a>
         <a href="./clientes.html"><span class="icon">👥</span> Clientes</a>
         <a href="./servicios.html"><span class="icon">✂️</span> Servicios</a>
-        <a href="./empleados.html"><span class="icon">🧑‍💼</span> Empleados</a>
-        <a href="./finanzas.html"><span class="icon">💰</span> Finanzas</a>
+        <a href="./empleados.html" class="active"><span class="icon">🧑‍💼</span> Empleados</a>
+        <a href="./finanzas.html"><span class="icon">💰</span> Mis pagos</a>
         <a href="./reportes.html"><span class="icon">📈</span> Reportes</a>
         <a href="./inventario.html"><span class="icon">📦</span> Inventario</a>
         <a href="./promociones.html"><span class="icon">🏷️</span> Promociones</a>
-        <a href="./usuarios.html" class="active"><span class="icon">🔐</span> Usuarios y Roles</a>
-        <a href="./configuracion.html"><span class="icon">⚙️</span> Configuración</a>
     </nav>
 
     <div class="sidebar-divider"></div>
@@ -58,8 +56,8 @@
 
     <header class="panel-topbar">
         <div class="panel-greeting">
-            <h1>Usuarios y Roles</h1>
-            <p>Accesos al sistema</p>
+            <h1>Empleados</h1>
+            <p>Listado del personal (solo lectura)</p>
         </div>
         <div class="panel-topbar-actions">
             <div class="panel-bell" title="Notificaciones">🔔</div>
@@ -79,32 +77,34 @@
 
     <div class="panel-content">
 
-        <div class="preview-banner">
-            ⚠️ Vista previa — todavía no hay tabla de usuarios/roles ni login real. Esta pantalla muestra cómo se vería una vez que exista autenticación.
+        <div class="info-box">
+            <strong>Solo lectura:</strong> el alta, edición y baja de empleados se hace exclusivamente desde el panel de Administrador. Acá podés consultar el personal disponible para asignar un turno.
         </div>
 
         <section class="card">
             <div class="card-header-row">
-                <h3>Usuarios del sistema</h3>
-                <button type="button" class="btn-primary btn-sm" disabled title="Se habilita cuando exista el módulo de autenticación">+ Nuevo usuario</button>
+                <h3>Personal registrado</h3>
             </div>
+
+            <div class="filtros-bar">
+                <input type="text" id="buscar-empleado" placeholder="Buscar empleado…">
+            </div>
+
             <table>
                 <thead>
-                    <tr><th>Usuario</th><th>Rol</th><th>Estado</th><th>Último acceso</th></tr>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Turnos asignados</th>
+                    </tr>
                 </thead>
-                <tbody>
-                    <tr><td>admin</td><td>Administrador</td><td><span class="badge badge-activo">Activo</span></td><td>16/05/2026 08:30</td></tr>
-                    <tr><td>tomas.barbero</td><td>Barbero</td><td><span class="badge badge-activo">Activo</span></td><td>16/05/2026 09:12</td></tr>
-                    <tr><td>sofia.colorista</td><td>Colorista</td><td><span class="badge badge-activo">Activo</span></td><td>16/05/2026 09:05</td></tr>
-                    <tr><td>martina.recep</td><td>Recepcionista</td><td><span class="badge badge-activo">Activo</span></td><td>15/05/2026 20:40</td></tr>
-                    <tr><td>diego.asistente</td><td>Asistente</td><td><span class="badge badge-inactivo">Inactivo</span></td><td>15/05/2026 17:20</td></tr>
-                </tbody>
+                <tbody id="tabla-empleados"></tbody>
             </table>
+            <p class="mensaje-vacio" id="empleados-vacio" style="display:none;">No hay empleados que coincidan con la búsqueda.</p>
         </section>
 
     </div>
 </div>
 
-<script type="module" src="../../js/secretaria/usuarios.js"></script>
+<script type="module" src="../../js/secretaria/empleados.js"></script>
 </body>
 </html>

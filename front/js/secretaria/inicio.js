@@ -5,6 +5,11 @@ import {
     formatoHora, formatoMoneda, capitalizar, pintarTopbar, inicializarShell,
 } from "./common.js";
 
+// Nota: se mantienen "Ingresos hoy" / "Ingresos de la semana" en este
+// dashboard (confirmado explícitamente — Recepcionista sí ve estos
+// totales acá, a diferencia de Finanzas/Reportes donde su vista está
+// acotada a sus propios pagos registrados).
+
 const DIAS_SEMANA = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"];
 const TOP_SERVICIOS = 5;
 
@@ -33,7 +38,7 @@ async function init() {
         pintarRankingServicios(turnos, serviciosPorId);
 
     } catch (err) {
-        console.error("Error cargando el resumen de secretaría:", err);
+        console.error("Error cargando el resumen de recepción:", err);
         document.getElementById("agenda-lista").innerHTML =
             `<p class="dato-fila"><span class="label">No se pudo cargar la agenda. Probá recargar la página.</span></p>`;
         document.getElementById("ranking-servicios").innerHTML =

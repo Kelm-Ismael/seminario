@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Servicios | Panel Administrativo</title>
+<title>Servicios | Panel Recepción</title>
 
 <link rel="stylesheet" href="../../css/cliente/theme-public.css">
 <link rel="stylesheet" href="../../css/cliente/variables.css">
@@ -26,7 +26,7 @@
         <input type="file" id="brand-logo-input" accept="image/*" hidden>
         <div class="panel-brand-info">
             <h2>David Martínez</h2>
-            <p>Panel Administrativo</p>
+            <p>Panel Recepción</p>
         </div>
     </div>
 
@@ -37,12 +37,10 @@
         <a href="./clientes.html"><span class="icon">👥</span> Clientes</a>
         <a href="./servicios.html" class="active"><span class="icon">✂️</span> Servicios</a>
         <a href="./empleados.html"><span class="icon">🧑‍💼</span> Empleados</a>
-        <a href="./finanzas.html"><span class="icon">💰</span> Finanzas</a>
+        <a href="./finanzas.html"><span class="icon">💰</span> Mis pagos</a>
         <a href="./reportes.html"><span class="icon">📈</span> Reportes</a>
         <a href="./inventario.html"><span class="icon">📦</span> Inventario</a>
         <a href="./promociones.html"><span class="icon">🏷️</span> Promociones</a>
-        <a href="./usuarios.html"><span class="icon">🔐</span> Usuarios y Roles</a>
-        <a href="./configuracion.html"><span class="icon">⚙️</span> Configuración</a>
     </nav>
 
     <div class="sidebar-divider"></div>
@@ -59,7 +57,7 @@
     <header class="panel-topbar">
         <div class="panel-greeting">
             <h1>Servicios</h1>
-            <p>Catálogo de servicios del negocio</p>
+            <p>Catálogo de servicios del negocio (solo lectura)</p>
         </div>
         <div class="panel-topbar-actions">
             <div class="panel-bell" title="Notificaciones">🔔</div>
@@ -79,26 +77,9 @@
 
     <div class="panel-content">
 
-        <section class="card">
-            <h3>Nuevo servicio</h3>
-            <form id="form-servicio">
-                <div class="form-card-grid">
-                    <div class="form-group">
-                        <label for="servicio-nombre">Nombre</label>
-                        <input type="text" id="servicio-nombre" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="servicio-precio">Precio</label>
-                        <input type="number" id="servicio-precio" min="0" step="1" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="servicio-duracion">Duración (min)</label>
-                        <input type="number" id="servicio-duracion" min="0" step="5" required>
-                    </div>
-                </div>
-                <button type="submit" class="btn-primary">Crear servicio</button>
-            </form>
-        </section>
+        <div class="info-box">
+            <strong>Solo lectura:</strong> el alta, edición y baja de servicios se hace exclusivamente desde el panel de Administrador. Acá podés consultar precios y duración para informar al cliente.
+        </div>
 
         <section class="card">
             <div class="card-header-row">
@@ -115,7 +96,6 @@
                         <th>Nombre</th>
                         <th>Precio</th>
                         <th>Duración</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody id="tabla-servicios"></tbody>

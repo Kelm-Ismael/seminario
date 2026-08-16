@@ -2,8 +2,7 @@ import { getDatos } from "../core/api.js";
 import { API_TURNOS, API_SERVICIOS, API_EMPLEADOS, API_CLIENTES } from "../core/config.js";
 import {
     indexarPorId, esMismoDia, formatoHora, formatoFechaLarga, formatoMoneda,
-    capitalizar, claseBadgeEstado, pintarTopbar, inicializarShell,
-    cambiarEstadoTurno, eliminarTurno,
+    capitalizar, pintarTopbar, inicializarShell, cambiarEstadoTurno,
 } from "./common.js";
 
 const ESTADOS = ["pendiente", "confirmado", "finalizado", "cancelado"];
@@ -89,8 +88,9 @@ function renderizar() {
     tabla.querySelectorAll("select.select-estado").forEach(sel => {
         sel.addEventListener("change", onCambiarEstado);
     });
-    tabla.querySelectorAll("button.btn-eliminar-turno").forEach(btn => {
-        btn.addEventListener("click", onEliminarTurno);
+    // Igual que en turnos.js: "eliminar" cancela el turno, no lo borra.
+    tabla.querySelectorAll("button.btn-cancelar-turno").forEach(btn => {
+        btn.addEventListener("click", onCancelarTurno);
     });
 }
 
@@ -98,6 +98,7 @@ function filaTurno(t) {
     const servicio = serviciosPorId[t.servicio_id];
     const empleado = empleadosPorId[t.empleado_id];
     const cliente = clientesPorId[t.cliente_id];
+    const yaCancelado = t.estado === "cancelado";
 
     return `
     <tr data-id="${t.id_turnos}">
@@ -112,7 +113,8 @@ function filaTurno(t) {
             </select>
         </td>
         <td class="tabla-acciones">
-            <button type="button" class="btn-icon danger btn-eliminar-turno" data-id="${t.id_turnos}" title="Eliminar turno">🗑</button>
+            <button type="button" class="btn-icon danger btn-cancelar-turno" data-id="${t.id_turnos}"
+                title="Cancelar turno" ${yaCancelado ? "disabled" : ""}>✕</button>
         </td>
     </tr>`;
 }
@@ -124,6 +126,7 @@ async function onCambiarEstado(ev) {
         await cambiarEstadoTurno(id, nuevoEstado);
         const turno = todosLosTurnos.find(t => String(t.id_turnos) === String(id));
         if (turno) turno.estado = nuevoEstado;
+        renderizar();
     } catch (err) {
         console.error(err);
         alert("No se pudo actualizar el estado del turno.");
@@ -131,15 +134,16 @@ async function onCambiarEstado(ev) {
     }
 }
 
-async function onEliminarTurno(ev) {
+async function onCancelarTurno(ev) {
     const id = ev.currentTarget.dataset.id;
-    if (!confirm("¿Eliminar este turno? Esta acción no se puede deshacer.")) return;
+    if (!confirm("¿Cancelar este turno? El registro queda en el historial, solo cambia su estado a \"cancelado\".")) return;
     try {
-        await eliminarTurno(id);
-        todosLosTurnos = todosLosTurnos.filter(t => String(t.id_turnos) !== String(id));
+        await cambiarEstadoTurno(id, "cancelado");
+        const turno = todosLosTurnos.find(t => String(t.id_turnos) === String(id));
+        if (turno) turno.estado = "cancelado";
         renderizar();
     } catch (err) {
         console.error(err);
-        alert("No se pudo eliminar el turno.");
+        alert("No se pudo cancelar el turno.");
     }
 }

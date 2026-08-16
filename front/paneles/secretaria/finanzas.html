@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Finanzas | Panel Administrativo</title>
+<title>Mis pagos | Panel Recepción</title>
 
 <link rel="stylesheet" href="../../css/cliente/theme-public.css">
 <link rel="stylesheet" href="../../css/cliente/variables.css">
@@ -26,7 +26,7 @@
         <input type="file" id="brand-logo-input" accept="image/*" hidden>
         <div class="panel-brand-info">
             <h2>David Martínez</h2>
-            <p>Panel Administrativo</p>
+            <p>Panel Recepción</p>
         </div>
     </div>
 
@@ -37,12 +37,10 @@
         <a href="./clientes.html"><span class="icon">👥</span> Clientes</a>
         <a href="./servicios.html"><span class="icon">✂️</span> Servicios</a>
         <a href="./empleados.html"><span class="icon">🧑‍💼</span> Empleados</a>
-        <a href="./finanzas.html" class="active"><span class="icon">💰</span> Finanzas</a>
+        <a href="./finanzas.html" class="active"><span class="icon">💰</span> Mis pagos</a>
         <a href="./reportes.html"><span class="icon">📈</span> Reportes</a>
         <a href="./inventario.html"><span class="icon">📦</span> Inventario</a>
         <a href="./promociones.html"><span class="icon">🏷️</span> Promociones</a>
-        <a href="./usuarios.html"><span class="icon">🔐</span> Usuarios y Roles</a>
-        <a href="./configuracion.html"><span class="icon">⚙️</span> Configuración</a>
     </nav>
 
     <div class="sidebar-divider"></div>
@@ -58,8 +56,8 @@
 
     <header class="panel-topbar">
         <div class="panel-greeting">
-            <h1>Finanzas</h1>
-            <p>Resumen financiero del negocio</p>
+            <h1>Mis pagos</h1>
+            <p>Pagos que registraste al cerrar turnos</p>
         </div>
         <div class="panel-topbar-actions">
             <div class="panel-bell" title="Notificaciones">🔔</div>
@@ -80,73 +78,40 @@
     <div class="panel-content">
 
         <div class="preview-banner">
-            ⚠️ Vista previa — todavía no existe una tabla de finanzas en la base de datos. Los números de esta pantalla son de ejemplo, no reales.
+            ⚠️ Vista previa — todavía no existe una tabla de pagos en la base de datos. Los números de esta pantalla son de ejemplo, no reales.
         </div>
 
-        <div class="stats-grid">
+        <div class="info-box">
+            <strong>Vista acotada:</strong> acá ves los pagos que vos misma/o registraste al cerrar turnos. Los ingresos, egresos y la ganancia neta del negocio son exclusivos del panel de Administrador.
+        </div>
+
+        <div class="stats-grid" style="grid-template-columns:repeat(2,1fr);">
             <div class="stat-card">
                 <div class="icon-circle">💵</div>
-                <div class="stat-value">$185.000</div>
-                <div class="stat-label">Ingresos del día</div>
+                <div class="stat-value">$18.000</div>
+                <div class="stat-label">Pagos registrados hoy</div>
             </div>
             <div class="stat-card">
                 <div class="icon-circle">📆</div>
-                <div class="stat-value">$1.245.000</div>
-                <div class="stat-label">Ingresos de la semana</div>
-            </div>
-            <div class="stat-card">
-                <div class="icon-circle">📊</div>
-                <div class="stat-value">$5.680.000</div>
-                <div class="stat-label">Ingresos del mes</div>
-            </div>
-            <div class="stat-card">
-                <div class="icon-circle" style="color:var(--danger)">📉</div>
-                <div class="stat-value">$1.320.000</div>
-                <div class="stat-label">Egresos del mes</div>
+                <div class="stat-value">$142.000</div>
+                <div class="stat-label">Pagos registrados esta semana</div>
             </div>
         </div>
 
-        <div class="panel-row">
+        <section class="card">
+            <h3>Mis pagos recientes</h3>
+            <table>
+                <thead>
+                    <tr><th>Fecha</th><th>Cliente</th><th>Servicio</th><th>Método</th><th>Monto</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>16/08/2026</td><td>Ejemplo Cliente</td><td>Corte masculino</td><td>Efectivo</td><td>$15.000</td></tr>
+                    <tr><td>16/08/2026</td><td>Ejemplo Cliente 2</td><td>Corte + Barba</td><td>Tarjeta</td><td>$22.000</td></tr>
+                </tbody>
+            </table>
+            <p style="font-size:13px;color:var(--text-secondary);margin-top:10px;">Estos son los pagos que registraste vos desde el detalle de cada turno.</p>
+        </section>
 
-            <section class="card">
-                <h3>Resumen financiero</h3>
-                <div class="dato-fila"><span class="label">Total ingresos</span><span class="valor">$5.680.000</span></div>
-                <div class="dato-fila"><span class="label">Total egresos</span><span class="valor">$1.320.000</span></div>
-                <div class="dato-fila"><span class="label">Ganancia neta</span><span class="valor" style="color:var(--success)">$4.360.000</span></div>
-
-                <div class="signature-divider">Distribución de ingresos</div>
-
-                <div class="progreso-nivel">
-                    <div class="fila"><span>Servicios</span><span>72%</span></div>
-                    <div class="progreso-barra"><div class="relleno" style="width:72%"></div></div>
-                </div>
-                <div class="progreso-nivel">
-                    <div class="fila"><span>Productos</span><span>18%</span></div>
-                    <div class="progreso-barra"><div class="relleno" style="width:18%"></div></div>
-                </div>
-                <div class="progreso-nivel">
-                    <div class="fila"><span>Otros</span><span>10%</span></div>
-                    <div class="progreso-barra"><div class="relleno" style="width:10%"></div></div>
-                </div>
-            </section>
-
-            <aside class="panel-stack">
-                <section class="card">
-                    <h3>Ganancia neta</h3>
-                    <div class="promo-highlight">
-                        <div class="pct" style="color:var(--success)">$4.360.000</div>
-                        <p>+22% respecto al mes anterior</p>
-                    </div>
-                </section>
-
-                <section class="card">
-                    <button type="button" class="btn-outline" style="width:100%;" disabled title="Se habilita cuando exista el módulo de finanzas">
-                        Descargar reporte
-                    </button>
-                </section>
-            </aside>
-
-        </div>
     </div>
 </div>
 

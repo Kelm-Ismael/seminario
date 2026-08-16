@@ -1,9 +1,11 @@
 import { putDatos, deleteDatos } from "../core/api.js";
 import { API_TURNOS } from "../core/config.js";
 
-// Panel secretaría: ve todo el negocio, no un solo empleado.
-// TODO reemplazar por el nombre real cuando haya login.
-export const ADMIN_NOMBRE = "Administrador/a";
+// Panel de Recepcionista: ve todo el negocio operativamente (agenda, turnos,
+// clientes), pero NO gestiona servicios/empleados/promociones ni ve las
+// finanzas completas del negocio — eso es exclusivo de Administrador.
+// TODO reemplazar por el nombre real del usuario logueado cuando haya login.
+export const USUARIO_NOMBRE = "Recepción";
 
 // NOTA: el backend confirmó que existe PUT/DELETE para turnos, pero no
 // tengo a la vista el controller real, así que no sé con certeza si el
@@ -19,6 +21,12 @@ export async function cambiarEstadoTurno(idTurno, estado) {
     return response;
 }
 
+// Recepcionista NO puede borrar turnos físicamente — según el backlog, la
+// acción de "eliminar" un turno solo cambia su estado a "cancelado" (baja
+// lógica). Esta función queda solo para uso interno de Administrador si
+// alguna vez se necesita un borrado físico real; el flujo de Recepcionista
+// usa cambiarEstadoTurno(id, "cancelado") en su lugar (ver turnos.js y
+// agenda.js).
 export async function eliminarTurno(idTurno) {
     const response = await deleteDatos(`${API_TURNOS}/${idTurno}`);
     if (!response.ok) {
@@ -101,9 +109,9 @@ export function capitalizar(str) {
 // Pinta el saludo del topbar y los datos del usuario logueado.
 // Todas las páginas comparten los mismos ids en el topbar.
 export function pintarTopbar({ tituloFecha } = {}) {
-    document.getElementById("saludo-nombre").textContent = ADMIN_NOMBRE;
-    document.getElementById("user-nombre").textContent = ADMIN_NOMBRE;
-    document.getElementById("user-avatar").textContent = iniciales(ADMIN_NOMBRE);
+    document.getElementById("saludo-nombre").textContent = USUARIO_NOMBRE;
+    document.getElementById("user-nombre").textContent = USUARIO_NOMBRE;
+    document.getElementById("user-avatar").textContent = iniciales(USUARIO_NOMBRE);
     document.getElementById("brand-avatar").textContent = "DM";
     document.getElementById("saludo-fecha").textContent = tituloFecha || formatoFechaLarga(new Date());
 }
