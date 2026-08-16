@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="../../css/cliente/buttons.css">
 <link rel="stylesheet" href="../../css/cliente/table.css">
 <link rel="stylesheet" href="../../css/secretaria/secretaria.css">
+<link rel="stylesheet" href="../../css/secretaria/turno-horario.css">
 </head>
 <body>
 
@@ -77,34 +78,60 @@
 
     <div class="panel-content">
 
+        <div class="accesos-rapidos-bar">
+            <a class="acceso-rapido-btn" href="./clientes.html"><span class="icon">👥</span> Clientes</a>
+            <a class="acceso-rapido-btn" href="./empleados.html"><span class="icon">🧑‍💼</span> Empleados</a>
+            <a class="acceso-rapido-btn" href="./servicios.html"><span class="icon">✂️</span> Servicios</a>
+            <a class="acceso-rapido-btn" href="./finanzas.html"><span class="icon">💰</span> Pagos</a>
+            <a class="acceso-rapido-btn" href="./promociones.html"><span class="icon">🏷️</span> Promociones</a>
+        </div>
+
         <section class="card">
             <h3>Nuevo turno</h3>
             <form id="form-turno">
+
                 <div class="form-card-grid">
                     <div class="form-group">
                         <label for="turno-cliente">Cliente</label>
                         <select id="turno-cliente" required>
-                            <option value="">Seleccionar cliente</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="turno-empleado">Empleado</label>
-                        <select id="turno-empleado" required>
-                            <option value="">Seleccionar empleado</option>
+                            <option value="">Seleccioná un cliente</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="turno-servicio">Servicio</label>
                         <select id="turno-servicio" required>
-                            <option value="">Seleccionar servicio</option>
+                            <option value="">Seleccioná un servicio</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="turno-fecha">Fecha y hora</label>
-                        <input type="datetime-local" id="turno-fecha" required>
+                </div>
+
+                <label style="display:block;margin:14px 0 6px;font-size:13px;font-weight:600;">Empleado</label>
+                <div class="empleado-selector" id="empleado-selector"></div>
+
+                <div class="picker-fecha-hora">
+                    <div>
+                        <div class="calendario-mini" id="calendario-mini"></div>
+                        <div class="vista-rapida-card" id="vista-rapida-card" style="display:none;">
+                            <h4>Vista rápida</h4>
+                            <div class="vista-rapida-fila"><span>Día seleccionado</span><strong id="vr-dia">—</strong></div>
+                            <div class="vista-rapida-fila"><span>Turnos del día</span><strong id="vr-turnos">—</strong></div>
+                            <div class="vista-rapida-fila"><span>Ocupación</span><strong id="vr-ocupacion">—</strong></div>
+                            <div class="vista-rapida-barra"><div class="relleno" id="vr-barra" style="width:0%"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="horario-panel">
+                        <h4 style="margin:0 0 4px;">Horario</h4>
+                        <div id="horario-contenido">
+                            <p class="sin-seleccion">Elegí servicio, empleado y un día en el calendario para ver los horarios disponibles.</p>
+                        </div>
                     </div>
                 </div>
-                <button type="submit" class="btn-primary">Crear turno</button>
+
+                <input type="hidden" id="turno-empleado" required>
+                <input type="hidden" id="turno-fecha" required>
+
+                <button type="submit" class="btn-primary" style="margin-top:18px;">Crear turno</button>
             </form>
         </section>
 
