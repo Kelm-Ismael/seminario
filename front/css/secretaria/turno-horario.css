@@ -1,0 +1,294 @@
+/* ============================================================
+   Accesos rápidos (barra de atajos arriba de "Nuevo turno")
+============================================================ */
+.accesos-rapidos-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.acceso-rapido-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border: 1px solid var(--border, #e5ddd0);
+    border-radius: 10px;
+    background: var(--card-bg, #fff);
+    color: var(--text-primary, #2b2b2b);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: border-color .15s, transform .1s;
+}
+
+.acceso-rapido-btn:hover {
+    border-color: var(--primary, #c9982f);
+    transform: translateY(-1px);
+}
+
+.acceso-rapido-btn .icon {
+    font-size: 16px;
+}
+
+/* ============================================================
+   Selector de servicio y empleado (paso previo al horario)
+============================================================ */
+.empleado-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 10px 0 20px;
+}
+
+.empleado-chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px 8px 8px;
+    border: 2px solid var(--border, #e5ddd0);
+    border-radius: 999px;
+    background: var(--card-bg, #fff);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary, #2b2b2b);
+}
+
+.empleado-chip .avatar-initials {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+}
+
+.empleado-chip.seleccionado {
+    border-color: var(--primary, #c9982f);
+    background: var(--primary-bg, #fbf1dd);
+}
+
+/* ============================================================
+   Selector de fecha y hora — layout de dos columnas
+============================================================ */
+.picker-fecha-hora {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+@media (max-width: 900px) {
+    .picker-fecha-hora { grid-template-columns: 1fr; }
+}
+
+/* ---- Minicalendario ---- */
+.calendario-mini {
+    border: 1px solid var(--border, #e5ddd0);
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.cal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.cal-header h4 {
+    margin: 0;
+    font-size: 15px;
+}
+
+.cal-nav {
+    display: flex;
+    gap: 6px;
+}
+
+.cal-nav button {
+    border: 1px solid var(--border, #e5ddd0);
+    background: var(--card-bg, #fff);
+    border-radius: 6px;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+}
+
+.cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    text-align: center;
+}
+
+.cal-dow {
+    font-size: 11px;
+    color: var(--text-secondary, #8a8168);
+    padding-bottom: 4px;
+}
+
+.cal-day {
+    position: relative;
+    padding: 6px 0 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    border: 1px solid transparent;
+}
+
+.cal-day:hover {
+    background: var(--primary-bg, #fbf1dd);
+}
+
+.cal-day.otro-mes {
+    color: var(--text-secondary, #b9b2a0);
+    cursor: default;
+}
+.cal-day.otro-mes:hover { background: none; }
+
+.cal-day.cerrado {
+    color: var(--text-secondary, #cfc8b8);
+    cursor: not-allowed;
+}
+.cal-day.cerrado:hover { background: none; }
+
+.cal-day.hoy {
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.cal-day.seleccionado {
+    background: var(--primary, #c9982f);
+    color: #fff;
+    border-color: var(--primary, #c9982f);
+}
+
+.cal-dot {
+    position: absolute;
+    bottom: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+}
+.cal-dot.disponible { background: var(--success, #2e9e5b); }
+.cal-dot.pocos { background: var(--warning-text, #c98a1f); }
+.cal-dot.completo { background: var(--danger, #c94f4f); }
+
+.cal-leyenda {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 11px;
+    color: var(--text-secondary, #8a8168);
+    margin-top: 12px;
+}
+.cal-leyenda span { display: flex; align-items: center; gap: 4px; }
+.cal-leyenda .cal-dot { position: static; transform: none; }
+
+/* ---- Vista rápida ---- */
+.vista-rapida-card {
+    margin-top: 16px;
+    border: 1px solid var(--border, #e5ddd0);
+    border-radius: 12px;
+    padding: 14px 16px;
+}
+.vista-rapida-card h4 {
+    margin: 0 0 10px;
+    font-size: 14px;
+}
+.vista-rapida-fila {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    padding: 5px 0;
+    color: var(--text-secondary, #8a8168);
+}
+.vista-rapida-fila strong {
+    color: var(--text-primary, #2b2b2b);
+}
+.vista-rapida-barra {
+    height: 6px;
+    border-radius: 999px;
+    background: var(--border, #e5ddd0);
+    margin-top: 6px;
+    overflow: hidden;
+}
+.vista-rapida-barra .relleno {
+    height: 100%;
+    background: var(--primary, #c9982f);
+}
+
+/* ---- Grilla de horarios ---- */
+.horario-panel {
+    border: 1px solid var(--border, #e5ddd0);
+    border-radius: 12px;
+    padding: 16px 20px;
+}
+
+.horario-panel .sin-seleccion {
+    color: var(--text-secondary, #8a8168);
+    font-size: 14px;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.horario-grupo-titulo {
+    font-size: 13px;
+    font-weight: 700;
+    margin: 16px 0 8px;
+    color: var(--text-secondary, #8a8168);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+}
+.horario-grupo-titulo:first-child { margin-top: 0; }
+
+.horario-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+    gap: 8px;
+}
+
+.horario-slot {
+    padding: 10px 4px;
+    border-radius: 8px;
+    border: 1.5px solid var(--border, #e5ddd0);
+    background: var(--card-bg, #fff);
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    color: var(--text-primary, #2b2b2b);
+}
+
+.horario-slot.disponible {
+    border-color: var(--success, #2e9e5b);
+    color: var(--success, #2e9e5b);
+}
+.horario-slot.disponible:hover {
+    background: var(--success, #2e9e5b);
+    color: #fff;
+}
+
+.horario-slot.ocupado {
+    border-color: var(--danger, #c94f4f);
+    color: var(--danger, #c94f4f);
+    background: repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(201,79,79,.08) 4px, rgba(201,79,79,.08) 8px);
+    cursor: not-allowed;
+}
+
+.horario-slot.seleccionado {
+    background: var(--warning-text, #c98a1f);
+    border-color: var(--warning-text, #c98a1f);
+    color: #fff;
+}
+
+.horario-nota-seleccion {
+    margin-top: 14px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    background: var(--primary-bg, #fbf1dd);
+    font-size: 13px;
+    font-weight: 600;
+}
