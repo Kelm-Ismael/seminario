@@ -107,13 +107,21 @@ export function capitalizar(str) {
 }
 
 // Pinta el saludo del topbar y los datos del usuario logueado.
-// Todas las páginas comparten los mismos ids en el topbar.
+// Todas las páginas comparten los ids de "user-nombre"/"user-avatar"/"brand-avatar",
+// pero "saludo-nombre" y "saludo-fecha" SOLO existen en el Resumen (título dinámico
+// "Hola, {nombre}"). El resto de las páginas tiene un <h1> estático ("Turnos",
+// "Agenda", etc.), así que estos dos se escriben solo si existen en el DOM —
+// si no, con document.getElementById(...).textContent = ... a secas explota
+// con "Cannot set properties of null" y corta el resto de init().
 export function pintarTopbar({ tituloFecha } = {}) {
-    document.getElementById("saludo-nombre").textContent = USUARIO_NOMBRE;
+    const saludoNombre = document.getElementById("saludo-nombre");
+    const saludoFecha = document.getElementById("saludo-fecha");
+    if (saludoNombre) saludoNombre.textContent = USUARIO_NOMBRE;
+    if (saludoFecha) saludoFecha.textContent = tituloFecha || formatoFechaLarga(new Date());
+
     document.getElementById("user-nombre").textContent = USUARIO_NOMBRE;
     document.getElementById("user-avatar").textContent = iniciales(USUARIO_NOMBRE);
     document.getElementById("brand-avatar").textContent = "DM";
-    document.getElementById("saludo-fecha").textContent = tituloFecha || formatoFechaLarga(new Date());
 }
 
 /* ----------------------------------------------------------
