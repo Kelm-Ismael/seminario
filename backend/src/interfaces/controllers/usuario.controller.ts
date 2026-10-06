@@ -1,10 +1,10 @@
 // Archivo NUEVO — issue #20
 import { Request, Response } from "express";
-import { registrarUsuarioCasoDeUso } from "../../application/use-cases/registrarUsuario";
-import { validarTokenCasoDeUso } from "../../application/use-cases/validarToken";
-import { reenviarCodigoCasoDeUso } from "../../application/use-cases/reenviarCodigo";
-import { iniciarRegistroGoogleCasoDeUso } from "../../application/use-cases/iniciarRegistroGoogle";
-import { registrarUsuarioGoogleCasoDeUso } from "../../application/use-cases/registrarUsuarioGoogle";
+import { registrarUsuarioCasoDeUso } from "../../aplication/use-cases/registrarUsuario";
+import { validarTokenCasoDeUso } from "../../aplication/use-cases/validarToken";
+import { reenviarCodigoCasoDeUso } from "../../aplication/use-cases/reenviarCodigo";
+import { iniciarRegistroGoogleCasoDeUso } from "../../aplication/use-cases/iniciarRegistroGoogle";
+import { registrarUsuarioGoogleCasoDeUso } from "../../aplication/use-cases/registrarUsuarioGoogle";
 
 // POST /registro
 export const registrarUsuarioController = async (req: Request, res: Response) => {
