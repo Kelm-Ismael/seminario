@@ -1,0 +1,9 @@
+$kind: http-request
+name: http://localhost:3000/reenviar-codigo
+description: ""
+url: http://localhost:3000/reenviar-codigo
+method: POST
+body:
+  type: json
+  content: '{"email":"test@gmail.com"}'
+order: 2834607899787725

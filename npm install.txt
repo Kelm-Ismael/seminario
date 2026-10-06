@@ -1,7 +1,7 @@
 NPM EN BACKEND
 postgres 
 /* 1. Instalar dependencias */
-/// npm install pg
+/// npm install pg 
 /// npm install -D @types/pg
 npm install -D @types/cors
 npm install cors
@@ -13,3 +13,19 @@ npm install -D @types/uuid
 
 frontend-web
 npm install react-router-dom 
+
+
+# 1. Base de datos
+sudo apt install postgresql
+
+# 2. Backend
+cd backend
+npm init -y
+npm install express cors @prisma/client dotenv
+npm install -D typescript prisma ts-node-dev @types/express @types/cors @types/node
+npx prisma init
+npx tsc --init
+
+# 3. Frontend
+cd ../front
+npm install -g live-server   # opcional, o usar extensión de VS Code

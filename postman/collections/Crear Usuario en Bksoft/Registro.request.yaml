@@ -1,0 +1,22 @@
+$kind: http-request
+name: Registro
+url: http://localhost:3000/registro
+method: POST
+body:
+  type: json
+  content: "   {\r
+
+    \     \"email\": \"test@gmail.com\",\r
+
+    \     \"password\": \"123456\",\r
+
+    \     \"nombre\": \"Test\",\r
+
+    \     \"apellido\": \"Prueba\",\r
+
+    \     \"fecha_nacimiento\": \"2000-01-01\"\r
+
+    \   }"
+settings:
+  disabledSystemHeaders: []
+order: 1789513734208

@@ -1,0 +1,11 @@
+$kind: http-request
+name: Variable de entorno
+description: ""
+url: http://localhost:3000
+method: PATCH
+body:
+  type: json
+  content: ""
+settings:
+  protocolVersion: auto
+order: 3630936570272566

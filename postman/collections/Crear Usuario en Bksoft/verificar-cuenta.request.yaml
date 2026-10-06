@@ -1,0 +1,10 @@
+$kind: http-request
+description: ""
+url: http://localhost:3000/verificar-cuenta
+method: POST
+body:
+  type: json
+  content: '{"email":"test@gmail.com","codigo":"123456"}'
+settings:
+  disabledSystemHeaders: []
+order: 598784769184202
