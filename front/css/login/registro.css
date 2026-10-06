@@ -1,7 +1,7 @@
-/* Extras para las pantallas de Registro y Confirmá tu cuenta.
+/* Extras para Registro, Confirmá tu cuenta y Completar registro con Google.
    El shell (.auth-page/.auth-topbar/.auth-body/.auth-card/.form-group/
-   .input-icon-group/.divider-text/.form-actions/.btn-primary/.btn-social/
-   .auth-switch) viene de auth.css. Acá solo lo que auth.css no trae. */
+   .input-icon-group/.form-actions/.btn-primary/.auth-switch) viene de
+   auth.css. Acá solo lo que auth.css no trae. */
 
 .btn-block {
     width: 100%;
@@ -9,23 +9,17 @@
 
 /* ==========================================================
    FILAS DE DOS COLUMNAS (nombre/apellido, fecha/celular)
+   Se apilan solas cuando no entran dos columnas de 220px.
 ========================================================== */
 
 .fila {
-    display: flex;
-    gap: var(--space-md, 16px);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    column-gap: var(--space-md, 16px);
 }
 
 .fila .form-group {
-    flex: 1;
     min-width: 0;
-}
-
-@media (max-width: 480px) {
-    .fila {
-        flex-direction: column;
-        gap: 0;
-    }
 }
 
 /* ==========================================================
@@ -33,9 +27,23 @@
 ========================================================== */
 
 .celular-prefijo {
-    color: var(--muted);
-    font-size: var(--font-sm, 14px);
-    font-weight: var(--font-semibold, 600);
+    flex-shrink: 0;
+    padding-right: 10px;
+    border-right: 1px solid var(--border);
+    color: var(--dark);
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* Fecha: que el texto "dd/mm/aaaa" no quede gris clarito */
+.input-icon-group input[type="date"] {
+    color: var(--text);
+    min-height: 24px;
+}
+
+.input-icon-group input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: .6;
 }
 
 /* ==========================================================
@@ -45,46 +53,71 @@
 .mensaje {
     display: block;
     min-height: 20px;
-    font-size: var(--font-xs, 12px);
+    margin: 4px 0 12px;
+    font-size: 13px;
     text-align: center;
-    margin: 4px 0 10px;
+}
+
+.mensaje:empty {
+    min-height: 0;
+    margin: 0 0 4px;
+}
+
+.mensaje.error,
+.mensaje.exito {
+    padding: 10px 12px;
+    border-radius: 10px;
+    text-align: left;
 }
 
 .mensaje.error {
     color: var(--danger);
+    background: rgba(192, 57, 43, .08);
+    border: 1px solid rgba(192, 57, 43, .25);
 }
 
 .mensaje.exito {
-    color: #16a34a;
+    color: #15803d;
+    background: rgba(22, 163, 74, .08);
+    border: 1px solid rgba(22, 163, 74, .25);
 }
 
 /* ==========================================================
    CASILLEROS DEL CÓDIGO DE 6 DÍGITOS (confirmar-cuenta.html)
+   Se achican con la pantalla para que los 6 entren en una fila.
 ========================================================== */
 
 .casilleros {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 52px));
     justify-content: center;
-    gap: 10px;
-    margin-bottom: 10px;
+    gap: clamp(6px, 2vw, 10px);
+    margin: 8px 0 16px;
 }
 
 .casillero {
-    width: 44px;
-    height: 52px;
+    width: 100%;
+    aspect-ratio: 5 / 6;
+    min-height: 0;
     text-align: center;
-    font-size: 22px;
+    font: inherit;
+    font-size: clamp(18px, 5vw, 24px);
     font-weight: 700;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md, 10px);
-    background: var(--section);
     color: var(--dark);
+    background: var(--section);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md, 12px);
+    transition: border-color .2s, box-shadow .2s;
 }
 
 .casillero:focus {
     outline: none;
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(184, 138, 42, .15);
+    box-shadow: 0 0 0 3px rgba(184, 138, 42, .18);
+}
+
+.casillero:not(:placeholder-shown) {
+    border-color: var(--primary);
 }
 
 /* ==========================================================
@@ -94,19 +127,19 @@
 .reenvio {
     text-align: center;
     color: var(--muted);
-    font-size: var(--font-xs, 12px);
-    margin: 10px 0;
+    font-size: 13px;
+    margin: 16px 0 4px;
 }
 
 .btn-link {
     background: none;
     border: none;
-    padding: 0;
+    padding: 0 2px;
     color: var(--primary);
-    font-weight: var(--font-semibold, 600);
+    font: inherit;
+    font-weight: 600;
     text-decoration: underline;
     cursor: pointer;
-    font-size: inherit;
 }
 
 .btn-link:hover {
@@ -122,6 +155,10 @@
 .cooldown {
     display: block;
     margin-top: 4px;
-    font-size: 11px;
+    font-size: 12px;
     color: var(--muted);
+}
+
+.cooldown:empty {
+    display: none;
 }
