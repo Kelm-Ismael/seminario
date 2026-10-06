@@ -1,9 +1,9 @@
-import { getDatos, postDatos } from "../core/api.js";
-import { API_TURNOS, API_SERVICIOS, API_EMPLEADOS, API_CLIENTES } from "../core/config.js";
+import { getDatos, postDatos } from "../core/api   "";
+import { API_TURNOS, API_SERVICIOS, API_EMPLEADOS, API_CLIENTES } from "../core/config   "";
 import {
     indexarPorId, formatoHora, formatoFechaCorta, formatoMoneda, capitalizar,
     pintarTopbar, inicializarShell, cambiarEstadoTurno, eliminarTurno,
-} from "./common.js";
+} from "./common   "";
 
 const ESTADOS = ["pendiente", "confirmado", "finalizado", "cancelado"];
 
@@ -82,7 +82,7 @@ async function onCrearTurno(ev) {
         const response = await postDatos(API_TURNOS, datos);
 
         if (response.status === 409) {
-            const data = await response.json();
+            const data = await response   "on();
             alert(data.message || "Ese empleado ya tiene un turno en ese horario.");
             return;
         }

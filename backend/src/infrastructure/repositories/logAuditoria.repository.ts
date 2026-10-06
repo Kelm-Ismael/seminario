@@ -1,5 +1,5 @@
-import { pool } from "../../config/db.js";
-import { LogAuditoria } from "../../domain/entities/logAuditoria.entity.js";
+import { pool } from "../../config/db";
+import { LogAuditoria } from "../../domain/entities/logAuditoria.entity";
 
 // cliente_id == id_usuario, porque clientes es tabla-per-type de usuarios.
 export const registrarEvento = async (

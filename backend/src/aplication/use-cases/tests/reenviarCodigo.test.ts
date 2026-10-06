@@ -5,21 +5,21 @@
 // envío de mail: un test unitario no debe tocar la DB real ni mandar
 // un correo real.
 
-import { reenviarCodigoCasoDeUso } from "../reenviarCodigo.js";
+import { reenviarCodigoCasoDeUso } from "../reenviarCodigo";
 
 import {
   buscarUltimoTokenPorUsuario,
   marcarTokenExpirado,
   crearToken
-} from "../../../infrastructure/repositories/tokenVerificacion.repository.js";
-import { buscarUsuarioPorEmail } from "../../../infrastructure/repositories/usuario.repository.js";
-import { generarTokenAleatorio, calcularExpiracion24h } from "../../../infrastructure/security/token.util.js";
-import { enviarCorreoVerificacion } from "../../../infrastructure/email/correoVerificacion.service.js";
+} from "../../../infrastructure/repositories/tokenVerificacion.repository";
+import { buscarUsuarioPorEmail } from "../../../infrastructure/repositories/usuario.repository";
+import { generarTokenAleatorio, calcularExpiracion24h } from "../../../infrastructure/security/token.util";
+import { enviarCorreoVerificacion } from "../../../infrastructure/email/correoVerificacion.service";
 
-jest.mock("../../../infrastructure/repositories/tokenVerificacion.repository.js");
-jest.mock("../../../infrastructure/repositories/usuario.repository.js");
-jest.mock("../../../infrastructure/security/token.util.js");
-jest.mock("../../../infrastructure/email/correoVerificacion.service.js");
+jest.mock("../../../infrastructure/repositories/tokenVerificacion.repository");
+jest.mock("../../../infrastructure/repositories/usuario.repository");
+jest.mock("../../../infrastructure/security/token.util");
+jest.mock("../../../infrastructure/email/correoVerificacion.service");
 
 const mockBuscarUltimoTokenPorUsuario = buscarUltimoTokenPorUsuario as jest.Mock;
 const mockMarcarTokenExpirado = marcarTokenExpirado as jest.Mock;

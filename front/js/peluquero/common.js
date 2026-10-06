@@ -1,9 +1,9 @@
 // Helpers compartidos por todas las páginas del panel peluquero.
-// No hace fetch ni conoce endpoints — de eso se encargan core/api.js
-// y core/config.js, esto solo son funciones de formato/fecha reutilizadas.
+// No hace fetch ni conoce endpoints — de eso se encargan core/api   "
+// y core/config   ", esto solo son funciones de formato/fecha reutilizadas.
 
 // TODO: reemplazar por el id/nombre real cuando exista login de empleado
-// (mismo patrón que cliente_id hardcodeado en reservar-turno.js)
+// (mismo patrón que cliente_id hardcodeado en reservar-turno   ")
 export const EMPLEADO_ID = 1;
 export const EMPLEADO_NOMBRE = "Peluquero/a";
 

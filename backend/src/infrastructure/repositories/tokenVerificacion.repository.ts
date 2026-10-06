@@ -1,5 +1,5 @@
 // Archivo NUEVO — issue #20
-import { pool } from "../../config/db.js";
+import { pool } from "../../config/db";
 
 // Crea el token de verificación para un usuario recién registrado (24h de validez)
 export const crearToken = async (

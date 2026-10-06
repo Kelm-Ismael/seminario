@@ -134,7 +134,7 @@ Frontend
 - React Router
 
 Backend
-- Node.js
+- Node   "
 - Express
 - TypeScript
 

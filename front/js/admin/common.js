@@ -1,5 +1,5 @@
-import { putDatos, deleteDatos } from "../core/api.js";
-import { API_TURNOS } from "../core/config.js";
+import { putDatos, deleteDatos } from "../core/api   "";
+import { API_TURNOS } from "../core/config   "";
 
 // Panel secretaría: ve todo el negocio, no un solo empleado.
 // TODO reemplazar por el nombre real cuando haya login.
@@ -110,7 +110,7 @@ export function pintarTopbar({ tituloFecha } = {}) {
 
 /* ----------------------------------------------------------
    LOGO DEL NEGOCIO / FOTO DE PERFIL / MENÚ DE USUARIO
-   Mismo patrón que en peluquero/common.js: se guarda en
+   Mismo patrón que en peluquero/common   ": se guarda en
    localStorage porque no hay endpoint de upload en el backend.
    Claves propias para no pisar las del panel peluquero.
 ---------------------------------------------------------- */

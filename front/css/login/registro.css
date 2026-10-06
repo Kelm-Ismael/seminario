@@ -1,0 +1,127 @@
+/* Extras para las pantallas de Registro y Confirmá tu cuenta.
+   El shell (.auth-page/.auth-topbar/.auth-body/.auth-card/.form-group/
+   .input-icon-group/.divider-text/.form-actions/.btn-primary/.btn-social/
+   .auth-switch) viene de auth.css. Acá solo lo que auth.css no trae. */
+
+.btn-block {
+    width: 100%;
+}
+
+/* ==========================================================
+   FILAS DE DOS COLUMNAS (nombre/apellido, fecha/celular)
+========================================================== */
+
+.fila {
+    display: flex;
+    gap: var(--space-md, 16px);
+}
+
+.fila .form-group {
+    flex: 1;
+    min-width: 0;
+}
+
+@media (max-width: 480px) {
+    .fila {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+/* ==========================================================
+   PREFIJO +54 DENTRO DEL input-icon-group DEL CELULAR
+========================================================== */
+
+.celular-prefijo {
+    color: var(--muted);
+    font-size: var(--font-sm, 14px);
+    font-weight: var(--font-semibold, 600);
+}
+
+/* ==========================================================
+   MENSAJES DE ESTADO (éxito / error del formulario)
+========================================================== */
+
+.mensaje {
+    display: block;
+    min-height: 20px;
+    font-size: var(--font-xs, 12px);
+    text-align: center;
+    margin: 4px 0 10px;
+}
+
+.mensaje.error {
+    color: var(--danger);
+}
+
+.mensaje.exito {
+    color: #16a34a;
+}
+
+/* ==========================================================
+   CASILLEROS DEL CÓDIGO DE 6 DÍGITOS (confirmar-cuenta.html)
+========================================================== */
+
+.casilleros {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.casillero {
+    width: 44px;
+    height: 52px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md, 10px);
+    background: var(--section);
+    color: var(--dark);
+}
+
+.casillero:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(184, 138, 42, .15);
+}
+
+/* ==========================================================
+   REENVIAR CÓDIGO + COOLDOWN
+========================================================== */
+
+.reenvio {
+    text-align: center;
+    color: var(--muted);
+    font-size: var(--font-xs, 12px);
+    margin: 10px 0;
+}
+
+.btn-link {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--primary);
+    font-weight: var(--font-semibold, 600);
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: inherit;
+}
+
+.btn-link:hover {
+    color: var(--primary-hover);
+}
+
+.btn-link:disabled {
+    color: var(--muted);
+    text-decoration: none;
+    cursor: not-allowed;
+}
+
+.cooldown {
+    display: block;
+    margin-top: 4px;
+    font-size: 11px;
+    color: var(--muted);
+}

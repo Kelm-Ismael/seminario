@@ -1,6 +1,6 @@
 (async function () {
-    const { getDatos, postDatos } = await import("../core/api.js");
-    const { API_SERVICIOS, API_EMPLEADOS, API_TURNOS } = await import("../core/config.js");
+    const { getDatos, postDatos } = await import("../core/api   "");
+    const { API_SERVICIOS, API_EMPLEADOS, API_TURNOS } = await import("../core/config   "");
 
     // TODO: reemplazar por el id real cuando exista login de cliente
     const CLIENTE_ID = 1;
@@ -26,7 +26,7 @@
     };
 
     // Si esta página no está montada en el DOM ahora mismo, no seguimos
-    // (pasa si panel-cliente.js ya navegó a otra sección).
+    // (pasa si panel-cliente   " ya navegó a otra sección).
     if (!el.servicios) return;
 
     const estado = {

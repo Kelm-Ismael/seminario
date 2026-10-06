@@ -1,9 +1,9 @@
-import { getDatos } from "../core/api.js";
+import { getDatos } from "../core/api   "";
 import {
     API_CLIENTES,
     API_EMPLEADOS,
     API_SERVICIOS
-} from "../core/config.js";
+} from "../core/config   "";
 
 const selectCliente = document.getElementById("cliente");
 const selectEmpleado = document.getElementById("empleado");

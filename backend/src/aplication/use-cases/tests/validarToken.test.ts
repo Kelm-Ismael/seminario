@@ -4,20 +4,20 @@
 // con el código de 6 dígitos). Se mockean todos los repositorios: un test
 // unitario no debe tocar la base de datos real.
 
-import { validarTokenCasoDeUso } from "../validarToken.js";
+import { validarTokenCasoDeUso } from "../validarToken";
 
 import {
   buscarTokenActivoPorUsuario,
   marcarTokenUtilizado,
   marcarTokenExpirado,
   incrementarIntentosFallidos
-} from "../../../infrastructure/repositories/tokenVerificacion.repository.js";
-import { buscarUsuarioPorEmail, actualizarEstadoCuenta } from "../../../infrastructure/repositories/usuario.repository.js";
-import { registrarEvento } from "../../../infrastructure/repositories/logAuditoria.repository.js";
+} from "../../../infrastructure/repositories/tokenVerificacion.repository";
+import { buscarUsuarioPorEmail, actualizarEstadoCuenta } from "../../../infrastructure/repositories/usuario.repository";
+import { registrarEvento } from "../../../infrastructure/repositories/logAuditoria.repository";
 
-jest.mock("../../../infrastructure/repositories/tokenVerificacion.repository.js");
-jest.mock("../../../infrastructure/repositories/usuario.repository.js");
-jest.mock("../../../infrastructure/repositories/logAuditoria.repository.js");
+jest.mock("../../../infrastructure/repositories/tokenVerificacion.repository");
+jest.mock("../../../infrastructure/repositories/usuario.repository");
+jest.mock("../../../infrastructure/repositories/logAuditoria.repository");
 
 const mockBuscarTokenActivoPorUsuario = buscarTokenActivoPorUsuario as jest.Mock;
 const mockMarcarTokenUtilizado = marcarTokenUtilizado as jest.Mock;

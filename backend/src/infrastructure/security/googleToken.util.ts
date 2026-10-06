@@ -4,7 +4,7 @@
 // verificación de firma y expiración por nosotros, y acá solo se chequea
 // que el token sea para ESTA aplicación (audience) y que el email esté
 // verificado.
-import { GOOGLE_CLIENT_ID } from "../../config/env.js";
+import { GOOGLE_CLIENT_ID } from "../../config/env";
 
 export interface PerfilGoogle {
   googleId: string;

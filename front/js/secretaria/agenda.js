@@ -1,9 +1,9 @@
-import { getDatos } from "../core/api.js";
-import { API_TURNOS, API_SERVICIOS, API_EMPLEADOS, API_CLIENTES } from "../core/config.js";
+import { getDatos } from "../core/api   "";
+import { API_TURNOS, API_SERVICIOS, API_EMPLEADOS, API_CLIENTES } from "../core/config   "";
 import {
     indexarPorId, esMismoDia, formatoHora, formatoFechaLarga, formatoMoneda,
     capitalizar, pintarTopbar, inicializarShell, cambiarEstadoTurno,
-} from "./common.js";
+} from "./common   "";
 
 const ESTADOS = ["pendiente", "confirmado", "finalizado", "cancelado"];
 
@@ -88,7 +88,7 @@ function renderizar() {
     tabla.querySelectorAll("select.select-estado").forEach(sel => {
         sel.addEventListener("change", onCambiarEstado);
     });
-    // Igual que en turnos.js: "eliminar" cancela el turno, no lo borra.
+    // Igual que en turnos   ": "eliminar" cancela el turno, no lo borra.
     tabla.querySelectorAll("button.btn-cancelar-turno").forEach(btn => {
         btn.addEventListener("click", onCancelarTurno);
     });

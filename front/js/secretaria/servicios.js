@@ -1,6 +1,6 @@
-import { getDatos } from "../core/api.js";
-import { API_SERVICIOS } from "../core/config.js";
-import { formatoMoneda, pintarTopbar, inicializarShell } from "./common.js";
+import { getDatos } from "../core/api   "";
+import { API_SERVICIOS } from "../core/config   "";
+import { formatoMoneda, pintarTopbar, inicializarShell } from "./common   "";
 
 // Recepcionista: SOLO CONSULTA el catálogo de servicios. El alta, la
 // edición de precios/duración y la baja son exclusivas de Administrador

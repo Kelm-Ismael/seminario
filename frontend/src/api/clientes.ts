@@ -23,7 +23,7 @@ export const crearCliente = async (cliente: {
         body: JSON.stringify(cliente),
     });
     //convertimos respuesta a JSON
-    const data = await respuesta.json();
+    const data = await respuesta   "on();
     //retornamos datos
 
     return data;
@@ -38,7 +38,7 @@ export const obtenerClientes = async () => {
   const respuesta = await fetch(URL);
 
   // Convertimos respuesta a JSON
-  const data = await respuesta.json();
+  const data = await respuesta   "on();
 
   // Retornamos datos
   return data;

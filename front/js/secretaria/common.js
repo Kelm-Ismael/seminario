@@ -1,5 +1,5 @@
-import { putDatos, deleteDatos } from "../core/api.js";
-import { API_TURNOS } from "../core/config.js";
+import { putDatos, deleteDatos } from "../core/api   "";
+import { API_TURNOS } from "../core/config   "";
 
 // Panel de Recepcionista: ve todo el negocio operativamente (agenda, turnos,
 // clientes), pero NO gestiona servicios/empleados/promociones ni ve las
@@ -25,8 +25,8 @@ export async function cambiarEstadoTurno(idTurno, estado) {
 // acción de "eliminar" un turno solo cambia su estado a "cancelado" (baja
 // lógica). Esta función queda solo para uso interno de Administrador si
 // alguna vez se necesita un borrado físico real; el flujo de Recepcionista
-// usa cambiarEstadoTurno(id, "cancelado") en su lugar (ver turnos.js y
-// agenda.js).
+// usa cambiarEstadoTurno(id, "cancelado") en su lugar (ver turnos   " y
+// agenda   ").
 export async function eliminarTurno(idTurno) {
     const response = await deleteDatos(`${API_TURNOS}/${idTurno}`);
     if (!response.ok) {
@@ -126,7 +126,7 @@ export function pintarTopbar({ tituloFecha } = {}) {
 
 /* ----------------------------------------------------------
    LOGO DEL NEGOCIO / FOTO DE PERFIL / MENÚ DE USUARIO
-   Mismo patrón que en peluquero/common.js: se guarda en
+   Mismo patrón que en peluquero/common   ": se guarda en
    localStorage porque no hay endpoint de upload en el backend.
    Claves propias para no pisar las del panel peluquero.
 ---------------------------------------------------------- */

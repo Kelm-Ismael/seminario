@@ -1,15 +1,15 @@
 // Archivo NUEVO — issue #20 (modificado en #21 para el envío real del mail)
 // Orquesta el Escenario 2 completo por canal EMAIL (WhatsApp y Google SSO
 // quedan fuera de este sprint: no están entre los issues #19-22).
-import { crearUsuario, buscarUsuarioPorEmail } from "../../infrastructure/repositories/usuario.repository.js";
-import { crearClienteDesdeRegistro } from "../../infrastructure/repositories/cliente.repository.js";
-import { crearToken } from "../../infrastructure/repositories/tokenVerificacion.repository.js";
-import { registrarEvento } from "../../infrastructure/repositories/logAuditoria.repository.js";
-import { hashPassword } from "../../infrastructure/security/password.util.js";
-import { generarTokenAleatorio, calcularExpiracion24h } from "../../infrastructure/security/token.util.js";
+import { crearUsuario, buscarUsuarioPorEmail } from "../../infrastructure/repositories/usuario.repository";
+import { crearClienteDesdeRegistro } from "../../infrastructure/repositories/cliente.repository";
+import { crearToken } from "../../infrastructure/repositories/tokenVerificacion.repository";
+import { registrarEvento } from "../../infrastructure/repositories/logAuditoria.repository";
+import { hashPassword } from "../../infrastructure/security/password.util";
+import { generarTokenAleatorio, calcularExpiracion24h } from "../../infrastructure/security/token.util";
 // NUEVO (issue #21) — envío real del mail de verificación
-import { enviarCorreoVerificacion } from "../../infrastructure/email/correoVerificacion.service.js";
-import { formatoCelularValido, fechaNacimientoValida, formatoPasswordValido } from "../../infrastructure/validation/registroValidaciones.util.js";
+import { enviarCorreoVerificacion } from "../../infrastructure/email/correoVerificacion.service";
+import { formatoCelularValido, fechaNacimientoValida, formatoPasswordValido } from "../../infrastructure/validation/registroValidaciones.util";
 
 interface DatosRegistro {
   email: string;

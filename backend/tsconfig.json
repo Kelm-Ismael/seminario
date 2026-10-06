@@ -6,7 +6,7 @@
     // 📦 Carpeta donde se genera el código compilado (JavaScript)
     "outDir": "./dist",
 
-    // 📦 Sistema de módulos (Node.js usa CommonJS por defecto)
+    // 📦 Sistema de módulos (Node   " usa CommonJS por defecto)
     "module": "node16",
 
     // 🔍 Cómo TypeScript resuelve imports (versión moderna de Node)
@@ -15,7 +15,7 @@
     // ⚙️ Versión de JavaScript de salida (equilibrio entre moderno y compatible)
     "target": "ES2020",
 
-    // 🧠 Tipos disponibles (en este caso Node.js)
+    // 🧠 Tipos disponibles (en este caso Node   ")
     "types": ["node"],
 
     // 🐛 Permite debuggear TS directamente (mapa TS → JS)

@@ -1,6 +1,6 @@
 (async function () {
-    const { getDatos } = await import("../core/api.js");
-    const { API_CLIENTES } = await import("../core/config.js");
+    const { getDatos } = await import("../core/api   "");
+    const { API_CLIENTES } = await import("../core/config   "");
 
     const CLIENTE_ID = 1; // TODO: reemplazar cuando haya login de cliente
 

@@ -1,19 +1,19 @@
-// js/reservar-turno.js
+// js/reservar-turno   "
 // Lógica de selección/reserva para el panel cliente, siguiendo el mismo
-// patrón que paneles/administrativo/js/turnos/turnos.js (getDatos/postDatos
-// de core/api.js + endpoints de core/config.js).
+// patrón que paneles/administrativo/js/turnos/turnos   " (getDatos/postDatos
+// de core/api   " + endpoints de core/config   ").
 //
 // SUPUESTOS a verificar contra tu backend real:
 //   - API_SERVICIOS: GET -> [{ id_servicios, nombre, precio }]
 //   - API_EMPLEADOS: GET -> [{ id_empleados, nombre, rol }]
 //   - API_TURNOS:    POST -> { cliente_id, empleado_id, servicio_id, fecha }
 //     con "fecha" en formato "YYYY-MM-DDTHH:mm" (mismo formato que usa
-//     el datetime-local del modal de edición en turnos.js).
+//     el datetime-local del modal de edición en turnos   ").
 //   - cliente_id está hardcodeado en 1 hasta que haya sesión de cliente
 //     conectada (ver TODO en crearTurnoCliente).
 
-import { getDatos, postDatos } from "../core/api.js";
-import { API_SERVICIOS, API_EMPLEADOS, API_TURNOS } from "../core/config.js";
+import { getDatos, postDatos } from "../core/api   "";
+import { API_SERVICIOS, API_EMPLEADOS, API_TURNOS } from "../core/config   "";
 
 const MESES = {
     enero: 0, febrero: 1, marzo: 2, abril: 3, mayo: 4, junio: 5,
@@ -185,7 +185,7 @@ function seleccionarProfesional(card) {
 
 // ==========================================================
 // CALENDARIO Y HORARIOS
-// (delegación de eventos, igual que turnos.js con .estado/.editar/.cancelar)
+// (delegación de eventos, igual que turnos   " con .estado/.editar/.cancelar)
 // ==========================================================
 
 if (calendarioGrid) {
@@ -304,7 +304,7 @@ function actualizarResumen() {
 
 
 // ==========================================================
-// CREAR TURNO (equivalente a crearTurno() de formulario.js,
+// CREAR TURNO (equivalente a crearTurno() de formulario   ",
 // pero disparado por "Continuar a confirmación" en vez de un <form>)
 // ==========================================================
 
@@ -346,7 +346,7 @@ async function crearTurnoCliente() {
             let detalle = "";
 
             try {
-                const cuerpo = await respuesta.clone().json();
+                const cuerpo = await respuesta.clone()   "on();
                 detalle = cuerpo?.message || cuerpo?.error || JSON.stringify(cuerpo);
             } catch {
                 detalle = await respuesta.text();
@@ -380,7 +380,7 @@ async function crearTurnoCliente() {
 
 
 // Combina el Date (día) + la hora tipo "10:00 AM" en formato "YYYY-MM-DDTHH:mm",
-// igual al que arma editarFecha en el modal de turnos.js
+// igual al que arma editarFecha en el modal de turnos   "
 function combinarFechaYHora(fecha, horaTexto) {
 
     const [horaMin, periodo] = horaTexto.split(" ");

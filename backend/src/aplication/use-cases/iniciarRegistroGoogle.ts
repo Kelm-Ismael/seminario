@@ -5,9 +5,9 @@
 // entrar — dejar entrar sin password es, en los hechos, el caso de uso
 // "Iniciar sesión", que todavía no se implementa (sigue con el redirect
 // placeholder). No mezclar los dos.
-import { buscarUsuarioPorEmail } from "../../infrastructure/repositories/usuario.repository.js";
-import { buscarClientePorGoogleId } from "../../infrastructure/repositories/cliente.repository.js";
-import { verificarIdTokenGoogle, type PerfilGoogle } from "../../infrastructure/security/googleToken.util.js";
+import { buscarUsuarioPorEmail } from "../../infrastructure/repositories/usuario.repository";
+import { buscarClientePorGoogleId } from "../../infrastructure/repositories/cliente.repository";
+import { verificarIdTokenGoogle, type PerfilGoogle } from "../../infrastructure/security/googleToken.util";
 
 const MENSAJE_CUENTA_EXISTENTE = "Ya existe una cuenta registrada con ese email. Iniciá sesión en su lugar.";
 

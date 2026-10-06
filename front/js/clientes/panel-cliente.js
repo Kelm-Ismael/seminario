@@ -1,4 +1,4 @@
-// js/panel-cliente.js
+// js/panel-cliente   "
 // Mantiene el sidebar y el topbar fijos: al navegar entre secciones,
 // hace fetch de la página destino y reemplaza solo el contenido
 // dentro de .panel-content, sin recargar el resto del layout.
@@ -53,10 +53,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    // Los <script src="..."> de la página destino (ej. reservar-turno.js)
+    // Los <script src="..."> de la página destino (ej. reservar-turno   ")
     // viven FUERA de .panel-content, así que nunca se copian ni se ejecutan
     // con el swap de innerHTML de arriba. Los volvemos a insertar acá para
-    // que el navegador los corra de nuevo (evitando reinyectar panel-cliente.js).
+    // que el navegador los corra de nuevo (evitando reinyectar panel-cliente   ").
     function ejecutarScriptsDeSeccion(doc) {
 
         const scripts = doc.querySelectorAll("script[src]");
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const src = original.getAttribute("src");
 
-            if (!src || src.includes("panel-cliente.js")) return;
+            if (!src || src.includes("panel-cliente   "")) return;
 
             const nuevo = document.createElement("script");
 

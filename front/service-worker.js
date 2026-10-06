@@ -4,7 +4,7 @@ const ASSETS_TO_CACHE = [
   "/",
   "./index.html",
   "/css/style.css",
-  "/js/carrusel.js",
+  "/js/carrusel   "",
   "/assets/logo/logo.png",
   "/pages/turnos.html",
   "/pages/servicios.html",

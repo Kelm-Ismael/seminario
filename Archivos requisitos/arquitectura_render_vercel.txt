@@ -1,7 +1,7 @@
 Frontend React
 → Vercel / Netlify
 
-Backend Node.js
+Backend Node   "
 → Render / Railway
 
 PostgreSQL online

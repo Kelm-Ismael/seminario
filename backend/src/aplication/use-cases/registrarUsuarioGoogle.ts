@@ -4,10 +4,10 @@
 // nacimiento en la pantalla intermedia. La cuenta queda "activa" directo:
 // Google ya verificó el email, así que no hace falta el código de 6
 // dígitos que usa el registro por email.
-import { crearUsuario, buscarUsuarioPorEmail } from "../../infrastructure/repositories/usuario.repository.js";
-import { crearClienteDesdeRegistroGoogle, buscarClientePorGoogleId } from "../../infrastructure/repositories/cliente.repository.js";
-import { registrarEvento } from "../../infrastructure/repositories/logAuditoria.repository.js";
-import { formatoCelularValido, fechaNacimientoValida } from "../../infrastructure/validation/registroValidaciones.util.js";
+import { crearUsuario, buscarUsuarioPorEmail } from "../../infrastructure/repositories/usuario.repository";
+import { crearClienteDesdeRegistroGoogle, buscarClientePorGoogleId } from "../../infrastructure/repositories/cliente.repository";
+import { registrarEvento } from "../../infrastructure/repositories/logAuditoria.repository";
+import { formatoCelularValido, fechaNacimientoValida } from "../../infrastructure/validation/registroValidaciones.util";
 
 interface DatosRegistroGoogle {
   googleId: string;

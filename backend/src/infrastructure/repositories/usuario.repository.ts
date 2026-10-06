@@ -1,5 +1,5 @@
-import { pool } from "../../config/db.js";
-import { Usuario } from "../../domain/entities/usuario.entity.js";
+import { pool } from "../../config/db";
+import { Usuario } from "../../domain/entities/usuario.entity";
 
 // Función async para crear un usuario (Escenario 2: Registrarse)
 export const crearUsuario = async (

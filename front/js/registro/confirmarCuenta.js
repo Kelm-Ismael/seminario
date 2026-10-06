@@ -1,6 +1,6 @@
 // // Archivo NUEVO — lógica de la pantalla "Confirmá tu cuenta" (confirmar-cuenta.html)
-// import { postDatos } from "../core/api.js";
-// import { API_VERIFICAR_CUENTA, API_REENVIAR_CODIGO } from "../core/config.js";
+// import { postDatos } from "../core/api   "";
+// import { API_VERIFICAR_CUENTA, API_REENVIAR_CODIGO } from "../core/config   "";
 
 // const COOLDOWN_INICIAL_SEGUNDOS = 60;
 
@@ -93,7 +93,7 @@
 
 //     try {
 //         const respuesta = await postDatos(API_VERIFICAR_CUENTA, { email, codigo });
-//         const cuerpo = await respuesta.json();
+//         const cuerpo = await respuesta   "on();
 
 //         if (!respuesta.ok) {
 //             mensaje.textContent = cuerpo.message || "No se pudo verificar el código.";
@@ -122,7 +122,7 @@
 
 //     try {
 //         const respuesta = await postDatos(API_REENVIAR_CODIGO, { email });
-//         const cuerpo = await respuesta.json();
+//         const cuerpo = await respuesta   "on();
 
 //         if (!respuesta.ok) {
 //             mensaje.textContent = cuerpo.message || "No se pudo reenviar el código.";
@@ -154,8 +154,8 @@
 
 
 // Archivo — lógica de la pantalla "Confirmá tu cuenta" (confirmar-cuenta.html)
-import { postDatos } from "../core/api.js";
-import { API_VERIFICAR_CUENTA, API_REENVIAR_CODIGO } from "../core/config.js";
+import { postDatos } from "../core/api   "";
+import { API_VERIFICAR_CUENTA, API_REENVIAR_CODIGO } from "../core/config   "";
 
 const COOLDOWN_INICIAL_SEGUNDOS = 60;
 
@@ -252,7 +252,7 @@ formulario.addEventListener("submit", async (evento) => {
 
     try {
         const respuesta = await postDatos(API_VERIFICAR_CUENTA, { email, codigo });
-        const cuerpo = await respuesta.json();
+        const cuerpo = await respuesta   "on();
 
         if (!respuesta.ok) {
             mensaje.textContent = cuerpo.message || "No se pudo verificar el código.";
@@ -290,7 +290,7 @@ botonReenviar.addEventListener("click", async () => {
 
     try {
         const respuesta = await postDatos(API_REENVIAR_CODIGO, { email });
-        const cuerpo = await respuesta.json();
+        const cuerpo = await respuesta   "on();
 
         if (!respuesta.ok) {
             mensaje.textContent = cuerpo.message || "No se pudo reenviar el código.";

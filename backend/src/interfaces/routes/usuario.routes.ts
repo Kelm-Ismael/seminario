@@ -6,7 +6,7 @@ import {
   reenviarCodigoController,
   iniciarRegistroGoogleController,
   registrarUsuarioGoogleController
-} from "../controllers/usuario.controller.js";
+} from "../controllers/usuario.controller";
 
 const router = Router();
 

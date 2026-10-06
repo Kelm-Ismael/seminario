@@ -1,9 +1,9 @@
-import { getDatos } from "../core/api.js";
-import { API_TURNOS } from "../core/config.js";
+import { getDatos } from "../core/api   "";
+import { API_TURNOS } from "../core/config   "";
 import {
     EMPLEADO_ID, EMPLEADO_NOMBRE, iniciales, pintarTopbar,
     inicializarShell, obtenerFotoPerfilGuardada,
-} from "./common.js";
+} from "./common   "";
 
 init();
 

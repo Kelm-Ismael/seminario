@@ -13,3 +13,5 @@ Tu frontend es:
 
 ✅ npm install -g browser-sync (recargar el navegador automáticamente cuando modificas html, css o js.)
 ✅ npm install --save-dev browser-sync (En backend y frontend)
+
+

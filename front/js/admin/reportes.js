@@ -1,4 +1,4 @@
-import { pintarTopbar, inicializarShell } from "./common.js";
+import { pintarTopbar, inicializarShell } from "./common   "";
 
 pintarTopbar();
 inicializarShell();

@@ -1,4 +1,4 @@
-En un backend con Node.js, Express y TypeScript, los archivos .env,
+En un backend con Node   ", Express y TypeScript, los archivos .env,
 env.ts, db.ts, app.ts y server.ts trabajan juntos siguiendo un flujo
 organizado.
 
@@ -23,7 +23,7 @@ centralizar cualquier lógica relacionada con conexiones externas.
 
 El archivo app.ts es donde se configura la aplicación de Express. Aquí
 se crea la instancia del servidor (express()), se agregan middlewares
-como express.json() y se definen las rutas básicas. Este archivo no
+como express   "on() y se definen las rutas básicas. Este archivo no
 arranca el servidor, solo lo configura y lo exporta.
 
 Finalmente, server.ts es el punto de entrada de la aplicación. Este

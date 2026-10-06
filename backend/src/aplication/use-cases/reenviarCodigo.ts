@@ -4,10 +4,10 @@ import {
   buscarUltimoTokenPorUsuario,
   marcarTokenExpirado,
   crearToken
-} from "../../infrastructure/repositories/tokenVerificacion.repository.js";
-import { buscarUsuarioPorEmail } from "../../infrastructure/repositories/usuario.repository.js";
-import { generarTokenAleatorio, calcularExpiracion24h } from "../../infrastructure/security/token.util.js";
-import { enviarCorreoVerificacion } from "../../infrastructure/email/correoVerificacion.service.js";
+} from "../../infrastructure/repositories/tokenVerificacion.repository";
+import { buscarUsuarioPorEmail } from "../../infrastructure/repositories/usuario.repository";
+import { generarTokenAleatorio, calcularExpiracion24h } from "../../infrastructure/security/token.util";
+import { enviarCorreoVerificacion } from "../../infrastructure/email/correoVerificacion.service";
 
 // Tiempo mínimo entre reenvíos (coincide con el "Disponible en 59 seg" del mockup)
 const COOLDOWN_REENVIO_SEGUNDOS = 60;

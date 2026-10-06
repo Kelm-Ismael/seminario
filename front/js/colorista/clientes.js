@@ -1,6 +1,6 @@
-import { getDatos } from "../core/api.js";
-import { API_TURNOS, API_CLIENTES } from "../core/config.js";
-import { EMPLEADO_ID, iniciales, pintarTopbar, inicializarShell } from "./common.js";
+import { getDatos } from "../core/api   "";
+import { API_TURNOS, API_CLIENTES } from "../core/config   "";
+import { EMPLEADO_ID, iniciales, pintarTopbar, inicializarShell } from "./common   "";
 
 let listaClientes = [];
 

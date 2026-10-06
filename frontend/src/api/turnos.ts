@@ -28,7 +28,7 @@
 //         body: JSON.stringify(turnos),
 //     });
 //     //convertimos respuesta a JSON
-//     const data = await respuesta.json();
+//     const data = await respuesta   "on();
 //     //retornamos datos
 
 //     return data;
@@ -42,7 +42,7 @@
 //   const respuesta = await fetch(API);
 
 //   // Convertimos respuesta a JSON
-//   const data = await respuesta.json();
+//   const data = await respuesta   "on();
 
 //   // Retornamos datos
 //   return data;
@@ -81,7 +81,7 @@ export const crearTurnoApi = async (turno: {
   });
 
   // convertimos respuesta
-  const data = await respuesta.json();
+  const data = await respuesta   "on();
 
   return data;
 };
@@ -92,7 +92,7 @@ export const obtenerTurnos = async () => {
 
   const respuesta = await fetch(API);
 
-  const data = await respuesta.json();
+  const data = await respuesta   "on();
 
   return data;
 };

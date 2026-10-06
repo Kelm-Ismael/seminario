@@ -1,6 +1,6 @@
-import { getDatos, postDatos } from "../core/api.js";
-import { API_CLIENTES, API_TURNOS } from "../core/config.js";
-import { pintarTopbar, inicializarShell } from "./common.js";
+import { getDatos, postDatos } from "../core/api   "";
+import { API_CLIENTES, API_TURNOS } from "../core/config   "";
+import { pintarTopbar, inicializarShell } from "./common   "";
 
 let todosLosClientes = [];
 let conteoTurnosPorCliente = {};

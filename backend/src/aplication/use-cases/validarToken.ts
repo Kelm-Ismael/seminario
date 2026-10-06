@@ -6,9 +6,9 @@ import {
   marcarTokenUtilizado,
   marcarTokenExpirado,
   incrementarIntentosFallidos
-} from "../../infrastructure/repositories/tokenVerificacion.repository.js";
-import { buscarUsuarioPorEmail, actualizarEstadoCuenta } from "../../infrastructure/repositories/usuario.repository.js";
-import { registrarEvento } from "../../infrastructure/repositories/logAuditoria.repository.js";
+} from "../../infrastructure/repositories/tokenVerificacion.repository";
+import { buscarUsuarioPorEmail, actualizarEstadoCuenta } from "../../infrastructure/repositories/usuario.repository";
+import { registrarEvento } from "../../infrastructure/repositories/logAuditoria.repository";
 
 // Máximo de intentos fallidos antes de invalidar el código (obliga a pedir uno nuevo)
 const MAX_INTENTOS_FALLIDOS = 5;

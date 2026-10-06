@@ -5,23 +5,23 @@
 // token y envío de email) se mockean: un test unitario no debe tocar
 // la base de datos real ni mandar un correo real.
 
-import { registrarUsuarioCasoDeUso } from "../registrarUsuario.js";
+import { registrarUsuarioCasoDeUso } from "../registrarUsuario";
 
-import { crearUsuario, buscarUsuarioPorEmail } from "../../../infrastructure/repositories/usuario.repository.js";
-import { crearClienteDesdeRegistro } from "../../../infrastructure/repositories/cliente.repository.js";
-import { crearToken } from "../../../infrastructure/repositories/tokenVerificacion.repository.js";
-import { registrarEvento } from "../../../infrastructure/repositories/logAuditoria.repository.js";
-import { hashPassword } from "../../../infrastructure/security/password.util.js";
-import { generarTokenAleatorio, calcularExpiracion24h } from "../../../infrastructure/security/token.util.js";
-import { enviarCorreoVerificacion } from "../../../infrastructure/email/correoVerificacion.service.js";
+import { crearUsuario, buscarUsuarioPorEmail } from "../../../infrastructure/repositories/usuario.repository";
+import { crearClienteDesdeRegistro } from "../../../infrastructure/repositories/cliente.repository";
+import { crearToken } from "../../../infrastructure/repositories/tokenVerificacion.repository";
+import { registrarEvento } from "../../../infrastructure/repositories/logAuditoria.repository";
+import { hashPassword } from "../../../infrastructure/security/password.util";
+import { generarTokenAleatorio, calcularExpiracion24h } from "../../../infrastructure/security/token.util";
+import { enviarCorreoVerificacion } from "../../../infrastructure/email/correoVerificacion.service";
 
-jest.mock("../../../infrastructure/repositories/usuario.repository.js");
-jest.mock("../../../infrastructure/repositories/cliente.repository.js");
-jest.mock("../../../infrastructure/repositories/tokenVerificacion.repository.js");
-jest.mock("../../../infrastructure/repositories/logAuditoria.repository.js");
-jest.mock("../../../infrastructure/security/password.util.js");
-jest.mock("../../../infrastructure/security/token.util.js");
-jest.mock("../../../infrastructure/email/correoVerificacion.service.js");
+jest.mock("../../../infrastructure/repositories/usuario.repository");
+jest.mock("../../../infrastructure/repositories/cliente.repository");
+jest.mock("../../../infrastructure/repositories/tokenVerificacion.repository");
+jest.mock("../../../infrastructure/repositories/logAuditoria.repository");
+jest.mock("../../../infrastructure/security/password.util");
+jest.mock("../../../infrastructure/security/token.util");
+jest.mock("../../../infrastructure/email/correoVerificacion.service");
 
 // Casteamos los mocks para poder usar .mockResolvedValue / .mockReturnValue
 // con el tipado de Jest.

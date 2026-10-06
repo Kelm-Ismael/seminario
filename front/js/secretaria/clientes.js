@@ -1,6 +1,6 @@
-import { getDatos, postDatos } from "../core/api.js";
-import { API_CLIENTES, API_TURNOS } from "../core/config.js";
-import { pintarTopbar, inicializarShell } from "./common.js";
+import { getDatos, postDatos } from "../core/api   "";
+import { API_CLIENTES, API_TURNOS } from "../core/config   "";
+import { pintarTopbar, inicializarShell } from "./common   "";
 
 // Recepcionista: puede registrar clientes nuevos (alta básica) y
 // consultarlos, pero NO editarlos ni eliminarlos (backlog, Escenario 25/26).

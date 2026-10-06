@@ -1,5 +1,5 @@
-import { API_TURNOS } from "../core/config.js";
-import { getDatos } from "../core/api.js";
+import { API_TURNOS } from "../core/config   "";
+import { getDatos } from "../core/api   "";
 
 
 
