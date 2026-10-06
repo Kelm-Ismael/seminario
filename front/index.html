@@ -15,7 +15,7 @@
     <link rel="icon" href="./assets/favicon/favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="David Martinez Estilista Unisex" />
-    <link rel="manifest" href="./pwa/manifest   "on" />
+    <link rel="manifest" href="./pwa/manifest.json" />
 </head>
 <body>
 
@@ -107,7 +107,7 @@
 
 
     <!-- JavaScript del carrusel -->
-    <script src="./js/carrusel   ""></script>
+    <script src="./js/carrusel.js"></script>
 
 
 
@@ -558,7 +558,7 @@
 <script>
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => {
-      navigator.serviceWorker.register("/service-worker   "")
+      navigator.serviceWorker.register("/service-worker.js")
         .then(() => console.log("🟢 Service Worker registrado"))
         .catch((err) => console.log("🔴 Error SW:", err));
     });

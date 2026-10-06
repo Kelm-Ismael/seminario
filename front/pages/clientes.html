@@ -1,229 +1,173 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Gestión de Clientes</title>
-
-    <link rel="stylesheet" href="./css/theme-public.css">
-    <link rel="stylesheet" href="../css/empleadoyservicio.css">
-    <link rel="stylesheet" href="../css/responsive.css">
-    <link rel="stylesheet" href="../css/variables.css">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel Cliente | Inicio</title>
+<link rel="stylesheet" href="../../css/cliente/theme-public.css">
+<link rel="stylesheet" href="../../css/cliente/variables.css">
+<link rel="stylesheet" href="../../css/cliente/sidebar.css">
+<link rel="stylesheet" href="../../css/cliente/navbar.css">
+<link rel="stylesheet" href="../../css/cliente/cards.css">
+<link rel="stylesheet" href="../../css/cliente/table.css">
+<link rel="stylesheet" href="../../css/cliente/buttons.css">
 </head>
-
 <body>
 
-    <main class="container">
+<div class="dashboard">
 
-        <!-- =========================================
-             ENCABEZADO
-        ========================================== -->
-        <nav class="nav-links">
-            <a href="https://seminario-pink.vercel.app/">Inicio</a>
+    <!-- ============ SIDEBAR ============ -->
+    <aside id="sidebar">
+
+        <div class="panel-brand">
+            <div class="avatar-initials avatar-md">DM</div>
+            <div class="panel-brand-info">
+                <h2>David Martínez</h2>
+                <p>Estilista Unisex</p>
+            </div>
+        </div>
+        <nav class="sidebar-menu">
+            <a href="clientes.html" class="active"><span class="icon">🏠</span> Inicio</a>
+            <a href="reservar-turno.html"><span class="icon">📅</span> Reservar turno</a>
+            <a href="mis-turnos.html"><span class="icon">🕐</span> Mis turnos</a>
+            <a href="historial.html"><span class="icon">📖</span> Historial</a>
+            <a href="favoritos.html"><span class="icon">⭐</span> Mis favoritos</a>
+            <a href="perfil.html"><span class="icon">👤</span> Perfil</a>
+            <a href="promociones.html"><span class="icon">🏷️</span> Promociones</a>
+            <a href="notificaciones.html"><span class="icon">🔔</span> Notificaciones</a>
+            <a href="contacto.html"><span class="icon">📞</span> Contacto</a>
         </nav>
 
-        <header class="header">
+        <div class="panel-help">
+            ¿Necesitás ayuda?
+            <a href="https://wa.me/5491112345678" target="_blank" rel="noreferrer">
+                💬 Escribinos por WhatsApp
+            </a>
+        </div>
 
-            <h1>👥 Gestión de Clientes</h1>
+    </aside>
 
-            <p>
-                Administra los clientes de la barbería
-            </p>
+    <!-- ============ CONTENIDO ============ -->
+    <main class="main-content">
 
+        <header class="panel-topbar">
+            <div class="panel-greeting">
+                <h1 id="saludoTitulo">Hola, — 👋</h1>
+                <p>¿Listo para tu próximo cambio?</p>
+            </div>
+
+            <!-- Antes había dos bloques .panel-topbar-actions duplicados; dejo uno solo -->
+            <div class="panel-topbar-actions">
+                <div class="panel-bell">🔔</div>
+                <div class="panel-user">
+                    <div class="avatar-initials avatar-sm" id="avatarIniciales">--</div>
+                    <span id="nombreUsuario">Cargando…</span>
+                    <span>▾</span>
+                    <a href="../../index.html" class="btn-logout">Cerrar sesión</a>
+                </div>
+            </div>
         </header>
 
+        <div class="panel-content">
 
-        <!-- =========================================
-             FORMULARIO
-        ========================================== -->
+            <!-- FILA 1: próximo turno + favoritos -->
+            <div class="panel-row">
 
-        <section class="card">
-
-            <h2>Nuevo cliente</h2>
-
-            <form id="formCliente" class="form-cliente">
-
-                <div class="form-group">
-
-                    <label for="nombre">
-                        Nombre
-                    </label>
-
-                    <input
-                        type="text"
-                        id="nombre"
-                        name="nombre"
-                        placeholder="Nombre completo"
-                        required
-                    >
-
+                <div class="card">
+                    <h3>Próximo turno</h3>
+                    <div class="turno-proximo" id="proximoTurnoBox">
+                        <p class="mensaje">Cargando…</p>
+                    </div>
                 </div>
 
-
-                <div class="form-group">
-
-                    <label for="telefono">
-                        Teléfono
-                    </label>
-
-                    <input
-                        type="tel"
-                        id="telefono"
-                        name="telefono"
-                        placeholder="Ej: 1145678901"
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="email">
-                        Email
-                    </label>
-
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="cliente@email.com"
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="created_at">
-                        Fecha de registro
-                    </label>
-
-                    <input
-                        type="datetime-local"
-                        id="created_at"
-                        name="created_at"
-                    >
-
-                </div>
-
-
-                <div class="acciones">
-
-                    <button
-                        type="submit"
-                        class="btn-primary"
-                    >
-                        Guardar cliente
-                    </button>
-
-                    <button
-                        type="button"
-                        id="btnVolver"
-                        class="btn-secondary"
-                    >
-                        Volver
-                    </button>
-                    <button class="btn btn-secondary" onclick="history.back()">
-                        ← Volver a turnos
-                    </button>
-
-                </div>
-
-            </form>
-
-        </section>
-
-
-        <!-- =========================================
-             LISTADO DE CLIENTES
-        ========================================== -->
-
-        <section class="card">
-
-            <div class="card-header">
-
-                <div>
-
-                    <h2>Clientes registrados</h2>
-
-                    <p class="card-description">
-                        Lista de clientes registrados en el sistema
-                    </p>
-
+                <!-- Sin tabla de favoritos en el backend todavía: queda de muestra -->
+                <div class="card">
+                    <h3>Servicios favoritos</h3>
+                    <div class="favoritos-row">
+                        <div class="favorito-item">
+                            <div class="avatar-initials avatar-sm">CO</div>
+                            <span>Corte</span>
+                        </div>
+                        <div class="favorito-item">
+                            <div class="avatar-initials avatar-sm">BA</div>
+                            <span>Barba</span>
+                        </div>
+                        <div class="favorito-item">
+                            <div class="avatar-initials avatar-sm">TI</div>
+                            <span>Tintura</span>
+                        </div>
+                        <div class="favorito-item">
+                            <div class="avatar-initials avatar-sm">PE</div>
+                            <span>Peinado</span>
+                        </div>
+                    </div>
                 </div>
 
             </div>
 
+            <!-- FILA 2: reservar nuevo turno + beneficios -->
+            <div class="panel-row">
 
-            <!-- Mensajes -->
+                <div class="card">
+                    <h3>Reservar nuevo turno</h3>
+                    <div class="stepper-mini">
+                        <div class="step current"><span class="step-num">1</span> Servicio</div>
+                        <div class="divider"></div>
+                        <div class="step"><span class="step-num">2</span> Profesional</div>
+                        <div class="divider"></div>
+                        <div class="step"><span class="step-num">3</span> Fecha y hora</div>
+                    </div>
+                    <a href="reservar-turno.html" class="btn-primary" style="display:inline-block;text-align:center;">Reservar ahora</a>
+                </div>
 
-            <p
-                id="mensaje"
-                class="mensaje"
-            >
-            </p>
+                <!-- Sin sistema de puntos/fidelidad en el backend: queda de muestra -->
+                <div class="card promo-highlight">
+                    <div class="icon-circle" style="margin:0 auto 8px;">⭐</div>
+                    <h3 style="justify-content:center;">Beneficios Premium</h3>
+                    <p>Alcanzá tu próximo nivel de fidelidad para obtener un tratamiento capilar de cortesía.</p>
+                    <div class="progreso-nivel">
+                        <div class="fila">
+                            <span>Nivel Plata</span>
+                            <span>850 / 1000 pts</span>
+                        </div>
+                        <div class="progreso-barra">
+                            <div class="relleno" style="width:85%;"></div>
+                        </div>
+                    </div>
+                </div>
 
+            </div>
 
-            <!-- Tabla -->
+            <!-- FILA 3: historial reciente -->
+            <div class="card">
+                <div class="tabla-header">
+                    <h3 style="margin:0;">📖 Historial reciente</h3>
+                    <a href="historial.html">Ver todo</a>
+                </div>
 
-            <div class="table-container">
-
-                <table class="tabla-clientes">
-
+                <table>
                     <thead>
-
                         <tr>
-
-                            <th>Nombre</th>
-
-                            <th>Teléfono</th>
-
-                            <th>Email</th>
-
-                            <th>Fecha de registro</th>
-
-                            <th>Acciones</th>
-
+                            <th>Servicio</th>
+                            <th>Profesional</th>
+                            <th>Fecha</th>
+                            <th>Precio</th>
+                            <th>Estado</th>
                         </tr>
-
                     </thead>
-
-
-                    <tbody id="tabla-clientes">
-
-                        <tr>
-
-                            <td colspan="5">
-                                Cargando clientes...
-                            </td>
-
-                        </tr>
-
+                    <tbody id="historialTbody">
+                        <tr><td colspan="5">Cargando…</td></tr>
                     </tbody>
-
                 </table>
-
             </div>
 
-        </section>
-
+        </div>
 
     </main>
 
+</div>
 
-    <!-- =========================================
-         JAVASCRIPT
-    ========================================== -->
-
-    <script
-        type="module"
-        src="../js/clientes/clientes   "">
-        
-    </script>
-
+<script src="../../js/clientes/panel-cliente   "" defer></script>
+<script src="../../js/clientes/inicio   "" defer></script>
 </body>
-
 </html>
