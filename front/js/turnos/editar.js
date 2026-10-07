@@ -1,4 +1,4 @@
-import { API_TURNOS } from "../core/config   "";
+import { API_TURNOS } from "../core/config.js";
 
 export async function editarTurno(id, datos) {
 
@@ -12,5 +12,5 @@ export async function editarTurno(id, datos) {
         throw new Error("Error al editar turno");
     }
 
-    return await respuesta   "on();
+    return await respuesta.json();
 }

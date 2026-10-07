@@ -1,6 +1,6 @@
-import { getDatos, postDatos, putDatos, deleteDatos } from "../core/api   "";
-import { API_EMPLEADOS, API_TURNOS } from "../core/config   "";
-import { pintarTopbar, inicializarShell } from "./common   "";
+import { getDatos, postDatos, putDatos, deleteDatos } from "../core/api.js";
+import { API_EMPLEADOS, API_TURNOS } from "../core/config.js";
+import { pintarTopbar, inicializarShell } from "./common.js";
 
 let todosLosEmpleados = [];
 let conteoTurnosPorEmpleado = {};

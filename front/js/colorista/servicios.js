@@ -1,6 +1,6 @@
-import { getDatos } from "../core/api   "";
-import { API_SERVICIOS } from "../core/config   "";
-import { formatoMoneda, pintarTopbar, inicializarShell } from "./common   "";
+import { getDatos } from "../core/api.js";
+import { API_SERVICIOS } from "../core/config.js";
+import { formatoMoneda, pintarTopbar, inicializarShell } from "./common.js";
 
 init();
 

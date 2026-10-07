@@ -8,8 +8,8 @@
 // ya existe una cuenta con ese email/Google ID, se muestra el mensaje de
 // error y no se deja entrar (eso ya sería el caso de uso "Iniciar sesión",
 // que sigue en pausa).
-import { postDatos } from "../core/api   "";
-import { API_REGISTRO_GOOGLE_VERIFICAR, GOOGLE_CLIENT_ID } from "../core/config   "";
+import { postDatos } from "../core/api.js";
+import { API_REGISTRO_GOOGLE_VERIFICAR, GOOGLE_CLIENT_ID } from "../core/config.js";
 
 const mensaje = document.getElementById("mensaje");
 const contenedorBotonGoogle = document.getElementById("googleBtnContainer");
@@ -24,7 +24,7 @@ const manejarRespuestaGoogle = async (respuestaGoogle) => {
         const respuesta = await postDatos(API_REGISTRO_GOOGLE_VERIFICAR, {
             idToken: respuestaGoogle.credential
         });
-        const cuerpo = await respuesta   "on();
+        const cuerpo = await respuesta.json();
 
         if (!respuesta.ok) {
             if (mensaje) {

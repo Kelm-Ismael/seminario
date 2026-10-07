@@ -1,9 +1,9 @@
 // Archivo NUEVO — paso 2 del registro con Google: pide celular y fecha de
 // nacimiento (Google no los provee, y `clientes` los exige) y termina de
 // crear la cuenta. Llega acá después de completar-registro-google.html
-// haber guardado el perfil verificado en sessionStorage (ver googleAuth   ").
-import { postDatos } from "../core/api   "";
-import { API_REGISTRO_GOOGLE } from "../core/config   "";
+// haber guardado el perfil verificado en sessionStorage (ver googleAuth.js).
+import { postDatos } from "../core/api.js";
+import { API_REGISTRO_GOOGLE } from "../core/config.js";
 
 const formulario = document.getElementById("formCompletarGoogle");
 const mensaje = document.getElementById("mensaje");
@@ -53,7 +53,7 @@ formulario.addEventListener("submit", async (evento) => {
 
     try {
         const respuesta = await postDatos(API_REGISTRO_GOOGLE, datos);
-        const cuerpo = await respuesta   "on();
+        const cuerpo = await respuesta.json();
 
         if (!respuesta.ok) {
             mensaje.textContent = cuerpo.message || "No se pudo completar el registro.";

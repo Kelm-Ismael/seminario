@@ -1,6 +1,6 @@
-import { getDatos } from "../core/api   "";
-import { API_EMPLEADOS, API_TURNOS } from "../core/config   "";
-import { pintarTopbar, inicializarShell } from "./common   "";
+import { getDatos } from "../core/api.js";
+import { API_EMPLEADOS, API_TURNOS } from "../core/config.js";
+import { pintarTopbar, inicializarShell } from "./common.js";
 
 // Recepcionista: SOLO CONSULTA la lista de empleados, para saber a quién
 // asignarle un turno. El alta, edición y baja de personal son exclusivas

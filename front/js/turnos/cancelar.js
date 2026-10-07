@@ -1,4 +1,4 @@
-import { API_TURNOS } from "../core/config   "";
+import { API_TURNOS } from "../core/config.js";
 
 export async function cancelarTurno(id) {
 
@@ -10,5 +10,5 @@ export async function cancelarTurno(id) {
         throw new Error("Error al cancelar turno");
     }
 
-    return await respuesta   "on();
+    return await respuesta.json();
 }

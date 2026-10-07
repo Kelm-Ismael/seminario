@@ -1,4 +1,4 @@
-import { API_EMPLEADOS } from "../core/config   "";
+import { API_EMPLEADOS } from "../core/config.js";
 
 const tbody = document.getElementById("tablaEmpleados");
 const formulario = document.getElementById("formEmpleado");
@@ -42,7 +42,7 @@ async function guardarEmpleado(e) {
             throw new Error(editandoId ? "Error al actualizar" : "Error al crear el empleado");
         }
 
-        await response   "on();
+        await response.json();
 
         alert(editandoId ? "Empleado actualizado" : "Empleado creado correctamente");
 
@@ -95,7 +95,7 @@ async function obtenerEmpleados() {
             throw new Error("Error al obtener los empleados");
         }
 
-        empleadosActuales = await response   "on();
+        empleadosActuales = await response.json();
 
         mostrarEmpleados(empleadosActuales);
 

@@ -271,8 +271,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
     min-height: 48px;
-    overflow: hidden;
+}
+
+.google-btn-container:empty {
+    display: none;
+}
+
+.google-btn-container > div,
+.google-btn-container iframe {
+    max-width: 100%;
 }
 
 /* ----------------------------------------------------------

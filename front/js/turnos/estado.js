@@ -1,4 +1,4 @@
-import { API_TURNOS } from "../core/config   "";
+import { API_TURNOS } from "../core/config.js";
 
 export async function cambiarEstadoTurno(id, estado) {
 
@@ -12,5 +12,5 @@ export async function cambiarEstadoTurno(id, estado) {
         throw new Error("Error al cambiar estado");
     }
 
-    return await respuesta   "on();
+    return await respuesta.json();
 }

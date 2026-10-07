@@ -1,12 +1,12 @@
-import { cargarClientes, cargarEmpleados, cargarServicios } from "./selects   "";
-import { obtenerTurnos } from "./listado   "";
-import { crearTurno } from "./formulario   "";
-import { cancelarTurno } from "./cancelar   "";
-import { cambiarEstadoTurno } from "./estado   "";
-import { editarTurno } from "./editar   "";
-import { filtrarTurnos } from "./filtros   "";
-import { getDatos } from "../core/api   "";
-import { API_EMPLEADOS } from "../core/config   "";
+import { cargarClientes, cargarEmpleados, cargarServicios } from "./selects.js";
+import { obtenerTurnos } from "./listado.js";
+import { crearTurno } from "./formulario.js";
+import { cancelarTurno } from "./cancelar.js";
+import { cambiarEstadoTurno } from "./estado.js";
+import { editarTurno } from "./editar.js";
+import { filtrarTurnos } from "./filtros.js";
+import { getDatos } from "../core/api.js";
+import { API_EMPLEADOS } from "../core/config.js";
 
 
 const formulario = document.getElementById("formTurno");

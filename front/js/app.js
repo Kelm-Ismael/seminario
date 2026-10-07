@@ -1,6 +1,6 @@
 // js/app   "
 
-import { mostrarClientes } from "./clientes   "";
+import { mostrarClientes } from "./clientes.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     mostrarClientes();

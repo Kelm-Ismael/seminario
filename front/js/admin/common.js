@@ -1,5 +1,5 @@
-import { putDatos, deleteDatos } from "../core/api   "";
-import { API_TURNOS } from "../core/config   "";
+import { putDatos, deleteDatos } from "../core/api.js";
+import { API_TURNOS } from "../core/config.js";
 
 // Panel secretaría: ve todo el negocio, no un solo empleado.
 // TODO reemplazar por el nombre real cuando haya login.

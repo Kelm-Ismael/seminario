@@ -2,7 +2,7 @@
 //para localhost nomas
 // const API = "http://localhost:3000/cliente/clientes";
 
-import { API_CLIENTES } from "../core/config   "";
+import { API_CLIENTES } from "../core/config.js";
 
 const API = API_CLIENTES;
 
@@ -69,7 +69,7 @@ async function guardarCliente(e) {
             throw new Error("Error al guardar");
         }
 
-        await response   "on();
+        await response.json();
 
         alert(editandoId ? "Cliente actualizado" : "Cliente creado");
 
@@ -96,7 +96,7 @@ async function obtenerClientes() {
             throw new Error("Error al obtener clientes");
         }
 
-        clientesActuales = await response   "on();
+        clientesActuales = await response.json();
 
         mostrarClientes(clientesActuales);
 

@@ -1,8 +1,8 @@
-import { getDatos } from "../core/api   "";
-import { API_TURNOS, API_SERVICIOS } from "../core/config   "";
+import { getDatos } from "../core/api.js";
+import { API_TURNOS, API_SERVICIOS } from "../core/config.js";
 import {
     EMPLEADO_ID, indexarPorId, esEstaSemana, formatoMoneda, pintarTopbar, inicializarShell,
-} from "./common   "";
+} from "./common.js";
 
 const META_CLIENTES = 20;
 const META_SERVICIOS = 20;

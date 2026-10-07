@@ -12,8 +12,8 @@
 //   - cliente_id está hardcodeado en 1 hasta que haya sesión de cliente
 //     conectada (ver TODO en crearTurnoCliente).
 
-import { getDatos, postDatos } from "../core/api   "";
-import { API_SERVICIOS, API_EMPLEADOS, API_TURNOS } from "../core/config   "";
+import { getDatos, postDatos } from "../core/api.js";
+import { API_SERVICIOS, API_EMPLEADOS, API_TURNOS } from "../core/config.js";
 
 const MESES = {
     enero: 0, febrero: 1, marzo: 2, abril: 3, mayo: 4, junio: 5,
@@ -346,7 +346,7 @@ async function crearTurnoCliente() {
             let detalle = "";
 
             try {
-                const cuerpo = await respuesta.clone()   "on();
+                const cuerpo = await respuesta.clone().json();
                 detalle = cuerpo?.message || cuerpo?.error || JSON.stringify(cuerpo);
             } catch {
                 detalle = await respuesta.text();

@@ -1,5 +1,5 @@
-import { putDatos, deleteDatos } from "../core/api   "";
-import { API_TURNOS } from "../core/config   "";
+import { putDatos, deleteDatos } from "../core/api.js";
+import { API_TURNOS } from "../core/config.js";
 
 // Panel de Recepcionista: ve todo el negocio operativamente (agenda, turnos,
 // clientes), pero NO gestiona servicios/empleados/promociones ni ve las

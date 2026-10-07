@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Confirmá tu cuenta - David Martinez</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/theme-public.css">
+    <link rel="stylesheet" href="../css/login/auth.css">
+    <link rel="stylesheet" href="../css/login/registro.css">
+</head>
+
+<body>
+
+    <div class="auth-page">
+
+        <header class="auth-topbar">
+            <a href="../index.html" aria-label="Ir al inicio">
+                <img src="../assets/logo/logo.png" alt="Logo" class="logo-img">
+                <div>
+                    <h1 class="logo-title">David Martinez</h1>
+                    <p class="logo-subtitle">Estilista Unisex</p>
+                </div>
+            </a>
+        </header>
+
+        <main class="auth-body">
+            <div class="auth-card">
+
+                <div class="auth-card-header">
+                    <h2>Confirmá tu cuenta</h2>
+                    <p>Ingresá el email con el que te registraste y el código de 6 dígitos que te enviamos</p>
+                </div>
+
+                <form id="formConfirmar">
+
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <div class="input-icon-group">
+                            <span class="icon" aria-hidden="true">✉️</span>
+                            <input type="email" id="email" name="email" placeholder="example@gmail.com" autocomplete="email" required>
+                        </div>
+                    </div>
+
+                    <div class="casilleros" role="group" aria-label="Código de verificación de 6 dígitos">
+                        <input type="text" class="casillero" maxlength="1" inputmode="numeric" placeholder=" " autocomplete="one-time-code" aria-label="Dígito 1">
+                        <input type="text" class="casillero" maxlength="1" inputmode="numeric" placeholder=" " aria-label="Dígito 2">
+                        <input type="text" class="casillero" maxlength="1" inputmode="numeric" placeholder=" " aria-label="Dígito 3">
+                        <input type="text" class="casillero" maxlength="1" inputmode="numeric" placeholder=" " aria-label="Dígito 4">
+                        <input type="text" class="casillero" maxlength="1" inputmode="numeric" placeholder=" " aria-label="Dígito 5">
+                        <input type="text" class="casillero" maxlength="1" inputmode="numeric" placeholder=" " aria-label="Dígito 6">
+                    </div>
+
+                    <p id="mensaje" class="mensaje" role="status" aria-live="polite"></p>
+
+                    <button type="submit" class="btn-primary btn-block">Confirmar cuenta</button>
+
+                    <p class="reenvio">
+                        ¿No recibiste el código o ya venció?
+                        <button type="button" id="btnReenviar" class="btn-link">Reenviar</button>
+                        <span id="cooldown" class="cooldown"></span>
+                    </p>
+
+                    <div class="auth-footer">
+                        <p class="auth-switch"><a href="registro.html">← Volver al registro</a></p>
+                    </div>
+
+                </form>
+
+            </div>
+        </main>
+
+    </div>
+
+    <script type="module" src="../js/registro/confirmarCuenta.js"></script>
+
+</body>
+
+</html>

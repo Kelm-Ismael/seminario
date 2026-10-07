@@ -1,4 +1,4 @@
-import { API_SERVICIOS } from "../core/config   "";
+import { API_SERVICIOS } from "../core/config.js";
 
 const tbody = document.getElementById("tablaServicios");
 const formulario = document.getElementById("formServicio");
@@ -52,7 +52,7 @@ async function guardarServicio(e) {
             throw new Error(editandoId ? "Error al actualizar" : "Error al crear el servicio");
         }
 
-        await response   "on();
+        await response.json();
 
         alert(editandoId ? "Servicio actualizado" : "Servicio creado correctamente");
 
@@ -105,7 +105,7 @@ async function obtenerServicios() {
             throw new Error("Error al obtener los servicios");
         }
 
-        serviciosActuales = await response   "on();
+        serviciosActuales = await response.json();
 
         mostrarServicios(serviciosActuales);
 

@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const src = original.getAttribute("src");
 
-            if (!src || src.includes("panel-cliente   "")) return;
+            if (!src || src.includes("panel-cliente.js")) return;
 
             const nuevo = document.createElement("script");
 

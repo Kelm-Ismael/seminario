@@ -1,6 +1,6 @@
 // Archivo NUEVO — lógica de la pantalla "Crear cuenta" (registro.html)
-import { postDatos } from "../core/api   "";
-import { API_REGISTRO } from "../core/config   "";
+import { postDatos } from "../core/api.js";
+import { API_REGISTRO } from "../core/config.js";
 
 const formulario = document.getElementById("formRegistro");
 const mensaje = document.getElementById("mensaje");
@@ -39,7 +39,7 @@ formulario.addEventListener("submit", async (e) => {
 
     try {
         const respuesta = await postDatos(API_REGISTRO, datos);
-        const cuerpo = await respuesta   "on();
+        const cuerpo = await respuesta.json();
 
         if (!respuesta.ok) {
             mensaje.textContent = cuerpo.message || "No se pudo completar el registro.";

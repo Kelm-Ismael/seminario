@@ -1,5 +1,5 @@
-import { API_TURNOS } from "../core/config   "";
-import { postDatos } from "../core/api   "";
+import { API_TURNOS } from "../core/config.js";
+import { postDatos } from "../core/api.js";
 
 const formulario = document.getElementById("formTurno");
 
@@ -38,7 +38,7 @@ export async function crearTurno(e) {
         const response = await postDatos(API_TURNOS, turno);
 
         if (response.status === 409) {
-            const data = await response   "on();
+            const data = await response.json();
             alert(data.message);
             return;
         }
@@ -47,7 +47,7 @@ export async function crearTurno(e) {
             throw new Error("Error al crear turno");
         }
 
-        await response   "on();
+        await response.json();
 
         alert("Turno creado correctamente");
 

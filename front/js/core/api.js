@@ -5,7 +5,7 @@
 //         throw new Error("Error en la petición");
 //     }
 
-//     return response   "on();
+//     return response.json();
 // }
 
 // export async function postDatos(url, datos) {
@@ -27,7 +27,7 @@ export async function getDatos(url) {
         throw new Error("Error en la petición");
     }
 
-    return response   "on();
+    return response.json();
 }
 
 export async function postDatos(url, datos) {
@@ -44,7 +44,7 @@ export async function postDatos(url, datos) {
 
 // NUEVO: actualizar un recurso existente (ej: cambiar estado de un turno,
 // editar un servicio o un empleado). Mismo estilo que postDatos: devuelve
-// la respuesta cruda (sin    "on()) para que cada pantalla decida cómo
+// la respuesta cruda (sin .json()) para que cada pantalla decida cómo
 // manejar errores/status, igual que ya hacían con postDatos.
 export async function putDatos(url, datos) {
     const response = await fetch(url, {
