@@ -1,4 +1,3 @@
-
 /* =========================================
    HOME.CSS — específico de index.html
    Requiere theme-public.css cargado antes.
@@ -925,4 +924,162 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .menu-panel,
   .menu-toggle-icono span { transition: none; }
+}
+
+/* =========================================
+   23. NAVBAR: DATOS DEL LOCAL, ÍCONOS Y SECCIONES
+========================================= */
+
+html { scroll-behavior: smooth; }
+
+/* Que el navbar fijo no tape el título al saltar a una sección */
+section[id] { scroll-margin-top: 90px; }
+
+/* ---------- Datos rápidos del local ---------- */
+
+.navbar-info {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 18px;
+  min-width: 0;
+}
+
+.estado-local {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  font-size: 14px;
+  color: var(--dark);
+  white-space: nowrap;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  text-decoration: none;
+}
+
+.estado-punto {
+  width: 9px;
+  height: 9px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #b0b0b0;
+}
+
+.estado-local[data-estado="abierto"] .estado-punto {
+  background: #22a35a;
+  box-shadow: 0 0 0 4px rgba(34, 163, 90, .18);
+}
+
+.estado-local[data-estado="cerrado"] .estado-punto { background: #d0473a; }
+
+.estado-texto { font-weight: 700; }
+.estado-detalle { color: var(--muted); }
+
+.navbar-direccion {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--muted);
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.navbar-direccion:hover { color: var(--primary); }
+
+.navbar-direccion svg,
+.nav-links svg,
+.menu-dev svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ---------- Íconos en el menú ---------- */
+
+.menu-panel .nav-links a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.menu-panel .nav-links svg { color: var(--primary); }
+
+/* ---------- Paneles de prueba (provisorio) ---------- */
+
+.menu-dev {
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  font-size: 13px;
+}
+
+.menu-dev summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  color: var(--muted);
+  cursor: pointer;
+  list-style: none;
+}
+
+.menu-dev summary::-webkit-details-marker { display: none; }
+
+.menu-dev summary::after {
+  content: "▸";
+  margin-left: auto;
+  transition: transform .2s;
+}
+
+.menu-dev[open] summary::after { transform: rotate(90deg); }
+
+.menu-dev a {
+  display: block;
+  padding: 8px 12px 8px 38px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.menu-dev a:hover { color: var(--primary); }
+
+.menu-dev[open] { padding-bottom: 6px; }
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+  .navbar-direccion { display: none; }
+}
+
+@media (max-width: 600px) {
+  .estado-detalle { display: none; }
+  .estado-local { padding: 6px 10px; font-size: 13px; }
+}
+
+@media (max-width: 480px) {
+  .navbar { gap: 10px; }
+  .navbar-info { gap: 8px; }
+  .logo-container { gap: 10px; }
+  .logo-img { width: 44px; height: 44px; }
+  .logo-title { font-size: 17px; }
+  .logo-subtitle { font-size: 11px; }
+}
+
+@media (max-width: 360px) {
+  .estado-texto { display: none; }
+  .estado-local { padding: 9px; }
+}
+
+/* Si el menú es más alto que la pantalla, que se pueda desplazar */
+.menu-panel {
+  max-height: calc(100vh - 100px);
+  max-height: calc(100dvh - 100px);
+  overflow-y: auto;
 }

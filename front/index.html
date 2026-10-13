@@ -17,7 +17,7 @@
     <meta name="apple-mobile-web-app-title" content="David Martinez Estilista Unisex" />
     <link rel="manifest" href="./pwa/manifest.json" />
 
-    <!-- JavaScript del carrusel -->
+    <!-- JavaScript del carrusel y del menú -->
     <script src="./js/carrusel.js"></script>
     <script src="./js/menu.js"></script>
 </head>
@@ -28,7 +28,7 @@
     <!-- NAVBAR -->
     <header class="navbar" id="navbarPublica">
 
-        <a href="./index.html" class="logo-container">
+        <a href="#inicio" class="logo-container">
             <img src="./assets/logo/logo.png" alt="Logo" class="logo-img">
 
             <div>
@@ -36,6 +36,19 @@
                 <p class="logo-subtitle">Estilista Unisex</p>
             </div>
         </a>
+
+        <!-- Datos rápidos del local (el estado se calcula en js/menu.js) -->
+        <div class="navbar-info">
+            <a href="#ubicacion" class="estado-local" id="estadoLocal" data-estado="cerrado">
+                <span class="estado-punto" aria-hidden="true"></span>
+                <span class="estado-texto">Horarios</span>
+                <span class="estado-detalle"></span>
+            </a>
+            <a href="#ubicacion" class="navbar-direccion">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                López y Planes 3072, Posadas
+            </a>
+        </div>
 
         <!-- Botón hamburguesa -->
         <button type="button" class="menu-toggle" id="menuToggle"
@@ -49,27 +62,64 @@
         <!-- Opciones (ocultas hasta tocar el botón) -->
         <div class="menu-panel" id="menuPrincipal">
 
-            <nav class="nav-links">
-                <a href="./paneles/peluquero/peluquero.html">Inicio</a>
-                <a href="./paneles/barbero/barbero.html">Servicios</a>
-                <a href="./paneles/colorista/colorista.html">Promociones</a>
-                <a href="./paneles/secretaria/secretaria.html">Nosotros</a>
-                <a href="./paneles/admin/admin.html">Admin</a>
-                <a href="./pages/login.html">Contacto</a>
+            <nav class="nav-links" aria-label="Secciones">
+                <a href="#inicio">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/></svg>
+                    Inicio
+                </a>
+                <a href="#servicios">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.12 15.88"/><path d="M14.47 14.48 20 20"/><path d="M8.12 8.12 12 12"/></svg>
+                    Servicios
+                </a>
+                <a href="#galeria">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg>
+                    Trabajos
+                </a>
+                <a href="#coloraciones">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22a10 10 0 1 1 10-10c0 2.2-1.8 3-3.5 3H16a2 2 0 0 0-1.5 3.3A2 2 0 0 1 12 22z"/><circle cx="7.5" cy="10.5" r="1"/><circle cx="12" cy="7.5" r="1"/><circle cx="16.5" cy="10.5" r="1"/></svg>
+                    Coloraciones
+                </a>
+                <a href="#nosotros">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg>
+                    Nosotros
+                </a>
+                <a href="#ubicacion">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Ubicación y horarios
+                </a>
+                <a href="#pagos">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+                    Medios de pago
+                </a>
             </nav>
 
             <div class="navbar-actions">
                 <a href="./pages/login.html" class="login-btn">Iniciar sesión</a>
                 <a href="./pages/registro.html" class="login-btn login-btn--lleno">Crear cuenta</a>
-                <!-- <a href="./pages/turnos.html" class="turno-btn">Reservar Turno</a> -->
             </div>
+
+            <!-- ========== PROVISORIO: paneles para probar rutas ==========
+                 Borrar este <details> completo cuando ya no haga falta. -->
+            <details class="menu-dev">
+                <summary>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg>
+                    Paneles (pruebas)
+                </summary>
+                <a href="./paneles/peluquero/peluquero.html">Peluquero</a>
+                <a href="./paneles/barbero/barbero.html">Barbero</a>
+                <a href="./paneles/colorista/colorista.html">Colorista</a>
+                <a href="./paneles/secretaria/secretaria.html">Secretaria</a>
+                <a href="./paneles/admin/admin.html">Admin</a>
+            </details>
+            <!-- ========== FIN PROVISORIO ========== -->
 
         </div>
 
     </header>
+    <div class="menu-fondo" id="menuFondo" hidden></div>
 
     <!-- HERO -->
-    <section class="hero">
+    <section class="hero" id="inicio">
 
         <div class="hero-content">
 
@@ -122,6 +172,10 @@
         </div>
 
     </section>
+
+
+    <!-- JavaScript del carrusel -->
+
 
 
     <!-- <section class="services-section">
@@ -177,7 +231,7 @@
     </section> -->
 
     <!-- SERVICIOS -->
-    <section class="services-section">
+    <section class="services-section" id="servicios">
 
         <h2>Nuestros Servicios</h2>
 
@@ -300,7 +354,7 @@
 
     <!-- GALERÍA DE CLIENTES -->
 
-    <section class="gallery-section">
+    <section class="gallery-section" id="galeria">
 
         <h2>Nuestros Clientes</h2>
 
@@ -326,7 +380,7 @@
 
     <!-- COLORACIONES -->
 
-    <section class="color-section">
+    <section class="color-section" id="coloraciones">
 
         <h2>Coloraciones para Damas</h2>
 
@@ -346,7 +400,7 @@
     </section>
 
     <!-- NOSOTROS -->
-    <section class="about-section">
+    <section class="about-section" id="nosotros">
 
         <div class="about-text">
 
@@ -392,7 +446,7 @@
     </section>
 
     <!-- UBICACIÓN -->
-    <section class="location-section">
+    <section class="location-section" id="ubicacion">
 
     <div class="location-info">
 
@@ -443,7 +497,7 @@
 </section>
 
     <!-- PAGOS -->
-    <section class="payments-section">
+    <section class="payments-section" id="pagos">
 
         <h2>Métodos de Pago</h2>
 
@@ -477,7 +531,7 @@
          RESERVA
     ========================================== -->
 
-    <section class="booking-section">
+    <section class="booking-section" id="reservar">
 
         <div>
 
