@@ -1083,3 +1083,50 @@ section[id] { scroll-margin-top: 90px; }
   max-height: calc(100dvh - 100px);
   overflow-y: auto;
 }
+
+/* =========================================
+   24. UBICACIÓN EN TABLET Y CELULAR
+   Texto, mapa y foto uno debajo del otro.
+========================================= */
+
+@media (max-width: 900px) {
+  .location-section {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+  }
+
+  .location-info,
+  .location-map,
+  .location-section .about-images {
+    flex: none;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .location-info h2 { margin-bottom: 16px; }
+
+  .location-info p {
+    margin-bottom: 12px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .location-map iframe {
+    display: block;
+    width: 100%;
+    max-width: none;
+    height: 280px;
+  }
+
+  .location-section .about-images img {
+    max-width: none;
+    height: 240px;
+  }
+}
+
+@media (max-width: 600px) {
+  .location-section { padding-top: 40px; padding-bottom: 40px; }
+  .location-map iframe { height: 240px; border-radius: 16px; }
+  .location-section .about-images img { height: 200px; border-radius: 16px; }
+}
