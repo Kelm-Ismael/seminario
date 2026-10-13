@@ -1,10 +1,11 @@
-const CACHE_NAME = "david-martinez-v18";
+const CACHE_NAME = "david-martinez-v19";
 
 const ASSETS_TO_CACHE = [
   "/",
-  "./index.html",
+  "/index.html",
   "/css/style.css",
-  "/js/carrusel   "",
+  "/js/carrusel.js",
+  "/js/menu.js",
   "/assets/logo/logo.png",
   "/pages/turnos.html",
   "/pages/servicios.html",
@@ -14,11 +15,19 @@ const ASSETS_TO_CACHE = [
 
 // ==========================================================
 // INSTALL — precachea los assets base y activa la versión
-// nueva de inmediato (sin esperar a que cierres todas las pestañas)
+// nueva de inmediato (sin esperar a que cierres todas las pestañas).
+// Cada archivo se guarda por separado: si uno falla (404), los demás
+// se guardan igual y el service worker se instala de todas formas.
 // ==========================================================
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS_TO_CACHE))
+    caches.open(CACHE_NAME).then((cache) =>
+      Promise.all(
+        ASSETS_TO_CACHE.map((url) =>
+          cache.add(url).catch((err) => console.warn("SW: no se pudo cachear", url, err))
+        )
+      )
+    )
   );
   self.skipWaiting();
 });
