@@ -430,12 +430,12 @@ body {
 
 /* =========================================
    13. SERVICIOS
-   Computadora: grilla que se adapta al ancho (5 por fila en pantallas grandes).
-   Celular: tarjetas en fila que se deslizan con el dedo.
+   Computadora: grilla que ocupa todo el ancho de la pantalla.
+   Celular: una tarjeta debajo de la otra (igual que la galería).
 ========================================= */
 
 .services-section {
-  padding: 50px 40px 70px;
+  padding: 60px 40px;
   background: var(--section);
 }
 
@@ -452,8 +452,6 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 24px;
-  max-width: 1280px;
-  margin: 0 auto;
 }
 
 .service-card {
@@ -521,30 +519,16 @@ body {
 
 .service-info a:hover { background: var(--primary-hover); }
 
-/* Celular: carrusel horizontal con "imán" en cada tarjeta */
-@media (max-width: 600px) {
-  .services-section { padding: 40px 0 50px; }
-
-  .services-section h2 + .services-grid { margin-top: 24px; }
+/* Celular: una debajo de la otra, mismo relleno que la galería */
+@media (max-width: 650px) {
+  .services-section { padding: 50px 20px; }
 
   .services-grid {
-    display: flex;
-    gap: 14px;
-    max-width: none;
-    padding: 4px 16px 18px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-padding: 0 16px;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+    grid-template-columns: 1fr;
+    gap: 18px;
   }
 
-  .services-grid::-webkit-scrollbar { display: none; }
-
-  .service-card {
-    flex: 0 0 78%;
-    scroll-snap-align: start;
-  }
+  .service-card img { aspect-ratio: 16 / 10; }
 
   .service-card:hover { transform: none; }
 }
