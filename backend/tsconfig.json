@@ -50,5 +50,8 @@
 
     // 🚀 Ignora errores en librerías externas (mejora performance)
     "skipLibCheck": true
-  }
+    
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "src/**/*.test.ts", "src/**/tests/**"]
 }

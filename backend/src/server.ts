@@ -1,12 +1,8 @@
-// src/server.ts — punto de entrada del backend.
-
 import { app } from './app';
-import { conexion_db } from '../src/config/db';
-import { PORT } from '../src/config/env';
-
+import { conexion_db } from './config/db';
+import { PORT } from './config/env';
 
 app.listen(PORT, async () => {
-
   await conexion_db();
   console.log(`\x1b[32m🟢 Servidor corriendo en puerto ${PORT}\x1b[0m`);
 });

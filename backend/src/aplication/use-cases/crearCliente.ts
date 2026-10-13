@@ -1,35 +1,49 @@
 //importa la funcion del repository
 import { error } from "node:console";
-import { crearCliente as crearClienteRepository } from "../../infrastructure/repositories/cliente.repository";
+//import { crearCliente as crearClienteRepository } from "../../infrastructure/repositories/cliente.repository";
 
 //funcion principal del caso de uso
 
+// export const crearCliente = async (
+//     nombre: string,
+//     telefono: string,
+//     email: string,
+//     created_at: string
+
+// ) => {
+//     //validacion simple / trim elimina espacion vacio
+//     if (!nombre.trim()) {//=> lanzar error si esta vacio
+
+//     throw new Error("El nombre es obligatorio");
+// }
+
 export const crearCliente = async (
-    nombre: string,
-    telefono: string,
-    email: string,
-    created_at: string
-
+  nombre: string,
+  telefono: string,
+  email: string,
+  created_at: string
 ) => {
-    //validacion simple / trim elimina espacion vacio
-    if (!nombre.trim()) {//=> lanzar error si esta vacio
-
+  // Validación simple: trim elimina espacios vacíos
+  if (!nombre.trim()) {
     throw new Error("El nombre es obligatorio");
-}
+  }
+
+  throw new Error("Alta manual de clientes no disponible todavía (Escenario 13)");
+};
 
 //llama a repositorio p/guardar en DB
-const clienteCreado = await crearClienteRepository(
-    nombre,
-    telefono,
-    email,  
-    created_at
+// const clienteCreado = await crearClienteRepository(
+//     nombre,
+//     telefono,
+//     email,  
+//     created_at
 
 
     
-);
+// );
 
-return clienteCreado; // devuelve cliente creado
+// return clienteCreado; // devuelve cliente creado
 
-};
+// };
 
 

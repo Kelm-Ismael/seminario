@@ -1,6 +1,7 @@
 import { pool } from "../../config/db";
 import { Cliente } from "../../domain/entities/cliente.entity";
 
+
 // Perfil de cliente creado durante el registro (Escenario 2).
 // id_usuario es el id del usuario recién creado en `usuarios`;
 // se inserta como id_cliente porque es tabla-per-type.

@@ -28,6 +28,7 @@ import 'dotenv/config'
 
 export const PORT = process.env.PORT || 3000
 
+
 export const DB_URL = process.env.DB_URL || ''
 //export const JWT_SECRET = process.env.JWT_SECRET || ''
 
@@ -39,4 +40,9 @@ export const puerto_db = process.env.puerto_db || "5432"; //puerto de PostgresSQ
 
 // NUEVO — Google SSO (Sign in with Google). Completar en el .env con el
 // Client ID real que te da Google Cloud Console (APIs & Services > Credentials).
+
+
 export const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || '';
+export const TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID ?? "";
+export const TWILIO_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN ?? "";
+export const TWILIO_WHATSAPP_FROM = process.env.TWILIO_WHATSAPP_FROM ?? "";
