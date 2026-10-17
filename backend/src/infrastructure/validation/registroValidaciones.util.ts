@@ -2,17 +2,20 @@
 // Antes solo se chequeaba que celular y fecha_nacimiento no vinieran vacíos;
 // ahora también se valida que tengan un formato/valor razonable.
 
-// Prefijo internacional de Argentina ("+54") + código de área + número,
-// todo junto y solo dígitos después del "+54" (sin espacios ni guiones).
-// Ej. "+543794000000" (+54, área 379, número 4000000).
-const REGEX_CELULAR = /^\+54\d{8,15}$/;
+// CU-01, RN7: el celular se ingresa en formato internacional, aceptando
+// cualquier país: "+" seguido del código de país y el número, con al menos
+// 8 dígitos (sin espacios ni guiones). Ej. "+543794000000".
+const REGEX_CELULAR = /^\+\d{8,19}$/;
+
+export const MENSAJE_CELULAR_INVALIDO =
+  "El celular debe comenzar con + seguido del código de país y el número (al menos 8 dígitos, sin espacios ni guiones)";
 
 export const formatoCelularValido = (celular: string): boolean => {
   return REGEX_CELULAR.test(celular.trim());
 };
 
+// CU-01, RN8: edad mínima 18 años, sin límite máximo.
 export const EDAD_MINIMA = 18;
-export const EDAD_MAXIMA = 70;
 
 const calcularEdad = (fechaNacimiento: Date): number => {
   const hoy = new Date();
@@ -51,10 +54,6 @@ export const fechaNacimientoValida = (fechaNacimientoStr: string): ResultadoVali
     return { valida: false, motivo: "Tenés que ser mayor de 18 años para registrarte" };
   }
 
-  if (edad > EDAD_MAXIMA) {
-    return { valida: false, motivo: "La edad máxima para registrarte es 70 años" };
-  }
-
   return { valida: true };
 };
 
@@ -66,3 +65,25 @@ const REGEX_PASSWORD = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/;
 export const formatoPasswordValido = (password: string): boolean => {
   return REGEX_PASSWORD.test(password);
 };
+
+// CU-01, RN9: aceptación obligatoria de Términos y Política de Privacidad.
+export const MENSAJE_TERMINOS_NO_ACEPTADOS =
+  "Tenés que aceptar los Términos y Condiciones y la Política de Privacidad";
+
+// Mensajes de validación que el controlador devuelve como 400 (error del
+// usuario) en lugar de 500 (error del servidor).
+export const MENSAJES_ERROR_VALIDACION: string[] = [
+  "El email es obligatorio",
+  "La contraseña es obligatoria",
+  "La contraseña debe tener al menos 8 caracteres, con al menos una mayúscula, una minúscula y un número",
+  "El nombre es obligatorio",
+  "El apellido es obligatorio",
+  "La fecha de nacimiento es obligatoria",
+  "La fecha de nacimiento no es válida",
+  "La fecha de nacimiento no puede ser una fecha futura",
+  "Tenés que ser mayor de 18 años para registrarte",
+  "El celular es obligatorio",
+  MENSAJE_CELULAR_INVALIDO,
+  MENSAJE_TERMINOS_NO_ACEPTADOS,
+  "Falta la información de Google",
+];
