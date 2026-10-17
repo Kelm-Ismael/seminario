@@ -9,7 +9,12 @@ import { hashPassword } from "../../infrastructure/security/password.util";
 import { generarTokenAleatorio, calcularExpiracion24h } from "../../infrastructure/security/token.util";
 // NUEVO (issue #21) — envío real del mail de verificación
 import { enviarCorreoVerificacion } from "../../infrastructure/email/correoVerificacion.service";
-import { formatoCelularValido, fechaNacimientoValida, formatoPasswordValido } from "../../infrastructure/validation/registroValidaciones.util";
+import {
+  formatoCelularValido, fechaNacimientoValida, formatoPasswordValido,
+  MENSAJE_CELULAR_INVALIDO, MENSAJE_TERMINOS_NO_ACEPTADOS
+} from "../../infrastructure/validation/registroValidaciones.util";
+// CU-01, RN9 — constancia de aceptación de Términos y Política de Privacidad
+import { registrarAceptacionTerminos } from "../../infrastructure/repositories/aceptacionTerminos.repository";
 
 interface DatosRegistro {
   email: string;
@@ -18,10 +23,11 @@ interface DatosRegistro {
   apellido: string;
   fecha_nacimiento: string;
   celular: string;
+  acepta_terminos?: boolean;
 }
 
 export const registrarUsuarioCasoDeUso = async (datos: DatosRegistro) => {
-  const { email, password, nombre, apellido, fecha_nacimiento, celular } = datos;
+  const { email, password, nombre, apellido, fecha_nacimiento, celular, acepta_terminos } = datos;
 
   // Validaciones simples
   if (!email || !email.trim()) {
@@ -51,8 +57,11 @@ export const registrarUsuarioCasoDeUso = async (datos: DatosRegistro) => {
   if (!celular || !celular.trim()) {
     throw new Error("El celular es obligatorio");
   }
-   if (!formatoCelularValido(celular)) {
-    throw new Error("El celular debe tener el formato +54 seguido del código de área y número (solo dígitos, sin espacios ni guiones)");
+  if (!formatoCelularValido(celular)) {
+    throw new Error(MENSAJE_CELULAR_INVALIDO);
+  }
+  if (acepta_terminos !== true) {
+    throw new Error(MENSAJE_TERMINOS_NO_ACEPTADOS);
   }
 
   const usuarioExistente = await buscarUsuarioPorEmail(email);
@@ -78,6 +87,8 @@ export const registrarUsuarioCasoDeUso = async (datos: DatosRegistro) => {
   if (!cliente) {
     throw new Error("No se pudo crear el perfil de cliente");
   }
+
+  await registrarAceptacionTerminos(usuario.id_usuario);
 
   const tokenValidacion = generarTokenAleatorio();
   const tokenExpira = calcularExpiracion24h();
