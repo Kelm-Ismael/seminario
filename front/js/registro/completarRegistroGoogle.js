@@ -8,6 +8,7 @@ import { API_REGISTRO_GOOGLE } from "../core/config.js";
 const formulario = document.getElementById("formCompletarGoogle");
 const mensaje = document.getElementById("mensaje");
 const inputCelular = document.getElementById("celular");
+const checkTerminos = document.getElementById("aceptaTerminos");
 
 const perfilGuardado = sessionStorage.getItem("perfilGoogleRegistro");
 
@@ -22,8 +23,9 @@ if (!perfilGuardado) {
     document.getElementById("email").value = perfil.email || "";
 }
 
+// Celular en formato internacional: "+" y después solo dígitos (cualquier país)
 inputCelular.addEventListener("input", () => {
-    inputCelular.value = inputCelular.value.replace(/\D/g, "");
+    inputCelular.value = "+" + inputCelular.value.replace(/\D/g, "");
 });
 
 formulario.addEventListener("submit", async (evento) => {
@@ -37,7 +39,14 @@ formulario.addEventListener("submit", async (evento) => {
     const nombre = document.getElementById("nombre").value.trim();
     const apellido = document.getElementById("apellido").value.trim();
     const fecha_nacimiento = document.getElementById("fecha_nacimiento").value;
-    const celular = "+54" + inputCelular.value.trim();
+    const celular = inputCelular.value.trim();
+    const acepta_terminos = checkTerminos.checked;
+
+    if (!acepta_terminos) {
+        mensaje.textContent = "Tenés que aceptar los Términos y Condiciones y la Política de Privacidad.";
+        mensaje.classList.add("error");
+        return;
+    }
 
     const datos = {
         googleId: perfil.googleId,
@@ -45,7 +54,8 @@ formulario.addEventListener("submit", async (evento) => {
         nombre,
         apellido,
         fecha_nacimiento,
-        celular
+        celular,
+        acepta_terminos
     };
 
     const botonSubmit = formulario.querySelector("button[type=submit]");
