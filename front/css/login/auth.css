@@ -472,3 +472,53 @@
         display: none;
     }
 }
+
+
+/* ───────────────────────────────────────────────────────────
+   Casilla de Términos y Condiciones + aclaración de obligatorios
+   (CU-01, RN9)
+   ─────────────────────────────────────────────────────────── */
+.check-terminos {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 6px 0 4px;
+    font-size: 0.9rem;
+    color: var(--text);
+}
+
+.check-terminos input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    flex-shrink: 0;
+    accent-color: var(--primary);
+    cursor: pointer;
+}
+
+.check-terminos label {
+    cursor: pointer;
+    line-height: 1.4;
+    font-weight: 400;
+}
+
+.check-terminos a {
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.nota-obligatorios {
+    margin: 0 0 12px;
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--muted);
+}
+
+/* Página de Términos y Condiciones */
+.terminos-card { max-width: 820px; text-align: left; }
+.terminos-card h3 { margin: 22px 0 8px; font-size: 1.05rem; color: var(--dark); }
+.terminos-card p, .terminos-card li { line-height: 1.6; color: var(--text); font-size: 0.95rem; text-align: justify; }
+.terminos-card ul { padding-left: 20px; margin: 6px 0 10px; }
+.terminos-card .leyenda-legal { border-left: 3px solid var(--primary); padding: 6px 12px; font-size: 0.85rem; background: var(--section); }
+.terminos-meta { font-size: 0.85rem; color: var(--muted); }
