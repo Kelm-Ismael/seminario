@@ -14,6 +14,7 @@ import { registrarEvento } from "../../../infrastructure/repositories/logAuditor
 import { hashPassword } from "../../../infrastructure/security/password.util";
 import { generarTokenAleatorio, calcularExpiracion24h } from "../../../infrastructure/security/token.util";
 import { enviarCorreoVerificacion } from "../../../infrastructure/email/correoVerificacion.service";
+import { registrarAceptacionTerminos } from "../../../infrastructure/repositories/aceptacionTerminos.repository";
 
 jest.mock("../../../infrastructure/repositories/usuario.repository");
 jest.mock("../../../infrastructure/repositories/cliente.repository");
@@ -22,6 +23,7 @@ jest.mock("../../../infrastructure/repositories/logAuditoria.repository");
 jest.mock("../../../infrastructure/security/password.util");
 jest.mock("../../../infrastructure/security/token.util");
 jest.mock("../../../infrastructure/email/correoVerificacion.service");
+jest.mock("../../../infrastructure/repositories/aceptacionTerminos.repository");
 
 // Casteamos los mocks para poder usar .mockResolvedValue / .mockReturnValue
 // con el tipado de Jest.
@@ -34,9 +36,10 @@ const mockHashPassword = hashPassword as jest.Mock;
 const mockGenerarTokenAleatorio = generarTokenAleatorio as jest.Mock;
 const mockCalcularExpiracion24h = calcularExpiracion24h as jest.Mock;
 const mockEnviarCorreoVerificacion = enviarCorreoVerificacion as jest.Mock;
+const mockRegistrarAceptacionTerminos = registrarAceptacionTerminos as jest.Mock;
 
 // Fecha relativa a "hoy" para que el test no dependa de en qué fecha se corra:
-// una persona de 30 años siempre es válida (entre 18 y 70).
+// una persona de 30 años siempre es válida (mayor de 18).
 const fechaHaceAnios = (anios: number): string => {
   const fecha = new Date();
   fecha.setFullYear(fecha.getFullYear() - anios);
@@ -50,7 +53,8 @@ const datosValidos = {
   nombre: "Ana",
   apellido: "Gómez",
   fecha_nacimiento: fechaHaceAnios(30),
-  celular: "+543794000000"
+  celular: "+543794000000",
+  acepta_terminos: true
 };
 
 describe("registrarUsuarioCasoDeUso", () => {
@@ -119,26 +123,26 @@ describe("registrarUsuarioCasoDeUso", () => {
 
 
 
-  // ── Formato de celular (+54 + código de área + número) ───────────────
-  test("lanza error si el celular no tiene el prefijo +54", async () => {
+  // ── Formato de celular internacional (+ código de país + número) ─────
+  test("lanza error si el celular no empieza con +", async () => {
     await expect(
       registrarUsuarioCasoDeUso({ ...datosValidos, celular: "3794000000" })
-    ).rejects.toThrow("El celular debe tener el formato +54 seguido del código de área y número (solo dígitos, sin espacios ni guiones)");
+    ).rejects.toThrow("El celular debe comenzar con + seguido del código de país y el número (al menos 8 dígitos, sin espacios ni guiones)");
   });
 
   test("lanza error si el celular tiene letras", async () => {
     await expect(
       registrarUsuarioCasoDeUso({ ...datosValidos, celular: "+54379abc4000" })
-    ).rejects.toThrow("El celular debe tener el formato +54 seguido del código de área y número (solo dígitos, sin espacios ni guiones)");
+    ).rejects.toThrow("El celular debe comenzar con + seguido del código de país y el número (al menos 8 dígitos, sin espacios ni guiones)");
   });
 
-  test("lanza error si el celular es demasiado corto para tener código de área + número", async () => {
+  test("lanza error si el celular tiene menos de 8 dígitos", async () => {
     await expect(
-      registrarUsuarioCasoDeUso({ ...datosValidos, celular: "+5412345" })
-    ).rejects.toThrow("El celular debe tener el formato +54 seguido del código de área y número (solo dígitos, sin espacios ni guiones)");
+      registrarUsuarioCasoDeUso({ ...datosValidos, celular: "+1234567" })
+    ).rejects.toThrow("El celular debe comenzar con + seguido del código de país y el número (al menos 8 dígitos, sin espacios ni guiones)");
   });
 
-  // ── Validez de la fecha de nacimiento (formato + edad 18-70) ─────────
+  // ── Validez de la fecha de nacimiento (formato + edad mínima 18) ─────
   test("lanza error si la fecha de nacimiento no es una fecha real", async () => {
     await expect(
       registrarUsuarioCasoDeUso({ ...datosValidos, fecha_nacimiento: "no-es-una-fecha" })
@@ -157,10 +161,30 @@ describe("registrarUsuarioCasoDeUso", () => {
     ).rejects.toThrow("Tenés que ser mayor de 18 años para registrarte");
   });
 
-  test("lanza error si supera los 70 años", async () => {
+  test("no rechaza por edad máxima (RN8: sin límite máximo)", async () => {
+    mockBuscarUsuarioPorEmail.mockResolvedValue({ id_usuario: 1, email: datosValidos.email });
+
+    // Pasa todas las validaciones de formato y llega al chequeo de email duplicado
     await expect(
-      registrarUsuarioCasoDeUso({ ...datosValidos, fecha_nacimiento: fechaHaceAnios(80) })
-    ).rejects.toThrow("La edad máxima para registrarte es 70 años");
+      registrarUsuarioCasoDeUso({ ...datosValidos, fecha_nacimiento: fechaHaceAnios(85) })
+    ).rejects.toThrow("Ya existe una cuenta registrada con ese email");
+  });
+
+  // ── Términos y Condiciones (RN9) ──────────────────────────────────────
+  test("lanza error si no acepta los Términos y Condiciones", async () => {
+    await expect(
+      registrarUsuarioCasoDeUso({ ...datosValidos, acepta_terminos: false })
+    ).rejects.toThrow("Tenés que aceptar los Términos y Condiciones y la Política de Privacidad");
+
+    expect(mockCrearUsuario).not.toHaveBeenCalled();
+  });
+
+  test("acepta celulares de otros países", async () => {
+    mockBuscarUsuarioPorEmail.mockResolvedValue({ id_usuario: 1, email: datosValidos.email });
+
+    await expect(
+      registrarUsuarioCasoDeUso({ ...datosValidos, celular: "+59899123456" })
+    ).rejects.toThrow("Ya existe una cuenta registrada con ese email");
   });
 
   // ── Email duplicado ───────────────────────────────────────────────────
@@ -212,6 +236,7 @@ describe("registrarUsuarioCasoDeUso", () => {
     mockCrearToken.mockResolvedValue(tokenCreado);
     mockEnviarCorreoVerificacion.mockResolvedValue(undefined);
     mockRegistrarEvento.mockResolvedValue({ id_log: 1, cliente_id: 1, evento: "registro_usuario" });
+    mockRegistrarAceptacionTerminos.mockResolvedValue({ id_aceptacion: 1, usuario_id: 1 });
 
     const resultado = await registrarUsuarioCasoDeUso(datosValidos);
 
@@ -231,6 +256,9 @@ describe("registrarUsuarioCasoDeUso", () => {
     // El token de verificación se crea y se manda por mail
     expect(mockCrearToken).toHaveBeenCalledWith(usuarioCreado.id_usuario, "482913", expiracion);
     expect(mockEnviarCorreoVerificacion).toHaveBeenCalledWith(datosValidos.email, "482913");
+
+    // Queda constancia de la aceptación de Términos y Política (RN9)
+    expect(mockRegistrarAceptacionTerminos).toHaveBeenCalledWith(usuarioCreado.id_usuario);
 
     // Se registra el evento de auditoría contra el cliente, no contra el usuario
     expect(mockRegistrarEvento).toHaveBeenCalledWith(clienteCreado.id_cliente, "registro_usuario");
