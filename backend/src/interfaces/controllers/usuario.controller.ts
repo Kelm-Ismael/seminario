@@ -5,14 +5,15 @@ import { validarTokenCasoDeUso } from "../../aplication/use-cases/validarToken";
 import { reenviarCodigoCasoDeUso } from "../../aplication/use-cases/reenviarCodigo";
 import { iniciarRegistroGoogleCasoDeUso } from "../../aplication/use-cases/iniciarRegistroGoogle";
 import { registrarUsuarioGoogleCasoDeUso } from "../../aplication/use-cases/registrarUsuarioGoogle";
+import { MENSAJES_ERROR_VALIDACION } from "../../infrastructure/validation/registroValidaciones.util";
 
 // POST /registro
 export const registrarUsuarioController = async (req: Request, res: Response) => {
   try {
-    const { email, password, nombre, apellido, fecha_nacimiento, celular } = req.body;
+    const { email, password, nombre, apellido, fecha_nacimiento, celular, acepta_terminos } = req.body;
 
     const resultado = await registrarUsuarioCasoDeUso({
-      email, password, nombre, apellido, fecha_nacimiento, celular
+      email, password, nombre, apellido, fecha_nacimiento, celular, acepta_terminos
     });
 
     res.status(201).json({
@@ -31,16 +32,7 @@ export const registrarUsuarioController = async (req: Request, res: Response) =>
       return;
     }
 
-     if (
-      error.message === "El email es obligatorio" ||
-      error.message === "La contraseña es obligatoria" ||
-      error.message === "La contraseña debe tener al menos 8 caracteres, con al menos una mayúscula, una minúscula y un número" ||
-      error.message === "El nombre es obligatorio" ||
-      error.message === "El apellido es obligatorio" ||
-      error.message === "La fecha de nacimiento es obligatoria" ||
-      error.message === "El celular es obligatorio"
-
-    ) {
+    if (MENSAJES_ERROR_VALIDACION.includes(error.message)) {
       res.status(400).json({ message: error.message });
       return;
     }
@@ -164,10 +156,10 @@ export const iniciarRegistroGoogleController = async (req: Request, res: Respons
 // directo (Google ya verificó el email).
 export const registrarUsuarioGoogleController = async (req: Request, res: Response) => {
   try {
-    const { googleId, email, nombre, apellido, fecha_nacimiento, celular } = req.body;
+    const { googleId, email, nombre, apellido, fecha_nacimiento, celular, acepta_terminos } = req.body;
 
     const resultado = await registrarUsuarioGoogleCasoDeUso({
-      googleId, email, nombre, apellido, fecha_nacimiento, celular
+      googleId, email, nombre, apellido, fecha_nacimiento, celular, acepta_terminos
     });
 
     res.status(201).json({
@@ -186,18 +178,7 @@ export const registrarUsuarioGoogleController = async (req: Request, res: Respon
       return;
     }
 
-    if (
-      error.message === "Falta la información de Google" ||
-      error.message === "El nombre es obligatorio" ||
-      error.message === "El apellido es obligatorio" ||
-      error.message === "La fecha de nacimiento es obligatoria" ||
-      error.message === "El celular es obligatorio" ||
-      error.message === "La fecha de nacimiento no es válida" ||
-      error.message === "La fecha de nacimiento no puede ser una fecha futura" ||
-      error.message === "Tenés que ser mayor de 18 años para registrarte" ||
-      error.message === "La edad máxima para registrarte es 70 años" ||
-      error.message === "El celular debe tener el formato +54 seguido del código de área y número (solo dígitos, sin espacios ni guiones)"
-    ) {
+    if (MENSAJES_ERROR_VALIDACION.includes(error.message)) {
       res.status(400).json({ message: error.message });
       return;
     }
