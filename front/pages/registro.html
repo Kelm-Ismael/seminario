@@ -74,9 +74,9 @@
                             <label for="celular">Celular *</label>
                             <div class="input-icon-group">
                                 <span class="icon" aria-hidden="true">📱</span>
-                                <span class="celular-prefijo">+54</span>
-                                <input type="tel" id="celular" name="celular" placeholder="3794000000" inputmode="numeric" autocomplete="tel-national" required>
+                                <input type="tel" id="celular" name="celular" value="+" placeholder="+ código de país y número" maxlength="16" inputmode="tel" autocomplete="tel" aria-describedby="celularHint" required>
                             </div>
+                            <small id="celularHint" class="form-hint">Con “+” y código de país, entre 8 y 15 dígitos.</small>
                         </div>
                     </div>
 
@@ -101,6 +101,13 @@
                         </div>
                         <small id="passwordHint" class="form-hint">Mínimo 8 caracteres, con una mayúscula, una minúscula y un número.</small>
                     </div>
+
+
+                    <div class="check-terminos">
+                        <input type="checkbox" id="aceptaTerminos" name="aceptaTerminos" required>
+                        <label for="aceptaTerminos">Acepto los <a href="terminos.html" target="_blank" rel="noopener">Términos y Condiciones</a> y la <a href="terminos.html#privacidad" target="_blank" rel="noopener">Política de Privacidad</a> *</label>
+                    </div>
+                    <p class="nota-obligatorios">(*) Los campos marcados con asterisco son obligatorios.</p>
 
                     <p id="mensaje" class="mensaje" role="status" aria-live="polite"></p>
 
