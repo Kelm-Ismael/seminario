@@ -7,7 +7,12 @@
 import { crearUsuario, buscarUsuarioPorEmail } from "../../infrastructure/repositories/usuario.repository";
 import { crearClienteDesdeRegistroGoogle, buscarClientePorGoogleId } from "../../infrastructure/repositories/cliente.repository";
 import { registrarEvento } from "../../infrastructure/repositories/logAuditoria.repository";
-import { formatoCelularValido, fechaNacimientoValida } from "../../infrastructure/validation/registroValidaciones.util";
+import {
+  formatoCelularValido, fechaNacimientoValida,
+  MENSAJE_CELULAR_INVALIDO, MENSAJE_TERMINOS_NO_ACEPTADOS
+} from "../../infrastructure/validation/registroValidaciones.util";
+// CU-01, RN9 — constancia de aceptación de Términos y Política de Privacidad
+import { registrarAceptacionTerminos } from "../../infrastructure/repositories/aceptacionTerminos.repository";
 
 interface DatosRegistroGoogle {
   googleId: string;
@@ -16,10 +21,11 @@ interface DatosRegistroGoogle {
   apellido: string;
   fecha_nacimiento: string;
   celular: string;
+  acepta_terminos?: boolean;
 }
 
 export const registrarUsuarioGoogleCasoDeUso = async (datos: DatosRegistroGoogle) => {
-  const { googleId, email, nombre, apellido, fecha_nacimiento, celular } = datos;
+  const { googleId, email, nombre, apellido, fecha_nacimiento, celular, acepta_terminos } = datos;
 
   if (!googleId || !email) {
     throw new Error("Falta la información de Google");
@@ -41,7 +47,10 @@ export const registrarUsuarioGoogleCasoDeUso = async (datos: DatosRegistroGoogle
     throw new Error("El celular es obligatorio");
   }
   if (!formatoCelularValido(celular)) {
-    throw new Error("El celular debe tener el formato +54 seguido del código de área y número (solo dígitos, sin espacios ni guiones)");
+    throw new Error(MENSAJE_CELULAR_INVALIDO);
+  }
+  if (acepta_terminos !== true) {
+    throw new Error(MENSAJE_TERMINOS_NO_ACEPTADOS);
   }
 
   // Re-chequeo: puede haber pasado tiempo entre el paso 1 (verificar token)
@@ -72,6 +81,8 @@ export const registrarUsuarioGoogleCasoDeUso = async (datos: DatosRegistroGoogle
   if (!cliente) {
     throw new Error("No se pudo crear el perfil de cliente");
   }
+
+  await registrarAceptacionTerminos(usuario.id_usuario);
 
   await registrarEvento(cliente.id_cliente, "registro_usuario_google");
 
