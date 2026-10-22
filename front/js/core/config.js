@@ -61,3 +61,4 @@ export const API_REGISTRO_GOOGLE           = `${API_BASE}/registro/google`;
 // Client ID de OAuth 2.0 (Google Cloud Console). Debe ser el mismo valor
 // que la variable GOOGLE_CLIENT_ID del backend.
 export const GOOGLE_CLIENT_ID = "596833095283-71h4q6ua9to2otsi7lv73bgv6arseq8g.apps.googleusercontent.com";
+
